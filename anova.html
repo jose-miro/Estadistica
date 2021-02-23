@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 12 ANOVA | Mera estadística</title>
+  <meta name="description" content="Capítulo 12 ANOVA | Mera estadística" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 12 ANOVA | Mera estadística" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 12 ANOVA | Mera estadística" />
+  
+  
+  
+
+<meta name="author" content="Jose Miró Julià" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="contrastes-de-hipotesis.html"/>
+<link rel="next" href="la-prueba-de-ji-cuadrado.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Estadística</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a></li>
+<li class="chapter" data-level="2" data-path="qué-es-y-no-es-la-estadística.html"><a href="qué-es-y-no-es-la-estadística.html"><i class="fa fa-check"></i><b>2</b> ¿Qué es (y no es) la estadística?</a><ul>
+<li class="chapter" data-level="2.1" data-path="qué-es-y-no-es-la-estadística.html"><a href="qué-es-y-no-es-la-estadística.html#el-proceso-estadístico"><i class="fa fa-check"></i><b>2.1</b> El proceso estadístico</a></li>
+<li class="chapter" data-level="2.2" data-path="qué-es-y-no-es-la-estadística.html"><a href="qué-es-y-no-es-la-estadística.html#es-la-estadística-parte-de-las-matemáticas"><i class="fa fa-check"></i><b>2.2</b> ¿Es la estadística parte de las matemáticas?</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html"><i class="fa fa-check"></i><b>3</b> Estadística descriptiva de datos numéricos univariantes</a><ul>
+<li class="chapter" data-level="3.1" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#tipos-de-datos"><i class="fa fa-check"></i><b>3.1</b> Tipos de datos</a></li>
+<li class="chapter" data-level="3.2" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#medidas-de-centralidad-y-dispersión"><i class="fa fa-check"></i><b>3.2</b> Medidas de centralidad y dispersión</a></li>
+<li class="chapter" data-level="3.3" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#gráficas-para-datos-cuantitativos"><i class="fa fa-check"></i><b>3.3</b> Gráficas para datos cuantitativos</a></li>
+<li class="chapter" data-level="3.4" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#análisis-de-los-datos"><i class="fa fa-check"></i><b>3.4</b> Análisis de los datos</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#modalidad"><i class="fa fa-check"></i><b>3.4.1</b> Modalidad</a></li>
+<li class="chapter" data-level="3.4.2" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#simetría"><i class="fa fa-check"></i><b>3.4.2</b> Simetría</a></li>
+<li class="chapter" data-level="3.4.3" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#valores-atípicos"><i class="fa fa-check"></i><b>3.4.3</b> Valores atípicos</a></li>
+<li class="chapter" data-level="3.4.4" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#problematicidad"><i class="fa fa-check"></i><b>3.4.4</b> Problematicidad</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><i class="fa fa-check"></i><b>4</b> Estadística descriptiva de datos cualitativos univariantes</a><ul>
+<li class="chapter" data-level="4.1" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#tablas-de-contingencia"><i class="fa fa-check"></i><b>4.1</b> Tablas de contingencia</a></li>
+<li class="chapter" data-level="4.2" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#gráficas-para-datos-cualitativos"><i class="fa fa-check"></i><b>4.2</b> Gráficas para datos cualitativos</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#gráficos-3d"><i class="fa fa-check"></i><b>4.2.1</b> Gráficos 3D</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#conclusión"><i class="fa fa-check"></i><b>4.3</b> Conclusión</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html"><i class="fa fa-check"></i><b>5</b> Estadística descriptiva de datos bivariantes</a><ul>
+<li class="chapter" data-level="5.1" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#dos-variables-numéricas"><i class="fa fa-check"></i><b>5.1</b> Dos variables numéricas</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#gráfica-de-nube-de-puntos"><i class="fa fa-check"></i><b>5.1.1</b> Gráfica de nube de puntos</a></li>
+<li class="chapter" data-level="5.1.2" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#rectas-de-regresión"><i class="fa fa-check"></i><b>5.1.2</b> Rectas de regresión</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#una-variable-numérica-y-una-cualitativa"><i class="fa fa-check"></i><b>5.2</b> Una variable numérica y una cualitativa</a></li>
+<li class="chapter" data-level="5.3" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#dos-variables-cualitativas"><i class="fa fa-check"></i><b>5.3</b> Dos variables cualitativas</a></li>
+<li class="chapter" data-level="5.4" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#resumen"><i class="fa fa-check"></i><b>5.4</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html"><i class="fa fa-check"></i><b>6</b> Uso de R para estadística descriptiva. Tutorial</a><ul>
+<li class="chapter" data-level="6.1" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#data-frames"><i class="fa fa-check"></i><b>6.1</b> Data frames</a></li>
+<li class="chapter" data-level="6.2" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-una-variable-cuantitativa"><i class="fa fa-check"></i><b>6.2</b> El caso de una variable cuantitativa</a></li>
+<li class="chapter" data-level="6.3" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-una-variable-cualitativa"><i class="fa fa-check"></i><b>6.3</b> El caso de una variable cualitativa</a></li>
+<li class="chapter" data-level="6.4" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-dos-variables-cuantitativas"><i class="fa fa-check"></i><b>6.4</b> El caso de dos variables cuantitativas</a></li>
+<li class="chapter" data-level="6.5" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-dos-variables-una-cuantitativa-y-una-cualitativa"><i class="fa fa-check"></i><b>6.5</b> El caso de dos variables, una cuantitativa y una cualitativa</a></li>
+<li class="chapter" data-level="6.6" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-dos-variables-cualitativas"><i class="fa fa-check"></i><b>6.6</b> El caso de dos variables cualitativas</a></li>
+<li class="chapter" data-level="6.7" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#resumen-final"><i class="fa fa-check"></i><b>6.7</b> Resumen final</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="probabilidad.html"><a href="probabilidad.html"><i class="fa fa-check"></i><b>7</b> Probabilidad</a><ul>
+<li class="chapter" data-level="7.1" data-path="probabilidad.html"><a href="probabilidad.html#ideas-básicas"><i class="fa fa-check"></i><b>7.1</b> Ideas básicas</a></li>
+<li class="chapter" data-level="7.2" data-path="probabilidad.html"><a href="probabilidad.html#operaciones-con-probabilidades"><i class="fa fa-check"></i><b>7.2</b> Operaciones con probabilidades</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-de-una-cosa-u-otra"><i class="fa fa-check"></i><b>7.2.1</b> Probabilidad de una cosa u otra</a></li>
+<li class="chapter" data-level="7.2.2" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-de-una-cosa-y-otra"><i class="fa fa-check"></i><b>7.2.2</b> Probabilidad de una cosa y otra</a></li>
+<li class="chapter" data-level="7.2.3" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-del-suceso-contrario"><i class="fa fa-check"></i><b>7.2.3</b> Probabilidad del suceso contrario</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-condicionada"><i class="fa fa-check"></i><b>7.3</b> Probabilidad condicionada</a></li>
+<li class="chapter" data-level="7.4" data-path="probabilidad.html"><a href="probabilidad.html#regla-de-bayes"><i class="fa fa-check"></i><b>7.4</b> Regla de Bayes</a></li>
+<li class="chapter" data-level="7.5" data-path="probabilidad.html"><a href="probabilidad.html#resumen-1"><i class="fa fa-check"></i><b>7.5</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html"><i class="fa fa-check"></i><b>8</b> Variables aleatorias</a><ul>
+<li class="chapter" data-level="8.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#qué-es-una-variable-aleatoria"><i class="fa fa-check"></i><b>8.1</b> ¿Qué es una variable aleatoria?</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#variables-discretas"><i class="fa fa-check"></i><b>8.1.1</b> Variables discretas</a></li>
+<li class="chapter" data-level="8.1.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#variables-continuas"><i class="fa fa-check"></i><b>8.1.2</b> Variables continuas</a></li>
+<li class="chapter" data-level="8.1.3" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#propiedades-de-estas-funciones"><i class="fa fa-check"></i><b>8.1.3</b> Propiedades de estas funciones</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#cálculo-de-probabilidades"><i class="fa fa-check"></i><b>8.2</b> Cálculo de probabilidades</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#calculando-a-mano"><i class="fa fa-check"></i><b>8.2.1</b> Calculando a mano</a></li>
+<li class="chapter" data-level="8.2.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#calculando-con-r"><i class="fa fa-check"></i><b>8.2.2</b> Calculando con R</a></li>
+<li class="chapter" data-level="8.2.3" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#resumen-2"><i class="fa fa-check"></i><b>8.2.3</b> Resumen</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><i class="fa fa-check"></i><b>9</b> Esperanzas y desviaciones típicas de variables aleatorias</a><ul>
+<li class="chapter" data-level="9.1" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#desviaciones-típicas"><i class="fa fa-check"></i><b>9.1</b> Desviaciones típicas</a></li>
+<li class="chapter" data-level="9.2" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#operaciones-con-variables-aleatorias"><i class="fa fa-check"></i><b>9.2</b> Operaciones con variables aleatorias</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#un-ejemplo"><i class="fa fa-check"></i><b>9.2.1</b> Un ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#resumen-3"><i class="fa fa-check"></i><b>9.3</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><i class="fa fa-check"></i><b>10</b> Intervalos de confianza: una medida de la incertidumbre</a><ul>
+<li class="chapter" data-level="10.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#incertidumbre-en-muestras-de-proporciones"><i class="fa fa-check"></i><b>10.1</b> Incertidumbre en muestras de proporciones</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#una-simulación"><i class="fa fa-check"></i><b>10.1.1</b> Una simulación</a></li>
+<li class="chapter" data-level="10.1.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>10.1.2</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="10.1.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#fuga-de-probabilidad"><i class="fa fa-check"></i><b>10.1.3</b> Fuga de probabilidad</a></li>
+<li class="chapter" data-level="10.1.4" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#un-ejemplo-1"><i class="fa fa-check"></i><b>10.1.4</b> Un ejemplo</a></li>
+<li class="chapter" data-level="10.1.5" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#resumen-de-intervalos-de-confianza-de-proporciones"><i class="fa fa-check"></i><b>10.1.5</b> Resumen de intervalos de confianza de proporciones</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#incertidumbre-en-muestras-de-medias"><i class="fa fa-check"></i><b>10.2</b> Incertidumbre en muestras de medias</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#una-simulación-1"><i class="fa fa-check"></i><b>10.2.1</b> Una simulación</a></li>
+<li class="chapter" data-level="10.2.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#intervalos-de-confianza-1"><i class="fa fa-check"></i><b>10.2.2</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="10.2.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#la-distribución-t-de-student"><i class="fa fa-check"></i><b>10.2.3</b> La distribución t de Student</a></li>
+<li class="chapter" data-level="10.2.4" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#fuga-de-probabilidades"><i class="fa fa-check"></i><b>10.2.4</b> Fuga de probabilidades</a></li>
+<li class="chapter" data-level="10.2.5" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#un-ejemplo-2"><i class="fa fa-check"></i><b>10.2.5</b> Un ejemplo</a></li>
+<li class="chapter" data-level="10.2.6" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#resumen-de-intervalos-de-confianza-de-medias"><i class="fa fa-check"></i><b>10.2.6</b> Resumen de intervalos de confianza de medias</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#comparación-de-intervalos-de-confianza"><i class="fa fa-check"></i><b>10.3</b> Comparación de intervalos de confianza</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#no-puedo-decir-que-sean-distintos"><i class="fa fa-check"></i><b>10.3.1</b> No puedo decir que sean distintos</a></li>
+<li class="chapter" data-level="10.3.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#cálculo-de-intervalos-de-confianza-de-diferencias"><i class="fa fa-check"></i><b>10.3.2</b> Cálculo de intervalos de confianza de diferencias</a></li>
+<li class="chapter" data-level="10.3.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#más-ejemplos"><i class="fa fa-check"></i><b>10.3.3</b> Más ejemplos</a></li>
+<li class="chapter" data-level="10.3.4" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#resumen-de-comparación-de-intervalos-de-confianza"><i class="fa fa-check"></i><b>10.3.4</b> Resumen de comparación de intervalos de confianza</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html"><i class="fa fa-check"></i><b>11</b> Contrastes de hipotesis</a><ul>
+<li class="chapter" data-level="11.1" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html#experimentos-estadísticos-para-un-contraste-de-hipótesis"><i class="fa fa-check"></i><b>11.1</b> Experimentos estadísticos para un contraste de hipótesis</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html#procedimiento-de-cálculo-del-p-valor."><i class="fa fa-check"></i><b>11.1.1</b> Procedimiento de cálculo del p-valor.</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html#interpretación-del-p-valor."><i class="fa fa-check"></i><b>11.2</b> Interpretación del p-valor.</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>12</b> ANOVA</a><ul>
+<li class="chapter" data-level="12.1" data-path="anova.html"><a href="anova.html#nada-es-gratis-y-los-errores-se-acumulan"><i class="fa fa-check"></i><b>12.1</b> Nada es gratis (y los errores se acumulan)</a></li>
+<li class="chapter" data-level="12.2" data-path="anova.html"><a href="anova.html#punto-de-partida"><i class="fa fa-check"></i><b>12.2</b> Punto de partida</a></li>
+<li class="chapter" data-level="12.3" data-path="anova.html"><a href="anova.html#tutorial-de-anova-en-r"><i class="fa fa-check"></i><b>12.3</b> Tutorial de ANOVA en R</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="anova.html"><a href="anova.html#el-problema"><i class="fa fa-check"></i><b>12.3.1</b> El problema</a></li>
+<li class="chapter" data-level="12.3.2" data-path="anova.html"><a href="anova.html#el-primer-método-oneway.test"><i class="fa fa-check"></i><b>12.3.2</b> El primer método: oneway.test()</a></li>
+<li class="chapter" data-level="12.3.3" data-path="anova.html"><a href="anova.html#el-segundo-método-aov"><i class="fa fa-check"></i><b>12.3.3</b> El segundo método: aov()</a></li>
+<li class="chapter" data-level="12.3.4" data-path="anova.html"><a href="anova.html#el-tercer-método"><i class="fa fa-check"></i><b>12.3.4</b> El tercer método</a></li>
+<li class="chapter" data-level="12.3.5" data-path="anova.html"><a href="anova.html#y-si-los-datos-no-están-como-los-quiere-r"><i class="fa fa-check"></i><b>12.3.5</b> ¿Y si los datos no están como los quiere R?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html"><i class="fa fa-check"></i><b>13</b> La prueba de Ji-Cuadrado</a><ul>
+<li class="chapter" data-level="13.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-de-ji-cuadrado-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>13.1</b> Prueba de ji-cuadrado de bondad de ajuste</a></li>
+<li class="chapter" data-level="13.2" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-de-bondad-de-ajuste-con-r"><i class="fa fa-check"></i><b>13.2</b> Prueba <span class="math inline">\(\chi^2\)</span> de bondad de ajuste con R</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#problematicidad-el-aviso-de-chisq.test"><i class="fa fa-check"></i><b>13.2.1</b> Problematicidad: el aviso de chisq.test()</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#la-prueba-chi2-de-homogeneidad"><i class="fa fa-check"></i><b>13.3</b> La prueba <span class="math inline">\(\chi^2\)</span> de homogeneidad</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#definición-formal"><i class="fa fa-check"></i><b>13.3.1</b> Definición formal</a></li>
+<li class="chapter" data-level="13.3.2" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-como-contraste-de-hipótesis"><i class="fa fa-check"></i><b>13.3.2</b> Prueba <span class="math inline">\(\chi^2\)</span> como contraste de hipótesis</a></li>
+<li class="chapter" data-level="13.3.3" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-de-homogeneidad-con-r"><i class="fa fa-check"></i><b>13.3.3</b> Prueba <span class="math inline">\(\chi^2\)</span> de homogeneidad con R</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#la-prueba-chi2-de-independencia"><i class="fa fa-check"></i><b>13.4</b> La prueba <span class="math inline">\(\chi^{2}\)</span> de independencia</a><ul>
+<li class="chapter" data-level="13.4.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-de-independencia-como-contraste-de-hipótesis"><i class="fa fa-check"></i><b>13.4.1</b> Prueba <span class="math inline">\(\chi^2\)</span> de independencia como contraste de hipótesis</a></li>
+<li class="chapter" data-level="13.4.2" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#un-ejemplo-3"><i class="fa fa-check"></i><b>13.4.2</b> Un ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#resumen-4"><i class="fa fa-check"></i><b>13.5</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="regresión-lineal.html"><a href="regresión-lineal.html"><i class="fa fa-check"></i><b>14</b> Regresión Lineal</a><ul>
+<li class="chapter" data-level="14.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#cálculo"><i class="fa fa-check"></i><b>14.1</b> Cálculo</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#fundamentos"><i class="fa fa-check"></i><b>14.1.1</b> Fundamentos</a></li>
+<li class="chapter" data-level="14.1.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#otro-ejemplo"><i class="fa fa-check"></i><b>14.1.2</b> Otro ejemplo</a></li>
+<li class="chapter" data-level="14.1.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#y-si-no-es-una-recta"><i class="fa fa-check"></i><b>14.1.3</b> ¿Y si no es una recta?</a></li>
+<li class="chapter" data-level="14.1.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-la-parte-de-cálculo"><i class="fa fa-check"></i><b>14.1.4</b> Resumen de la parte de cálculo</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#estadística"><i class="fa fa-check"></i><b>14.2</b> Estadística</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#incertidumbre-en-la-regresión-lineal"><i class="fa fa-check"></i><b>14.2.1</b> Incertidumbre en la regresión lineal</a></li>
+<li class="chapter" data-level="14.2.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#condiciones"><i class="fa fa-check"></i><b>14.2.2</b> Condiciones</a></li>
+<li class="chapter" data-level="14.2.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#salida-de-r"><i class="fa fa-check"></i><b>14.2.3</b> Salida de R</a></li>
+<li class="chapter" data-level="14.2.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#intervalos-de-confianza-2"><i class="fa fa-check"></i><b>14.2.4</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="14.2.5" data-path="regresión-lineal.html"><a href="regresión-lineal.html#otro-ejemplo-1"><i class="fa fa-check"></i><b>14.2.5</b> Otro ejemplo</a></li>
+<li class="chapter" data-level="14.2.6" data-path="regresión-lineal.html"><a href="regresión-lineal.html#la-regresión-no-muestra-qué-tipo-de-curva-es"><i class="fa fa-check"></i><b>14.2.6</b> La regresión no muestra qué tipo de curva es</a></li>
+<li class="chapter" data-level="14.2.7" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-la-parte-de-estadística"><i class="fa fa-check"></i><b>14.2.7</b> Resumen de la parte de estadística</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#diagnóstico"><i class="fa fa-check"></i><b>14.3</b> Diagnóstico</a><ul>
+<li class="chapter" data-level="14.3.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#seis-modelos"><i class="fa fa-check"></i><b>14.3.1</b> Seis modelos</a></li>
+<li class="chapter" data-level="14.3.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#cinco-diagnósticos"><i class="fa fa-check"></i><b>14.3.2</b> Cinco diagnósticos</a></li>
+<li class="chapter" data-level="14.3.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-diagnóstico"><i class="fa fa-check"></i><b>14.3.3</b> Resumen de diagnóstico</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#inferencias"><i class="fa fa-check"></i><b>14.4</b> Inferencias</a><ul>
+<li class="chapter" data-level="14.4.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#contrastes-de-hipótesis"><i class="fa fa-check"></i><b>14.4.1</b> Contrastes de hipótesis</a></li>
+<li class="chapter" data-level="14.4.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#intervalos-de-confianza-3"><i class="fa fa-check"></i><b>14.4.2</b> Intervalos de confianza</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicciones"><i class="fa fa-check"></i><b>14.5</b> Predicciones</a><ul>
+<li class="chapter" data-level="14.5.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-de-la-curva"><i class="fa fa-check"></i><b>14.5.1</b> Predicción de la curva</a></li>
+<li class="chapter" data-level="14.5.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-de-rango"><i class="fa fa-check"></i><b>14.5.2</b> Predicción de rango</a></li>
+<li class="chapter" data-level="14.5.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-de-medias"><i class="fa fa-check"></i><b>14.5.3</b> Predicción de medias</a></li>
+<li class="chapter" data-level="14.5.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-predicciones"><i class="fa fa-check"></i><b>14.5.4</b> Resumen de predicciones</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="problemas.html"><a href="problemas.html"><i class="fa fa-check"></i><b>15</b> Problemas</a><ul>
+<li class="chapter" data-level="15.1" data-path="problemas.html"><a href="problemas.html#qué-es-la-estadística"><i class="fa fa-check"></i><b>15.1</b> ¿Qué es la estadística?</a></li>
+<li class="chapter" data-level="15.2" data-path="problemas.html"><a href="problemas.html#manejo-de-r-y-simulaciones"><i class="fa fa-check"></i><b>15.2</b> Manejo de R y simulaciones</a></li>
+<li class="chapter" data-level="15.3" data-path="problemas.html"><a href="problemas.html#estadística-descriptiva"><i class="fa fa-check"></i><b>15.3</b> Estadística Descriptiva</a></li>
+<li class="chapter" data-level="15.4" data-path="problemas.html"><a href="problemas.html#probabilidad-y-variables-aleatórias"><i class="fa fa-check"></i><b>15.4</b> Probabilidad y variables aleatórias</a></li>
+<li class="chapter" data-level="15.5" data-path="problemas.html"><a href="problemas.html#razonamiento-estadístico."><i class="fa fa-check"></i><b>15.5</b> Razonamiento estadístico.</a><ul>
+<li class="chapter" data-level="15.5.1" data-path="problemas.html"><a href="problemas.html#intervalos-de-confianza-4"><i class="fa fa-check"></i><b>15.5.1</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="15.5.2" data-path="problemas.html"><a href="problemas.html#contrastes-de-hipótesis-1"><i class="fa fa-check"></i><b>15.5.2</b> Contrastes de hipótesis</a></li>
+<li class="chapter" data-level="15.5.3" data-path="problemas.html"><a href="problemas.html#razonamiento-estadístico-complejo"><i class="fa fa-check"></i><b>15.5.3</b> Razonamiento estadístico complejo</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="problemas.html"><a href="problemas.html#anova-1"><i class="fa fa-check"></i><b>15.6</b> Anova</a></li>
+<li class="chapter" data-level="15.7" data-path="problemas.html"><a href="problemas.html#ji-cuadrado"><i class="fa fa-check"></i><b>15.7</b> Ji-cuadrado</a></li>
+<li class="chapter" data-level="15.8" data-path="problemas.html"><a href="problemas.html#regresión-lineal-1"><i class="fa fa-check"></i><b>15.8</b> Regresión Lineal</a></li>
+<li class="chapter" data-level="15.9" data-path="problemas.html"><a href="problemas.html#problemas-con-todo"><i class="fa fa-check"></i><b>15.9</b> Problemas con todo</a></li>
+<li class="chapter" data-level="15.10" data-path="problemas.html"><a href="problemas.html#campos-elíseos"><i class="fa fa-check"></i><b>15.10</b> Campos Elíseos</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Mera estadística</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="anova" class="section level1">
+<h1><span class="header-section-number">Capítulo 12</span> ANOVA</h1>
+<div id="nada-es-gratis-y-los-errores-se-acumulan" class="section level2">
+<h2><span class="header-section-number">12.1</span> Nada es gratis (y los errores se acumulan)</h2>
+<p>¿Por qué se elige casi siempre el 95% como el nivel de confianza de
+los intervalos de confianza? En parte es desconocimiento o vaguería:
+todo el mundo lo hace así porque todo el mundo lo hace así. Pero
+“todo el mundo lo hace así” porque es un buen punto de equilibrio.</p>
+<p>Imaginemos que buscamos la media de anchura del pulgar, por ejemplo para diseñar un pulsador. Tomamos medidas y calculamos que la anchura media, con un nivel de confianza del 60%, es de 3,21 cm a 3,36 cm. Tenemos poca incertidumbre en la medida —poco mas de ± 2,2%— pero nuestra seguridad en estos valores es baja: es muy probable que el valor real sea inferior o superior. Es un intervalo poco útil. Si subimos el nivel de confianza al 99,9% tenemos un intervalo de 2,93 cm a 3.65 cm. Ahora tenemos mucha seguridad, pero la incertidumbre ha crecido mucho —es más que ± 10%— y sigue siendo poco útil para diseñar el pulsador. Y esto es muy típico en ingeniería: lo que ganamos por un lado lo perdemos por otro. La experiencia ha mostrado que un nivel de confianza de alrededor del 95% (3,10 cm a 3,47 cm en nuestro ejemplo) nos da un buen equilibrio entre incertidumbre y precisión.</p>
+<p>¿Y qué pasa si para saber una sola cosa de una sola población necesito realizar 10 o 15 intervalos de confianza? Podemos pensar que cada intervalo de confianza es una moneda. Sale “cara” si la media poblacional está en el intervalo y cruz si no. Un nivel de confianza del 95% significa que sale cara el 95% de las veces. Si para nuestra prueba necesitamos 15 intervalos de confianza y el nivel de confianza es del 95%, entonces necesitamos calcular la probabilidad de obtener 15 caras seguidas. Esta probabilidad es <span class="math inline">\(0.95^{15} = 0.463\)</span>. Vemos que habremos “acertado” en las 15 medias menos del 50% de las veces. Podemos intentar arreglar esto aumentando el nivel de confianza de manera que la probabilidad de que las 15 medias poblacionales estén en los intervalos sea del 95%. Es decir, queremos una moneda tal que la probabilidad de tener 15 caras seguidas es del 95%. Esto exige que el nivel de confianza de cada intervalo sea del 99.7% (<span class="math inline">\(\sqrt[15]{0.95} = 0.997\)</span>). Luego para conseguir una seguridad adecuada del conjunto hemos de perder fuertemente en la precisión de cada intervalo.</p>
+<p>Con los p-valores tenemos un problema similar. Hay dos posibles errores que podemos cometer: mantenernos en la hipótesis nula cuando hubiéramos tenido que cambiarnos a la alternativa o habernos cambiado a la alternativa cuando hubiéramos tenido que permanecer en la nula. Estos errores tienen los muy desafortunados nombres de error de tipo II y error de tipo I respectivamente (nunca me acuerdo cuál es cuál). Intentar reducir la probabilidad de un tipo de error lo único que hace es aumentar la del otro. Y si tenemos que hacer muchos contrastes para una única población tenemos el mismo problema, o aún peor, que con los intervalos de confianza.</p>
+<p>Uno podría pensar que realizar 15 contrastes de hipótesis con sus 15 intervalos de confianza para una única población no pasa casi nunca. Lo contrario, no es nada inusual. Imaginemos que estamos realizando un estudio sobre nutrición y tenemos 6 dietas (mediterránea, vegetariana, hiper proteica, etc.) y queremos saber su influencia en el nivel de colesterol. Tendríamos que comparar el nivel de colesterol par a par (mediterránea contra vegetariana, mediterránea contra hiper proteica, etc). Tenemos 15 pares, luego hay que realizar 15 contrastes de hipótesis.</p>
+<p>Para resolver este problema los estadísticos han creado métodos que permiten realizar la comparación conjunta de todos los pares en una única prueba. Cuando lo que tenemos es una variable numérica y una cualitativa, en vez de hacer 15 t-test, realizamos una única prueba llamada ANOVA; cuando tenemos dos variables cualitativas, en vez de realizar 15 prop-test, realizamos una única prueba llamada <span class="math inline">\(\chi^{2}\)</span> (Ji-cuadrado). En este documento estudiaremos el ANOVA y dejamos el <span class="math inline">\(\chi^{2}\)</span> para después.</p>
+</div>
+<div id="punto-de-partida" class="section level2">
+<h2><span class="header-section-number">12.2</span> Punto de partida</h2>
+<p>Sigamos con el ejemplo del nivel de colesterol y las dietas. Tenemos
+120 individuos, 20 para cada una de las 6 dietas (variable
+cualitativa) y el nivel de colesterol de cada individuo (variable
+cuantitativa). Queremos saber si la dieta influye en el nivel de
+colesterol. La primera pregunta que nos hacemos es “¿Es el nivel de
+colesterol el mismo en todas las dietas?”. Si es el mismo, entonces
+no parece que las dietas en estudio influyan en el nivel de
+colesterol. Si no es el mismo, nos hace pensar que sí que influyen y
+que hay unas dietas mejores que otras en este aspecto.</p>
+<p>Queremos hacer esta comparación de una vez, no entre cada par de
+dietas. Veamos el razonamiento básico que permite hacerlo.</p>
+<p><br></p>
+<p>En la figura siguiente tenemos dos conjuntos de datos, llamados
+Caso 1 y Caso 2. Tenemos 3 grupos diferentes en cada caso. Los
+puntos negros son los datos individuales, mientras que los diamantes
+rojos son las medias de cada grupo.</p>
+<p><img src="imagenes/ANOVA.jpg" /><!-- --></p>
+<p>Mirando sólo los datos del Caso 1, sin hacer cuentas, llegamos a la
+conclusión que los tres grupos de datos representados son muy
+similares y no vemos diferencias entre ellos. Mientras que si miramos
+a los del Caso 2, claramente vemos que sí que son diferentes. Lo
+interesante es que las medias de los 3 grupos del Caso 1 son iguales
+a las medias de los 3 grupos del Caso 2. ¿Entonces, por qué en un caso
+los consideramos diferentes y en el otro no?</p>
+<p>La diferencia en la conclusión viene del hecho que la dispersión
+(varianza o desviación típica) dentro de cada grupo del Caso 1 es
+claramente mayor a la dispersión de las medias de los grupos, mientras que la
+dispersión de los datos de cada grupo del Caso 2 es claramente
+inferior a la dispersión de las medias de los grupos. Esta es la
+clave que vamos a explotar.</p>
+<p>Lo que vamos a hacer es crear un estadístico que es la razón entre la
+varianza dentro de cada grupo y la varianza entre los grupos. A este
+estadístico lo vamos a llamar <span class="math inline">\(F\)</span>. La expresión matemática resultante
+es:</p>
+<p><span class="math display">\[ \mathrm{SS\; dentro} = \sum^{p}_{j = 1}\sum^{n_{j}}_{i = 1}(X_{ij} - 
+\bar{X}_{.j})^{2}\]</span>
+<span class="math display">\[\mathrm{SS\; entre} = \sum_{j}n_{j}(\bar{X}_{.j} - \bar{X})^{2}\]</span>
+<span class="math display">\[F = \frac{\frac{\mathrm{SS\; entre}}{p-1}}{\frac{\mathrm{SS \;
+dentro}}{n-p}}\]</span></p>
+<p>La sigla SS significa “sum of squares” (suma de cuadrados). El número de niveles es <span class="math inline">\(p\)</span>, el número de individuos en cada nivel es <span class="math inline">\(n_{j}\)</span> y <span class="math inline">\(n\)</span> es el número total de individuos. La media total es <span class="math inline">\(\bar{X}\)</span> y la media en cada nivel es <span class="math inline">\(\bar{X}_{.j}\)</span>}</p>
+<p>No es difícil ver que si todas las medias son iguales, el numerador de
+<span class="math inline">\(F\)</span> es 0, y por lo tanto <span class="math inline">\(F = 0\)</span> y si las medias no son iguales,
+entonces <span class="math inline">\(F &gt; 0\)</span>. Lo bueno es que si los datos dentro de cada nivel
+siguen una distribución normal, entonces se sabe calcular la
+probabilidad de que <span class="math inline">\(F\)</span> tome un valor concreto al coger una muestra.
+Esto nos permite hacer un constraste de hipótesis y calcular un p-valor.</p>
+<p>La hipótesis nula es H0: <span class="math inline">\(F = 0.\)</span> Este valor <span class="math inline">\(F = 0\)</span> ocurre si todas las medias son iguales. La hipótesis alternativa es Ha: <span class="math inline">\(F &gt; 0\)</span>, que ocurre si no todas las medias son iguales. Usando las fórmulas matemáticas mostradas, calculamos <span class="math inline">\(\hat{F}\)</span>, y entonces el p-valor es Prob[<span class="math inline">\(X &gt; \hat{F}\; |\; F = 0\)</span>].</p>
+<p>Este método se llama Análisis de la Varianza (Analysis of Variance)
+y se conoce por su sigla ANOVA.</p>
+<p><br></p>
+<p>Como puede verse, calcular un ANOVA es tedioso, con muchas sumas de
+cuadrados y ya nadie lo hace a mano, sino que utiliza las funciones
+incorporadas en los paquetes estadísticos.</p>
+<p>R tiene 3 funciones que permite el cálculo del ANOVA, aunque aquí
+sólo hablaremos de 2. No dan exactamente los mismos resultados, pues
+realizan funciones un poco diferentes a las vistas aquí (y diferentes
+entre sí). Además, presentan diferentes funcionalidades. Más adelante hay un
+tutorial de ANOVA con los detalles del uso, aquí sólo explicaré la
+estructura básica y las diferencias.</p>
+<p>Como se deduce del ejemplo, un ANOVA se usa cuando tengo dos
+variables, una cuantitativa (Q) y otra cualitativa (N). Estas funciones de R
+trabajan sobre un dataframe en las que hay estas dos variables, y
+puede haber más. La notación es la misma que la que usábamos para
+hacer un diagrama de cajas o un stripchart:
+Q~N.</p>
+<p>La primera función que tiene R para calcular ANOVA se llama <code>aov()</code>. Esta función exige desviaciones típicas iguales de la variable cuantitativa para cada nivel de la cualitativa. Su ventaja principal es que provee
+información para poder calcular intervalos de confianza de todas las
+diferencias. Para calcular estos intervalos de confianza se debe
+utilizar la función <code>TukeyHSD()</code>. Esta función calcula todos
+los intervalos “de golpe” y no tiene el problema indicado en la
+primera sección.</p>
+<p>La segunda función se llama <code>oneway.test()</code>. Es menos restrictiva que <code>aov()</code> pues permite que las desviaciones típicas no sean iguales. Tiene el parámetro <code>var.equal</code> que permite indicar si las varianzas (y por lo tanto las desviaciones típicas) son iguales o no. En caso de duda, es conveniente decir que no lo son.</p>
+<p>Dadas estas diferencias, vemos que si sabemos que las varianzas en
+cada nivel son iguales, podemos usar <code>aov()</code>, lo que nos
+permitirá calcular los intervalos de confianza con <code>TukeyHSD()</code>. Si no estamos seguros que sean iguales, o sabemos seguro que no son iguales, debemos usar
+<code>oneway.test()</code> y no podremos calcular los intervalos de confianza con <code>TukeyHSD()</code>.</p>
+<p>Ambas funciones nos dan un p-valor que se interpreta de la forma
+habitual. Recordemos que H0 es (informalmente) que las medias son
+todas iguales y que Ha es (informalmente) que no son todas
+iguales.
+El p-valor se calcula suponiendo que se cumple H0 y nos da
+una indicación de lo “normal” que es la muestra. Digamos que el
+p-valor nos sale 0,28. Esto quiere decir que, suponiendo que todas
+las medias son iguales, esta muestra es normal, es decir, que lo que
+vemos es consistente con el hecho de que todas las medias sean
+iguales. No tenemos, por tanto, ningún motivo para abandonar H0.
+Seguimos suponiendo que todas las medias son iguales.</p>
+<p>En cambio si nos sale un p-valor de 0,00063, entonces una de dos, o
+las medias son todas iguales y tenemos una muestra que es
+extraordinariamente poco probable o no se cumple H0 y nos pasamos a
+Ha. En este caso, lo razonable es pasarse a Ha.</p>
+<p>Si el p-valor fuera 0.11, entonces esta prueba del ANOVA nos da
+poca información y no nos permite decantarnos ni por uno ni or otro.</p>
+<p><br></p>
+<p>El ANOVA solo nos da información sobre la pregunta “¿son todas las
+medias iguales?”. Si lo son, pues ya está. Pero si no lo son
+querremos saber qué dieta o diaeas on mejor qeu las otras. Querremos
+saber si es que hay una que es distinta a las demás; si
+todas son distintas entre sí; si hay 3 iguales por aquí, dos iguales
+por allá y una que va por libre o qué. Este análisis no es difícil,
+pero si que puede ser largo, con diferentes pasos. En el tutorial se
+muestra como realizarlo.</p>
+</div>
+<div id="tutorial-de-anova-en-r" class="section level2">
+<h2><span class="header-section-number">12.3</span> Tutorial de ANOVA en R</h2>
+<p>El Análisis de varianza, conocido como ANOVA (ANalysis Of VAriance) es una prueba estadística que nos permite analizar el caso de datos con dos variables, una cuantitativa y otra cualitativa. En particular nos ayuda a determinar si las medias de la variable cuantitativa para cada uno de los factores de la cualitativa son iguales o no.</p>
+<p>Detalles de por qué se usan los ANOVA, de los cálculos involucrados y del contraste de hipótesis que se realiza están en el documento asociado, titulado ANOVA. En este tutorial nos centraremos en las funciones que tiene R para calcular los ANOVA, cómo se usan y un ejemplo de análisis.</p>
+<p>No es demasiado simple ni intuitiva la manera en la que se hace este análisis en R. Es más, hay 3 maneras de hacerlo. Dependiendo de los datos, podemos usar una función o hemos de usar otra. Y unas funciones nos dan una información que otras no lo hacen. Veamos el funcionamiento de las 3 funciones y esto nos ayudará a elegir cuál necesitamos en cada caso</p>
+<div id="el-problema" class="section level3">
+<h3><span class="header-section-number">12.3.1</span> El problema</h3>
+El conjunto de datos <em>babies</em> del paquete UsingR contiene datos de salud de 1236 nacimientos. Para este tutorial sólo nos van a interesar 2 variables: el peso del bebé al nacer (la variable cuantitativa) y el hecho de si la madre fumaba o no (la variable cualitativa). La columna <code>wt</code> nos da el peso en onzas del bebé al nacer y la columna <code>smoke</code> nos indica si la madre fuma o no. Tiene 5 niveles: 0 (nunca), 1 (fuma en la actualidad), 2 (fumó hasta el inicio del embarazo), 3 (fumó en el pasado, hace tiempo que no fuma) y 9 (No sabe/No contesta, NS/NC).
+</p>
+<p>Podemos usar el dataframe <code>babies</code> directamente, pero para más comodidad vamos a crear un dataframe nuevo con sólo las dos columnas que nos interesan. Para ello usamos la función <code>subset()</code> que nos permite extraer un subconjunto del dataframe. De paso vamos a quitar el nivel 9 (NS/NC) que no añade información y puede añadir ruido:</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;UsingR&quot;</span>)</a>
+<a class="sourceLine" id="cb132-2" data-line-number="2">bebes =<span class="st"> </span><span class="kw">subset</span>(babies, smoke<span class="op">!=</span><span class="st"> </span><span class="dv">9</span>, <span class="dt">select =</span> <span class="kw">c</span>(<span class="st">&quot;wt&quot;</span>,<span class="st">&quot;smoke&quot;</span>))</a>
+<a class="sourceLine" id="cb132-3" data-line-number="3"><span class="kw">head</span>(bebes)</a></code></pre></div>
+<pre><code>##    wt smoke
+## 1 120     0
+## 2 113     0
+## 3 128     1
+## 4 123     3
+## 5 108     1
+## 6 136     2</code></pre>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" data-line-number="1"><span class="kw">attach</span>(bebes)</a></code></pre></div>
+<p>Hemos hecho un <code>attach()</code> (conectar) para no tener que escribir el nombre de la variable cada vez.</p>
+Siempre conviene echar un vistazo a la forma que tienen los datos. Habría que hacer un estudio completo de estadística descriptiva. Para este tutorial, simplemente vamos a hacer un boxplot:
+</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" data-line-number="1"><span class="kw">boxplot</span>(wt<span class="op">~</span>smoke)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-85-1.png" width="672" /></p>
+<p>Vemos que no hay unas enormes diferencias, aunque parece que el factor 1 (la madre ha fumado durante el embarazo) puede que tenga un peso un poco inferior. Hagamos el ANOVA para comprobarlo.</p>
+</div>
+<div id="el-primer-método-oneway.test" class="section level3">
+<h3><span class="header-section-number">12.3.2</span> El primer método: oneway.test()</h3>
+<p>En cualquiera de los tres métodos, R quiere que los datos estén en un dataframe con pares (valor, factor). Por suerte, en nuestro dataframe <code>bebes</code> ya están así y no hemos de hacer ninguna transformación.</p>
+<p>La función mas simple para calcular un ANOVA es <code>oneway.test()</code>. Su estructura de llamada es la siguiente:</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1"><span class="kw">oneway.test</span>(wt<span class="op">~</span><span class="kw">factor</span>(smoke), <span class="dt">var.equal =</span> F)</a></code></pre></div>
+<pre><code>## 
+##  One-way analysis of means (not assuming equal variances)
+## 
+## data:  wt and factor(smoke)
+## F = 24.505, num df = 3.00, denom df = 266.31, p-value = 4.925e-14</code></pre>
+<p>Hemos usado <code>factor(smoke)</code> y no directamente <code>smoke</code> porque los niveles son números (0, 1, 2 y 3) y queremos asegurarnos que R lo considera una variable cualitativa y no una numérica. También, como no sabemos si las varianzas (o desviaciones típicas) son iguales en todos los casos hemos indicado que pueden ser diferentes con el parámetro <code>var.equal</code>.</p>
+En la salida nos da el estadístico F (con valor 24.5) que describimos más arriba. Y obtenemos el p-valor. Es muy pequeño. Esto quiere decir, que si las medias fueran todas iguales, la probabilidad de obtener datos como estos o con diferencias aún mayores es minúscula. Los datos son poco consitentes con la idea de medias iguales y es más verosímil pensar que la hipótesis nula (todas las medias son iguales) no se cumple y afirmar que al menos una media es diferente a las demás. Sospechamos del caso 1, pero hay que confirmarlo.
+</p>
+<p>Una manera de hacerlo es realizar otro ANOVA, pero sin el caso del que sospechamos. Creamos una nueva variable <code>bebessinfum</code>:</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1">bebessinfum =<span class="st"> </span>bebes[smoke <span class="op">!=</span><span class="st"> </span><span class="dv">1</span>,]</a></code></pre></div>
+<p>Realizamos otro ANOVA:</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" data-line-number="1"><span class="kw">oneway.test</span>(wt<span class="op">~</span><span class="kw">factor</span>(smoke), <span class="dt">data =</span> bebessinfum, <span class="dt">var.equal =</span> F)</a></code></pre></div>
+<pre><code>## 
+##  One-way analysis of means (not assuming equal variances)
+## 
+## data:  wt and factor(smoke)
+## F = 0.35239, num df = 2.00, denom df = 167.91, p-value = 0.7035</code></pre>
+<p>&lt;Hemos usado en esta ocasión el parámetro <code>data</code> para indicar el nombre de la variable y no tener que escribirla en cada columna. Vemos que el p-valor es ahora de 0.7035 y por lo tanto hay una alta probabilidad de, si hacemos otro muestreo, obtener datos con medias así de diferentes o aún más diferentes. Los datos son consistentes con la hipótesis nula (las medias son iguales). Parece ser que el caso 1 es el único que tiene media diferente. ¿Pero cuánto?</p>
+</div>
+<div id="el-segundo-método-aov" class="section level3">
+<h3><span class="header-section-number">12.3.3</span> El segundo método: aov()</h3>
+<p>Si queremos saber más que simplemente el p-valor, si queremos saber si hay diferencia entre las medias y lo grande que puede ser, necesitamos una función que realiza cálculos más complejos que <code>oneway.test()</code>. Esta función es <code>aov()</code>.</p>
+<p>Esta función exige que varianzas iguales de la variable cuantitativa (el peso en nuestro caso) para cada nivel de la cualitativa (si fuman o no). Simplemente de la gráfica vemos que no parece que haya muchas diferencias. Vamos a comprobarlo.</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" data-line-number="1"><span class="kw">sd</span>(bebes[smoke <span class="op">==</span><span class="st"> </span><span class="dv">0</span>, ]<span class="op">$</span>wt)</a></code></pre></div>
+<pre><code>## [1] 17.10966</code></pre>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" data-line-number="1"><span class="kw">sd</span>(bebes[smoke <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, ]<span class="op">$</span>wt)</a></code></pre></div>
+<pre><code>## [1] 18.09895</code></pre>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" data-line-number="1"><span class="kw">sd</span>(bebes[smoke <span class="op">==</span><span class="st"> </span><span class="dv">2</span>, ]<span class="op">$</span>wt)</a></code></pre></div>
+<pre><code>## [1] 17.8037</code></pre>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" data-line-number="1"><span class="kw">sd</span>(bebes[smoke <span class="op">==</span><span class="st"> </span><span class="dv">3</span>, ]<span class="op">$</span>wt)</a></code></pre></div>
+<pre><code>## [1] 18.60828</code></pre>
+<p>Están todos entre 17.1 y 18.6. Consideramos que la diferencia no es muy grande y decidimos que sí podemos utilizar <code>aov()</code>.</p>
+<p>La información que nos interesa la podemos obtener con los intervalos de confianza. Una primera idea es calcular todos los intervalos par a par: 0-1, 0-2, 0-3, 1-2, 1-3, 2-3. Ya explicamos en el documento por qué esto es una mala idea: si para un par de variables tenemos una probabilidad de 0.95 que la media poblacional esté dentro del intervalo, para los 6 pares, la probabilidad de que <em>todas</em> las medias estén dentro de los intervalos es de 0.746 (¿Cómo se calcula?).</p>
+<p>R tiene una función para calcular los intervalos de confianza de todos los pares de variables de un ANOVA. Esta función se llama <code>TukeyHSD()</code>. Primero hay que hacer el ANOVA con <code>aov()</code> y después pasar a esta función el resultado para que calcule los intervalos de confianza. Hemos de usar obligatoriamente <code>aov()</code> y no puede hacerse el ANOVA con <code>oneway.test()</code>, ya que esta función no calcula todo lo que necesita <code>TukeyHSD()</code>.</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" data-line-number="1">aovres =<span class="st"> </span><span class="kw">aov</span>(wt<span class="op">~</span><span class="kw">factor</span>(smoke), <span class="dt">data =</span> bebes)</a>
+<a class="sourceLine" id="cb149-2" data-line-number="2"><span class="kw">summary</span>(aovres)</a></code></pre></div>
+<pre><code>##                 Df Sum Sq Mean Sq F value  Pr(&gt;F)    
+## factor(smoke)    3  23638    7879   25.19 8.2e-16 ***
+## Residuals     1222 382290     313                    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" data-line-number="1"><span class="kw">TukeyHSD</span>(aovres)</a></code></pre></div>
+<pre><code>##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = wt ~ factor(smoke), data = bebes)
+## 
+## $`factor(smoke)`
+##          diff        lwr       upr     p adj
+## 1-0 -8.668069 -11.511237 -5.824902 0.0000000
+## 2-0  0.306637  -4.752975  5.366249 0.9986503
+## 3-0  1.659320  -3.230154  6.548793 0.8188239
+## 2-1  8.974706   3.868683 14.080730 0.0000398
+## 3-1 10.327389   5.389904 15.264874 0.0000005
+## 3-2  1.352683  -5.119938  7.825304 0.9498367</code></pre>
+<p>Noten que en la función no hemos puesto el parámetro <code>var.equal = F</code> ya que el método de cálculo de esta función exige que las varianzas sean iguales. Nótese también que el valor calculado del estádístico F no es idéntico (aunque es bastante parecido).</p>
+<p>En la salida de <code>TukeyHSD()</code> hemos de notar que dice que el nivel de confianza es del 95% <em>family wise</em>, es decir en conjunto y no para cada intervalo. Esto es, hay una probabilidad de 0.95 que <em>todas</em> las medias estén en los intervalos calculados.</p>
+<p>Tenemos para cada par de niveles el valor de la diferencia de las medias (<code>diff</code>), los extremos inferior y superior del intervalo de confianza (<code>lwr</code> y <code>upr</code>) y el p-valor resultante del contraste de hipótesis con la hipótesis nula “H0: la diferencia de medias de este par es 0”. Notamos que en el par 1-0 la diferencia es de -8.7 onzas y el intervalo y el p-valor son inconsistentes con la idea de que las medias sean iguales. En el 2-1 la diferencia es de 9.0 onzas y tenemos la misma inconsistencia. Finalmente en el par 3-1 la diferencia es de 10.3 onzas y otra vez es inconsistente con la idea de que las medias sean iguales. En los otros casos las diferencias son de menos de 2 onzas y los p-valores son muy altos por lo que no podemos rechazar que las medias sean diferentes. Si hay una diferencia entre las medias, es demasiado pequeña para poder asegurar con estos datos que las medias sean distintas.</p>
+<p>Los números nos dan una información detallada, pero es más fácil obtener una idea global con un gráfico. Por suertes es muy fácil dibujar estos intervalos de confianza:</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" data-line-number="1"><span class="kw">plot</span>(<span class="kw">TukeyHSD</span>(aovres))</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-91-1.png" width="672" /></p>
+<p>La raya vertical nos indica dónde está el 0 y vemos que los intervalos de confianza de diferencias con el nivel 1 no pasa por el 0 mientras que todos los demás sí lo hacen. Esto nos muestra gráficamente lo que ya habíamos observado numéricamente.</p>
+</div>
+<div id="el-tercer-método" class="section level3">
+<h3><span class="header-section-number">12.3.4</span> El tercer método</h3>
+<p>Hemos visto que las dos funciones estudiadas, <code>oneway.test()</code> y <code>aov()</code> no hacen exactamente lo mismo. Si queremos especificar que las varianzas pueden no ser iguales debemos usar <code>oneway.test()</code> pero si queremos usar <code>TukeyHSD()</code> para calcular los intervalos de confianza, hemos de usar la función <code>aov()</code> y sólo lo podemos hacer si las varianzas son suficientemente parecidas. El tercer método es usar la combinación de las funciones <code>lm()</code> y <code>anova()</code>:</p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1">lmres =<span class="st"> </span><span class="kw">lm</span>(wt<span class="op">~</span><span class="kw">factor</span>(smoke))</a>
+<a class="sourceLine" id="cb154-2" data-line-number="2"><span class="kw">anova</span>(lmres)</a></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: wt
+##                 Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+## factor(smoke)    3  23638  7879.4  25.187 8.196e-16 ***
+## Residuals     1222 382290   312.8                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" data-line-number="1"><span class="kw">detach</span>(bebes)</a></code></pre></div>
+<p>(Noten que hemos hecho un <code>detach(bebes)</code>. No vamos a usar más este dataframe por lo tanto conviene desconectarlo. Si nos olvidamos de hacer los <code>detach()</code> pronto nos veremos en un lío).</p>
+<p>Los cálculos son los mismos que realiza la función <code>aov()</code> pero no podemos usar <code>TukeyHSD()</code> sobre los resultados. Este es un método que se usa si nos interesa hacer un <code>lm()</code> y además hacer un ANOVA. Para sólo hacer el ANOVA, no vale la pena.</p>
+</div>
+<div id="y-si-los-datos-no-están-como-los-quiere-r" class="section level3">
+<h3><span class="header-section-number">12.3.5</span> ¿Y si los datos no están como los quiere R?</h3>
+<p>Hemos visto 3 maneras de calcular un ANOVA, y hemos visto que para los tres métodos R quiere que los datos estén como dos columnas en un data frame: en una columna están los valores cuantitativos (el peso de los bebés en nuestro ejemplo) y en la otra columna los factores (características de consumo de tabaco de la madre). Pero a veces los datos no están así.</p>
+<p>Un caso es el conjunto de datos <code>ewr</code> del paquete UsingR. Este conjunto contiene los tiempos de pista antes de despegar o después de aterrizar de los vuelos en el aeropuerto de Newark (uno de los aeropuertos de Nueva York). Veamos cómo están organizados los datos:</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" data-line-number="1"><span class="kw">head</span>(ewr)</a></code></pre></div>
+<pre><code>##   Year Month  AA  CO  DL   HP  NW   TW  UA  US inorout
+## 1 2000   Nov 8.6 8.3 8.6 10.4 8.1  9.1 8.4 7.6      in
+## 2 2000   Oct 8.5 8.0 8.4 11.2 8.2  8.5 8.5 7.8      in
+## 3 2000   Sep 8.1 8.5 8.4 10.2 8.3  8.6 8.2 7.6      in
+## 4 2000   Aug 8.9 9.1 9.2 14.5 9.0 10.3 9.2 8.7      in
+## 5 2000   Jul 8.3 8.9 8.2 11.5 8.8  9.1 9.2 8.2      in
+## 6 2000   Jun 8.8 9.0 8.8 14.9 8.4 10.8 8.9 8.3      in</code></pre>
+<p>Cada fila nos da el tiempo medio en pista para un mes y año determinados para 8 compañías aéreas. La última columna nos dice si es tiempo de pista de vuelos que han llegado (<code>in</code>) o han partido (<code>out</code>). Nos interesa hacer un ANOVA para saber si algunas compañías tienen que esperar más en pista antes de lagar a la terminal que otras. Es decir, si el tiempo de pista depende de la compañía aérea. Los datos no están en el formato que necesitamos para hacer el ANOVA. Escojamos sólo los vuelos que aterrizan y eliminamos las columnas de año y més, que no nos interesan:</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" data-line-number="1">ewrin =<span class="st"> </span><span class="kw">subset</span>(ewr[ewr<span class="op">$</span>inorout <span class="op">==</span><span class="st"> &quot;in&quot;</span>,], <span class="dt">select =</span> <span class="dv">3</span><span class="op">:</span><span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb159-2" data-line-number="2"><span class="kw">head</span>(ewrin)</a></code></pre></div>
+<pre><code>##    AA  CO  DL   HP  NW   TW  UA  US
+## 1 8.6 8.3 8.6 10.4 8.1  9.1 8.4 7.6
+## 2 8.5 8.0 8.4 11.2 8.2  8.5 8.5 7.8
+## 3 8.1 8.5 8.4 10.2 8.3  8.6 8.2 7.6
+## 4 8.9 9.1 9.2 14.5 9.0 10.3 9.2 8.7
+## 5 8.3 8.9 8.2 11.5 8.8  9.1 9.2 8.2
+## 6 8.8 9.0 8.8 14.9 8.4 10.8 8.9 8.3</code></pre>
+<p>Podríamos crear el dataframe “a mano” y no sería difícil: creamos un vector son los tiempos de la compañía AA (<code>tAA = ewrin$AA</code>), creamos otro vector con el factor (<code>fAA = rep(&quot;AA&quot;, length(tAA))</code>), repetimos lo mismo para las demás compañías y después concatenamos los vectores y creamos el dataframe. Pero R nos da una función que nos hace eso. Se llama <code>stack()</code>:</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" data-line-number="1">ewrinst =<span class="st"> </span><span class="kw">stack</span>(ewrin)</a>
+<a class="sourceLine" id="cb161-2" data-line-number="2"><span class="kw">names</span>(ewrinst) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;tiempo&quot;</span>, <span class="st">&quot;compAer&quot;</span>)</a></code></pre></div>
+<p>Ya de paso hemos dado un nombre adecuado a las dos columnas. Si hacemos un ANOVA obtenemos:</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" data-line-number="1"><span class="kw">oneway.test</span>(tiempo<span class="op">~</span>compAer, <span class="dt">data =</span> ewrinst, <span class="dt">var.equal =</span> F)</a></code></pre></div>
+<pre><code>## 
+##  One-way analysis of means (not assuming equal variances)
+## 
+## data:  tiempo and compAer
+## F = 16.471, num df = 7.000, denom df = 74.629, p-value = 6.262e-13</code></pre>
+<p>Y vemos que tenemos un p-valor de prácticamente 0. Es decir, si las medias fueran todas iguales, tenemos una probabilidad insignificante de obtener datos así o con medias aún más distintas. Parece mucho más probable que al menos una compañía llega en menos tiempo a la terminal que las demás. Saber cuál (o cuáles) son y cuánta es la diferencia se consigue repitiendo para estos datos lo que hemos hecho para los bebés. Adelante.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="contrastes-de-hipotesis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="la-prueba-de-ji-cuadrado.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/14_ANOVA.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Estadística.pdf", "Estadística.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

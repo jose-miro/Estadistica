@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 9 Esperanzas y desviaciones típicas de variables aleatorias | Mera estadística</title>
+  <meta name="description" content="Capítulo 9 Esperanzas y desviaciones típicas de variables aleatorias | Mera estadística" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 9 Esperanzas y desviaciones típicas de variables aleatorias | Mera estadística" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 9 Esperanzas y desviaciones típicas de variables aleatorias | Mera estadística" />
+  
+  
+  
+
+<meta name="author" content="Jose Miró Julià" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="variables-aleatorias.html"/>
+<link rel="next" href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Estadística</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a></li>
+<li class="chapter" data-level="2" data-path="qué-es-y-no-es-la-estadística.html"><a href="qué-es-y-no-es-la-estadística.html"><i class="fa fa-check"></i><b>2</b> ¿Qué es (y no es) la estadística?</a><ul>
+<li class="chapter" data-level="2.1" data-path="qué-es-y-no-es-la-estadística.html"><a href="qué-es-y-no-es-la-estadística.html#el-proceso-estadístico"><i class="fa fa-check"></i><b>2.1</b> El proceso estadístico</a></li>
+<li class="chapter" data-level="2.2" data-path="qué-es-y-no-es-la-estadística.html"><a href="qué-es-y-no-es-la-estadística.html#es-la-estadística-parte-de-las-matemáticas"><i class="fa fa-check"></i><b>2.2</b> ¿Es la estadística parte de las matemáticas?</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html"><i class="fa fa-check"></i><b>3</b> Estadística descriptiva de datos numéricos univariantes</a><ul>
+<li class="chapter" data-level="3.1" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#tipos-de-datos"><i class="fa fa-check"></i><b>3.1</b> Tipos de datos</a></li>
+<li class="chapter" data-level="3.2" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#medidas-de-centralidad-y-dispersión"><i class="fa fa-check"></i><b>3.2</b> Medidas de centralidad y dispersión</a></li>
+<li class="chapter" data-level="3.3" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#gráficas-para-datos-cuantitativos"><i class="fa fa-check"></i><b>3.3</b> Gráficas para datos cuantitativos</a></li>
+<li class="chapter" data-level="3.4" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#análisis-de-los-datos"><i class="fa fa-check"></i><b>3.4</b> Análisis de los datos</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#modalidad"><i class="fa fa-check"></i><b>3.4.1</b> Modalidad</a></li>
+<li class="chapter" data-level="3.4.2" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#simetría"><i class="fa fa-check"></i><b>3.4.2</b> Simetría</a></li>
+<li class="chapter" data-level="3.4.3" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#valores-atípicos"><i class="fa fa-check"></i><b>3.4.3</b> Valores atípicos</a></li>
+<li class="chapter" data-level="3.4.4" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#problematicidad"><i class="fa fa-check"></i><b>3.4.4</b> Problematicidad</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><i class="fa fa-check"></i><b>4</b> Estadística descriptiva de datos cualitativos univariantes</a><ul>
+<li class="chapter" data-level="4.1" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#tablas-de-contingencia"><i class="fa fa-check"></i><b>4.1</b> Tablas de contingencia</a></li>
+<li class="chapter" data-level="4.2" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#gráficas-para-datos-cualitativos"><i class="fa fa-check"></i><b>4.2</b> Gráficas para datos cualitativos</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#gráficos-3d"><i class="fa fa-check"></i><b>4.2.1</b> Gráficos 3D</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#conclusión"><i class="fa fa-check"></i><b>4.3</b> Conclusión</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html"><i class="fa fa-check"></i><b>5</b> Estadística descriptiva de datos bivariantes</a><ul>
+<li class="chapter" data-level="5.1" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#dos-variables-numéricas"><i class="fa fa-check"></i><b>5.1</b> Dos variables numéricas</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#gráfica-de-nube-de-puntos"><i class="fa fa-check"></i><b>5.1.1</b> Gráfica de nube de puntos</a></li>
+<li class="chapter" data-level="5.1.2" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#rectas-de-regresión"><i class="fa fa-check"></i><b>5.1.2</b> Rectas de regresión</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#una-variable-numérica-y-una-cualitativa"><i class="fa fa-check"></i><b>5.2</b> Una variable numérica y una cualitativa</a></li>
+<li class="chapter" data-level="5.3" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#dos-variables-cualitativas"><i class="fa fa-check"></i><b>5.3</b> Dos variables cualitativas</a></li>
+<li class="chapter" data-level="5.4" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#resumen"><i class="fa fa-check"></i><b>5.4</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html"><i class="fa fa-check"></i><b>6</b> Uso de R para estadística descriptiva. Tutorial</a><ul>
+<li class="chapter" data-level="6.1" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#data-frames"><i class="fa fa-check"></i><b>6.1</b> Data frames</a></li>
+<li class="chapter" data-level="6.2" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-una-variable-cuantitativa"><i class="fa fa-check"></i><b>6.2</b> El caso de una variable cuantitativa</a></li>
+<li class="chapter" data-level="6.3" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-una-variable-cualitativa"><i class="fa fa-check"></i><b>6.3</b> El caso de una variable cualitativa</a></li>
+<li class="chapter" data-level="6.4" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-dos-variables-cuantitativas"><i class="fa fa-check"></i><b>6.4</b> El caso de dos variables cuantitativas</a></li>
+<li class="chapter" data-level="6.5" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-dos-variables-una-cuantitativa-y-una-cualitativa"><i class="fa fa-check"></i><b>6.5</b> El caso de dos variables, una cuantitativa y una cualitativa</a></li>
+<li class="chapter" data-level="6.6" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-dos-variables-cualitativas"><i class="fa fa-check"></i><b>6.6</b> El caso de dos variables cualitativas</a></li>
+<li class="chapter" data-level="6.7" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#resumen-final"><i class="fa fa-check"></i><b>6.7</b> Resumen final</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="probabilidad.html"><a href="probabilidad.html"><i class="fa fa-check"></i><b>7</b> Probabilidad</a><ul>
+<li class="chapter" data-level="7.1" data-path="probabilidad.html"><a href="probabilidad.html#ideas-básicas"><i class="fa fa-check"></i><b>7.1</b> Ideas básicas</a></li>
+<li class="chapter" data-level="7.2" data-path="probabilidad.html"><a href="probabilidad.html#operaciones-con-probabilidades"><i class="fa fa-check"></i><b>7.2</b> Operaciones con probabilidades</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-de-una-cosa-u-otra"><i class="fa fa-check"></i><b>7.2.1</b> Probabilidad de una cosa u otra</a></li>
+<li class="chapter" data-level="7.2.2" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-de-una-cosa-y-otra"><i class="fa fa-check"></i><b>7.2.2</b> Probabilidad de una cosa y otra</a></li>
+<li class="chapter" data-level="7.2.3" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-del-suceso-contrario"><i class="fa fa-check"></i><b>7.2.3</b> Probabilidad del suceso contrario</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-condicionada"><i class="fa fa-check"></i><b>7.3</b> Probabilidad condicionada</a></li>
+<li class="chapter" data-level="7.4" data-path="probabilidad.html"><a href="probabilidad.html#regla-de-bayes"><i class="fa fa-check"></i><b>7.4</b> Regla de Bayes</a></li>
+<li class="chapter" data-level="7.5" data-path="probabilidad.html"><a href="probabilidad.html#resumen-1"><i class="fa fa-check"></i><b>7.5</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html"><i class="fa fa-check"></i><b>8</b> Variables aleatorias</a><ul>
+<li class="chapter" data-level="8.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#qué-es-una-variable-aleatoria"><i class="fa fa-check"></i><b>8.1</b> ¿Qué es una variable aleatoria?</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#variables-discretas"><i class="fa fa-check"></i><b>8.1.1</b> Variables discretas</a></li>
+<li class="chapter" data-level="8.1.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#variables-continuas"><i class="fa fa-check"></i><b>8.1.2</b> Variables continuas</a></li>
+<li class="chapter" data-level="8.1.3" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#propiedades-de-estas-funciones"><i class="fa fa-check"></i><b>8.1.3</b> Propiedades de estas funciones</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#cálculo-de-probabilidades"><i class="fa fa-check"></i><b>8.2</b> Cálculo de probabilidades</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#calculando-a-mano"><i class="fa fa-check"></i><b>8.2.1</b> Calculando a mano</a></li>
+<li class="chapter" data-level="8.2.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#calculando-con-r"><i class="fa fa-check"></i><b>8.2.2</b> Calculando con R</a></li>
+<li class="chapter" data-level="8.2.3" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#resumen-2"><i class="fa fa-check"></i><b>8.2.3</b> Resumen</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><i class="fa fa-check"></i><b>9</b> Esperanzas y desviaciones típicas de variables aleatorias</a><ul>
+<li class="chapter" data-level="9.1" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#desviaciones-típicas"><i class="fa fa-check"></i><b>9.1</b> Desviaciones típicas</a></li>
+<li class="chapter" data-level="9.2" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#operaciones-con-variables-aleatorias"><i class="fa fa-check"></i><b>9.2</b> Operaciones con variables aleatorias</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#un-ejemplo"><i class="fa fa-check"></i><b>9.2.1</b> Un ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#resumen-3"><i class="fa fa-check"></i><b>9.3</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><i class="fa fa-check"></i><b>10</b> Intervalos de confianza: una medida de la incertidumbre</a><ul>
+<li class="chapter" data-level="10.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#incertidumbre-en-muestras-de-proporciones"><i class="fa fa-check"></i><b>10.1</b> Incertidumbre en muestras de proporciones</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#una-simulación"><i class="fa fa-check"></i><b>10.1.1</b> Una simulación</a></li>
+<li class="chapter" data-level="10.1.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>10.1.2</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="10.1.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#fuga-de-probabilidad"><i class="fa fa-check"></i><b>10.1.3</b> Fuga de probabilidad</a></li>
+<li class="chapter" data-level="10.1.4" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#un-ejemplo-1"><i class="fa fa-check"></i><b>10.1.4</b> Un ejemplo</a></li>
+<li class="chapter" data-level="10.1.5" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#resumen-de-intervalos-de-confianza-de-proporciones"><i class="fa fa-check"></i><b>10.1.5</b> Resumen de intervalos de confianza de proporciones</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#incertidumbre-en-muestras-de-medias"><i class="fa fa-check"></i><b>10.2</b> Incertidumbre en muestras de medias</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#una-simulación-1"><i class="fa fa-check"></i><b>10.2.1</b> Una simulación</a></li>
+<li class="chapter" data-level="10.2.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#intervalos-de-confianza-1"><i class="fa fa-check"></i><b>10.2.2</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="10.2.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#la-distribución-t-de-student"><i class="fa fa-check"></i><b>10.2.3</b> La distribución t de Student</a></li>
+<li class="chapter" data-level="10.2.4" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#fuga-de-probabilidades"><i class="fa fa-check"></i><b>10.2.4</b> Fuga de probabilidades</a></li>
+<li class="chapter" data-level="10.2.5" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#un-ejemplo-2"><i class="fa fa-check"></i><b>10.2.5</b> Un ejemplo</a></li>
+<li class="chapter" data-level="10.2.6" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#resumen-de-intervalos-de-confianza-de-medias"><i class="fa fa-check"></i><b>10.2.6</b> Resumen de intervalos de confianza de medias</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#comparación-de-intervalos-de-confianza"><i class="fa fa-check"></i><b>10.3</b> Comparación de intervalos de confianza</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#no-puedo-decir-que-sean-distintos"><i class="fa fa-check"></i><b>10.3.1</b> No puedo decir que sean distintos</a></li>
+<li class="chapter" data-level="10.3.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#cálculo-de-intervalos-de-confianza-de-diferencias"><i class="fa fa-check"></i><b>10.3.2</b> Cálculo de intervalos de confianza de diferencias</a></li>
+<li class="chapter" data-level="10.3.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#más-ejemplos"><i class="fa fa-check"></i><b>10.3.3</b> Más ejemplos</a></li>
+<li class="chapter" data-level="10.3.4" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#resumen-de-comparación-de-intervalos-de-confianza"><i class="fa fa-check"></i><b>10.3.4</b> Resumen de comparación de intervalos de confianza</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html"><i class="fa fa-check"></i><b>11</b> Contrastes de hipotesis</a><ul>
+<li class="chapter" data-level="11.1" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html#experimentos-estadísticos-para-un-contraste-de-hipótesis"><i class="fa fa-check"></i><b>11.1</b> Experimentos estadísticos para un contraste de hipótesis</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html#procedimiento-de-cálculo-del-p-valor."><i class="fa fa-check"></i><b>11.1.1</b> Procedimiento de cálculo del p-valor.</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html#interpretación-del-p-valor."><i class="fa fa-check"></i><b>11.2</b> Interpretación del p-valor.</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>12</b> ANOVA</a><ul>
+<li class="chapter" data-level="12.1" data-path="anova.html"><a href="anova.html#nada-es-gratis-y-los-errores-se-acumulan"><i class="fa fa-check"></i><b>12.1</b> Nada es gratis (y los errores se acumulan)</a></li>
+<li class="chapter" data-level="12.2" data-path="anova.html"><a href="anova.html#punto-de-partida"><i class="fa fa-check"></i><b>12.2</b> Punto de partida</a></li>
+<li class="chapter" data-level="12.3" data-path="anova.html"><a href="anova.html#tutorial-de-anova-en-r"><i class="fa fa-check"></i><b>12.3</b> Tutorial de ANOVA en R</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="anova.html"><a href="anova.html#el-problema"><i class="fa fa-check"></i><b>12.3.1</b> El problema</a></li>
+<li class="chapter" data-level="12.3.2" data-path="anova.html"><a href="anova.html#el-primer-método-oneway.test"><i class="fa fa-check"></i><b>12.3.2</b> El primer método: oneway.test()</a></li>
+<li class="chapter" data-level="12.3.3" data-path="anova.html"><a href="anova.html#el-segundo-método-aov"><i class="fa fa-check"></i><b>12.3.3</b> El segundo método: aov()</a></li>
+<li class="chapter" data-level="12.3.4" data-path="anova.html"><a href="anova.html#el-tercer-método"><i class="fa fa-check"></i><b>12.3.4</b> El tercer método</a></li>
+<li class="chapter" data-level="12.3.5" data-path="anova.html"><a href="anova.html#y-si-los-datos-no-están-como-los-quiere-r"><i class="fa fa-check"></i><b>12.3.5</b> ¿Y si los datos no están como los quiere R?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html"><i class="fa fa-check"></i><b>13</b> La prueba de Ji-Cuadrado</a><ul>
+<li class="chapter" data-level="13.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-de-ji-cuadrado-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>13.1</b> Prueba de ji-cuadrado de bondad de ajuste</a></li>
+<li class="chapter" data-level="13.2" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-de-bondad-de-ajuste-con-r"><i class="fa fa-check"></i><b>13.2</b> Prueba <span class="math inline">\(\chi^2\)</span> de bondad de ajuste con R</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#problematicidad-el-aviso-de-chisq.test"><i class="fa fa-check"></i><b>13.2.1</b> Problematicidad: el aviso de chisq.test()</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#la-prueba-chi2-de-homogeneidad"><i class="fa fa-check"></i><b>13.3</b> La prueba <span class="math inline">\(\chi^2\)</span> de homogeneidad</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#definición-formal"><i class="fa fa-check"></i><b>13.3.1</b> Definición formal</a></li>
+<li class="chapter" data-level="13.3.2" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-como-contraste-de-hipótesis"><i class="fa fa-check"></i><b>13.3.2</b> Prueba <span class="math inline">\(\chi^2\)</span> como contraste de hipótesis</a></li>
+<li class="chapter" data-level="13.3.3" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-de-homogeneidad-con-r"><i class="fa fa-check"></i><b>13.3.3</b> Prueba <span class="math inline">\(\chi^2\)</span> de homogeneidad con R</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#la-prueba-chi2-de-independencia"><i class="fa fa-check"></i><b>13.4</b> La prueba <span class="math inline">\(\chi^{2}\)</span> de independencia</a><ul>
+<li class="chapter" data-level="13.4.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-de-independencia-como-contraste-de-hipótesis"><i class="fa fa-check"></i><b>13.4.1</b> Prueba <span class="math inline">\(\chi^2\)</span> de independencia como contraste de hipótesis</a></li>
+<li class="chapter" data-level="13.4.2" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#un-ejemplo-3"><i class="fa fa-check"></i><b>13.4.2</b> Un ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#resumen-4"><i class="fa fa-check"></i><b>13.5</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="regresión-lineal.html"><a href="regresión-lineal.html"><i class="fa fa-check"></i><b>14</b> Regresión Lineal</a><ul>
+<li class="chapter" data-level="14.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#cálculo"><i class="fa fa-check"></i><b>14.1</b> Cálculo</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#fundamentos"><i class="fa fa-check"></i><b>14.1.1</b> Fundamentos</a></li>
+<li class="chapter" data-level="14.1.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#otro-ejemplo"><i class="fa fa-check"></i><b>14.1.2</b> Otro ejemplo</a></li>
+<li class="chapter" data-level="14.1.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#y-si-no-es-una-recta"><i class="fa fa-check"></i><b>14.1.3</b> ¿Y si no es una recta?</a></li>
+<li class="chapter" data-level="14.1.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-la-parte-de-cálculo"><i class="fa fa-check"></i><b>14.1.4</b> Resumen de la parte de cálculo</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#estadística"><i class="fa fa-check"></i><b>14.2</b> Estadística</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#incertidumbre-en-la-regresión-lineal"><i class="fa fa-check"></i><b>14.2.1</b> Incertidumbre en la regresión lineal</a></li>
+<li class="chapter" data-level="14.2.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#condiciones"><i class="fa fa-check"></i><b>14.2.2</b> Condiciones</a></li>
+<li class="chapter" data-level="14.2.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#salida-de-r"><i class="fa fa-check"></i><b>14.2.3</b> Salida de R</a></li>
+<li class="chapter" data-level="14.2.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#intervalos-de-confianza-2"><i class="fa fa-check"></i><b>14.2.4</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="14.2.5" data-path="regresión-lineal.html"><a href="regresión-lineal.html#otro-ejemplo-1"><i class="fa fa-check"></i><b>14.2.5</b> Otro ejemplo</a></li>
+<li class="chapter" data-level="14.2.6" data-path="regresión-lineal.html"><a href="regresión-lineal.html#la-regresión-no-muestra-qué-tipo-de-curva-es"><i class="fa fa-check"></i><b>14.2.6</b> La regresión no muestra qué tipo de curva es</a></li>
+<li class="chapter" data-level="14.2.7" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-la-parte-de-estadística"><i class="fa fa-check"></i><b>14.2.7</b> Resumen de la parte de estadística</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#diagnóstico"><i class="fa fa-check"></i><b>14.3</b> Diagnóstico</a><ul>
+<li class="chapter" data-level="14.3.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#seis-modelos"><i class="fa fa-check"></i><b>14.3.1</b> Seis modelos</a></li>
+<li class="chapter" data-level="14.3.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#cinco-diagnósticos"><i class="fa fa-check"></i><b>14.3.2</b> Cinco diagnósticos</a></li>
+<li class="chapter" data-level="14.3.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-diagnóstico"><i class="fa fa-check"></i><b>14.3.3</b> Resumen de diagnóstico</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#inferencias"><i class="fa fa-check"></i><b>14.4</b> Inferencias</a><ul>
+<li class="chapter" data-level="14.4.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#contrastes-de-hipótesis"><i class="fa fa-check"></i><b>14.4.1</b> Contrastes de hipótesis</a></li>
+<li class="chapter" data-level="14.4.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#intervalos-de-confianza-3"><i class="fa fa-check"></i><b>14.4.2</b> Intervalos de confianza</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicciones"><i class="fa fa-check"></i><b>14.5</b> Predicciones</a><ul>
+<li class="chapter" data-level="14.5.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-de-la-curva"><i class="fa fa-check"></i><b>14.5.1</b> Predicción de la curva</a></li>
+<li class="chapter" data-level="14.5.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-de-rango"><i class="fa fa-check"></i><b>14.5.2</b> Predicción de rango</a></li>
+<li class="chapter" data-level="14.5.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-de-medias"><i class="fa fa-check"></i><b>14.5.3</b> Predicción de medias</a></li>
+<li class="chapter" data-level="14.5.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-predicciones"><i class="fa fa-check"></i><b>14.5.4</b> Resumen de predicciones</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="problemas.html"><a href="problemas.html"><i class="fa fa-check"></i><b>15</b> Problemas</a><ul>
+<li class="chapter" data-level="15.1" data-path="problemas.html"><a href="problemas.html#qué-es-la-estadística"><i class="fa fa-check"></i><b>15.1</b> ¿Qué es la estadística?</a></li>
+<li class="chapter" data-level="15.2" data-path="problemas.html"><a href="problemas.html#manejo-de-r-y-simulaciones"><i class="fa fa-check"></i><b>15.2</b> Manejo de R y simulaciones</a></li>
+<li class="chapter" data-level="15.3" data-path="problemas.html"><a href="problemas.html#estadística-descriptiva"><i class="fa fa-check"></i><b>15.3</b> Estadística Descriptiva</a></li>
+<li class="chapter" data-level="15.4" data-path="problemas.html"><a href="problemas.html#probabilidad-y-variables-aleatórias"><i class="fa fa-check"></i><b>15.4</b> Probabilidad y variables aleatórias</a></li>
+<li class="chapter" data-level="15.5" data-path="problemas.html"><a href="problemas.html#razonamiento-estadístico."><i class="fa fa-check"></i><b>15.5</b> Razonamiento estadístico.</a><ul>
+<li class="chapter" data-level="15.5.1" data-path="problemas.html"><a href="problemas.html#intervalos-de-confianza-4"><i class="fa fa-check"></i><b>15.5.1</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="15.5.2" data-path="problemas.html"><a href="problemas.html#contrastes-de-hipótesis-1"><i class="fa fa-check"></i><b>15.5.2</b> Contrastes de hipótesis</a></li>
+<li class="chapter" data-level="15.5.3" data-path="problemas.html"><a href="problemas.html#razonamiento-estadístico-complejo"><i class="fa fa-check"></i><b>15.5.3</b> Razonamiento estadístico complejo</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="problemas.html"><a href="problemas.html#anova-1"><i class="fa fa-check"></i><b>15.6</b> Anova</a></li>
+<li class="chapter" data-level="15.7" data-path="problemas.html"><a href="problemas.html#ji-cuadrado"><i class="fa fa-check"></i><b>15.7</b> Ji-cuadrado</a></li>
+<li class="chapter" data-level="15.8" data-path="problemas.html"><a href="problemas.html#regresión-lineal-1"><i class="fa fa-check"></i><b>15.8</b> Regresión Lineal</a></li>
+<li class="chapter" data-level="15.9" data-path="problemas.html"><a href="problemas.html#problemas-con-todo"><i class="fa fa-check"></i><b>15.9</b> Problemas con todo</a></li>
+<li class="chapter" data-level="15.10" data-path="problemas.html"><a href="problemas.html#campos-elíseos"><i class="fa fa-check"></i><b>15.10</b> Campos Elíseos</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Mera estadística</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="esperanzas-y-desviaciones-típicas-de-variables-aleatorias" class="section level1">
+<h1><span class="header-section-number">Capítulo 9</span> Esperanzas y desviaciones típicas de variables aleatorias</h1>
+<p>Cuando cogemos una muestra de una población podemos calcular la media
+y la desviación típica de la muestra. Esto nos da un idea de su valor
+central y de la dispersión. Esta es una información que también nos
+interesa de una distribución. En este documento vamos a ver cómo se
+calcula la “media” (más conocida como esperanza) y la desviación
+típica de una distribución, tanto si es discreta como si es continua.</p>
+
+<p>Tiramos un dado 6 veces y nos sale 3, 6, 3, 4, 5 y 2. La media de
+esta muestra es 3,83. Como vimos en el documento de estadística
+descriptiva de datos numéricos, el valor de la media me da una medida
+de cuál es el “centro” de los datos, el valor alrededor del cuál se
+mueven. Esto es un concepto que también me interesa para una
+distribución. ¿Cuál es el valor “central” de una distribución? Una
+distribución es un “ideal” de una muestra. Si tuviéramos una
+muestra “perfecta” tendríamos cada valor en proporción exacta a su
+probabilidad de salir. Esto en el caso de los dados sería tirar los
+dados 6 veces y obtener un 1, un 2, un 3, un 4, un 5 y un 6; o
+tirar los dados 12 veces y obtener dos 1, dos 2, etc. La media de
+esta “muestra perfecta” es la esperanza o valor esperado de la
+distribución, o estrictamente hablando, la esperanza de una variable
+aleatoria distribuida uniformemente con valores de 1 a 6. Realmente
+es un nombre desafortunado: el valor esperado de tirar un dado es 3,5,
+que es un valor imposible. Pero bueno, aceptaremos el nombre.</p>
+<p>Esta idea intuitiva nos da un método para calcular la esperanza:
+diseñamos una “muestra perfecta” y calculamos su media. Esto tiene
+dos problemas: es engorroso diseñar esta muestra perfecta, y es
+imposible si la variable aleatoria puede tomar infinitos valores.</p>
+<p>Por lo tanto usamos otro método. Antes de tirar el dado tenemos una
+probabilidad de 1/6 de sacar un 1, una probabilidad de 1/6 de sacar
+un 2, …, una probabilidad de 1/6 de sacar un 6. La esperanza es
+la media ponderada de los valores que pueden salir, siendo las
+probabilidades los pesos con el que multiplicar los valores. Sea <span class="math inline">\(D\)</span>
+la variable aleatoria de tirar un dado. Su esperanza <span class="math inline">\(E[D]\)</span> es
+<span class="math display">\[E[D] = \frac{1}{6}\, 1 + \frac{1}{6}\, 2 + \frac{1}{6}\, 3 + 
+\frac{1}{6}\, 4 + \frac{1}{6}\, 5 + \frac{1}{6}\, 6 = \frac{1 + 2 + 
+3 +4+5+6}{6} = 3,5\]</span></p>
+<p>Queda claro que en este caso esto corresponde a la media de nuestra
+“muestra perfecta”. No es difícil ver que esto es así siempre. Y
+este método me sirve incluso si la variable puede tomar infinitos
+valores. Recordemos el ejemplo de tirar una moneda hasta que nos saliera
+una cruz. Llamemos <span class="math inline">\(C\)</span> a la variable aleatoria que es el número de caras que
+salen hasta que salga la primera cruz. Recordamos que la probabilidad
+de que <span class="math inline">\(C\)</span> valga <span class="math inline">\(k\)</span> (es decir su función de masa) era <span class="math inline">\(f(k) = 1/2^{k+1}\)</span>. Entonces la esperanza es
+<span class="math display">\[E[C] = 0\,\frac{1}{2} + 1\,\frac{1}{4} + 2\,\frac{1}{8} +\cdots = 
+\sum_{k = 0}^{\infty} k\,\frac{1}{2^{k+1}}\]</span></p>
+<p>Por suerte esta serie infinita se sabe sumar. Su valor es
+<span class="math display">\[E[C] = \frac{1 - \frac{1}{2}}{\frac{1}{2}} = 1.\]</span></p>
+<p>Es decir que si nos ponemos a lanzar moneda hasta sacar una cruz
+podemos “esperar” ver sólo una cara antes de que llegue la cruz. O
+lo que es lo mismo, podemos esperar lanzar la moneda 2 veces.
+Naturalmente, la mitad de las veces nos pararemos a la primera tirada,
+y hay una probabilidad (infinitesimal) de sacar miles de caras antes
+de ver la primera cruz. Pero “de media” sacaremos sólo una cara.</p>
+<p>Podemos generalizar este resultado para calcular la esperanza a
+partir de la función de masa. Sea una variable discreta <span class="math inline">\(X\)</span> que tiene
+una función de masa <span class="math inline">\(f(k)\)</span>. Vamos a suponer que <span class="math inline">\(k\)</span> varía de 0 a
+<span class="math inline">\(\infty\)</span>. La esperanza de la variable
+aleatoria es
+<span class="math display">\[E[X] = \sum_{k = 0}^{\infty} k\, f(k).\]</span></p>
+<p>En el caso de que la variable aleatoria sea continua, entonces el
+sumatorio se convierte en una integral:
+<span class="math display">\[E[X] = \int_{-\infty}^{\infty} x\, f(x)\, dx.\]</span></p>
+<p>Veamos una consecuencia, que es importante, de este resultado. Si
+sacamos una muestra de una distribución cada valor <span class="math inline">\(k\)</span> aparecerá con
+probabilidad <span class="math inline">\(f(k)\)</span>. Si la muestra es grande, se parecerá a la
+“muestra perfecta” y la media de esa muestra se acercará a la
+esperanza de la distribución. En estadística esto generalmente se usa
+al revés: tenemos una distribución de la cuál <em>no sabemos</em> la
+esperanza, pero si obtenemos una muestra suficientemente grande, la media
+de la muestra nos dará una buena estima de la esperanza de la
+distribución.</p>
+<div id="desviaciones-típicas" class="section level2">
+<h2><span class="header-section-number">9.1</span> Desviaciones típicas</h2>
+<p>De la misma manera que partimos de la idea de media de una muestra y
+la extendemos a esperanza de una variable aleatoria que sigue una
+determinada distribución, podemos partir de desviación típica de una
+muestra y extenderla a la desviación típica de una distribución. Ya en
+su momento no mostramos la fórmula para el cálculo de la desviación típica de
+una muestra y tampoco lo vamos a hacer aquí. Si tenemos una variable
+aleatoria que sigue una distribución discreta y finita, la idea de la
+“muestra perfecta” nos sigue sirviendo: la desviación de la
+variable es la de esta muestra. Si es discreta infinita o es continua,
+hay que aplicar las fórmulas correspondientes, que se pueden
+encontrar en cualquier libro o página web de estadistica.</p>
+<p>Otra vez, al igual que en el caso de la esperanza, en estadística se
+suele usar la desviación típica de una muestra como estimador de la
+desviación típica de la distribución de donde hemos sacado la muestra.</p>
+</div>
+<div id="operaciones-con-variables-aleatorias" class="section level2">
+<h2><span class="header-section-number">9.2</span> Operaciones con variables aleatorias</h2>
+<p>El término «esperanza» y la notación <span class="math inline">\(E[X]\)</span> pertenece al campo de la
+probabilidad. En estadística se tiene la tendencia a ser más concreto.
+En vez de pensar en una variable aleatoria en abstracto y su
+esperanza, se piensa en una población de interés y en su media. Por
+eso aunque cuando se tratan aspectos teóricos se habla de «esperanza»
+y se usa el <span class="math inline">\(E[X]\)</span>, cuando nos metemos en la práctica se habla de
+«media poblacional» y se escribe como <span class="math inline">\(\mu\)</span> (pronunciado «mu»). En estadística las letras griegas son parámetros de la
+población, mientras que las letras latinas se refieren a las
+muestras.</p>
+<p>En el caso de la desviación típica, la desviacion típica poblacional
+se simboliza con la letra griega sigma: <span class="math inline">\(\sigma\)</span>. Veamos el
+resultado de la esperanza, o media poblacional, y de la desviación
+típica, que tenemos si operamos variables aleatorias.</p>
+<p>Lo primero que hay que tener muy claro es que sumar variables
+aleatorias no es lo mismo que sumar variables algebraicas. Por
+ejemplo, todos sabemos que en álgebra <span class="math inline">\(x + x= 2x\)</span>. Esto no pasa con
+variables aleatorias.</p>
+<p>Supongamos dos juegos distintos. Uno es lanzar un dado dos veces. El
+otro es lanzar un dado y multiplicar lo que salga por 2. Llamemos <span class="math inline">\(D\)</span>
+a la variable aleatoria de lanzar un dado. En el primer caso tenemos
+la variable aleatoria <span class="math inline">\(S = D + D\)</span>. En el segundo tenemos la variable
+aleatoria <span class="math inline">\(M = 2D\)</span>. Las variables (y los juegos) no son iguales. Es
+cierto que <span class="math inline">\(S\)</span> y <span class="math inline">\(M\)</span> van entre 2 y 12, pero por ejemplo la
+probabilidad de que <span class="math inline">\(S\)</span> valga 3 es <span class="math inline">\(P[S = 3] = 2/36\)</span> mientras que la
+probabilidad de que <span class="math inline">\(M\)</span> valga 3 es <span class="math inline">\(P[M = 3] = 0.\)</span> Son
+distribuciones diferentes y por lo tanto son variables aleatorias
+diferentes.</p>
+<p>Como vemos en este ejemplo de los dados, es bastante habitual operar
+con variables aleatorias. Veamos cómo varían las medias poblacionales
+y las desviaciones típicas ante la suma de variables aleatorias entre
+sí y con constantes y la multiplicación de variables por constantes. No veremos el caso de multiplicación de variables aleatorias: es mucho más complejo y, por suerte, menos interesante.</p>
+<p>Empecemos con un ejemplo. La longitud (en minutos) de las llamadas hechas en mi teléfono es una variable aleatoria <span class="math inline">\(T\)</span>: no sé de antemano cuánto durarán. Mi operadora me dice que el
+coste de la llamada es 0,10€ por establecimiento de llamada más
+0,03€ por minuto. El coste <span class="math inline">\(C\)</span> de la llamada es otra variable
+aleatoria (tampoco la conozco de antemano) que es <span class="math inline">\(C = 0.03 T + 0,10\)</span>.</p>
+<p>Yo sé que mis llamadas siguen una cierta distribución (no importa
+cuál) y tiene una media poblacional (o esperanza) <span class="math inline">\(\mu_{T}\)</span>. Es fácil
+darse cuenta que la media poblacional del coste de las llamadas es
+<span class="math inline">\(\mu_{C} = 0.03 \mu_{T} + 0,10.\)</span> Esto se puede generalizar —y
+demostrar rigurosamente— como la
+primera propiedad de las esperanzas (o medias poblacionales):</p>
+<p><span class="math display">\[\mu_{aX + b} = a \mu_{X} + b.\]</span></p>
+<p>Es decir que si sumamos una cantidad fija a una variable también hay
+que sumarla a la media poblacional. Y si multiplicamos una variable
+por una cantidad fija, también hay que multiplicar la media
+poblacional por esa cantidad.</p>
+<p>Consideremos ahora un servidor web. Cuando le llega una petición para
+ver una página tarda un tiempo <span class="math inline">\(P\)</span> en procesar la petición y un
+tiempo <span class="math inline">\(T\)</span> en transmitir la página solicitada. Ambos tiempos son
+desconocidos <em>a priori</em> (es decir aleatorios). Siguen una
+cierta distribución y tienen unas medias poblacionales <span class="math inline">\(\mu_{P}\)</span> y
+<span class="math inline">\(\mu_{T}\)</span>. El tiempo <span class="math inline">\(R\)</span> necesario para responder a la petición es <span class="math inline">\(R = P + T\)</span>. Es fácil darse cuenta que la media poblacional de <span class="math inline">\(R\)</span> es
+<span class="math inline">\(\mu_{R} = \mu_{P} + \mu_{T}\)</span>. Esto se puede generalizar —y
+demostrar rigurosamente— a la
+segunda propiedad de las esperanzas (o medias poblacionales):</p>
+<p><span class="math display">\[\mu_{aX \pm bY} = a\mu_{X} \pm b \mu_{Y}.\]</span></p>
+<p>En palabras: la media de una suma (o resta) es la suma (o resta) de
+las medias.</p>
+<p>Veamos ahora las propiedades de la distribución típica. Lo haremos
+gráficamente. En la figura siguiente tenemos dos variables
+aleatorias.</p>
+<p><img src="imagenes/sigmaT.jpg" /><!-- --></p>
+<p>Una es <span class="math inline">\(X\)</span>, cuya función de densidad se ha pintado en
+negro. Otra es <span class="math inline">\(Y = X + 5\)</span>, cuya función de densidad se ha pintado en
+azul. Recordemos que la desviación típica es una medida de cuánto se
+desvían los valores respecto a la media del conjunto. En el caso de
+<span class="math inline">\(Y\)</span> <em>todos</em> los valores están desplazados 5 unidades. Y la media
+también. Por lo tanto el desvío respecto a la media de <span class="math inline">\(Y\)</span> es el
+mismo que el desvío respecto a la media de <span class="math inline">\(X\)</span>. De aquí la primera
+propiedad de las desviaciones típicas:</p>
+<p><span class="math display">\[\sigma_{X\pm a} = \sigma_{X}.\]</span></p>
+<p>En la figura siguiente tenemos las densidades de dos variables, <span class="math inline">\(X\)</span>
+e <span class="math inline">\(Y = -X\)</span>.</p>
+<p><img src="imagenes/sigmaI.jpg" /><!-- --></p>
+<p>Una función es la imagen especular de la otra. Están
+giradas, pero son la misma forma. Por lo tanto las desviaciones
+respecto a las medias son las mismas, por lo tanto la desviación
+típica debe ser la misma. Es decir,</p>
+<p><span class="math display">\[\sigma_{-X} = \sigma_{X}.\]</span></p>
+<p>Consideremos ahora dos variables aleatorias: Una es <span class="math inline">\(X\)</span> y la otra es
+<span class="math inline">\(Y = 2X\)</span>. La probabilidad que <span class="math inline">\(X\)</span> esté entre, digamos <span class="math inline">\(-1\)</span> y <span class="math inline">\(-1,1\)</span>
+ha de ser igual a la probabilidad que <span class="math inline">\(Y\)</span> esté entre <span class="math inline">\(-2\)</span> y <span class="math inline">\(-2,2\)</span>.
+Esto obliga a la figura a extenderse y achatarse. Mostramos esto en
+la figura siguiente.</p>
+<p><img src="imagenes/sigmaP.jpg" /><!-- --></p>
+<p>Todo está más alejado de la media y por lo tanto la desviación típica ha de crecer. Se puede demostrar que si doblamos el
+valor de la variable aleatoria, la desviación típica también se
+dobla. Unimos esto al resultado anterior, que multiplicar por <span class="math inline">\(-1\)</span> no
+cambia la desviación típica, y tenemos que</p>
+<p><span class="math display">\[\sigma_{aX} = |a| \sigma_{X}\]</span></p>
+<p>Acabemos con el último resultado que nos interesa: el caso de la suma
+de dos variables aleatorias <em>independientes</em>, <span class="math inline">\(X +Y\)</span>. Si las
+variables no fuesen independientes, todo lo que sigue no se puede
+aplicar. En este caso gráficamente no se ve mucho y no mostramos
+ninguna figura. Queda claro que
+tenemos dos fuentes de variabilidad y es lógico pensar que la
+desviación típica será mayor que la de cualquiera de las dos
+variables. También es fácil darse cuenta que como <span class="math inline">\(X - Y = X + (-Y)\)</span>,
+y <span class="math inline">\(\sigma_{-Y} = \sigma_{Y}\)</span>,
+entonces <span class="math inline">\(\sigma_{X-Y} = \sigma_{X+Y}\)</span>. Se puede demostrar que</p>
+<p><span class="math display">\[\sigma_{X\pm Y} = \sqrt{\sigma_{X}^{2} + \sigma_{Y}^{2}}.\]</span></p>
+<p>Vuelvo a llamar la atención al hecho de que aunque las variables se
+resten, las desviaciones típicas se suman.</p>
+<div id="un-ejemplo" class="section level3">
+<h3><span class="header-section-number">9.2.1</span> Un ejemplo</h3>
+<p>Tenemos un bazar de equipos electrónicos. Somos dos socios y lo
+tenemos montado de esta manera: Alberto compra los equipos y me los
+vende a un precio un 15% superior. Después yo los vendo a clientes y
+me quedo con el beneficio. El precio de compra es una variable
+aleatoria y el de venta también y son independientes porque ambos
+regateamos fuertemente con los clientes. Entre nosostros no
+regateamos. El precio de compra medio es de 89,73€ con una
+desviación típica de 7,35€ y el precio de venta medio es de
+114,28€, con una desviación típica de 6,35€. ¿Cuál es mi
+beneficio medio?¿Qué desviación típica tiene?</p>
+<p>Llamemos <span class="math inline">\(C\)</span> al precio por el que Alberto compra los equipos, <span class="math inline">\(V\)</span> al
+precio por el que yo los vendo y <span class="math inline">\(B\)</span> a mi beneficio.
+Entonces
+<span class="math display">\[B = V - 1,15 C.\]</span></p>
+<p>El valor esperado del beneficio es</p>
+<p><span class="math display">\[\mu_{B} = \mu_{V - 1,15 C} = \mu_{V} - 1,15 \mu_{C} = 114,28 - 1,15 
+\cdot 89,73 = 11,09\mbox{ \euro}\]</span></p>
+<p>La desviación típica sería</p>
+<p><span class="math display">\[\sigma_{B} = \sigma_{V - 1,15 C} = \sqrt{\sigma_{V}^{2} +  
+\sigma_{1,15C}^{2}} = \sqrt{\sigma_{V}^{2} +  
+(1,15\,\sigma_{C})^{2}} = \sqrt{7,35^{2} + (1,15 \cdot 6,35)^{2}} = 
+10,36\mbox{ \euro}\]</span></p>
+<p>La desviación típica es casi tan grande como la media. Esto quiere
+decir que aunque de media gane, en muchas ventas tendré pérdidas.</p>
+<p>En vista de esto le propongo a Alberto un cambio en nuestra forma de
+hacer negocios: Yo le daré 13,50€ por compra, independientemente
+de cuánto cueste. Esto es un poquito más de lo que él recibe de
+media, por lo tanto sale ganando. Lo acepta. Con este nuevo arreglo,
+mi beneficio es:
+<span class="math display">\[B = V -  C - 13,50.\]</span></p>
+<p>y el valor esperado queda:
+<span class="math display">\[\mu_{B} = \mu_{V - C - 13,50} = \mu_{V} - \mu_{C} - 13,50 = 114,28 -  
+ 89,73 - 13,50 = 11,05\mbox{ \euro}.\]</span></p>
+<p>Un poquito menos. Pero la desviacion típica es:
+<span class="math display">\[\sigma_{B} = \sigma_{V -  C - 13,50} = \sqrt{\sigma_{V}^{2} +  
+\sigma_{C}^{2}} = \sqrt{7,35^{2} + 6,35^{2}} = 
+9,71\mbox{ \euro}\]</span></p>
+<p>De media no gano tanto pero la variabilidad ha bajado. Menos
+sobresaltos al final del día.</p>
+</div>
+</div>
+<div id="resumen-3" class="section level2">
+<h2><span class="header-section-number">9.3</span> Resumen</h2>
+<p>De la misma manera que una muestra tiene una media y una desviación
+típica, una distribución también la tiene (o para ser preciso, una
+variable aleatoria que sigue una distribución). A la “media” de la
+distribución se le llama _esperanza} (en probabilidad) o
+_media poblacional} (en estadística). Si la distribución es
+discreta y finita, la esperanza y la desviacion típica serían
+aquellas que corresponden a una muestra “perfecta” aquella en la
+que cada valor de la muestra sale en una proporción que corresponde
+exactamente a su probabilidad. Si la distribución es discreta
+infinita o continua, hay fórmulas que permiten calcular estos
+valores. En particular para la esperanza tenemos:
+<span class="math display">\[E[X] = \sum_{k = 0}^{\infty} k\, f(k).\]</span>
+en el caso discreto y
+<span class="math display">\[E[X] = \int_{-\infty}^{\infty} x\, f(x)\, dx.\]</span>
+para el continuo.</p>
+<p>A menudo tenemos que multiplicar una variable aleatoria por un factor
+o sumar variables aleatorias. En el caso de sumar o multiplicar
+constantes por una variables tenemos:</p>
+<p><span class="math display">\[\mu_{aX + b} = a \mu_{X} + b.\]</span></p>
+<p>Y la suma de variables es:
+<span class="math display">\[\mu_{aX \pm bY} = a\mu_{X} \pm b \mu_{Y}.\]</span></p>
+<p>Para el cálculo de la desviación típica, la suma de una constante a
+una variable no cambia la desviación típica:</p>
+<p><span class="math display">\[\sigma_{X\pm a} = \sigma_{X}.\]</span></p>
+<p>Pero si la multiplicamos, sí:
+<span class="math display">\[\sigma_{aX} = |a| \sigma_{X}\]</span></p>
+<p>Tanto si sumamos como si restamos variables aleatorias, la desviación
+aumenta:</p>
+<p><span class="math display">\[\sigma_{X\pm Y} = \sqrt{\sigma_{X}^{2} + \sigma_{Y}^{2}}.\]</span></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="variables-aleatorias.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/09_Esperanzas.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Estadística.pdf", "Estadística.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
