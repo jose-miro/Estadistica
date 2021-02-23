@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 7 Probabilidad | Mera estadística</title>
+  <meta name="description" content="Capítulo 7 Probabilidad | Mera estadística" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 7 Probabilidad | Mera estadística" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 7 Probabilidad | Mera estadística" />
+  
+  
+  
+
+<meta name="author" content="Jose Miró Julià" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="uso-de-r-para-estadística-descriptiva-tutorial.html"/>
+<link rel="next" href="variables-aleatorias.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Estadística</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a></li>
+<li class="chapter" data-level="2" data-path="qué-es-y-no-es-la-estadística.html"><a href="qué-es-y-no-es-la-estadística.html"><i class="fa fa-check"></i><b>2</b> ¿Qué es (y no es) la estadística?</a><ul>
+<li class="chapter" data-level="2.1" data-path="qué-es-y-no-es-la-estadística.html"><a href="qué-es-y-no-es-la-estadística.html#el-proceso-estadístico"><i class="fa fa-check"></i><b>2.1</b> El proceso estadístico</a></li>
+<li class="chapter" data-level="2.2" data-path="qué-es-y-no-es-la-estadística.html"><a href="qué-es-y-no-es-la-estadística.html#es-la-estadística-parte-de-las-matemáticas"><i class="fa fa-check"></i><b>2.2</b> ¿Es la estadística parte de las matemáticas?</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html"><i class="fa fa-check"></i><b>3</b> Estadística descriptiva de datos numéricos univariantes</a><ul>
+<li class="chapter" data-level="3.1" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#tipos-de-datos"><i class="fa fa-check"></i><b>3.1</b> Tipos de datos</a></li>
+<li class="chapter" data-level="3.2" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#medidas-de-centralidad-y-dispersión"><i class="fa fa-check"></i><b>3.2</b> Medidas de centralidad y dispersión</a></li>
+<li class="chapter" data-level="3.3" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#gráficas-para-datos-cuantitativos"><i class="fa fa-check"></i><b>3.3</b> Gráficas para datos cuantitativos</a></li>
+<li class="chapter" data-level="3.4" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#análisis-de-los-datos"><i class="fa fa-check"></i><b>3.4</b> Análisis de los datos</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#modalidad"><i class="fa fa-check"></i><b>3.4.1</b> Modalidad</a></li>
+<li class="chapter" data-level="3.4.2" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#simetría"><i class="fa fa-check"></i><b>3.4.2</b> Simetría</a></li>
+<li class="chapter" data-level="3.4.3" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#valores-atípicos"><i class="fa fa-check"></i><b>3.4.3</b> Valores atípicos</a></li>
+<li class="chapter" data-level="3.4.4" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#problematicidad"><i class="fa fa-check"></i><b>3.4.4</b> Problematicidad</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><i class="fa fa-check"></i><b>4</b> Estadística descriptiva de datos cualitativos univariantes</a><ul>
+<li class="chapter" data-level="4.1" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#tablas-de-contingencia"><i class="fa fa-check"></i><b>4.1</b> Tablas de contingencia</a></li>
+<li class="chapter" data-level="4.2" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#gráficas-para-datos-cualitativos"><i class="fa fa-check"></i><b>4.2</b> Gráficas para datos cualitativos</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#gráficos-3d"><i class="fa fa-check"></i><b>4.2.1</b> Gráficos 3D</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#conclusión"><i class="fa fa-check"></i><b>4.3</b> Conclusión</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html"><i class="fa fa-check"></i><b>5</b> Estadística descriptiva de datos bivariantes</a><ul>
+<li class="chapter" data-level="5.1" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#dos-variables-numéricas"><i class="fa fa-check"></i><b>5.1</b> Dos variables numéricas</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#gráfica-de-nube-de-puntos"><i class="fa fa-check"></i><b>5.1.1</b> Gráfica de nube de puntos</a></li>
+<li class="chapter" data-level="5.1.2" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#rectas-de-regresión"><i class="fa fa-check"></i><b>5.1.2</b> Rectas de regresión</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#una-variable-numérica-y-una-cualitativa"><i class="fa fa-check"></i><b>5.2</b> Una variable numérica y una cualitativa</a></li>
+<li class="chapter" data-level="5.3" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#dos-variables-cualitativas"><i class="fa fa-check"></i><b>5.3</b> Dos variables cualitativas</a></li>
+<li class="chapter" data-level="5.4" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#resumen"><i class="fa fa-check"></i><b>5.4</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html"><i class="fa fa-check"></i><b>6</b> Uso de R para estadística descriptiva. Tutorial</a><ul>
+<li class="chapter" data-level="6.1" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#data-frames"><i class="fa fa-check"></i><b>6.1</b> Data frames</a></li>
+<li class="chapter" data-level="6.2" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-una-variable-cuantitativa"><i class="fa fa-check"></i><b>6.2</b> El caso de una variable cuantitativa</a></li>
+<li class="chapter" data-level="6.3" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-una-variable-cualitativa"><i class="fa fa-check"></i><b>6.3</b> El caso de una variable cualitativa</a></li>
+<li class="chapter" data-level="6.4" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-dos-variables-cuantitativas"><i class="fa fa-check"></i><b>6.4</b> El caso de dos variables cuantitativas</a></li>
+<li class="chapter" data-level="6.5" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-dos-variables-una-cuantitativa-y-una-cualitativa"><i class="fa fa-check"></i><b>6.5</b> El caso de dos variables, una cuantitativa y una cualitativa</a></li>
+<li class="chapter" data-level="6.6" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-dos-variables-cualitativas"><i class="fa fa-check"></i><b>6.6</b> El caso de dos variables cualitativas</a></li>
+<li class="chapter" data-level="6.7" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#resumen-final"><i class="fa fa-check"></i><b>6.7</b> Resumen final</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="probabilidad.html"><a href="probabilidad.html"><i class="fa fa-check"></i><b>7</b> Probabilidad</a><ul>
+<li class="chapter" data-level="7.1" data-path="probabilidad.html"><a href="probabilidad.html#ideas-básicas"><i class="fa fa-check"></i><b>7.1</b> Ideas básicas</a></li>
+<li class="chapter" data-level="7.2" data-path="probabilidad.html"><a href="probabilidad.html#operaciones-con-probabilidades"><i class="fa fa-check"></i><b>7.2</b> Operaciones con probabilidades</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-de-una-cosa-u-otra"><i class="fa fa-check"></i><b>7.2.1</b> Probabilidad de una cosa u otra</a></li>
+<li class="chapter" data-level="7.2.2" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-de-una-cosa-y-otra"><i class="fa fa-check"></i><b>7.2.2</b> Probabilidad de una cosa y otra</a></li>
+<li class="chapter" data-level="7.2.3" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-del-suceso-contrario"><i class="fa fa-check"></i><b>7.2.3</b> Probabilidad del suceso contrario</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-condicionada"><i class="fa fa-check"></i><b>7.3</b> Probabilidad condicionada</a></li>
+<li class="chapter" data-level="7.4" data-path="probabilidad.html"><a href="probabilidad.html#regla-de-bayes"><i class="fa fa-check"></i><b>7.4</b> Regla de Bayes</a></li>
+<li class="chapter" data-level="7.5" data-path="probabilidad.html"><a href="probabilidad.html#resumen-1"><i class="fa fa-check"></i><b>7.5</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html"><i class="fa fa-check"></i><b>8</b> Variables aleatorias</a><ul>
+<li class="chapter" data-level="8.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#qué-es-una-variable-aleatoria"><i class="fa fa-check"></i><b>8.1</b> ¿Qué es una variable aleatoria?</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#variables-discretas"><i class="fa fa-check"></i><b>8.1.1</b> Variables discretas</a></li>
+<li class="chapter" data-level="8.1.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#variables-continuas"><i class="fa fa-check"></i><b>8.1.2</b> Variables continuas</a></li>
+<li class="chapter" data-level="8.1.3" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#propiedades-de-estas-funciones"><i class="fa fa-check"></i><b>8.1.3</b> Propiedades de estas funciones</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#cálculo-de-probabilidades"><i class="fa fa-check"></i><b>8.2</b> Cálculo de probabilidades</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#calculando-a-mano"><i class="fa fa-check"></i><b>8.2.1</b> Calculando a mano</a></li>
+<li class="chapter" data-level="8.2.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#calculando-con-r"><i class="fa fa-check"></i><b>8.2.2</b> Calculando con R</a></li>
+<li class="chapter" data-level="8.2.3" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#resumen-2"><i class="fa fa-check"></i><b>8.2.3</b> Resumen</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><i class="fa fa-check"></i><b>9</b> Esperanzas y desviaciones típicas de variables aleatorias</a><ul>
+<li class="chapter" data-level="9.1" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#desviaciones-típicas"><i class="fa fa-check"></i><b>9.1</b> Desviaciones típicas</a></li>
+<li class="chapter" data-level="9.2" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#operaciones-con-variables-aleatorias"><i class="fa fa-check"></i><b>9.2</b> Operaciones con variables aleatorias</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#un-ejemplo"><i class="fa fa-check"></i><b>9.2.1</b> Un ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#resumen-3"><i class="fa fa-check"></i><b>9.3</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><i class="fa fa-check"></i><b>10</b> Intervalos de confianza: una medida de la incertidumbre</a><ul>
+<li class="chapter" data-level="10.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#incertidumbre-en-muestras-de-proporciones"><i class="fa fa-check"></i><b>10.1</b> Incertidumbre en muestras de proporciones</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#una-simulación"><i class="fa fa-check"></i><b>10.1.1</b> Una simulación</a></li>
+<li class="chapter" data-level="10.1.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>10.1.2</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="10.1.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#fuga-de-probabilidad"><i class="fa fa-check"></i><b>10.1.3</b> Fuga de probabilidad</a></li>
+<li class="chapter" data-level="10.1.4" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#un-ejemplo-1"><i class="fa fa-check"></i><b>10.1.4</b> Un ejemplo</a></li>
+<li class="chapter" data-level="10.1.5" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#resumen-de-intervalos-de-confianza-de-proporciones"><i class="fa fa-check"></i><b>10.1.5</b> Resumen de intervalos de confianza de proporciones</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#incertidumbre-en-muestras-de-medias"><i class="fa fa-check"></i><b>10.2</b> Incertidumbre en muestras de medias</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#una-simulación-1"><i class="fa fa-check"></i><b>10.2.1</b> Una simulación</a></li>
+<li class="chapter" data-level="10.2.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#intervalos-de-confianza-1"><i class="fa fa-check"></i><b>10.2.2</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="10.2.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#la-distribución-t-de-student"><i class="fa fa-check"></i><b>10.2.3</b> La distribución t de Student</a></li>
+<li class="chapter" data-level="10.2.4" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#fuga-de-probabilidades"><i class="fa fa-check"></i><b>10.2.4</b> Fuga de probabilidades</a></li>
+<li class="chapter" data-level="10.2.5" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#un-ejemplo-2"><i class="fa fa-check"></i><b>10.2.5</b> Un ejemplo</a></li>
+<li class="chapter" data-level="10.2.6" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#resumen-de-intervalos-de-confianza-de-medias"><i class="fa fa-check"></i><b>10.2.6</b> Resumen de intervalos de confianza de medias</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#comparación-de-intervalos-de-confianza"><i class="fa fa-check"></i><b>10.3</b> Comparación de intervalos de confianza</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#no-puedo-decir-que-sean-distintos"><i class="fa fa-check"></i><b>10.3.1</b> No puedo decir que sean distintos</a></li>
+<li class="chapter" data-level="10.3.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#cálculo-de-intervalos-de-confianza-de-diferencias"><i class="fa fa-check"></i><b>10.3.2</b> Cálculo de intervalos de confianza de diferencias</a></li>
+<li class="chapter" data-level="10.3.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#más-ejemplos"><i class="fa fa-check"></i><b>10.3.3</b> Más ejemplos</a></li>
+<li class="chapter" data-level="10.3.4" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#resumen-de-comparación-de-intervalos-de-confianza"><i class="fa fa-check"></i><b>10.3.4</b> Resumen de comparación de intervalos de confianza</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html"><i class="fa fa-check"></i><b>11</b> Contrastes de hipotesis</a><ul>
+<li class="chapter" data-level="11.1" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html#experimentos-estadísticos-para-un-contraste-de-hipótesis"><i class="fa fa-check"></i><b>11.1</b> Experimentos estadísticos para un contraste de hipótesis</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html#procedimiento-de-cálculo-del-p-valor."><i class="fa fa-check"></i><b>11.1.1</b> Procedimiento de cálculo del p-valor.</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html#interpretación-del-p-valor."><i class="fa fa-check"></i><b>11.2</b> Interpretación del p-valor.</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>12</b> ANOVA</a><ul>
+<li class="chapter" data-level="12.1" data-path="anova.html"><a href="anova.html#nada-es-gratis-y-los-errores-se-acumulan"><i class="fa fa-check"></i><b>12.1</b> Nada es gratis (y los errores se acumulan)</a></li>
+<li class="chapter" data-level="12.2" data-path="anova.html"><a href="anova.html#punto-de-partida"><i class="fa fa-check"></i><b>12.2</b> Punto de partida</a></li>
+<li class="chapter" data-level="12.3" data-path="anova.html"><a href="anova.html#tutorial-de-anova-en-r"><i class="fa fa-check"></i><b>12.3</b> Tutorial de ANOVA en R</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="anova.html"><a href="anova.html#el-problema"><i class="fa fa-check"></i><b>12.3.1</b> El problema</a></li>
+<li class="chapter" data-level="12.3.2" data-path="anova.html"><a href="anova.html#el-primer-método-oneway.test"><i class="fa fa-check"></i><b>12.3.2</b> El primer método: oneway.test()</a></li>
+<li class="chapter" data-level="12.3.3" data-path="anova.html"><a href="anova.html#el-segundo-método-aov"><i class="fa fa-check"></i><b>12.3.3</b> El segundo método: aov()</a></li>
+<li class="chapter" data-level="12.3.4" data-path="anova.html"><a href="anova.html#el-tercer-método"><i class="fa fa-check"></i><b>12.3.4</b> El tercer método</a></li>
+<li class="chapter" data-level="12.3.5" data-path="anova.html"><a href="anova.html#y-si-los-datos-no-están-como-los-quiere-r"><i class="fa fa-check"></i><b>12.3.5</b> ¿Y si los datos no están como los quiere R?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html"><i class="fa fa-check"></i><b>13</b> La prueba de Ji-Cuadrado</a><ul>
+<li class="chapter" data-level="13.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-de-ji-cuadrado-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>13.1</b> Prueba de ji-cuadrado de bondad de ajuste</a></li>
+<li class="chapter" data-level="13.2" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-de-bondad-de-ajuste-con-r"><i class="fa fa-check"></i><b>13.2</b> Prueba <span class="math inline">\(\chi^2\)</span> de bondad de ajuste con R</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#problematicidad-el-aviso-de-chisq.test"><i class="fa fa-check"></i><b>13.2.1</b> Problematicidad: el aviso de chisq.test()</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#la-prueba-chi2-de-homogeneidad"><i class="fa fa-check"></i><b>13.3</b> La prueba <span class="math inline">\(\chi^2\)</span> de homogeneidad</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#definición-formal"><i class="fa fa-check"></i><b>13.3.1</b> Definición formal</a></li>
+<li class="chapter" data-level="13.3.2" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-como-contraste-de-hipótesis"><i class="fa fa-check"></i><b>13.3.2</b> Prueba <span class="math inline">\(\chi^2\)</span> como contraste de hipótesis</a></li>
+<li class="chapter" data-level="13.3.3" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-de-homogeneidad-con-r"><i class="fa fa-check"></i><b>13.3.3</b> Prueba <span class="math inline">\(\chi^2\)</span> de homogeneidad con R</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#la-prueba-chi2-de-independencia"><i class="fa fa-check"></i><b>13.4</b> La prueba <span class="math inline">\(\chi^{2}\)</span> de independencia</a><ul>
+<li class="chapter" data-level="13.4.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-de-independencia-como-contraste-de-hipótesis"><i class="fa fa-check"></i><b>13.4.1</b> Prueba <span class="math inline">\(\chi^2\)</span> de independencia como contraste de hipótesis</a></li>
+<li class="chapter" data-level="13.4.2" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#un-ejemplo-3"><i class="fa fa-check"></i><b>13.4.2</b> Un ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#resumen-4"><i class="fa fa-check"></i><b>13.5</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="regresión-lineal.html"><a href="regresión-lineal.html"><i class="fa fa-check"></i><b>14</b> Regresión Lineal</a><ul>
+<li class="chapter" data-level="14.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#cálculo"><i class="fa fa-check"></i><b>14.1</b> Cálculo</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#fundamentos"><i class="fa fa-check"></i><b>14.1.1</b> Fundamentos</a></li>
+<li class="chapter" data-level="14.1.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#otro-ejemplo"><i class="fa fa-check"></i><b>14.1.2</b> Otro ejemplo</a></li>
+<li class="chapter" data-level="14.1.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#y-si-no-es-una-recta"><i class="fa fa-check"></i><b>14.1.3</b> ¿Y si no es una recta?</a></li>
+<li class="chapter" data-level="14.1.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-la-parte-de-cálculo"><i class="fa fa-check"></i><b>14.1.4</b> Resumen de la parte de cálculo</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#estadística"><i class="fa fa-check"></i><b>14.2</b> Estadística</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#incertidumbre-en-la-regresión-lineal"><i class="fa fa-check"></i><b>14.2.1</b> Incertidumbre en la regresión lineal</a></li>
+<li class="chapter" data-level="14.2.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#condiciones"><i class="fa fa-check"></i><b>14.2.2</b> Condiciones</a></li>
+<li class="chapter" data-level="14.2.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#salida-de-r"><i class="fa fa-check"></i><b>14.2.3</b> Salida de R</a></li>
+<li class="chapter" data-level="14.2.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#intervalos-de-confianza-2"><i class="fa fa-check"></i><b>14.2.4</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="14.2.5" data-path="regresión-lineal.html"><a href="regresión-lineal.html#otro-ejemplo-1"><i class="fa fa-check"></i><b>14.2.5</b> Otro ejemplo</a></li>
+<li class="chapter" data-level="14.2.6" data-path="regresión-lineal.html"><a href="regresión-lineal.html#la-regresión-no-muestra-qué-tipo-de-curva-es"><i class="fa fa-check"></i><b>14.2.6</b> La regresión no muestra qué tipo de curva es</a></li>
+<li class="chapter" data-level="14.2.7" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-la-parte-de-estadística"><i class="fa fa-check"></i><b>14.2.7</b> Resumen de la parte de estadística</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#diagnóstico"><i class="fa fa-check"></i><b>14.3</b> Diagnóstico</a><ul>
+<li class="chapter" data-level="14.3.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#seis-modelos"><i class="fa fa-check"></i><b>14.3.1</b> Seis modelos</a></li>
+<li class="chapter" data-level="14.3.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#cinco-diagnósticos"><i class="fa fa-check"></i><b>14.3.2</b> Cinco diagnósticos</a></li>
+<li class="chapter" data-level="14.3.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-diagnóstico"><i class="fa fa-check"></i><b>14.3.3</b> Resumen de diagnóstico</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#inferencias"><i class="fa fa-check"></i><b>14.4</b> Inferencias</a><ul>
+<li class="chapter" data-level="14.4.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#contrastes-de-hipótesis"><i class="fa fa-check"></i><b>14.4.1</b> Contrastes de hipótesis</a></li>
+<li class="chapter" data-level="14.4.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#intervalos-de-confianza-3"><i class="fa fa-check"></i><b>14.4.2</b> Intervalos de confianza</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicciones"><i class="fa fa-check"></i><b>14.5</b> Predicciones</a><ul>
+<li class="chapter" data-level="14.5.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-de-la-curva"><i class="fa fa-check"></i><b>14.5.1</b> Predicción de la curva</a></li>
+<li class="chapter" data-level="14.5.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-de-rango"><i class="fa fa-check"></i><b>14.5.2</b> Predicción de rango</a></li>
+<li class="chapter" data-level="14.5.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-de-medias"><i class="fa fa-check"></i><b>14.5.3</b> Predicción de medias</a></li>
+<li class="chapter" data-level="14.5.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-predicciones"><i class="fa fa-check"></i><b>14.5.4</b> Resumen de predicciones</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="problemas.html"><a href="problemas.html"><i class="fa fa-check"></i><b>15</b> Problemas</a><ul>
+<li class="chapter" data-level="15.1" data-path="problemas.html"><a href="problemas.html#qué-es-la-estadística"><i class="fa fa-check"></i><b>15.1</b> ¿Qué es la estadística?</a></li>
+<li class="chapter" data-level="15.2" data-path="problemas.html"><a href="problemas.html#manejo-de-r-y-simulaciones"><i class="fa fa-check"></i><b>15.2</b> Manejo de R y simulaciones</a></li>
+<li class="chapter" data-level="15.3" data-path="problemas.html"><a href="problemas.html#estadística-descriptiva"><i class="fa fa-check"></i><b>15.3</b> Estadística Descriptiva</a></li>
+<li class="chapter" data-level="15.4" data-path="problemas.html"><a href="problemas.html#probabilidad-y-variables-aleatórias"><i class="fa fa-check"></i><b>15.4</b> Probabilidad y variables aleatórias</a></li>
+<li class="chapter" data-level="15.5" data-path="problemas.html"><a href="problemas.html#razonamiento-estadístico."><i class="fa fa-check"></i><b>15.5</b> Razonamiento estadístico.</a><ul>
+<li class="chapter" data-level="15.5.1" data-path="problemas.html"><a href="problemas.html#intervalos-de-confianza-4"><i class="fa fa-check"></i><b>15.5.1</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="15.5.2" data-path="problemas.html"><a href="problemas.html#contrastes-de-hipótesis-1"><i class="fa fa-check"></i><b>15.5.2</b> Contrastes de hipótesis</a></li>
+<li class="chapter" data-level="15.5.3" data-path="problemas.html"><a href="problemas.html#razonamiento-estadístico-complejo"><i class="fa fa-check"></i><b>15.5.3</b> Razonamiento estadístico complejo</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="problemas.html"><a href="problemas.html#anova-1"><i class="fa fa-check"></i><b>15.6</b> Anova</a></li>
+<li class="chapter" data-level="15.7" data-path="problemas.html"><a href="problemas.html#ji-cuadrado"><i class="fa fa-check"></i><b>15.7</b> Ji-cuadrado</a></li>
+<li class="chapter" data-level="15.8" data-path="problemas.html"><a href="problemas.html#regresión-lineal-1"><i class="fa fa-check"></i><b>15.8</b> Regresión Lineal</a></li>
+<li class="chapter" data-level="15.9" data-path="problemas.html"><a href="problemas.html#problemas-con-todo"><i class="fa fa-check"></i><b>15.9</b> Problemas con todo</a></li>
+<li class="chapter" data-level="15.10" data-path="problemas.html"><a href="problemas.html#campos-elíseos"><i class="fa fa-check"></i><b>15.10</b> Campos Elíseos</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Mera estadística</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="probabilidad" class="section level1">
+<h1><span class="header-section-number">Capítulo 7</span> Probabilidad</h1>
+<p>La probabilidad es el lenguaje de la incertidumbre. Y dado que la
+estadística vive en la incertidumbre, es el lenguaje de la
+estadística. En estadística no tenemos certezas, sólo tenemos
+probabilidades: los resultados de la estadística son todos de la forma
+«La probabilidad de que esta estrategia de inversión te dé ganacias es
+del 65%» o «La probabilidad de que la media de la población esté
+dentro del intervalo de confianza es del 95%». No sólo para entender
+los resultados de la estadística, sino para entender qué es lo que
+hace es imprescindible poder entender el lenguaje de la probabilidad.
+Vamos a ello.</p>
+<div id="ideas-básicas" class="section level2">
+<h2><span class="header-section-number">7.1</span> Ideas básicas</h2>
+<p>En nuestros estudios estadísticos hemos tomado datos del color de ojos
+y pelo de 476 personas y del grupo sanguíneo y factor Rh de 173 472
+personas. Las tablas de contingencia son:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Color Pelo \ Ojos</th>
+<th align="right">Azul</th>
+<th align="right">Verde</th>
+<th align="right">Marron</th>
+<th align="right">Negro</th>
+<th align="right">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Rubio</td>
+<td align="right">31</td>
+<td align="right">25</td>
+<td align="right">16</td>
+<td align="right">4</td>
+<td align="right">76</td>
+</tr>
+<tr class="even">
+<td align="left">Pelirrojo</td>
+<td align="right">0</td>
+<td align="right">9</td>
+<td align="right">11</td>
+<td align="right">2</td>
+<td align="right">22</td>
+</tr>
+<tr class="odd">
+<td align="left">Castaño</td>
+<td align="right">28</td>
+<td align="right">48</td>
+<td align="right">225</td>
+<td align="right">10</td>
+<td align="right">311</td>
+</tr>
+<tr class="even">
+<td align="left">Negro</td>
+<td align="right">5</td>
+<td align="right">5</td>
+<td align="right">52</td>
+<td align="right">5</td>
+<td align="right">67</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Total</strong></td>
+<td align="right">64</td>
+<td align="right">87</td>
+<td align="right">304</td>
+<td align="right">21</td>
+<td align="right">476</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Factor \ Grupo</th>
+<th align="right">A</th>
+<th align="right">B</th>
+<th align="right">AB</th>
+<th align="right">0</th>
+<th align="right">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Rh+</td>
+<td align="right">58 990</td>
+<td align="right">13 885</td>
+<td align="right">4338</td>
+<td align="right">62 461</td>
+<td align="right">139 674</td>
+</tr>
+<tr class="even">
+<td align="left">Rh-</td>
+<td align="right">13 882</td>
+<td align="right">3470</td>
+<td align="right">1041</td>
+<td align="right">15 675</td>
+<td align="right">34 068</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Total</strong></td>
+<td align="right">72 872</td>
+<td align="right">17 355</td>
+<td align="right">5379</td>
+<td align="right">78 136</td>
+<td align="right">173 742</td>
+</tr>
+</tbody>
+</table>
+<p>Consideramos estas tablas como nuestra evidencia <span class="math inline">\(E\)</span> de la proporción
+de gente con cierto color de pelo y de ojos y con cierto grupos
+sanguíneo y factor Rh. Es decir, vamos a suponer que toda nuestra
+población de interés sigue los números que muestra esta tabla.
+Entonces, si escogemos al azar una persona, la probabilidad de que sea
+rubia es P(Rubia<span class="math inline">\(|E\)</span>) = 76/476 = 0,160. Esto se lee como
+«Probabilidad de que una persona escogida al azar sea rubia dada la
+evidencia que tenemos es 0,160». Es fundamental notar que esta
+probabilidad depende de la evidencia de partida. Otra persona, con otros
+datos y otra tabla de contingencia, obtendría probabilidades
+diferentes. Si son buenas muestras de la misma población,
+generalmente no diferirán en mucho. La probabilidad de ser de tipo
+sanguíneo A es P(A<span class="math inline">\(|E\)</span>) = 72 872/173 742 = 0,419. En palabras: la
+probabilidad de que una persona escogida al azar sea de tipo A dada la
+evidencia que tenemos es de 0,419.</p>
+<p>Más ejemplos. La probabilidad de ser una persona pelirroja de ojos
+marrones dada la evidencia que tenemos es de 0,023 (P(Pelirroja y
+Marron<span class="math inline">\(|E\)</span>) = 11/476 = 0,023). O la probabilidad de ser de grupo AB+
+dada la evidencia que tenemos es 0,025 (P(AB y Rh+<span class="math inline">\(|E\)</span>) = 4338/173 742
+= 0,023).</p>
+<p>Para ser más ágil se suele eliminar el «dada la evidencia que tenemos»
+y el «<span class="math inline">\(|E\)</span>» de las expresiones. Y a partir de ahora apenas lo usaremos.
+Pero es fundamental recordar que está. Y por lo tanto debemos
+exponerla como parte de nuestro razonamiento. Diferentes estudios de
+lo mismo, por ejemplo diferentes encuestas electorales, dan resultados
+diferentes porque parten de evidencia diferente. Si volvemos a
+repetir el estudio, obtendremos resultados diferentes. Esperamos que
+si lo hacemos todo bien la diferencia será pequeña (podemos hacerlo todo bien ambas veces y obtener diferencias grandes. Eso pasa), pero la habrá.</p>
+<p>Esta visión que hemos descrito y que suele ser la que casi todo el
+mundo intuye, es la llamada visión <em>frecuentista</em>. Se suele
+resumir con el lema «casos favorables dividido por caso posibles».
+Pero no todas las probabilidades son frecuentistas. Hay muchas que no
+pueden serlo. Un caso habitual es cuando hablamos de la probabilidad
+de que la Real Sociedad gane el próximo partido ante el Athletic de
+Bilbao. Si siguiéramos la visión frecuentista habría que hacer jugar
+ambos equipos en las mismas condiciones (alineación, campo,
+condiciones meteorológicas, árbitro…), digamos 30 veces y dividir
+el número de victorias entre 30. Esto es imposible. Por lo tanto
+cogemos otra evidencia («La Real ha ganado sus últimos 3 partidos»,
+«El portero del Athletic está lesionado», «El campo está seco», etc.)
+y razonar a partir de esta evidencia para obtener una probabilidad.
+Diferentes aficionados escogen evidencia diferente y le dan peso
+diferente a cada dato y obtienen probabilidades diferentes. Es
+importante notar que la probabilidad no es subjetiva. Lo que es
+subjetivo es la evidencia que se escoge.</p>
+<p>Pero incluso usamos visiones no frecuentistas en probabilidades tan
+repetitivas como los dados y monedas. Si decimos que la probabilidad
+de sacar cara al lanzar una moneda es 1/2 no es por un análisis
+frecuentista: no tiramos la moneda al aire 1000 veces antes de deducir
+la probabilidad. Suponemos que la moneda no está trucada y que hay la
+misma probabilidad de sacar cara que de sacar cruz. Lo mismo con el
+lanzamiento de un dado. Suponemos que el dado no está cargado y que
+todas las posibilidades son equiprobables.</p>
+<p>En el caso de dados y monedas la práctica muestra que este
+razonamiento funciona bien. Pero no lo hace siempre. Por ejemplo
+falla con las cartas. Suponemos que la probabilidad de sacar un 7 de
+diamantes es 1/52, pero eso sólo pasa si las cartas están bien
+barajadas. Un famoso estudio de Persi Diaconis, que fue mago antes que matemático, demostró que es necesario barajar las
+cartas 7 veces para poder suponer que todas las cartas tienen la misma
+probabilidad de salir. Y los tahures lo sabían y podían estimar con
+bastante precisión la probabilidad de que saliera un 7 de diamantes en
+función de dónde estaba el 7 de diamantes en la partida anterior, las
+cartas que acababan de salir y las veces que se había barajado. No
+todo es saber leer las caras de los contrarios.</p>
+</div>
+<div id="operaciones-con-probabilidades" class="section level2">
+<h2><span class="header-section-number">7.2</span> Operaciones con probabilidades</h2>
+<p>Una vez tenemos unas probabilidades básicas, directamente a partir de
+nuestra evidencia, podemos calcular las probabilidades de casos más
+complejos. Veamos las operaciones más habituales.</p>
+<div id="probabilidad-de-una-cosa-u-otra" class="section level3">
+<h3><span class="header-section-number">7.2.1</span> Probabilidad de una cosa u otra</h3>
+<p>Tenemos dos sucesos y queremos calcular la probabilidad de que pasen<br />
+uno o el otro o ambos. Debemos considerar dos casos. El primero es
+que los dos sucesos sean incompatibles, es decir, que no puedan darse
+simultáneamente. El segundo es que no lo sean y sí que puedan darse
+ambos. Si vamos al típico ejemplo de un dado, dos suceos
+incompatibles son «sacar un 3» y «sacar un 5». Obviamente, con un
+solo dado, no podemos sacar un 3 y un 5 a la vez. En ese caso la
+probabilidad de que suceda uno u otro suceso es la suma de las
+probabilidades. Matemáticamente:</p>
+<p><span class="math display">\[P(A\mbox{ o }B) = P(A) + P(B).\]</span></p>
+<p>Estrictamente es <span class="math inline">\(P(A\mbox{ o }B|E) = P(A|E) + P(B|E)\)</span> pero como
+dijimos, damos la evidencia por entendida y no la ponemos enlas
+fórmulas.</p>
+<p>Si los sucesos no son incompatibles esta expresión es incorrecta.
+Supongamas que los sucesos son «ser rubios» y «tener ojos azules».
+Ya hemos calculado que la probabilidad de ser rubio es <span class="math inline">\(P(\mbox{Rubio}) = 0,160\)</span>. De forma similar, la probabilidad de tener ojoz azules es <span class="math inline">\(P(\mbox{Azules}) = 64/476 = 0,134\)</span>. Si los sumamos tendríamos una probabilidad (incorrecta) de
+<span class="math inline">\(0,294\)</span>. Pero si lo calculamos directamente de la tabla, sumando las
+7 celdas de la primera fila y la primera columna (que son los casos que
+nos interesan) tenemos una probabilidad (correcta) de:
+<span class="math inline">\((31+25+16+4+0+28+5)/476 = 0,229\)</span>. El error viene que en la forma
+incorrecta hemos contado dos veces a los rubios de ojos azules: en
+los rubios y en los ojos azules. Por lo tanto lo que tenemos que
+hacer es restarlos: restar aquellos que son simultáneamente rubios y
+de ojos azules. Esto nos da la expresión par el caso de que no sean
+incompatibles:</p>
+<p><span class="math display">\[P(A\mbox{ o }B) = P(A) + P(B) - P(A \mbox{ y } B).\]</span></p>
+<p>Algunos habréis notado que esta segunda expresión engloba también el
+primer caso: si los sucesos son incompatibles <span class="math inline">\(P(A \mbox{ y } B) = 0\)</span>.</p>
+</div>
+<div id="probabilidad-de-una-cosa-y-otra" class="section level3">
+<h3><span class="header-section-number">7.2.2</span> Probabilidad de una cosa y otra</h3>
+<p>La segunda probabilidad que nos puede interesar calcular es la de que
+se den simultáneamente dos sucesos, <span class="math inline">\(P(A \mbox{ y } B)\)</span>. Empecemos
+por suponer que los sucesos son independientes: que el que uno suceda
+o no no tiene nada que ver con que lo haga el otro. Si tiramos dos
+dados, uno azul y uno rojo, lo que haga el dado azul no va a influir en el
+rojo. En este caso la probabilidad de que sucedan ambas cosas es el
+producto de las probabilidades. La probabilidad de que el dado azul
+saque un 5 y el rojo un 2 es</p>
+<p><span class="math display">\[P(\mbox{azul} = 5\mbox{ y rojo} = 2) = P(\mbox{azul} = 5) \cdot 
+P(\mbox{rojo} = 2) = \frac{1}{6} \cdot \frac{1}{6} = \frac{1}{36}.\]</span></p>
+<p>Esto <em>no</em> es lo mismo que tener dos dados blancos indistinguibles, tirarlos y sacar un 2 y un 5. En este caso tenemos dos posibilidades que nos interesan: que el primer dado tenga un 5 y el otro un 2 o que el primer dado tenga un 2 y el otro un 5. La probabilidad es 1/18.</p>
+<p>¿Y qué pasa si los sucesos no son independientes? En este caso no
+tenemos ninguna expresión general de la probabilidad de <span class="math inline">\(P(A \mbox{ y } B)\)</span>. Por ejemplo, la probabilidad de <span class="math inline">\(P(\mbox{Rubio}) = 0,160\)</span>, la
+de <span class="math inline">\(P(\mbox{Azules}) = 0,134\)</span>. Pero la probabilidad de <span class="math inline">\(P(\mbox{Rubio y azules}) = 31/476 = 0,065\)</span>, que es mucho mayor al producto de
+probabilidades, que es <span class="math inline">\(0,160 \cdot 0,134 = 0,021\)</span>, mientras que la
+probabilidad de ser pelirrojo con ojos marrones es mucho menor que el
+producto de las probabilidades.</p>
+<p>La pregunta ahora es, ¿cómo sabemos si dos sucesos son independientes
+o no? A veces nos lo dicta la lógica: dos dados no interfieren entre
+sí, o la fase de la luna no interfiere con la probabilidad de que un
+gato sea negro. El resto de las veces no lo sabemos. Realmente lo
+hemos hecho al revés: se define que dos sucesos son independientes si
+la probabilidad de que se den los dos simultáneamente es igual al
+producto de las probabilidades. Acabamos de ver que el color de ojos
+y de pelo no son independientes. Pueden comprobar que en cambio el
+tipo sanguíneo y factor Rh sí que lo son. Para ello hay que calcular
+<span class="math inline">\(P(A+), P(A-), P(B+),\)</span> etc y ver que <em>en todos los caso</em> es
+igual al producto de probabilidades. Veamos un caso. <span class="math inline">\(P(A+) = 58.990/173.742 = 0,339\)</span> lo que es casi idéntico a <span class="math inline">\(P(A) \cdot P(+) = 0,337\)</span> (no nos olvidemos que son muestras, pequeñas diferencias son perfectamente normales). Y lo mismo pasa con todas las demás probabilidades.</p>
+</div>
+<div id="probabilidad-del-suceso-contrario" class="section level3">
+<h3><span class="header-section-number">7.2.3</span> Probabilidad del suceso contrario</h3>
+<p>La probabilidad de que pase algo es 1: si tiramos un dado no sabemos
+qué número saldrá, pero sí sabemos que saldrá uno entre 1 y 6. Si
+consideramos _todas_ las salidas posibles, la probabilidad de
+que pase alguna de ellas ha de ser 1. Matemáticamente, si <span class="math inline">\(A_{1}, A_{2}\dots A_{n}\)</span> son todos los sucesos posibles,
+<span class="math display">\[\sum P(A_{i}) = 1.\]</span></p>
+<p>Este resultado es muy útil para detectar errores. Por ejemplo, si
+sumamos <span class="math inline">\(P(\mbox{Ganar}) + P(\mbox{Perder})\)</span> y no nos sale 1 nos
+daremos cuesta que se nos ha olvidado el caso del empate. Siempre que
+trabajemos con probabilidades nos evitaremos errores, y a la larga
+ahorraremos tiempo, si hacemos la simple comprobación de que la suma de
+probabilidades debe dar 1.</p>
+<p>Y e resultado también es útil para simplificar enormemente los
+cálculos de algunas probabilidades. Supongamos que hay <span class="math inline">\(N\)</span> plazas de
+aparcamiento, y que para cada plaza la probabilidad de que esté libre
+es <span class="math inline">\(L\)</span>. ¿Cuál es la probabilidad de que alguna de las <span class="math inline">\(N\)</span> esté libre?</p>
+<p>Una plaza de aparcamiento o está libre o está ocupada. Si la
+probabilidad de que esté libre es <span class="math inline">\(L\)</span>, la de que esté ocupada, su
+suceso contrario, es <span class="math inline">\((1-L)\)</span>. Si alguna está libre puede ser que lo
+esté sólo 1, que lo estén 2, lo estén 3, …, hasta que lo estén
+todas. Son sucesos incompatibles, por lo tanto podemos calcular cada
+probabilidad por separado y sumarlas. Aseguro que calcular la
+probabilidad de que <span class="math inline">\(N-3\)</span> de las <span class="math inline">\(N\)</span> plazas estén libres no es tarea
+fácil. Por suerte hay una manera mucho más simple. El que esté
+alguna libre es el suceso contario a que estén todas ocupadas. Si
+suponemos que la probabilidad de que una esté ocupada es independiente
+a la probabilidad de que lo esté cualquier otra, lo que parece
+razonable si <span class="math inline">\(N\)</span> no es muy grande, entonces la probabilidad es el producto de las probabilidades:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    P(\mbox{Todas ocupadas}) &amp; = &amp; P(\mbox{pl. 1 ocupada})\cdot 
+P(\mbox{pl. 2 ocupada})\cdots P(\mbox{pl. }N\mbox{ ocupada)}\\
+ &amp; = &amp; (1-L) \cdot (1-L)\cdots (1-L)\\
+ &amp; = &amp; (1-L)^{N}
+ \end{eqnarray*}\]</span></p>
+<p>Y nos queda:</p>
+<p><span class="math display">\[P(\mbox{Alguna libre}) = 1 - P(\mbox{Todas ocupadas}) = 1 - 
+(1-L)^{N}\]</span></p>
+<p>Si tenemos que calcular la probabilidad de que algo pase y no sabemos
+hacerlo fácilmente, siempre conviene preguntarse si es más fácil
+calcular la probabilidad de que <em>no</em> pase.</p>
+</div>
+</div>
+<div id="probabilidad-condicionada" class="section level2">
+<h2><span class="header-section-number">7.3</span> Probabilidad condicionada</h2>
+<p>Hemos visto la probabilidad de «ser rubio o tener los ojos azules» y
+la de «ser rubio y tener los ojos azules». Nos falta otra: la
+prababilidad de que «un rubio tenga los ojos azules».</p>
+<p>Hay quien confunde «ser rubio con ojos azules» con «siendo rubio,
+tener los ojos azules». En el primer caso la población bajo
+consideración (los «casos posibles») es todo el mundo, mientras que
+en el segundo son sólo los rubios. Otra manera de describirlo. En el
+primer caso escogemos una persona al azar y miramos su color de ojos
+y pelo; en el segundo escogemos una persona <em>rubia</em> al azar y miramos
+su color de ojos.</p>
+<p>No es un concepto extraño. Es calcular la probabilidad de ganar el
+partido si jugamos en casa, que claramente es diferente de la
+probabilidad de ganar si jugamos fuera, o la probabilidad de ganar
+sin tener en cuenta dónde jugamos.</p>
+<p>A esta probabilidad se le llama probabilidad condicionada y se
+representa por <span class="math inline">\(P(A|B)\)</span>. Como hemos visto esto se puede describir en
+palabras como «la probabilidad de que un B (rubio) tenga A (ojos
+azules)», «la probabilidad de A (tener ojos azules) dado que pasa B
+(ser rubio)», «la probabilidad de A (tener ojos azules) si B (se es
+rubio)». También podemos decir que es «la probabilidad de A
+condicionado a que pase B».</p>
+<p>Si tenemos una tabla como las del apartado 1, podemos calcular estas
+probabilidades sacando los datos directamente de la tabla. La
+probabilidad de tener los ojos azules si se es rubio es 31/64: de 64
+personas rubias, 31 tienen los ojos azules. Por lo tanto
+<span class="math inline">\(P(\mbox{azules}|\mbox{rubio}) = 0,484\)</span>.</p>
+<p>De este cálculo es fácil deducir una expresión general:</p>
+<p><span class="math display">\[P(A|B) = \frac{P(A\mbox{ y } B)}{P(B)}.\]</span></p>
+<p>Efectivamente: <span class="math inline">\(P(A\mbox{ y } B) = 31/476\)</span> y <span class="math inline">\(P(B) = 64/476\)</span>, por lo
+que</p>
+<p><span class="math display">\[P(A|B) = \frac{P(A\mbox{ y } B)}{P(B)} = \frac{31/476}{64/476} = 
+\frac{31}{64}.\]</span></p>
+<p>Esta expresión es válida tanto si <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son independientes como
+si no. Si son independientes tenemos una cosa interesante:</p>
+<p><span class="math display">\[P(A|B) = \frac{P(A\mbox{ y } B)}{P(B)} = \frac{P(A)\cdot 
+P(B)}{P(B)} = P(A)\]</span>
+%
+Esta expresión nos confima que si son independientes <span class="math inline">\(B\)</span> no influye
+en <span class="math inline">\(A\)</span>: a <span class="math inline">\(A\)</span> le da igual si <span class="math inline">\(B\)</span> pasa o no pasa. Su probabilidad es
+siempre <span class="math inline">\(P(A)\)</span>.</p>
+<p>Una última cosa. No es lo mismo <span class="math inline">\(P(A|B)\)</span> que <span class="math inline">\(P(B|A)\)</span>. Si cogemos un
+hombre, la posibilidad de medir más de 2,00 m no es muy alta. Digamos
+que es 0.05 (un 5%). En cambio, si cogemos una persona que mide más de
+2,00 m, la probabilidad de que sea un hombre es muy alta.
+Probablemente más de 0.99.</p>
+<p>Desgraciadamente, a menudo en la vida nos dan la probabilidad
+condicionada que nos interesa menos. Digamos que nos hacemos una
+prueba médica para saebr si tenemos una enfermedad grave (algún tipo
+de cáncer o el virus VIH). Y sale positivo. Naturalmente nos
+preocupamos. Y más cuando el médico nos dice «la probabilidad de dar
+positivo si se está enfermo es del 90%». Eso es
+<span class="math inline">\(P(\mbox{Positivo}|\mbox{Enfermo})\)</span>. Esa <em>no</em> es la probabilidad
+que nos interesa. La que nos interesa es la probabilidad de que
+estemos enfermos dado que hemos dado positivo,
+<span class="math inline">\(P(\mbox{Enfermo}|\mbox{Positivo})\)</span>. En la siguiente sección veremos
+cómo calcular esto.</p>
+</div>
+<div id="regla-de-bayes" class="section level2">
+<h2><span class="header-section-number">7.4</span> Regla de Bayes</h2>
+<p>Eres una persona sana, sin síntomas de ninguna enfermedad y sin
+antecedentes de cáncer de pecho (mujeres) o de próstata (hombres) en
+tu familia. Pero dentro del programa de detección precoz viene
+incluido gratuitamente una mamografía (mujeres) para detectar el
+cáncer de pecho o una prueba de PSA (hombres) para detectar el de
+próstata. Y te haces la prueba. Y sale positivo. ¿Debes preocuparte?</p>
+<p>Los números que voy a usar aquí son aproximadamente reales para ambos
+tipos de cáncer. Cambian con el tiempo y la prueba, pero en estos
+momentos y con las pruebas que tenemos los datos son los que se citan
+aquí.</p>
+<p>Siendo una persona sin antecedentes familiares, la probabilidad de
+tener cáncer de pecho o próstata es de 0,5% (según datos de la
+Asociación Española contra el Cáncer). La mamografía o el PSA, cuando
+hecha sobre una persona enferma, dan positivo el 90% de las veces, y
+negativo el 10% restante. Si la persona no está enferma, el test da
+positivo el 9% de las veces, y negativo el 91% de las veces. Con
+estos datos podemos calcular la probabilidad que nos interesa: la
+probabilidad de que estemos enfermos dado que hemos dado positivo,
+<span class="math inline">\(P(\mbox{Enfermo}|\mbox{Positivo})\)</span>.</p>
+<p>Supongamos que tenemos 10 000 personas sin síntomas. Sabemos que 50
+tienen cáncer y 9950, no. Pasamos la prueba a todas ellas. De las
+50 que tienen cáncer, 45 (El 90%) dan positivo y 5 dan negativo. De
+las 9950 sanas, 895 (el 9%) dan positivo y el resto dan
+negativo. Ponemos esto en un cuadro:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Sanas</th>
+<th align="right">Enfermas</th>
+<th align="right">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Test Positivo</td>
+<td align="right">895</td>
+<td align="right">45</td>
+<td align="right">940</td>
+</tr>
+<tr class="even">
+<td>Test Negativo</td>
+<td align="right">9055</td>
+<td align="right">5</td>
+<td align="right">9060</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td align="right">9950</td>
+<td align="right">50</td>
+<td align="right">10000</td>
+</tr>
+</tbody>
+</table>
+<p>Ahora podemos responder a la pregunta que nos interesa: ¿Cuál es la
+probabilidad que, habiendo dado positivo, esté enfermo? De los 940
+que han dado positivo, 45 están enfermos. Por lo tanto es 45/940 =
+0,048, un 5%.</p>
+<p>Esto no quiere decir que las pruebas son inútiles. Si se está en un
+grupo de riesgo, por ejemplo porque haya antecedentes familiares, la
+probabilidad de tener cáncer ya no es el 0,5%, sino que es mucho
+mayor. Imagina que es un 20% y repite los cálculos. En este caso sí
+hay motivo de preocupación y tiene sentido hacerse pruebas de
+detección precoz.</p>
+<p>Lo que hemos hecho es aplicar de una forma calculística el teorema de
+Bayes. Este teorema nos permite relacionar <span class="math inline">\(P(A|B)\)</span> con <span class="math inline">\(P(B|A)\)</span>. En
+formato de ecuación se expresa como:</p>
+<p><span class="math display">\[ P(A|B) = \frac{P(B|A)\, P(A)}{P(B)}\]</span></p>
+<p>En nuestro ejemplo:</p>
+<p><span class="math display">\[ P(\mbox{Enfermo}|\mbox{Positivo}) = 
+\frac{P(\mbox{Positivo}|\mbox{Enfermo})\, P(\mbox{Enfermo})}{P(\mbox{Positivo})}\]</span></p>
+<p>Sabemos que <span class="math inline">\(P(\mbox{Positivo}|\mbox{Enfermo}) = 0,9\)</span> y que <span class="math inline">\(P(\mbox{Enfermo}) = 0,05\)</span>. De la tabla podemos obtener que <span class="math inline">\(P(\mbox{Positivo}) = 0,094\)</span>, y entonces</p>
+<p><span class="math display">\[ P(\mbox{Enfermo}|\mbox{Positivo}) = 
+\frac{0,9 \cdot 0,005}{0,094} = 0,048\]</span></p>
+</div>
+<div id="resumen-1" class="section level2">
+<h2><span class="header-section-number">7.5</span> Resumen</h2>
+<p>La probabilidad es el lenguaje de la estadística y debemos saberlo
+conversar. La visión frecuentista parte de la idea de «casos
+favorables dividido entre casos posibles» y es la más intuitiva. Pero
+cuando no hay casos que contar, debemos usar otra visión.</p>
+<p>A partir de las probabilidades iniciales, podemos calcular
+la probabilidad de que suceda un evento u otro, <span class="math inline">\(P(A\mbox{ o }B)\)</span>, sucedan dos
+simultáneamente, <span class="math inline">\(P(A\mbox{ y }B)\)</span>, o suceda una condicionado a otra,
+<span class="math inline">\(P(A|B)\)</span>.</p>
+<p>Si los sucesos son incompatibles <span class="math inline">\(P(A\mbox{ o }B) = P(A) + P(B)\)</span>; si no <span class="math inline">\(P(A\mbox{ o }B) = P(A) + P(B) - P(A\mbox{ y }B)\)</span>.</p>
+<p>Si son independientes <span class="math inline">\(P(A\mbox{ y }B) = P(A)\cdot P(B)\)</span> y
+<span class="math inline">\(P(A|B) = P(A)\)</span>. Si no lo son, no tenemos una manera directa de
+calcular <span class="math inline">\(P(A\mbox{ y }B)\)</span>. Tanto si son independientes como si no,
+<span class="math inline">\(P(A|B) = P(A\mbox{ y }B)/P(B)\)</span>.</p>
+<p>La regla de Bayes nos da una manera de calcular <span class="math inline">\(P(A|B)\)</span> a partir de
+<span class="math inline">\(P(B|A)\)</span>.</p>
+<p>Las probabilidades condicionadas son más comunes, y en general más
+fáciles de calcular, que las probabilidades absolutas (sin
+condicionar). Es por eso que es importante saber usarlas y conocer
+cómo operar con ellas.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="uso-de-r-para-estadística-descriptiva-tutorial.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="variables-aleatorias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/07_Probabilidad.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Estadística.pdf", "Estadística.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

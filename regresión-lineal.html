@@ -1,0 +1,1933 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 14 Regresión Lineal | Mera estadística</title>
+  <meta name="description" content="Capítulo 14 Regresión Lineal | Mera estadística" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 14 Regresión Lineal | Mera estadística" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 14 Regresión Lineal | Mera estadística" />
+  
+  
+  
+
+<meta name="author" content="Jose Miró Julià" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="la-prueba-de-ji-cuadrado.html"/>
+<link rel="next" href="problemas.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Estadística</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a></li>
+<li class="chapter" data-level="2" data-path="qué-es-y-no-es-la-estadística.html"><a href="qué-es-y-no-es-la-estadística.html"><i class="fa fa-check"></i><b>2</b> ¿Qué es (y no es) la estadística?</a><ul>
+<li class="chapter" data-level="2.1" data-path="qué-es-y-no-es-la-estadística.html"><a href="qué-es-y-no-es-la-estadística.html#el-proceso-estadístico"><i class="fa fa-check"></i><b>2.1</b> El proceso estadístico</a></li>
+<li class="chapter" data-level="2.2" data-path="qué-es-y-no-es-la-estadística.html"><a href="qué-es-y-no-es-la-estadística.html#es-la-estadística-parte-de-las-matemáticas"><i class="fa fa-check"></i><b>2.2</b> ¿Es la estadística parte de las matemáticas?</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html"><i class="fa fa-check"></i><b>3</b> Estadística descriptiva de datos numéricos univariantes</a><ul>
+<li class="chapter" data-level="3.1" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#tipos-de-datos"><i class="fa fa-check"></i><b>3.1</b> Tipos de datos</a></li>
+<li class="chapter" data-level="3.2" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#medidas-de-centralidad-y-dispersión"><i class="fa fa-check"></i><b>3.2</b> Medidas de centralidad y dispersión</a></li>
+<li class="chapter" data-level="3.3" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#gráficas-para-datos-cuantitativos"><i class="fa fa-check"></i><b>3.3</b> Gráficas para datos cuantitativos</a></li>
+<li class="chapter" data-level="3.4" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#análisis-de-los-datos"><i class="fa fa-check"></i><b>3.4</b> Análisis de los datos</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#modalidad"><i class="fa fa-check"></i><b>3.4.1</b> Modalidad</a></li>
+<li class="chapter" data-level="3.4.2" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#simetría"><i class="fa fa-check"></i><b>3.4.2</b> Simetría</a></li>
+<li class="chapter" data-level="3.4.3" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#valores-atípicos"><i class="fa fa-check"></i><b>3.4.3</b> Valores atípicos</a></li>
+<li class="chapter" data-level="3.4.4" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#problematicidad"><i class="fa fa-check"></i><b>3.4.4</b> Problematicidad</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><i class="fa fa-check"></i><b>4</b> Estadística descriptiva de datos cualitativos univariantes</a><ul>
+<li class="chapter" data-level="4.1" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#tablas-de-contingencia"><i class="fa fa-check"></i><b>4.1</b> Tablas de contingencia</a></li>
+<li class="chapter" data-level="4.2" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#gráficas-para-datos-cualitativos"><i class="fa fa-check"></i><b>4.2</b> Gráficas para datos cualitativos</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#gráficos-3d"><i class="fa fa-check"></i><b>4.2.1</b> Gráficos 3D</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#conclusión"><i class="fa fa-check"></i><b>4.3</b> Conclusión</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html"><i class="fa fa-check"></i><b>5</b> Estadística descriptiva de datos bivariantes</a><ul>
+<li class="chapter" data-level="5.1" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#dos-variables-numéricas"><i class="fa fa-check"></i><b>5.1</b> Dos variables numéricas</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#gráfica-de-nube-de-puntos"><i class="fa fa-check"></i><b>5.1.1</b> Gráfica de nube de puntos</a></li>
+<li class="chapter" data-level="5.1.2" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#rectas-de-regresión"><i class="fa fa-check"></i><b>5.1.2</b> Rectas de regresión</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#una-variable-numérica-y-una-cualitativa"><i class="fa fa-check"></i><b>5.2</b> Una variable numérica y una cualitativa</a></li>
+<li class="chapter" data-level="5.3" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#dos-variables-cualitativas"><i class="fa fa-check"></i><b>5.3</b> Dos variables cualitativas</a></li>
+<li class="chapter" data-level="5.4" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#resumen"><i class="fa fa-check"></i><b>5.4</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html"><i class="fa fa-check"></i><b>6</b> Uso de R para estadística descriptiva. Tutorial</a><ul>
+<li class="chapter" data-level="6.1" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#data-frames"><i class="fa fa-check"></i><b>6.1</b> Data frames</a></li>
+<li class="chapter" data-level="6.2" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-una-variable-cuantitativa"><i class="fa fa-check"></i><b>6.2</b> El caso de una variable cuantitativa</a></li>
+<li class="chapter" data-level="6.3" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-una-variable-cualitativa"><i class="fa fa-check"></i><b>6.3</b> El caso de una variable cualitativa</a></li>
+<li class="chapter" data-level="6.4" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-dos-variables-cuantitativas"><i class="fa fa-check"></i><b>6.4</b> El caso de dos variables cuantitativas</a></li>
+<li class="chapter" data-level="6.5" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-dos-variables-una-cuantitativa-y-una-cualitativa"><i class="fa fa-check"></i><b>6.5</b> El caso de dos variables, una cuantitativa y una cualitativa</a></li>
+<li class="chapter" data-level="6.6" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-dos-variables-cualitativas"><i class="fa fa-check"></i><b>6.6</b> El caso de dos variables cualitativas</a></li>
+<li class="chapter" data-level="6.7" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#resumen-final"><i class="fa fa-check"></i><b>6.7</b> Resumen final</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="probabilidad.html"><a href="probabilidad.html"><i class="fa fa-check"></i><b>7</b> Probabilidad</a><ul>
+<li class="chapter" data-level="7.1" data-path="probabilidad.html"><a href="probabilidad.html#ideas-básicas"><i class="fa fa-check"></i><b>7.1</b> Ideas básicas</a></li>
+<li class="chapter" data-level="7.2" data-path="probabilidad.html"><a href="probabilidad.html#operaciones-con-probabilidades"><i class="fa fa-check"></i><b>7.2</b> Operaciones con probabilidades</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-de-una-cosa-u-otra"><i class="fa fa-check"></i><b>7.2.1</b> Probabilidad de una cosa u otra</a></li>
+<li class="chapter" data-level="7.2.2" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-de-una-cosa-y-otra"><i class="fa fa-check"></i><b>7.2.2</b> Probabilidad de una cosa y otra</a></li>
+<li class="chapter" data-level="7.2.3" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-del-suceso-contrario"><i class="fa fa-check"></i><b>7.2.3</b> Probabilidad del suceso contrario</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-condicionada"><i class="fa fa-check"></i><b>7.3</b> Probabilidad condicionada</a></li>
+<li class="chapter" data-level="7.4" data-path="probabilidad.html"><a href="probabilidad.html#regla-de-bayes"><i class="fa fa-check"></i><b>7.4</b> Regla de Bayes</a></li>
+<li class="chapter" data-level="7.5" data-path="probabilidad.html"><a href="probabilidad.html#resumen-1"><i class="fa fa-check"></i><b>7.5</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html"><i class="fa fa-check"></i><b>8</b> Variables aleatorias</a><ul>
+<li class="chapter" data-level="8.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#qué-es-una-variable-aleatoria"><i class="fa fa-check"></i><b>8.1</b> ¿Qué es una variable aleatoria?</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#variables-discretas"><i class="fa fa-check"></i><b>8.1.1</b> Variables discretas</a></li>
+<li class="chapter" data-level="8.1.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#variables-continuas"><i class="fa fa-check"></i><b>8.1.2</b> Variables continuas</a></li>
+<li class="chapter" data-level="8.1.3" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#propiedades-de-estas-funciones"><i class="fa fa-check"></i><b>8.1.3</b> Propiedades de estas funciones</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#cálculo-de-probabilidades"><i class="fa fa-check"></i><b>8.2</b> Cálculo de probabilidades</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#calculando-a-mano"><i class="fa fa-check"></i><b>8.2.1</b> Calculando a mano</a></li>
+<li class="chapter" data-level="8.2.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#calculando-con-r"><i class="fa fa-check"></i><b>8.2.2</b> Calculando con R</a></li>
+<li class="chapter" data-level="8.2.3" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#resumen-2"><i class="fa fa-check"></i><b>8.2.3</b> Resumen</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><i class="fa fa-check"></i><b>9</b> Esperanzas y desviaciones típicas de variables aleatorias</a><ul>
+<li class="chapter" data-level="9.1" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#desviaciones-típicas"><i class="fa fa-check"></i><b>9.1</b> Desviaciones típicas</a></li>
+<li class="chapter" data-level="9.2" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#operaciones-con-variables-aleatorias"><i class="fa fa-check"></i><b>9.2</b> Operaciones con variables aleatorias</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#un-ejemplo"><i class="fa fa-check"></i><b>9.2.1</b> Un ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#resumen-3"><i class="fa fa-check"></i><b>9.3</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><i class="fa fa-check"></i><b>10</b> Intervalos de confianza: una medida de la incertidumbre</a><ul>
+<li class="chapter" data-level="10.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#incertidumbre-en-muestras-de-proporciones"><i class="fa fa-check"></i><b>10.1</b> Incertidumbre en muestras de proporciones</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#una-simulación"><i class="fa fa-check"></i><b>10.1.1</b> Una simulación</a></li>
+<li class="chapter" data-level="10.1.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>10.1.2</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="10.1.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#fuga-de-probabilidad"><i class="fa fa-check"></i><b>10.1.3</b> Fuga de probabilidad</a></li>
+<li class="chapter" data-level="10.1.4" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#un-ejemplo-1"><i class="fa fa-check"></i><b>10.1.4</b> Un ejemplo</a></li>
+<li class="chapter" data-level="10.1.5" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#resumen-de-intervalos-de-confianza-de-proporciones"><i class="fa fa-check"></i><b>10.1.5</b> Resumen de intervalos de confianza de proporciones</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#incertidumbre-en-muestras-de-medias"><i class="fa fa-check"></i><b>10.2</b> Incertidumbre en muestras de medias</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#una-simulación-1"><i class="fa fa-check"></i><b>10.2.1</b> Una simulación</a></li>
+<li class="chapter" data-level="10.2.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#intervalos-de-confianza-1"><i class="fa fa-check"></i><b>10.2.2</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="10.2.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#la-distribución-t-de-student"><i class="fa fa-check"></i><b>10.2.3</b> La distribución t de Student</a></li>
+<li class="chapter" data-level="10.2.4" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#fuga-de-probabilidades"><i class="fa fa-check"></i><b>10.2.4</b> Fuga de probabilidades</a></li>
+<li class="chapter" data-level="10.2.5" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#un-ejemplo-2"><i class="fa fa-check"></i><b>10.2.5</b> Un ejemplo</a></li>
+<li class="chapter" data-level="10.2.6" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#resumen-de-intervalos-de-confianza-de-medias"><i class="fa fa-check"></i><b>10.2.6</b> Resumen de intervalos de confianza de medias</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#comparación-de-intervalos-de-confianza"><i class="fa fa-check"></i><b>10.3</b> Comparación de intervalos de confianza</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#no-puedo-decir-que-sean-distintos"><i class="fa fa-check"></i><b>10.3.1</b> No puedo decir que sean distintos</a></li>
+<li class="chapter" data-level="10.3.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#cálculo-de-intervalos-de-confianza-de-diferencias"><i class="fa fa-check"></i><b>10.3.2</b> Cálculo de intervalos de confianza de diferencias</a></li>
+<li class="chapter" data-level="10.3.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#más-ejemplos"><i class="fa fa-check"></i><b>10.3.3</b> Más ejemplos</a></li>
+<li class="chapter" data-level="10.3.4" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#resumen-de-comparación-de-intervalos-de-confianza"><i class="fa fa-check"></i><b>10.3.4</b> Resumen de comparación de intervalos de confianza</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html"><i class="fa fa-check"></i><b>11</b> Contrastes de hipotesis</a><ul>
+<li class="chapter" data-level="11.1" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html#experimentos-estadísticos-para-un-contraste-de-hipótesis"><i class="fa fa-check"></i><b>11.1</b> Experimentos estadísticos para un contraste de hipótesis</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html#procedimiento-de-cálculo-del-p-valor."><i class="fa fa-check"></i><b>11.1.1</b> Procedimiento de cálculo del p-valor.</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html#interpretación-del-p-valor."><i class="fa fa-check"></i><b>11.2</b> Interpretación del p-valor.</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>12</b> ANOVA</a><ul>
+<li class="chapter" data-level="12.1" data-path="anova.html"><a href="anova.html#nada-es-gratis-y-los-errores-se-acumulan"><i class="fa fa-check"></i><b>12.1</b> Nada es gratis (y los errores se acumulan)</a></li>
+<li class="chapter" data-level="12.2" data-path="anova.html"><a href="anova.html#punto-de-partida"><i class="fa fa-check"></i><b>12.2</b> Punto de partida</a></li>
+<li class="chapter" data-level="12.3" data-path="anova.html"><a href="anova.html#tutorial-de-anova-en-r"><i class="fa fa-check"></i><b>12.3</b> Tutorial de ANOVA en R</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="anova.html"><a href="anova.html#el-problema"><i class="fa fa-check"></i><b>12.3.1</b> El problema</a></li>
+<li class="chapter" data-level="12.3.2" data-path="anova.html"><a href="anova.html#el-primer-método-oneway.test"><i class="fa fa-check"></i><b>12.3.2</b> El primer método: oneway.test()</a></li>
+<li class="chapter" data-level="12.3.3" data-path="anova.html"><a href="anova.html#el-segundo-método-aov"><i class="fa fa-check"></i><b>12.3.3</b> El segundo método: aov()</a></li>
+<li class="chapter" data-level="12.3.4" data-path="anova.html"><a href="anova.html#el-tercer-método"><i class="fa fa-check"></i><b>12.3.4</b> El tercer método</a></li>
+<li class="chapter" data-level="12.3.5" data-path="anova.html"><a href="anova.html#y-si-los-datos-no-están-como-los-quiere-r"><i class="fa fa-check"></i><b>12.3.5</b> ¿Y si los datos no están como los quiere R?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html"><i class="fa fa-check"></i><b>13</b> La prueba de Ji-Cuadrado</a><ul>
+<li class="chapter" data-level="13.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-de-ji-cuadrado-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>13.1</b> Prueba de ji-cuadrado de bondad de ajuste</a></li>
+<li class="chapter" data-level="13.2" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-de-bondad-de-ajuste-con-r"><i class="fa fa-check"></i><b>13.2</b> Prueba <span class="math inline">\(\chi^2\)</span> de bondad de ajuste con R</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#problematicidad-el-aviso-de-chisq.test"><i class="fa fa-check"></i><b>13.2.1</b> Problematicidad: el aviso de chisq.test()</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#la-prueba-chi2-de-homogeneidad"><i class="fa fa-check"></i><b>13.3</b> La prueba <span class="math inline">\(\chi^2\)</span> de homogeneidad</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#definición-formal"><i class="fa fa-check"></i><b>13.3.1</b> Definición formal</a></li>
+<li class="chapter" data-level="13.3.2" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-como-contraste-de-hipótesis"><i class="fa fa-check"></i><b>13.3.2</b> Prueba <span class="math inline">\(\chi^2\)</span> como contraste de hipótesis</a></li>
+<li class="chapter" data-level="13.3.3" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-de-homogeneidad-con-r"><i class="fa fa-check"></i><b>13.3.3</b> Prueba <span class="math inline">\(\chi^2\)</span> de homogeneidad con R</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#la-prueba-chi2-de-independencia"><i class="fa fa-check"></i><b>13.4</b> La prueba <span class="math inline">\(\chi^{2}\)</span> de independencia</a><ul>
+<li class="chapter" data-level="13.4.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-de-independencia-como-contraste-de-hipótesis"><i class="fa fa-check"></i><b>13.4.1</b> Prueba <span class="math inline">\(\chi^2\)</span> de independencia como contraste de hipótesis</a></li>
+<li class="chapter" data-level="13.4.2" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#un-ejemplo-3"><i class="fa fa-check"></i><b>13.4.2</b> Un ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#resumen-4"><i class="fa fa-check"></i><b>13.5</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="regresión-lineal.html"><a href="regresión-lineal.html"><i class="fa fa-check"></i><b>14</b> Regresión Lineal</a><ul>
+<li class="chapter" data-level="14.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#cálculo"><i class="fa fa-check"></i><b>14.1</b> Cálculo</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#fundamentos"><i class="fa fa-check"></i><b>14.1.1</b> Fundamentos</a></li>
+<li class="chapter" data-level="14.1.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#otro-ejemplo"><i class="fa fa-check"></i><b>14.1.2</b> Otro ejemplo</a></li>
+<li class="chapter" data-level="14.1.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#y-si-no-es-una-recta"><i class="fa fa-check"></i><b>14.1.3</b> ¿Y si no es una recta?</a></li>
+<li class="chapter" data-level="14.1.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-la-parte-de-cálculo"><i class="fa fa-check"></i><b>14.1.4</b> Resumen de la parte de cálculo</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#estadística"><i class="fa fa-check"></i><b>14.2</b> Estadística</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#incertidumbre-en-la-regresión-lineal"><i class="fa fa-check"></i><b>14.2.1</b> Incertidumbre en la regresión lineal</a></li>
+<li class="chapter" data-level="14.2.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#condiciones"><i class="fa fa-check"></i><b>14.2.2</b> Condiciones</a></li>
+<li class="chapter" data-level="14.2.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#salida-de-r"><i class="fa fa-check"></i><b>14.2.3</b> Salida de R</a></li>
+<li class="chapter" data-level="14.2.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#intervalos-de-confianza-2"><i class="fa fa-check"></i><b>14.2.4</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="14.2.5" data-path="regresión-lineal.html"><a href="regresión-lineal.html#otro-ejemplo-1"><i class="fa fa-check"></i><b>14.2.5</b> Otro ejemplo</a></li>
+<li class="chapter" data-level="14.2.6" data-path="regresión-lineal.html"><a href="regresión-lineal.html#la-regresión-no-muestra-qué-tipo-de-curva-es"><i class="fa fa-check"></i><b>14.2.6</b> La regresión no muestra qué tipo de curva es</a></li>
+<li class="chapter" data-level="14.2.7" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-la-parte-de-estadística"><i class="fa fa-check"></i><b>14.2.7</b> Resumen de la parte de estadística</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#diagnóstico"><i class="fa fa-check"></i><b>14.3</b> Diagnóstico</a><ul>
+<li class="chapter" data-level="14.3.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#seis-modelos"><i class="fa fa-check"></i><b>14.3.1</b> Seis modelos</a></li>
+<li class="chapter" data-level="14.3.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#cinco-diagnósticos"><i class="fa fa-check"></i><b>14.3.2</b> Cinco diagnósticos</a></li>
+<li class="chapter" data-level="14.3.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-diagnóstico"><i class="fa fa-check"></i><b>14.3.3</b> Resumen de diagnóstico</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#inferencias"><i class="fa fa-check"></i><b>14.4</b> Inferencias</a><ul>
+<li class="chapter" data-level="14.4.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#contrastes-de-hipótesis"><i class="fa fa-check"></i><b>14.4.1</b> Contrastes de hipótesis</a></li>
+<li class="chapter" data-level="14.4.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#intervalos-de-confianza-3"><i class="fa fa-check"></i><b>14.4.2</b> Intervalos de confianza</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicciones"><i class="fa fa-check"></i><b>14.5</b> Predicciones</a><ul>
+<li class="chapter" data-level="14.5.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-de-la-curva"><i class="fa fa-check"></i><b>14.5.1</b> Predicción de la curva</a></li>
+<li class="chapter" data-level="14.5.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-de-rango"><i class="fa fa-check"></i><b>14.5.2</b> Predicción de rango</a></li>
+<li class="chapter" data-level="14.5.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-de-medias"><i class="fa fa-check"></i><b>14.5.3</b> Predicción de medias</a></li>
+<li class="chapter" data-level="14.5.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-predicciones"><i class="fa fa-check"></i><b>14.5.4</b> Resumen de predicciones</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="problemas.html"><a href="problemas.html"><i class="fa fa-check"></i><b>15</b> Problemas</a><ul>
+<li class="chapter" data-level="15.1" data-path="problemas.html"><a href="problemas.html#qué-es-la-estadística"><i class="fa fa-check"></i><b>15.1</b> ¿Qué es la estadística?</a></li>
+<li class="chapter" data-level="15.2" data-path="problemas.html"><a href="problemas.html#manejo-de-r-y-simulaciones"><i class="fa fa-check"></i><b>15.2</b> Manejo de R y simulaciones</a></li>
+<li class="chapter" data-level="15.3" data-path="problemas.html"><a href="problemas.html#estadística-descriptiva"><i class="fa fa-check"></i><b>15.3</b> Estadística Descriptiva</a></li>
+<li class="chapter" data-level="15.4" data-path="problemas.html"><a href="problemas.html#probabilidad-y-variables-aleatórias"><i class="fa fa-check"></i><b>15.4</b> Probabilidad y variables aleatórias</a></li>
+<li class="chapter" data-level="15.5" data-path="problemas.html"><a href="problemas.html#razonamiento-estadístico."><i class="fa fa-check"></i><b>15.5</b> Razonamiento estadístico.</a><ul>
+<li class="chapter" data-level="15.5.1" data-path="problemas.html"><a href="problemas.html#intervalos-de-confianza-4"><i class="fa fa-check"></i><b>15.5.1</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="15.5.2" data-path="problemas.html"><a href="problemas.html#contrastes-de-hipótesis-1"><i class="fa fa-check"></i><b>15.5.2</b> Contrastes de hipótesis</a></li>
+<li class="chapter" data-level="15.5.3" data-path="problemas.html"><a href="problemas.html#razonamiento-estadístico-complejo"><i class="fa fa-check"></i><b>15.5.3</b> Razonamiento estadístico complejo</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="problemas.html"><a href="problemas.html#anova-1"><i class="fa fa-check"></i><b>15.6</b> Anova</a></li>
+<li class="chapter" data-level="15.7" data-path="problemas.html"><a href="problemas.html#ji-cuadrado"><i class="fa fa-check"></i><b>15.7</b> Ji-cuadrado</a></li>
+<li class="chapter" data-level="15.8" data-path="problemas.html"><a href="problemas.html#regresión-lineal-1"><i class="fa fa-check"></i><b>15.8</b> Regresión Lineal</a></li>
+<li class="chapter" data-level="15.9" data-path="problemas.html"><a href="problemas.html#problemas-con-todo"><i class="fa fa-check"></i><b>15.9</b> Problemas con todo</a></li>
+<li class="chapter" data-level="15.10" data-path="problemas.html"><a href="problemas.html#campos-elíseos"><i class="fa fa-check"></i><b>15.10</b> Campos Elíseos</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Mera estadística</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="regresión-lineal" class="section level1">
+<h1><span class="header-section-number">Capítulo 14</span> Regresión Lineal</h1>
+<p>Hemos visto cómo estudiar datos cuando tenemos una variable numérica
+(t.test), una cualitativa (prop.test y <span class="math inline">\(\chi^{2}\)</span> de bondad de
+ajuste), una variable numérica y una cualitativa (ANOVA) y dos
+varialbes cualitativas (<span class="math inline">\(\chi^{2}\)</span> de homogeneidad/independencia).
+Nos queda el caso de tener dos variables numéricas. La prueba
+estadístca habitual en este caso es la regresión lineal con el que
+encontramos la recta o curva que “mejor” se aproxima a nuestros datos.
+Es una prueba complicada, que vamos a dividir en varias
+partes: el cálculo de la recta o curva, las estadísticas
+involucradas, el diagnóstico de la fiabilidad de la prueba y la
+predicción de valores nuevos. Empezamos con el cálculo de la recta o
+curva, que en el fondo no es una cuestión de estadística, sino de
+cálculo.</p>
+<div id="cálculo" class="section level2">
+<h2><span class="header-section-number">14.1</span> Cálculo</h2>
+<div id="fundamentos" class="section level3">
+<h3><span class="header-section-number">14.1.1</span> Fundamentos</h3>
+<p>Queremos saber como varía la intensidad que pasa por un componente en
+función del voltaje que le aplicamos. Vamos a imaginarnos que
+somos unos científicos de principios del S. XIX estudiando esta cosa
+nueva llamada electricidad y no conocemos la Ley de Ohm. Montamos un
+circuito con una fuente de alimentación para aplicar un voltaje y un
+amperímetro para medir la intensidad. Lo hacemos con todo cuidado,
+hacemos varias pruebas, mejoramos nuestros procedimientos (vemos, por
+ejemplo, que el lugar donde colocamos las sondas de medida influyen en
+el valor que obtenemos) y tomamos nuestras medidas. Son las siguientes:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">V (voltios)</th>
+<th align="right">I (mA)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">3,0</td>
+<td align="right">20</td>
+</tr>
+<tr class="even">
+<td align="right">5,0</td>
+<td align="right">34</td>
+</tr>
+<tr class="odd">
+<td align="right">7,0</td>
+<td align="right">57</td>
+</tr>
+<tr class="even">
+<td align="right">9,0</td>
+<td align="right">82 1</td>
+</tr>
+<tr class="odd">
+<td align="right">11,0</td>
+<td align="right">11</td>
+</tr>
+<tr class="even">
+<td align="right">14,0</td>
+<td align="right">141</td>
+</tr>
+<tr class="odd">
+<td align="right">17,0</td>
+<td align="right">165</td>
+</tr>
+<tr class="even">
+<td align="right">20,0</td>
+<td align="right">180</td>
+</tr>
+<tr class="odd">
+<td align="right">25,0</td>
+<td align="right">235</td>
+</tr>
+<tr class="even">
+<td align="right">30,0</td>
+<td align="right">275</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" data-line-number="1">V =<span class="st"> </span><span class="kw">c</span>(<span class="fl">3.0</span>,  <span class="fl">5.0</span>,  <span class="fl">7.0</span>,  <span class="fl">9.0</span>, <span class="fl">11.0</span>, <span class="fl">14.0</span>, <span class="fl">17.0</span>, <span class="fl">20.0</span>, <span class="fl">25.0</span>,  <span class="fl">30.0</span>)</a>
+<a class="sourceLine" id="cb194-2" data-line-number="2">I =<span class="st"> </span><span class="kw">c</span>(<span class="dv">20</span>, <span class="dv">34</span>, <span class="dv">57</span>, <span class="dv">82</span>, <span class="dv">111</span>, <span class="dv">141</span>, <span class="dv">165</span>, <span class="dv">180</span>,  <span class="dv">235</span>, <span class="dv">275</span>)</a>
+<a class="sourceLine" id="cb194-3" data-line-number="3"><span class="kw">plot</span>(V, I)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
+<p>Estos son los datos. A la variable que está en el eje X se le llama <em>variable independiente</em> o <em>estímulo</em>. A la variable que está en el eje Y se le llama <em>variable dependiente</em> o <em>respuesta</em>. Nosotros introducimos la variable independiente, puede tomar cualquier valor que queramos, pero medimos la dependiente, que toma el valor que corresponda. Otra forma de verlo es que estimulamos con el voltaje y el componente responde con una cierta intensidad.</p>
+<p>Vemos que los puntos siguen una extraña curva que no identificamos. Además, durante las pruebas nos fijamos que siempre obteníamos alguna extraña curva, pero que no siempre se parecía a esta. Notamos también que en este caso (y en todos los anteriores) los puntos no formaban exactamente una recta, pero siempre se acercaban bastante. Esto nos lleva a hacer una suposición: vamos a suponer que los puntos deberían seguir realmente una recta y que si no la siguen son por errores experimentales: aunque el primer punto es, dentro de
+nuestra precisión, (3,0; 20), realmente podría ser el (2,96; 20,4), un
+poco desviado de donde lo he pintado. O quizá en algún caso no he
+colocado la sonda con todo el cuidado que debía. Es razonable pensar
+que los puntos reales están cerca, pero no exactamente donde la teoría
+predice. Supongamos entonces que en el caso ideal, si no hubiera
+errores experimentales, los puntos siguieran perfectamente una recta.
+¿Qué recta sería?</p>
+<p>Estamos suponiendo que la ley que regula la intensidad en función del
+voltaje es realmente <span class="math inline">\(I = a + bV\)</span> y que nuestros puntos
+se desvían de esta recta por error experimental. Es decir que para
+cada par <span class="math inline">\((V_{i}, I_{i})\)</span> se cumple que
+<span class="math display">\[I_{i} = a + bV_{i} + \varepsilon_{i}\]</span>
+donde <span class="math inline">\(\varepsilon_{i}\)</span> es nuestro error experimental para la medida
+<span class="math inline">\(i\)</span>. A estas cantidades las vamos a llamar <em>residuos</em>. Nótese que
+si el punto está por encima de la recta el residuo es positivo y si
+está por debajo, el residuo es negativo. Vamos a dibujar los residuos
+tenemos la siguiente gráfica:</p>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-112-1.png" width="672" /></p>
+<p>Los residuos no corresponden a la distancia del punto a la recta, sino
+que es el desplazamiento vertical desde el punto a la recta.</p>
+<p>Para poder calcular la recta vamos a suponer además que como hemos
+ido con mucho cuidado en reducir en lo posible los errores
+experimentales, la recta “real” va a ser aquella que minimiza de forma
+conjunta los residuos. Siguiendo la misma idea que en la prueba de
+<span class="math inline">\(\chi^{2}\)</span>, esto va a querer decir que queremos minimizar la suma de
+los cuadrados de los residuos.</p>
+<p>Con estas dos suposiciones —el voltaje y la intensidad están
+relacionados mediante una recta y que la recta es aquella que minimiza
+la suma de cuadrados de los residuos— hemos convertido nuestro
+problema en uno de minimización, un problema de cálculo. Ya saben:
+derivar, igualar a 0, etc. No es trivial resolver este problema de
+cálculo, pero tampoco es demasiado difícil. No lo vamos a detallar
+aquí: en Wikipedia o cualquier libro elemental de estadística
+lo puede encontrar. Simplemente saber que se acaba con dos fórmulas en las
+que introducimos nuestros puntos y nos permiten calcular los valores
+de <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span>.</p>
+<p>A este método se le llama <em>regresión lineal</em>. Algunas matizaciones.</p>
+<ul>
+<li><p>El adjetivo <em>lineal</em> no hace referencia a que hemos calculado una recta, sino al método de cálculo usado. Podemos usar la regresión lineal para calcular cualquier curva que propongamos. Veremos ejemplos más adelante. Es más, este método lo creó el matemático alemán C.F. Gauss no para calcular una recta, sino para calcular una elipse, la de la órbita de Ceres.</p></li>
+<li><p>Aunque este método de regresión se considera estadística, el cálculo de la recta (o curva) en sí no es estadística sino cálculo. El hacer inferencias sobre la recta (o curva) obtenida sí que es estadística y requiere que se cumplan una serie de condiciones que detallaremos en su momento.</p></li>
+<li><p>El que obtengamos una recta, una exponencial o cualquier otra curva no es inherente ni al método ni a los puntos en sí, sino que es una hipótesis del investigador. En otras palabras, el que sea una recta (o exponencial o lo que sea) no “sale” del método sino que lo “mete” el que hace los cálculos.</p></li>
+<li><p>Se suele decir que se calcula la recta que minimiza la suma de las distancias de los puntos a la recta. Aunque informalmente ya nos basta, no es correcto. Como hemos visto, lo que minimiza es la suma de los cuadrados de los residuos. No es lo mismo.</p></li>
+</ul>
+<p>Usaremos R para hacer los cálculos. La función a utilizar es
+<code>lm()</code>. En el caso que queramos calcular una recta, la
+instrucción tiene la forma <code>lm(y~x)</code>, que se lee “<span class="math inline">\(y\)</span> en
+función de <span class="math inline">\(x\)</span>”. Recordemos que <span class="math inline">\(y\)</span> es la variable dependiente, la
+respuesta, y que <span class="math inline">\(x\)</span> es la variable independiente, el estímulo. Para
+nuestro ejemplo:</p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" data-line-number="1">R =<span class="st"> </span><span class="kw">lm</span>(I<span class="op">~</span>V)</a>
+<a class="sourceLine" id="cb195-2" data-line-number="2">R</a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = I ~ V)
+## 
+## Coefficients:
+## (Intercept)            V  
+##      -4.877        9.566</code></pre>
+<p>La ordenada en el origen (lo que aparece en la salida de R como <em>Intercept</em>) es <span class="math inline">\(-4,880\)</span> mA y el coeficiente que multiplica al voltaje (la pendiente) es
+<span class="math inline">\(9,559\)</span>. Es decir la recta de regresión es
+<span class="math display">\[I = -4,880 + 9,559\,V.\]</span>
+Lo que estos dos coeficientes representan es que, según este modelo,
+con un voltaje de 0 V pasa por el componente una intensidad de <span class="math inline">\(-4,880\)</span>
+mA y que por cada voltio adicional que apliquemos, la intensidad
+sube <span class="math inline">\(9,559\)</span> mA.</p>
+<p>Sabemos que la ordenada en el origen debería ser 0. Cuando estudiemos
+la parte estadística de la regresión lineal veremos si este <span class="math inline">\(-4,880\)</span>
+que hemos obtenido significa que tenemos un error experimental o no.
+Podemos aplicar la ley de Ohm para obtener de nuestras medidas la
+resistencia del componente: <span class="math inline">\(1000/9,559 = 104,6\,\Omega\)</span> (el 1000 es
+porque tenemos las intensidades en mA).</p>
+</div>
+<div id="otro-ejemplo" class="section level3">
+<h3><span class="header-section-number">14.1.2</span> Otro ejemplo</h3>
+<p>En nuestro primer ejemplo teníamos una ley física, y las leyes físicas
+siempre siguen una expresión matemática, a menudo simple. Si además
+trabajamos en el entorno controlado de un laboratorio, tenemos una
+variabilidad muy pequeña, como obtuvimos. Vamos a un segundo ejemplo donde
+no hay ninguna ley física y la variabilidad es mucho mayor.</p>
+<p>Estamos diseñando una montaña rusa para un parque de atracciones. Es
+una montaña rusa pequeña en la que sólo se montarán niños de hasta 12
+años. Para mejorar la eficiencia queremos estimar el peso de los
+niños que suben a la atracción. Desgraciadamente no es factible hacer
+que los niños se pesen a la entrada, ni es posible, por cuestión de
+coste, añadir una báscula y pesar los vagones con los niños montados.
+Una solución simple sería contar cuántos niños se montan y
+multiplicar ese número por el peso medio de un niño, pero buscamos
+algo mejor.</p>
+<p>Una posibilidad que queremos estudiar es poner una cámara en el paso
+de entrada y usarla para medir con bastante precisión la altura de los
+niños. Como el peso está correlacionada con la altura, esto
+teóricamente nos permitiría estimar el peso de los niños que se monten
+en la atracción. En este caso la variable independiente es la altura,
+lo que medimos e introducimos en el modelo, y la variable dependiente es el
+peso, lo que estimamos.</p>
+<p>No hay aquí ninguna ley física, pero si una noción de que cuanto mayor es la altura de un niño, mayor va a ser su peso. Es cierto que el peso no sólo depende de la altura, sino que también depende del sexo del niño, de sus constitución, de lo gordo o delgado que está, etc., pero si el peso depende de la altura en gran medida, este método puede funcionar.</p>
+<p>Para estudiar nuestras ideas cogemos el conjunto de datos kid.weights
+del paquete UsingR. Seleccionamos a los mayores de 4 años (48 meses).
+Creamos las variables <code>alt</code>, con la altura de los niños y
+<code>peso</code>, con su peso. Lo dibujamos y miramos los datos:</p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb197-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;UsingR&quot;</span>)</a>
+<a class="sourceLine" id="cb197-2" data-line-number="2"><span class="co">#Mayores de 4 años</span></a>
+<a class="sourceLine" id="cb197-3" data-line-number="3">KW4 =<span class="st"> </span>kid.weights[kid.weights<span class="op">$</span>age <span class="op">&gt;=</span><span class="dv">48</span>,]</a>
+<a class="sourceLine" id="cb197-4" data-line-number="4">peso =<span class="st"> </span>KW4<span class="op">$</span>weight<span class="op">*</span><span class="fl">0.454</span></a>
+<a class="sourceLine" id="cb197-5" data-line-number="5">alt =<span class="st"> </span>KW4<span class="op">$</span>height<span class="op">*</span><span class="fl">2.54</span></a>
+<a class="sourceLine" id="cb197-6" data-line-number="6"><span class="kw">plot</span>(alt, peso, <span class="dt">xlab =</span> <span class="st">&quot;altura (cm)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;peso (Kg)&quot;</span>)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-114-1.png" width="672" /></p>
+<p>Parecen bastante dispersos. No está claro qué curva sería la que más
+se aproxima a los puntos. Ni siquiera sabemos si la tal curva
+existe. Vamos a empezar por suponer que es una recta (para qué complicarse la vida de entrada).
+La calculamos:</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" data-line-number="1">PA =<span class="st"> </span><span class="kw">lm</span>(peso<span class="op">~</span>alt)</a>
+<a class="sourceLine" id="cb198-2" data-line-number="2">PA</a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = peso ~ alt)
+## 
+## Coefficients:
+## (Intercept)          alt  
+##    -14.8472       0.3543</code></pre>
+<p>Estos dos coeficientes se interpretan de la siguiente manera: el peso
+de un niño de altura 0 cm es de <span class="math inline">\(-14,8\)</span> Kg y por cada centímetro
+adicional, el niño pesa <span class="math inline">\(0,35\)</span> Kg más. El primer coeficiente es
+obviamente absurdo. Esto pasa mucho en la regresión lineal y es
+debido a que los datos de nuestra muestra están entre 60 cm y 160 cm
+y, a menos que haya una ley natural conocida, sólo debemos utilizar la
+recta dentro de este rango: no tienen validez fuera de él (y hemos de
+tener más dudas en los extremos que en el centro). Esta recta, este
+modelo, no puede extrapolarse fuera del rango de los datos de partida.</p>
+<p>Gráficamente queda:</p>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" data-line-number="1"><span class="kw">plot</span>(alt, peso, <span class="dt">xlab =</span> <span class="st">&quot;altura (cm)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;peso (Kg)&quot;</span>)</a>
+<a class="sourceLine" id="cb200-2" data-line-number="2"><span class="kw">abline</span>(PA, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-116-1.png" width="672" /></p>
+<p>Vemos que hay muchos puntos alejados de la recta. Quizá la regresión
+no sea la solución que buscábamos. Cuando estudiemos la parte de
+estadística de la regresión podremos precisar más la bondad de esta
+recta como predictora de pesos.</p>
+</div>
+<div id="y-si-no-es-una-recta" class="section level3">
+<h3><span class="header-section-number">14.1.3</span> ¿Y si no es una recta?</h3>
+<p>Como hemos dicho, la regresión lineal no necesariamente se debe
+aplicar a una recta. Es el caso más simple y más habitual, pero
+podemos partir de cualquier curva que queramos. Veamos
+primero un caso típico, el crecimiento exponencial. En este caso
+transformamos la función para que se convierta en una recta.
+Después veremos cómo indicar a R otras funciones que queramos
+utilizar.</p>
+<div id="crecimiento-exponencial" class="section level4 unnumbered">
+<h4>Crecimiento exponencial</h4>
+<p>Muchos sistemas crecen de forma exponencial durante algunos periodos.
+Por ejemplo, muchos crecimientos orgánicos (animales, plantas,
+bacterias) crecen exponencialmente si no hay limitaciones de
+recursos: cuantos más individuos hay, más nacimientos se producen, lo
+que hace que haya aún más individuos, lo que hace que haya aún más
+nacimientos. Esto sigue así hasta que la escasez de recursos hace que
+no puedan crecer tan rápido, llegando eventualmente a pararse. Pero
+inicialmente el crecimiento es exponencial. Por un razonamiento análogo, los decrecimientos orgánicos también presentan a menudo una fase exponencial.</p>
+<p>Se suele utilizar (equivocadamente) el término “crecimiento
+exponencial” cuando lo que se quiere decir es que hay un crecimiento
+rápido. Técnicamente, tenemos un crecimiento exponencial si el
+porcentaje del crecimiento es constante y esto tiene una forma
+matemática concreta. Sea <span class="math inline">\(t\)</span> el tiempo medido a partir de un
+cierto instante inicial e <span class="math inline">\(y\)</span> el número de individuos. Entonces
+tenemos crecimiento exponencial si <span class="math inline">\(y = a e^{bt}\)</span>. Comprobemos que
+esto significa que el crecimiento porcentual por unidad de tiempo es
+constante. El crecimiento porcentual es el crecimiento en una unidad
+de tiempo dividido por el tamaño de la población:
+<span class="math display">\[\frac{ae^{b(t+1)} - ae^{bt}}{ae^{bt}}\]</span>
+Desarrollamos
+<span class="math display">\[\frac{ae^{b(t+1)} - ae^{bt}}{ae^{bt}} = \frac{a(e^{bt}e^{b}) - 
+ae^{bt}}{ae^{bt}} = \frac{ae^{bt}(e^{b} - 1)}{ae^{bt}} = e^{b} - 1\]</span></p>
+<p>Si <span class="math inline">\(b&gt;0\)</span> entonces <span class="math inline">\(e^{b} - 1 &gt; 0\)</span> y tenemos un crecimiento, mientras
+que si <span class="math inline">\(b &lt; 0\)</span>, <span class="math inline">\(e^{b} - 1 &lt; 0\)</span> y tenemos un decrecimiento. Por
+ejemplo, si <span class="math inline">\(b = 0,4\)</span> el crecimiento es de <span class="math inline">\(e^{0,4} - 1 = 0,49\)</span>, un
+49%, mientras que si <span class="math inline">\(b = -0,2\)</span> tenemos un crecimiento de <span class="math inline">\(e^{-0,2} - 1 = -0,18\)</span>, es decir un decrecimiento del 18% por unidad de tiempo.</p>
+<p>Podemos transformar la fórmula del crecimiento exponencial a una
+fórmula lineal. Si aplicamos logaritmos a ambos lados de la ecuación
+tenemos:
+<span class="math display">\[\log y  = \log(a e^{bt}) = \log a  + \log e^{bt} = \log a + bt\]</span>
+Luego si <span class="math inline">\(y\)</span> crece exponencialmente, el logaritmo de <span class="math inline">\(y\)</span> crece
+linealmente.</p>
+<p>En el fichero Telefonos.csv (pestaña de recursos) tenemos el número de
+teléfonos por cada 100 habitante en varios países. Cojamos el caso de
+Nicaragua. Si dibujamos el número de teléfonos por cada 100
+habitantes en Nicaragua en función del año, tenemos la siguiente
+gráfica:</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" data-line-number="1">Tel =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;datos/Telefono.csv&quot;</span>, <span class="dt">header =</span> T, <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;,&quot;</span>)</a>
+<a class="sourceLine" id="cb201-2" data-line-number="2">Nicaragua =<span class="st"> </span>Tel<span class="op">$</span>Nicaragua</a>
+<a class="sourceLine" id="cb201-3" data-line-number="3"><span class="kw">plot</span>(Tel<span class="op">$</span>Year, Nicaragua, <span class="dt">xlab =</span> <span class="st">&quot;Año&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Teléfonos/100 hab&quot;</span>)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-117-1.png" width="672" /></p>
+<p>Vemos que podría ser un crecimiento exponencial. Para comprobarlo
+vamos a dibujar el logaritmo del numero de teléfonos en función del
+año:</p>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" data-line-number="1"><span class="kw">plot</span>(Tel<span class="op">$</span>Year, <span class="kw">log</span>(Nicaragua), <span class="dt">xlab =</span> <span class="st">&quot;Año&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;log(Teléfonos/100 hab)&quot;</span>)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-118-1.png" width="672" /></p>
+<p>Vemos que a partir de 1991 hasta el 2006 tenemos algo que se parece a
+una recta, es decir, un crecimiento aproximadamente exponencial. Lo
+malo de esta gráfica es que es difícil deducir el número de teléfonos
+de lo que vemos en la gráfica: por ejemplo el “2” en el eje Y
+quiere decir <span class="math inline">\(e^{2} = 7,4\)</span> teléfonos por 100 habitantes. Por suerte R
+nos permite dibujar el logaritmo, pero ajustando la escala al número
+de teléfonos. Para ello hay que añadir el parámetro <code>log = &quot;y&quot;+</code> a la
+función <code>plot</code>:</p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" data-line-number="1"><span class="kw">plot</span>(Tel<span class="op">$</span>Year, Nicaragua, <span class="dt">log =</span> <span class="st">&quot;y&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Año&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Teléfonos/100 hab&quot;</span>)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-119-1.png" width="672" />
+Este tipo de gráficas se llaman semilogarítmicas, pues un eje
+tiene escala lineal y el otro, logarítmico.</p>
+<p>Vamos a estudiar el crecimiento exponencial de los teléfonos en
+Nicaragua desde 1991 a 2006. En la variable <code>TNic</code> tenemos los
+teléfonos/100 Habitantes de Nicaragua desde 1991 a 2006. Creamos una
+variable <code>Tiempo</code> que es años transcurrido desde 1991 (1991 es
+el año 0). Y ahora hallamos la recta con la instrucción
+<code>lm(log(TNic)~Tiempo)</code>. Esto nos da un valor para la ordenada
+en el origen de <span class="math inline">\(-0,14\)</span> y para la pendiente de <span class="math inline">\(0,2218\)</span>. Luego la
+exponencial que minimiza la suma de residuos y que nos sirve de
+modelo para el crecimiento de teléfonos en Nicaragua es
+<span class="math display">\[\mbox{TNic} = 0,866\, e^{0,2218 t}\]</span>
+donde <span class="math inline">\(t\)</span> es el tiempo, medido en años, transcurridos desde el 1 de
+enero de 1991. Les dejo como ejercicio que averigüen de dónde sale el
+<span class="math inline">\(0,886\)</span>. La gráfica, con la curva de regresión añadida es la siguiente:</p>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" data-line-number="1">TNic =<span class="st"> </span>Tel[Tel<span class="op">$</span>Year <span class="op">&gt;</span><span class="st"> </span><span class="dv">1990</span>,]<span class="op">$</span>Nicaragua</a>
+<a class="sourceLine" id="cb204-2" data-line-number="2">Tiempo =<span class="st"> </span>Tel[Tel<span class="op">$</span>Year <span class="op">&gt;</span><span class="st"> </span><span class="dv">1990</span>,]<span class="op">$</span>Year <span class="op">-</span><span class="st"> </span><span class="dv">1991</span></a>
+<a class="sourceLine" id="cb204-3" data-line-number="3">Crec =<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(TNic)<span class="op">~</span>Tiempo)</a>
+<a class="sourceLine" id="cb204-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb204-5" data-line-number="5"><span class="kw">plot</span>(Tel<span class="op">$</span>Year, Nicaragua, <span class="dt">log =</span> <span class="st">&quot;y&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Año&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Teléfonos/100 hab&quot;</span>)</a>
+<a class="sourceLine" id="cb204-6" data-line-number="6"><span class="kw">curve</span>(<span class="kw">exp</span>(Crec[[<span class="dv">1</span>]][<span class="dv">1</span>])<span class="op">*</span><span class="kw">exp</span>(Crec[[<span class="dv">1</span>]][<span class="dv">2</span>]<span class="op">*</span>(x<span class="dv">-1991</span>)), <span class="dt">from =</span> <span class="dv">1991</span>, <span class="dt">to =</span> <span class="dv">2006</span>, <span class="dt">add =</span> T, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>) </a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-120-1.png" width="672" /></p>
+<p>Como hemos explicado, el crecimiento porcentual viene dado por <span class="math inline">\(e^{b}-1\)</span>. Hacemos el cálculo: <span class="math inline">\(e^{0,2218}-1 = 0,25\)</span>. El crecimiento anual medio de
+teléfonos en este periodos fue del 25%.</p>
+</div>
+<div id="otras-funciones" class="section level4 unnumbered">
+<h4>Otras funciones</h4>
+<p>La fuerza de resistencia aeorodinámica <span class="math inline">\(F_{RA}\)</span> de un coche en movimiento
+depende de su superficie frontal <span class="math inline">\(S\)</span>, la densidad del aire <span class="math inline">\(\rho\)</span>, el
+coeficiente aerodinámico <span class="math inline">\(C_{x}\)</span> y la velocidad <span class="math inline">\(V\)</span> a la que se mueve
+y viene dada por la expresión<br />
+<span class="math display">\[F_{RA} = \frac{1}{2}\, \rho S C_{x} V^{2}.\]</span></p>
+<p>Para calcular el coeficiente aerodinámico se mete el coche en un
+túnel de viento y se mide la fuerza que ejerce que el aire sobre él para
+diferentes velocidades del viento. La variable independiente sería la
+velocidad y la dependiente sería la fuerza de resistencia
+aerodinámica.</p>
+<p>Lo hemos hecho con un coche de superficie frontal <span class="math inline">\(S = 1,97 \mbox{m}^{2}\)</span>. La densidad del aire es de <span class="math inline">\(\rho = 1,225 \mbox{Kg}/\mbox{m}^{3}\)</span>. El resultado de una prueba es:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><span class="math inline">\(V\)</span> (m/s)</th>
+<th align="left"><span class="math inline">\(F_{RA}\)</span> (Nw)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">15</td>
+<td align="left">101</td>
+</tr>
+<tr class="even">
+<td align="left">18</td>
+<td align="left">133</td>
+</tr>
+<tr class="odd">
+<td align="left">22</td>
+<td align="left">145</td>
+</tr>
+<tr class="even">
+<td align="left">26</td>
+<td align="left">238</td>
+</tr>
+<tr class="odd">
+<td align="left">31</td>
+<td align="left">331</td>
+</tr>
+<tr class="even">
+<td align="left">36</td>
+<td align="left">442</td>
+</tr>
+<tr class="odd">
+<td align="left">42</td>
+<td align="left">640</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" data-line-number="1">Vel =<span class="st"> </span><span class="kw">c</span>(<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">26</span>, <span class="dv">31</span>, <span class="dv">36</span>, <span class="dv">42</span>)</a>
+<a class="sourceLine" id="cb205-2" data-line-number="2">RA =<span class="st"> </span><span class="kw">c</span>(<span class="dv">101</span>, <span class="dv">133</span>, <span class="dv">145</span>, <span class="dv">238</span>, <span class="dv">331</span>, <span class="dv">442</span>, <span class="dv">640</span>)</a>
+<a class="sourceLine" id="cb205-3" data-line-number="3"><span class="kw">plot</span>(Vel, RA, <span class="dt">xlab =</span> <span class="st">&quot;Velocidad (m/s)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Res. Aero. (Nw)&quot;</span>)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-121-1.png" width="672" /></p>
+<p>Para calcular el coeficiente queremos hallar la curva de regresión que mejor
+se ajusta a los datos medidos, es decir, la que minimiza la suma de los cuadrados de. Sabemos, por las leyes físicas de la aerodinámica, que la curva es de la forma <span class="math inline">\(F_{RA} = a + bV^{2}\)</span>. Hacemos el cálculo con R.</p>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb206-1" data-line-number="1">RRA =<span class="st"> </span><span class="kw">lm</span>(RA<span class="op">~</span><span class="kw">I</span>(Vel<span class="op">^</span><span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb206-2" data-line-number="2">RRA</a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = RA ~ I(Vel^2))
+## 
+## Coefficients:
+## (Intercept)     I(Vel^2)  
+##      3.4432       0.3501</code></pre>
+<p>Hemos introducido el tipo de curva en la función <code>lm()</code>, indicando que debe ajustarse al cuadrado de la velocidad. Hemos de escribir <code>I(V^(2))</code> y no simplemente <code>V^2</code> ya que dentro de <code>lm()</code> los símbolos de multiplicación (*), división (/), exponenciación (^) y otros tienen un significado propio. La
+función <code>I()</code> le indica a <code>lm()</code> que utilice estos símbolos como operaciones aritméticas.</p>
+<p>En la respuesta de R vemos que la ordenda en el origen es <span class="math inline">\(3,44\)</span> y el coeficiente del término <span class="math inline">\(V^{2}\)</span> es <span class="math inline">\(0,3502\)</span>. Sabemos que la ordenada
+en el origen debería ser 0. El resultado de la regresión es un valor
+pequeño, lo cual es bueno, pero ya veremos si indica algún problema
+experimental cuando estudiemos la estadística de la regresión.</p>
+<p>Ahora podemos calcular el coeficiente aerodinámico: Tenemos
+que <span class="math inline">\(\frac{1}{2}\, \rho S C_{x} = 0,3502\)</span> y de aquí <span class="math inline">\(C_{x} = (2 \cdot 0,3502)/(S \rho) = 0,29\)</span>.</p>
+<p><br></p>
+<p>Para un ejemplo final, volvamos al problema de los niños y la montaña rusa. Hemos visto que una recta no describe bien los puntos de nuestra muestra.
+Podemos probar con alguna otra función. Mirando los datos sin la
+recta, vemos que para valores de altura por encima de 140 cm hay
+muchos individuos de peso alto. Esto nos induce a pensar que el peso
+crece más que linealmente con la altura. Vamos a añadir un término
+cuadrático al término lineal que teníamos a ver qué pasa. Es decir,
+queremos una función del tipo
+<span class="math display">\[\mbox{Peso} = a + b\cdot \mbox{altura} + c\cdot\mbox{altura}^{2}.\]</span></p>
+<p>Indicamos a R la función que queremos y miramos los resultados:</p>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb208-1" data-line-number="1">PAQ =<span class="st"> </span><span class="kw">lm</span>(peso <span class="op">~</span><span class="st"> </span>alt <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(alt<span class="op">^</span><span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb208-2" data-line-number="2">PAQ</a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = peso ~ alt + I(alt^2))
+## 
+## Coefficients:
+## (Intercept)          alt     I(alt^2)  
+##   67.602259    -1.105931     0.006235</code></pre>
+<p>La función de esta forma que minimiza la suma de los residuos al
+cuadrado es:</p>
+<p><span class="math display">\[\mbox{Peso} = 67,6  -1,11\cdot \mbox{altura} + 0,0062\cdot\mbox{altura}^{2}.\]</span></p>
+<p>Si la dibujamos queda:</p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb210-1" data-line-number="1"><span class="kw">plot</span>(alt, peso, <span class="dt">xlab =</span> <span class="st">&quot;altura (cm)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;peso (Kg)&quot;</span>)</a>
+<a class="sourceLine" id="cb210-2" data-line-number="2"><span class="kw">curve</span>(PAQ[[<span class="dv">1</span>]][<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>PAQ[[<span class="dv">1</span>]][<span class="dv">2</span>]<span class="op">*</span>x <span class="op">+</span><span class="st"> </span>PAQ[[<span class="dv">1</span>]][<span class="dv">3</span>]<span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>, <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-124-1.png" width="672" /></p>
+<p>Tiene mejor pinta que el caso de la recta, aunque es obvio que esta
+curva no tiene ningún sentido anatómico: predice que entre los 60 cm y
+85 cm de altura el peso <em>disminuye</em> con la altura. Esto no
+quiere decir que no nos sea útil. Lo sabremos con más precisión
+cuando estudiemos la parte estadística de la regresión lineal.</p>
+</div>
+</div>
+<div id="resumen-de-la-parte-de-cálculo" class="section level3">
+<h3><span class="header-section-number">14.1.4</span> Resumen de la parte de cálculo</h3>
+<p>Cuando tenemos dos variables numéricas y en el que vemos una
+correlación, nos puede interesar encontrar la recta o curva que
+minimice la suma de los cuadrados de los residuos, es decir, que mejor
+se aproxima de forma global nuestros datos. El determinar qué recta o
+curva utilizar no es cuestión de estadística, sino que lo determina el
+que realiza el estudio basándose en cuestiones teóricas, en su
+experiencia y lo que ve o simplemente en prueba y error.</p>
+<p>Una vez decidido qué curva usar, hallar la “mejor” es un problema de
+minimización, de cálculo. El fundamento en el que se basa es que los
+valores de la variable dependiente que vemos provienen de la curva
+pero están “perturbados” por error experimental u otros efectos. Esta
+perturbación es la que hace que no veamos la recta o curva
+directamente. Buscamos la curva que hace que las perturbaciones sean
+mínimas, pues suponemos que la ley física, biológica, ingenieril o lo
+que sea es la que manda. En algunos casos esto es claramente cierto,
+pero en otras es una mera suposición y puede que la “ley” de partida
+no exista, y la curva que buscamos, tampoco. Eso no impide que
+encontremos una curva, pero no es “real” sino sólo un producto de
+nuestra imaginación.</p>
+<p>Hemos visto varios casos: el caso de una recta, el del crecimiento
+exponencial, que puede transformarse en una recta, o el de una función
+general. Salvo en el caso de la recta, los cálculos pueden ser muy
+complejos, pero por suerte tenemos ordenadores, y R, para hacerlos.</p>
+<p>Ahora bien, la curva obtenida proviene de una muestra. Diferentes
+muestras de la misma población darán lugar a diferentes curvas. El
+saber qué podemos decir de la curva “real” a partir de la curva
+obtenida de nuestra muestra es donde entra la estadística. Y
+lo que veremos en el siguiente apartado.</p>
+</div>
+</div>
+<div id="estadística" class="section level2">
+<h2><span class="header-section-number">14.2</span> Estadística</h2>
+<p>Vimos en el documento anterior cómo a partir de dos variables
+numéricas y un tipo de curva propuesta por el investigador,
+es posible encontrar la que minimiza la suma de los cuadrados
+de los residuos. Este es un problema puramente de cálculo: minimizar
+una cierta función. Ahora bien, como la curva calculada depende de la
+muestra, si cojo muestras diferentes de una misma población estaré
+obteniendo curvas diferentes. ¿Qué se puede decir de la curva de toda
+la población a partir de la curva que he obtenido de una muestra
+concreta? Ese sí es un problema de estadística y es el que trataremos en
+este documento.</p>
+<hr />
+<p>Para no ir escribiendo “recta o curva” cada vez, uso el término genérico curva cuando no tiene una forma definida. En particular puede ser una recta. Reservo los términos “recta”, “exponencial”, “cuadrática” etc, para referirme a tipos de curva (o recta) concretas.
+***</p>
+<div id="incertidumbre-en-la-regresión-lineal" class="section level3">
+<h3><span class="header-section-number">14.2.1</span> Incertidumbre en la regresión lineal</h3>
+<p>Lo bueno de simular en un ordenador, no sólo es que puedo conseguir
+todas las muestras que quiera con suma facilidad, sino que además sé
+cuál es el valor poblacional del que parto. Retomemos el problema
+de la ley de Ohm presentado en el documento anterior.</p>
+<p>Para crear los datos usado en el ejemplo escogí unos valores de la
+variable independiente, el voltaje, supuse una resistencia de 110
+<span class="math inline">\(\Omega\)</span> y calculé los valores “exactos” de la variable dependiente,
+la intensidad. Después le añadí el “error experimental”, es
+decir los residuos, mediante unos valores aleatorios que siguen una
+distribución normal de media 0 y desviación típica adecuadamente baja.
+Si la dibujamos queda:</p>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" data-line-number="1">V =<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">17</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>)</a>
+<a class="sourceLine" id="cb211-2" data-line-number="2">Ie =<span class="st"> </span>(<span class="dv">1000</span><span class="op">/</span><span class="dv">110</span>)<span class="op">*</span>V <span class="co"># en mA</span></a>
+<a class="sourceLine" id="cb211-3" data-line-number="3">I =<span class="st"> </span>Ie<span class="op">+</span><span class="kw">rnorm</span>(<span class="kw">length</span>(V), <span class="dv">0</span>, <span class="dv">1500</span><span class="op">/</span><span class="dv">110</span>)</a></code></pre></div>
+<p>Cada vez que ejecute la última instrucción obtendré una nueva
+muestra de la intensidad, pero siempre de la misma población. Si cojo
+4 muestras y calculo sus rectas de regresión, obtengo el gráfico
+siguiente (sin los puntos):</p>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb212-1" data-line-number="1"><span class="kw">plot</span>(V,Ie, <span class="dt">xlab =</span><span class="st">&quot;V (voltios)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;I (mA)&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>)</a>
+<a class="sourceLine" id="cb212-2" data-line-number="2"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) </a>
+<a class="sourceLine" id="cb212-3" data-line-number="3">  { I =<span class="st"> </span>Ie<span class="op">+</span><span class="kw">rnorm</span>(<span class="kw">length</span>(V), <span class="dv">0</span>, <span class="dv">1500</span><span class="op">/</span><span class="dv">110</span>)</a>
+<a class="sourceLine" id="cb212-4" data-line-number="4">    <span class="kw">abline</span>(<span class="kw">lm</span>(I<span class="op">~</span>V), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
+<a class="sourceLine" id="cb212-5" data-line-number="5">}</a>
+<a class="sourceLine" id="cb212-6" data-line-number="6"><span class="kw">abline</span>(<span class="dv">0</span>, <span class="dv">100</span><span class="op">/</span><span class="dv">11</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-126-1.png" width="672" /></p>
+<p>Las rectas rojas son las obtenidas de la regresión, la recta azul es
+la que sigue la Ley de Ohm. Vemos que todas las regresiones se
+acercan a la poblacional, con algunas por encima, otras por
+debajo, unas con una pendiente mayor, otras menor. Esta variación
+depende del muestreo.</p>
+<p>Si quiero hacerme una idea de hasta dónde puede llegar la variablidad
+en función de la muestra, calculo y pinto muchas rectas, por ejemplo 1000:</p>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-127-1.png" width="672" /></p>
+<p>Vemos que la pendiente presenta cierta incertidumbre y también la
+ordenada en el origen. No vamos a mostrar cómo establecemos esta
+incertidumbre, ni siquiera de forma esquemática. Lo que haremos es
+establecer las condiciones que se han de dar para que podamos
+calcularla y leeremos de la salida de R los datos que nos interesan.</p>
+</div>
+<div id="condiciones" class="section level3">
+<h3><span class="header-section-number">14.2.2</span> Condiciones</h3>
+<p>Para calcular la curva de regresión no había condición alguna: dados
+unos puntos en el plano, es decir dos variables numéricas de la misma
+longitud, y una curva de una forma determinada, siempre se podía
+calcular la curva que minimizara la suma de los residuos. Pero para
+poder calcular las características estadísticas sí que necesitamos
+que se cumplan algunas condiciones.</p>
+<ul>
+<li><p>Los residuos son independientes. Esto quiere decir, por
+ejemplo, que si estamos midiendo la distancia recorrida por un
+objeto, esta distancia siempre hay que medirla desde el origen,
+pues si midiera lo que ha avanzado desde la última medida, un error
+en una medida se propaga a todas las siguientes y los residuos no
+serían independientes.</p></li>
+<li><p>Los residuos siguen una distribución normal de media 0 y
+desviación típica <span class="math inline">\(\sigma\)</span>. Esto es bastante razonable al tomar
+medidas de algo, pero no tanto si miramos la correlación entre la
+altura y peso de niños. Si la media no es 0 es que tenemos un
+error sistemático o un sesgo: estamos añadiendo (o quitando) de
+forma sistemática una cantidad al valor de la variable.</p></li>
+<li><p>La desviación típica de los residuos es constante. Este es
+un problema frecuente. Por ejemplo, al tomar medidas, los primeros
+errores pueden ser mayores ya que hems de acostumbrarnos al aparato
+y el procedimiento; después disminuye, al aumentar nuestra
+aptitud; y al final vuelve a crecer por cansancio, aburrimiento u
+otros motivos.</p></li>
+</ul>
+<p>Cuanto menos se cumplan estas condiciones, menos fiables serán los valores estadísticos calculados. En el apartado de diagnóstico veremos cómo determinar lo bien o mal que se han cumplido estas condiciones.</p>
+<p>Nótese que no hemos puesto condición alguna sobre las variables, sino
+sólo sobre los residuos. Las variables pueden seguir cualquier
+distribución, ser unimodales o multimodales, simétricas o asimétricas.
+No importa. Lo único a lo que hay que ir atento es a los valores
+atípicos: un único valor atípico puede hacer cambiar mucho el
+resultado. Esto lo vemos en la siguiente gráfica. Los puntos negros
+dan lugar a la recta de regresión negra. Pero si añadimos un único
+valor atípico, el punto rojo, las características de la recta cambian
+enormemente.</p>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-128-1.png" width="672" /></p>
+</div>
+<div id="salida-de-r" class="section level3">
+<h3><span class="header-section-number">14.2.3</span> Salida de R</h3>
+<p>En el apartado de cálculo hicimos la regresión lineal <code>R = lm(I ~ V)}</code> y vimos uqe escribiendo <code>R</code> obteníamos los coeficientes de la
+regresión y nada más. Para obtener mucha más información, usamos
+<code>summary()</code>:</p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1"><span class="kw">summary</span>(R)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = I ~ V)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -8.952 -6.099 -1.543  5.641 11.957 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   -4.877      4.991  -0.977    0.357    
+## V              9.566      0.304  31.465 1.13e-09 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 8.083 on 8 degrees of freedom
+## Multiple R-squared:  0.992,  Adjusted R-squared:  0.991 
+## F-statistic:   990 on 1 and 8 DF,  p-value: 1.132e-09</code></pre>
+<p>Es mucha información, alguna que nos interesa y otra que aún no. Nos
+fijaremos en estos momentos en lo que está bajo el epígrafe de <em>Coefficients</em>.
+En la primera columna (<code>Estimate</code>) tenemos los valores, los mismos que habíamos obtenido tecleando <code>R</code>. Con <code>summary()</code> obtenemos 3
+columnas más: el error estándar, un estadístico <span class="math inline">\(t\)</span> y la probabilidad
+de que sea mayor que <span class="math inline">\(|t|\)</span>, es decir, un p-valor. Todo esto nos suena
+a t.test. Y, efectivamente, esto es lo que se está haciendo. La
+hipótesis nula es H0: el coeficiente es 0; la hipótesis alternativa es
+Ha: el coeficiente no es 0.</p>
+<p>Vemos que el p-valor de la ordenada en el origen es 0,357. Esto
+quiere decir que, aunque para esta muestra ha salido <span class="math inline">\(-4,8798\)</span>, el de
+la población podría perfectamente ser 0. Lo que nos tranquiliza, pues
+sabemos por la Ley de Ohm que debe salir 0. Si hubiera salido un
+p-valor muy pequeño sería una indicación de un problema serio en
+nuestro experimento.</p>
+<p>El p-valor de la pendiente es un valor minúsculo, lo que es una
+indicación clara que la pendiente no es 0. Si tuviéramos un p-valor
+alto, y por lo tanto la sospecha de que la pendiente es 0, quiere
+decir que la variable dependiente no es tal: no depende de la
+independiente. En este caso, que la intensidad no dependería del
+voltaje. Recordemos que el modelo de partida es que <span class="math inline">\(I = a + bV\)</span>. Si
+<span class="math inline">\(b = 0\)</span>, entonces <span class="math inline">\(I = a\)</span> y no depende del voltaje.</p>
+<p>Tras los coeficientes nos fijaremos en las últimas líneas de la salida.
+Tenemos el coeficiente de correlación <span class="math inline">\(R^{2}\)</span>, que aparece como <code>Adjusted R-squared</code>. La
+interpretación de este número es el porcentaje de la
+variación de la variable dependiente, <span class="math inline">\(I\)</span> en el ejemplo, que se puede
+explicar por la variación de la variable independiente, <span class="math inline">\(V\)</span> en el
+ejemplo. Como su valor es 0,991, esto quiere decir que el 99,1% de
+la variación de la intensidad queda explicada por la variación del
+voltaje, mientras que el 0,9% restante de la variación observada
+proviene de otras fuentes. En nuestro caso, del error experimental.</p>
+<p>Cuanto más bajo sea este coeficiente se dice que hay menos correlación
+entre una variable y otra. Gráficamente, si los puntos están pegados
+a la curva resultante de la regresión, el coeficiente será alto, si
+están muy dispersos, el coeficiente será bajo. Si la correlación es
+baja, es que la dependencia entre variables es baja, lo que relaciona
+este coeficiente con el p-valor de la pendiente. Pero no es lo mismo:
+el p-valor es una indicación de si la pendiente puede ser 0 o no,
+mientras que el coeficiente de correlación <span class="math inline">\(R^{2}\)</span> nos indica que los
+residuos son muy grandes respecto a la variación de la pendiente. Por
+ejemplo, puntos cercanos a la recta pero ésta con pendiente baja nos
+dara un p-valor alto y un coeficiente de correlación también
+moderadamente alto.</p>
+<hr />
+<p>Hay un problema de nomenclatura con los coeficientes de correlación. Existen dos: <span class="math inline">\(R\)</span>, que puede ser positivo o negativo, y <span class="math inline">\(R^{2}\)</span>, que es el cuadrado del anterior y que siempre es positivo. Algunos llaman coeficiente de correlación a ambos, otros llaman coeficiente de <em>determinación</em> al de <span class="math inline">\(R^{2}\)</span> y reservan el término coeficiente de correlación para el de <span class="math inline">\(R\)</span>. En este documento nunca nos referiremos a <span class="math inline">\(R\)</span>, por lo tanto, siempre que digamos “coeficiente de correlación” nos estamos refiriendo a <span class="math inline">\(R^2\)</span>.</p>
+<hr />
+<p>El último valor en el que nos fijaremos ahora es el p-valor que aparece al final de la salida. De momento nos fijaremos que es exactamente el
+mismo valor que aparece en la fila de la pendiente: <span class="math inline">\(1,15 \times 10^{-9}\)</span>. Más adelante veremos un caso en el que el valor es distinto. Entonces explicaremos qué es este p-valor.</p>
+</div>
+<div id="intervalos-de-confianza-2" class="section level3">
+<h3><span class="header-section-number">14.2.4</span> Intervalos de confianza</h3>
+<p>Si para los coeficientes de la regresión hemos hecho un t-test, esto
+quiere decir que también podemos calcular intervalos de confianza.
+Lo podemos hacer a partir de los datos del <code>summary()</code>:
+tenemos la media, el error estándar e incluso los grados de libertad, luego no es difícil calcular el intervalo de confianza con cualquier nivel de confianza que queramos. Pero es mucho más conveniente ceder este trabajo a R. La función <code>confint()</code> nos calcula los intervalos de confianza de los
+coeficientes de la regresión:</p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1"><span class="kw">confint</span>(R)</a></code></pre></div>
+<pre><code>##                  2.5 %    97.5 %
+## (Intercept) -16.385313  6.632307
+## V             8.864656 10.266763</code></pre>
+<p>Vemos, con un 95% de confianza, que la ordenada en el origen de la
+población está entre <span class="math inline">\(-16,4\)</span> y <span class="math inline">\(6,64\)</span> y que la pendiente está entre
+<span class="math inline">\(8,86\)</span> y <span class="math inline">\(10,26\)</span>. Como usábamos la pendiente para calcular la
+resistencia, podemos calcular el intervalo de confianza de la
+resistencia. Con un nivel de confianza del 95% está entre <span class="math inline">\(1000/10,26 = 97,45\,\Omega\)</span> y <span class="math inline">\(1000/8,86 = 113,00\,\Omega\)</span>. Vemos con alivio que
+el valor real de <span class="math inline">\(110\, \Omega\)</span> está en el intervalo.</p>
+</div>
+<div id="otro-ejemplo-1" class="section level3">
+<h3><span class="header-section-number">14.2.5</span> Otro ejemplo</h3>
+<p>Vamos a anclar estos conocimientos, y añadir alguno nuevo, estudiando más a fondo el ejemplo de la montaña rusa. Queríamos predecir el peso de un niño
+a partir de su altura.</p>
+<p>Este es un problema fundamentalmente diferente del anterior. En un
+experimento controlado en un laboratorio procuramos que lo único que
+haga cambiar la variable dependiente, la respuesta, sea el estímulo
+que aplicamos. Y tenemos una ley física que regula la relación entre
+ambas variables. En este otro caso, no estamos en el laboratorio y en el
+variable dependiente (el peso) influye, además de la variable
+independiente (la altura), muchos otros factores (el sexo, la constitución, la
+alimentación…). Además, seguramente no haya una
+ley anatómica o fisiológica que regule la relación entre las
+variables. De ahí la mayor variabilidad, la menor correlación, de los
+datos, algo que se aprecia a simple vista.</p>
+<p>Pero no nos importa demasiado, pues en este caso no estamos intentando
+descubrir cómo funciona el metabolismo de los niños, ni si hay alguna
+condición médica relevante. Simplemente queremos predecir con una
+cierta precisión la carga del vehículo para construir una atracción
+más eficiente. Por eso podemos ir probando curvas a ver si hay
+alguna que nos funcione.</p>
+<p>Usábamos como muestra el conjunto de datos kid.weights del paquete UsingR. Seleccionamos a los mayores de 4 años (48 meses). Creamos las variables <code>alt</code>, con la altura de los niños y <code>peso</code>,con su peso. Empezamos estudiando el caso de la recta.</p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;UsingR&quot;</span>)</a>
+<a class="sourceLine" id="cb217-2" data-line-number="2"><span class="co">#Mayores de 4 años</span></a>
+<a class="sourceLine" id="cb217-3" data-line-number="3">KW4 =<span class="st"> </span>kid.weights[kid.weights<span class="op">$</span>age <span class="op">&gt;=</span><span class="dv">48</span>,]</a>
+<a class="sourceLine" id="cb217-4" data-line-number="4">peso =<span class="st"> </span>KW4<span class="op">$</span>weight<span class="op">*</span><span class="fl">0.454</span></a>
+<a class="sourceLine" id="cb217-5" data-line-number="5">alt =<span class="st"> </span>KW4<span class="op">$</span>height<span class="op">*</span><span class="fl">2.54</span></a>
+<a class="sourceLine" id="cb217-6" data-line-number="6">PA =<span class="st"> </span><span class="kw">lm</span>(peso<span class="op">~</span>alt)</a>
+<a class="sourceLine" id="cb217-7" data-line-number="7"><span class="kw">plot</span>(alt, peso, <span class="dt">xlab =</span> <span class="st">&quot;altura (cm)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;peso (Kg)&quot;</span>)</a>
+<a class="sourceLine" id="cb217-8" data-line-number="8"><span class="kw">abline</span>(PA, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-131-1.png" width="672" /></p>
+<p>Veamos los datos estadísticos que obtenemos haciendo un
+<code>summary()</code> sobre el resultado de la regresión:</p>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" data-line-number="1"><span class="kw">summary</span>(PA)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = peso ~ alt)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -12.419  -5.647  -2.094   1.685  29.852 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -14.84722    4.67785  -3.174  0.00198 ** 
+## alt           0.35430    0.03946   8.980 1.27e-14 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 8.979 on 104 degrees of freedom
+## Multiple R-squared:  0.4367, Adjusted R-squared:  0.4313 
+## F-statistic: 80.63 on 1 and 104 DF,  p-value: 1.272e-14</code></pre>
+<p>Lo que nos preocupaba cuando hicimos el estudio en el apartado
+anterior es que no parecía que hubiera una correlación excesivamente
+grande. Si esto era así, la predicción del peso a partir de la altura
+iba a ser bastante pobre. Si miramos el coeficiente de correlación
+<span class="math inline">\(R^{2}\)</span> vemos que es sólo 0,43. Es decir, solo el 43% de la altura
+queda explicado por la recta. El sexo, constitución, etc. explica la
+mayor parte. Si usamos una recta, los pronósticos van a ser poco menos
+que inútiles.</p>
+<p>Si añadíamos un término cuadrático el gráfico parecía mejor.</p>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" data-line-number="1">PAQ =<span class="st"> </span><span class="kw">lm</span>(peso <span class="op">~</span><span class="st"> </span>alt <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(alt<span class="op">^</span><span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb220-2" data-line-number="2"><span class="kw">plot</span>(alt, peso, <span class="dt">xlab =</span> <span class="st">&quot;altura (cm)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;peso (Kg)&quot;</span>)</a>
+<a class="sourceLine" id="cb220-3" data-line-number="3"><span class="kw">curve</span>(PAQ[[<span class="dv">1</span>]][<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>PAQ[[<span class="dv">1</span>]][<span class="dv">2</span>]<span class="op">*</span>x <span class="op">+</span><span class="st"> </span>PAQ[[<span class="dv">1</span>]][<span class="dv">3</span>]<span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>, <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-133-1.png" width="672" />
+Repetimos el estudio estadístico para ver la mejoría que obtenemos.</p>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" data-line-number="1"><span class="kw">summary</span>(PAQ)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = peso ~ alt + I(alt^2))
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -16.870  -4.699  -1.440   1.654  30.212 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 67.602259  18.122691   3.730 0.000313 ***
+## alt         -1.105931   0.314006  -3.522 0.000640 ***
+## I(alt^2)     0.006235   0.001332   4.681 8.72e-06 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 8.193 on 103 degrees of freedom
+## Multiple R-squared:  0.5355, Adjusted R-squared:  0.5265 
+## F-statistic: 59.38 on 2 and 103 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>El coeficiente de correlación ha subido, pero poco, sólo hasta 0,53.
+No va a ser un buen pronosticador, pues la mitad de la variación viene
+de cosas que no medimos. La complicación y el coste de medir la
+altura parece innecesario: el método más simple y de contar el número
+de pasajeros y multiplicarlo por el peso medio tiene pinta de ser
+similarmente bueno.</p>
+<p>Pero lo que es interesante de esta salida de R es que por primera vez
+el p-valor del final no coincide con ninguno de los p-valores de los
+coeficientes de los términos, y además es menor que todos ellos.
+Esto nos da una pista de qué significa este último p-valor. El
+p-valor de cada término se obtiene de la hipótesis nula H0: el valor
+de ese término es 0. El p-valor del final se obtiene de la hipótesis
+nula H0: todos los términos (menos el <em>Intercept</em>) son 0.</p>
+</div>
+<div id="la-regresión-no-muestra-qué-tipo-de-curva-es" class="section level3">
+<h3><span class="header-section-number">14.2.6</span> La regresión no muestra qué tipo de curva es</h3>
+<p>En este ejemplo de la montaña rusa hemos estado probando diferentes
+curvas. En el fondo sabemos que el peso de los niños no está
+relacionado con su altura mediante una función determinada y unas
+perturbaciones. La función seguramente no existe. Simplemente
+estamos buscando maneras de hacer unas predicciones que funcionen
+“suficientemente bien”. Es un método empírico, sobre los datos y no
+sobre principio biológico o anatómico alguno.</p>
+<p>Un error que mucha gente comete es pensar que puedo utilizar los
+resultados estadísticos, en particular el coeficiente de correlación
+<span class="math inline">\(R^{2}\)</span>, para establecer qué tipo de curva es la que siguen unos
+datos. Ya dijimos en el documento anterior, que la curva es algo que
+mete en el modelo el usuario. El ordenador sólo hace los cálculos que
+se le ordenan. Nunca puede salir nada que no le hayamos metido
+nosotros antes: si por ejemplo la curva es <span class="math inline">\(y = a + b^{\log x}\)</span> y
+no la metemos nosotros, nunca va a poder salir. Si la curva existe,
+debe determinarse mediante principios científicos y no estadísticos.</p>
+<p>Para ilustrarlo, volvamos al ejemplo de la ley de Ohm. Ya tenemos la
+recta de regresión. Vamos a hacer la regresión ahora sobre una
+función nueva: la suma de una cuadrática y una cúbica. Creamos una muestra aleatoria y calculamos la regresión:</p>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">127</span>)</a>
+<a class="sourceLine" id="cb223-2" data-line-number="2">V =<span class="st"> </span><span class="kw">c</span>(<span class="fl">3.0</span>,  <span class="fl">5.0</span>,  <span class="fl">7.0</span>,  <span class="fl">9.0</span>, <span class="fl">11.0</span>, <span class="fl">14.0</span>, <span class="fl">17.0</span>, <span class="fl">20.0</span>, <span class="fl">25.0</span>,  <span class="fl">30.0</span>)</a>
+<a class="sourceLine" id="cb223-3" data-line-number="3">I =<span class="st"> </span>(<span class="dv">1</span><span class="op">/</span><span class="dv">110</span>)<span class="op">*</span>V<span class="op">+</span><span class="kw">rnorm</span>(<span class="kw">length</span>(V), <span class="dv">0</span>, <span class="fl">1.5</span><span class="op">/</span><span class="dv">110</span>)</a>
+<a class="sourceLine" id="cb223-4" data-line-number="4">I =<span class="st"> </span><span class="dv">1000</span><span class="op">*</span>I <span class="co">#en mA</span></a>
+<a class="sourceLine" id="cb223-5" data-line-number="5">RD =<span class="st"> </span><span class="kw">lm</span>(I<span class="op">~</span><span class="kw">I</span>(V<span class="op">^</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(V<span class="op">^</span><span class="dv">3</span>))</a>
+<a class="sourceLine" id="cb223-6" data-line-number="6"><span class="kw">summary</span>(RD)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = I ~ I(V^2) + I(V^3))
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -16.2234  -8.2399   0.9995   7.1422  16.4610 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 26.131339   7.683910   3.401 0.011430 *  
+## I(V^2)       0.739575   0.085330   8.667 5.45e-05 ***
+## I(V^3)      -0.015704   0.002847  -5.516 0.000892 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 12.54 on 7 degrees of freedom
+## Multiple R-squared:  0.9831, Adjusted R-squared:  0.9783 
+## F-statistic: 203.5 on 2 and 7 DF,  p-value: 6.286e-07</code></pre>
+<p>Obtenemos un coeficiente de correlación <span class="math inline">\(R^{2}\)</span> de 0.98, casi igual de bueno.</p>
+<p>Quizá piensen que el coeficiente de 0,98 sigue siendo inferior al 0,99
+de la recta y por lo tanto la recta es la mejor curva de las dos.
+Pero este coeficiente de correlación es el de esta muestra concreta,
+con otras, sale distinto. Prueben con unas cuantas. No les será
+difícil encontrar una en la que el coeficiente de correlación de la
+curva cuadrática mas cúbica sea mayor que el de la recta. Consideren
+que el coeficiente de correlación <span class="math inline">\(R^{2}\)</span>, al ser diferente para cada
+muestra, también tiene su intervalo de confianza, y que por la tanto uno de 0,98 y otro de 0,99 son indistinguibles.</p>
+<p>Se determina qué curva debemos usar por leyes naturales, sean físicas,
+químicas, sociológicas… Hemos de determinar primero cuál es el tipo de
+curva que vamos a usar. Después, la regresión lineal nos ayuda a
+establecer los parámetros que tiene, por ejemplo la ordenada en el origen y
+la pendiente, en el caso de una recta. Nada más.</p>
+</div>
+<div id="resumen-de-la-parte-de-estadística" class="section level3">
+<h3><span class="header-section-number">14.2.7</span> Resumen de la parte de estadística</h3>
+<p>Dada una muestra y un tipo de curva, calcular cuál es la curva
+concreta que mejor se ajusta a los puntos de la muestra es un
+problema de cálculo. Pero dado que cada muestra es diferente,
+determinar qué se puede decir de las características de la curva de
+toda la población a partir de las de una muestra es un problema de
+estadística.</p>
+<p>Si los residuos cumplen las siguientes características</p>
+<ul>
+<li><p>Son independientes,</p></li>
+<li><p>Se conforman a una distribución normal de media 0 y
+desviación típica <span class="math inline">\(\sigma\)</span>,</p></li>
+<li><p>Esta desviación típica es constante,</p></li>
+</ul>
+<p>podemos calcular intervalos de confianza de los parámetros de la
+curva, p-valores para establecer si algún parámetro es 0, el
+coeficiente de correlación <span class="math inline">\(R^{2}\)</span>, que nos indica qué porcentaje del
+valor de la variable dependiente puede asignarse a variaciones de la
+independiente, y un p-valor general que nos da información sobre si la
+variable dependiente es o no una función de la independiente.</p>
+<p>Nótese que no ponemos ninguna restricción sobre las características
+de las dos variables numéricas. La regresión lineal puede usarse
+siempre para cualquier par de variables (si se cumplen las
+condiciones sobre los residuos, claro está). Esto no quiere decir que
+no tengamos que ir con cuidado al valorar los resultados, sobre todo
+si hay algún valor atípico.</p>
+<p>Establecer si se cumplen las condiciones sobre los residuos no es
+trivial, pero por suerte R nos da herramientas que podemos usar. Lo
+veremos en el siguiente apartado.</p>
+</div>
+</div>
+<div id="diagnóstico" class="section level2">
+<h2><span class="header-section-number">14.3</span> Diagnóstico</h2>
+<p>En todas las pruebas estadísticas hay algunas condiciones que deben
+cumplirse: en un t-test los datos deben seguir una distribución
+normal, en un prop-test el valor de <span class="math inline">\(\hat{\theta}\)</span> no puede ser
+cercano a 0 o 1, etc. Cuánto más cerca estemos de cumplirlas —nunca
+se cumplen del todo— más cercanos son los cálculos a lo que
+teóricamente representan: por ejemplo más cercano está el intervalo de
+confianza real al que ha salido de nuestros cálculos.</p>
+<p>Como toda prueba, la regresión lineal también tiene sus condiciones
+que deben cumplirse y que vimos en el documento anterior. Pero es más
+difícil ver si se cumplen o no, pues a diferencia de las pruebas
+vistas hasta ahora, las condiciones no son directamente sobre los
+datos si no sobre los residuos. Y es mucho más fácil evaluar los
+datos, que podemos ver, que no los residuos, que no son directamente
+visibles.</p>
+<p>Por suerte R aporta herramientas que permite diagnosticar si se
+cumplen las condiciones sobre los residuos y así poder valorar la
+fiabilidad de los cálculos. En este documento vamos a estudiar cuáles
+son estas herramientas y cómo usarlas.</p>
+<div id="seis-modelos" class="section level3">
+<h3><span class="header-section-number">14.3.1</span> Seis modelos</h3>
+<p>Usaremos seis ejemplos para estudiar las herramientas. Algunos
+ejemplos nos permitirán ver cómo se cumplen las condiciones y otros,
+cómo no se cumplen. Varios ejemplos son fabricados. Esto lo hacemos
+con fines pedagógicos, pues en muchos ejemplos reales las cosas ni se
+cumplen del todo ni se dejan de cumplir y es mucho más fácil crear de
+cero un ejemplo dónde se vea con claridad una cuestión que buscar un
+ejemplo real donde se vea igual de bien. Pero los efectos mostrados
+no son irreales, son solamente un poco más claros. En todos los
+ejemplos se muestra el código que se ha usado para la fabricación o de
+dónde se han obtenido los datos. Esto permitirá al lector ampliar su
+experiencia, estudiándolos a fondo. Nótese que en donde se usen
+números aleatorios, se obtendrán valores un poco diferentes a los que
+se muestran aquí, pero que no cambian la esencia de lo que se explica.</p>
+<div id="ley-de-ohm" class="section level4 unnumbered">
+<h4>Ley de Ohm</h4>
+<p>Nuestro primer modelo ya ha aparecido en documentos anteriores.
+Tenemos una resistencia al que se le aplica un voltaje y se mide la
+intensidad. La variable independiente es el voltaje y la variable
+dependiente es la intensidad. Este es un ejemplo fabricado usando
+el código siguiente:</p>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" data-line-number="1">V =<span class="st"> </span>(<span class="dv">1</span><span class="op">:</span><span class="dv">70</span>)<span class="op">/</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb225-2" data-line-number="2">Ie =<span class="st"> </span>(<span class="dv">100</span><span class="op">/</span><span class="dv">11</span>)<span class="op">*</span>V</a>
+<a class="sourceLine" id="cb225-3" data-line-number="3">I1 =<span class="st"> </span>Ie<span class="op">+</span><span class="kw">rnorm</span>(<span class="kw">length</span>(V), <span class="dv">0</span>, <span class="dv">1500</span><span class="op">/</span><span class="dv">110</span>)</a>
+<a class="sourceLine" id="cb225-4" data-line-number="4">I1[I1 <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>] =<span class="st"> </span><span class="dv">5</span> <span class="co"># No queremos intensidades negativas…</span></a>
+<a class="sourceLine" id="cb225-5" data-line-number="5">RL1 =<span class="st"> </span><span class="kw">lm</span>(I1<span class="op">~</span>V)</a></code></pre></div>
+<p>La gráfica de los datos con la regresión es:</p>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" data-line-number="1"><span class="kw">plot</span>(V,I1, <span class="dt">xlab =</span><span class="st">&quot;V (voltios)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;I (mA)&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Voltaje e Intensidad&quot;</span>)</a>
+<a class="sourceLine" id="cb226-2" data-line-number="2"><span class="kw">abline</span>(RL1, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-137-1.png" width="672" /></p>
+<p>Este es un ejemplo ideal, que cumple completamente las condiciones
+sobre los residuos.</p>
+</div>
+<div id="ley-de-ohm-con-valor-atípico" class="section level4 unnumbered">
+<h4>Ley de Ohm con valor atípico</h4>
+<p>Este ejemplo es el mismo que el anterior, sólo que se ha añadido un
+punto más, con un valor atípico, con una intensidad del doble de lo
+que debería ser. Es sólo un punto de 70 y sobre la gráfica no parece
+que haya cambiado mucho la recta. El código usado es:</p>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" data-line-number="1">Vout =<span class="st"> </span><span class="kw">c</span>(V, <span class="dv">36</span>)</a>
+<a class="sourceLine" id="cb227-2" data-line-number="2">Iout =<span class="st"> </span><span class="kw">c</span>(I1, <span class="dv">700</span>)</a>
+<a class="sourceLine" id="cb227-3" data-line-number="3">RLout =<span class="st"> </span><span class="kw">lm</span>(Iout <span class="op">~</span>Vout)</a>
+<a class="sourceLine" id="cb227-4" data-line-number="4"><span class="kw">plot</span>(Vout,Iout, <span class="dt">xlab =</span><span class="st">&quot;V (voltios)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;I (mA)&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Ley de Ohm (v.a.)&quot;</span>)</a>
+<a class="sourceLine" id="cb227-5" data-line-number="5"><span class="kw">abline</span>(RLout, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)   </a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-138-1.png" width="672" /></p>
+</div>
+<div id="altura-y-peso-de-niños" class="section level4 unnumbered">
+<h4>Altura y peso de niños</h4>
+<p>Este modelo también ha sido usado en documentos anteriores: miramos el
+peso de niños en función de su altura. Usamos un modelo lineal. El
+código y la gráfica son las siguientes:</p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" data-line-number="1"><span class="kw">library</span>(UsingR)</a>
+<a class="sourceLine" id="cb228-2" data-line-number="2">KW4 =<span class="st"> </span>kid.weights[kid.weights<span class="op">$</span>age <span class="op">&gt;=</span><span class="dv">48</span>,]</a>
+<a class="sourceLine" id="cb228-3" data-line-number="3">peso =<span class="st"> </span>KW4<span class="op">$</span>weight<span class="op">*</span><span class="fl">0.454</span></a>
+<a class="sourceLine" id="cb228-4" data-line-number="4">alt =<span class="st"> </span>KW4<span class="op">$</span>height<span class="op">*</span><span class="fl">2.54</span></a>
+<a class="sourceLine" id="cb228-5" data-line-number="5">PA =<span class="st"> </span><span class="kw">lm</span>(peso<span class="op">~</span>alt)</a>
+<a class="sourceLine" id="cb228-6" data-line-number="6"><span class="kw">plot</span>(alt, peso, <span class="dt">xlab =</span> <span class="st">&quot;Altura (cm)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Peso (Kg)&quot;</span>, </a>
+<a class="sourceLine" id="cb228-7" data-line-number="7">        <span class="dt">main =</span> <span class="st">&quot;Altura y peso de niños&quot;</span>)</a>
+<a class="sourceLine" id="cb228-8" data-line-number="8"><span class="kw">abline</span>(PA, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-139-1.png" width="672" /></p>
+</div>
+<div id="modelos-de-resistencia-aerodinámica" class="section level4 unnumbered">
+<h4>Modelos de resistencia aerodinámica</h4>
+<p>Este ejemplo también ha sido usado al explicar el cálculo de curvas de
+regresión. Tenemos el valor de la resistencia aerodinámica de un
+objeto en movimiento respecto al aire. Creamos la función a partir de
+la superficie frontal <span class="math inline">\(S\)</span>, la densidad del aire <span class="math inline">\(\rho\)</span> y el
+coeficiente de penetración aerodinámica <span class="math inline">\(C_{x}\)</span>. Como en el caso de
+la resistencia, las condiciones sobre los residuos se cumplen
+perfectamente.</p>
+<p>Aunque sabemos, por las leyes físicas, que esta fuerza varía con el
+cuadrado de la velocidad, si sólo miramos los puntos, puede parecer
+que es una función lineal. Por lo tanto vamos a usar dos modelos: uno
+lineal y otro cuadrático. Será interesante ver el diagnóstico del
+caso lineal.</p>
+<p>El código usado es:</p>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" data-line-number="1">rho =<span class="st"> </span><span class="fl">1.225</span></a>
+<a class="sourceLine" id="cb229-2" data-line-number="2">S =<span class="st"> </span><span class="fl">1.97</span></a>
+<a class="sourceLine" id="cb229-3" data-line-number="3">Vel =<span class="st"> </span><span class="dv">15</span><span class="op">:</span><span class="dv">42</span></a>
+<a class="sourceLine" id="cb229-4" data-line-number="4">Cx =<span class="st"> </span><span class="fl">0.29</span></a>
+<a class="sourceLine" id="cb229-5" data-line-number="5">RA =<span class="st"> </span><span class="fl">0.5</span><span class="op">*</span>S<span class="op">*</span>rho<span class="op">*</span>Cx <span class="op">*</span><span class="st"> </span>Vel<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="kw">length</span>(Vel), <span class="dv">0</span>, <span class="dv">25</span>)</a>
+<a class="sourceLine" id="cb229-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb229-7" data-line-number="7">RALin =<span class="st"> </span><span class="kw">lm</span>(RA<span class="op">~</span>Vel)</a>
+<a class="sourceLine" id="cb229-8" data-line-number="8">RAq =<span class="st"> </span><span class="kw">lm</span>(RA<span class="op">~</span><span class="kw">I</span>(Vel<span class="op">^</span><span class="dv">2</span>))</a></code></pre></div>
+<p>Y las gráficas resultantes son</p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" data-line-number="1"><span class="kw">plot</span>(Vel, RA, <span class="dt">main =</span> <span class="st">&quot;Resistencia aerodinámica (lineal)&quot;</span>, </a>
+<a class="sourceLine" id="cb230-2" data-line-number="2">     <span class="dt">xlab =</span> <span class="st">&quot;Velocidad (m/s)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Res. Aero. (Nw)&quot;</span>)</a>
+<a class="sourceLine" id="cb230-3" data-line-number="3"><span class="kw">abline</span>(RALin, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-141-1.png" width="672" /></p>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb231-1" data-line-number="1"><span class="kw">plot</span>(Vel, RA, <span class="dt">main =</span> <span class="st">&quot;Resistencia aerodinámica (cuadrático)&quot;</span>, </a>
+<a class="sourceLine" id="cb231-2" data-line-number="2">     <span class="dt">xlab =</span> <span class="st">&quot;Velocidad (m/s)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Res. Aero. (Nw)&quot;</span>)</a>
+<a class="sourceLine" id="cb231-3" data-line-number="3"><span class="kw">curve</span>(RAq[[<span class="dv">1</span>]][<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>RAq[[<span class="dv">1</span>]][<span class="dv">2</span>]<span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>, <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-141-2.png" width="672" /></p>
+</div>
+<div id="tamaño-y-potencia-de-coches" class="section level4">
+<h4><span class="header-section-number">14.3.1.1</span> Tamaño y potencia de coches</h4>
+<p>En este ejemplo vamos a correlacionar el tamaño de un coche con
+la potencia de su motor. En buena lógica un coche grande necesita un
+motor potente. Y a menudo los coches pequeños tiene motores también
+pequeños. Pero esto es la regla general y por ejemplo los coches
+deportivos no suelen ser muy grandes pero sí suelen ser potentes, y
+hay coches grandes con motores relativamente pequeños, por lo que
+esperamos que lo correlación no sea muy alta.</p>
+<p>Los datos provienen del conjunto de datos Cars93, del paquete MASS.
+Como indicador del tamaño cogemos la longitud del coche: es algo
+mucho mas variable que la anchura y esperamos que sea un buen
+indicador. Suponemos que la relación longitud-potencia sea lineal.</p>
+<p>El código usado y la gráfica resultante son:</p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" data-line-number="1"><span class="kw">library</span>(MASS)</a>
+<a class="sourceLine" id="cb232-2" data-line-number="2">Longitud =<span class="st"> </span>Cars93<span class="op">$</span>Length<span class="op">*</span><span class="fl">2.54</span></a>
+<a class="sourceLine" id="cb232-3" data-line-number="3">C93 =<span class="st"> </span><span class="kw">lm</span>(Cars93<span class="op">$</span>Horsepower <span class="op">~</span><span class="st"> </span>Longitud)</a>
+<a class="sourceLine" id="cb232-4" data-line-number="4"><span class="kw">plot</span>(Cars93<span class="op">$</span>Horsepower <span class="op">~</span><span class="st"> </span>Longitud, <span class="dt">xlab =</span> <span class="st">&quot;Longitud (cm)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Potencia (CV)&quot;</span>,</a>
+<a class="sourceLine" id="cb232-5" data-line-number="5">     <span class="dt">main =</span> <span class="st">&quot;Longitud y potencia de coches&quot;</span>)</a>
+<a class="sourceLine" id="cb232-6" data-line-number="6"><span class="kw">abline</span>(C93, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-142-1.png" width="672" /></p>
+</div>
+<div id="estima-de-longitudes-" class="section level4">
+<h4><span class="header-section-number">14.3.1.2</span> Estima de longitudes{-}}</h4>
+<p>En este último ejemplo tenemos objetos con una determinada longitud y pedimos
+a personas que, sin medirlo, estimen la longitud del objeto. Los
+datos son fabricados. Es un caso habitual en el que la desviación
+típica no es constante: en un objeto de 10 cm no te vas a equivocar
+más allá de unos pocos milímetros, mientras que en un objeto de
+varios metros es casi imposible ser tan preciso. El código y la
+gráfica son:</p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" data-line-number="1">Lng =<span class="st"> </span><span class="dv">50</span></a>
+<a class="sourceLine" id="cb233-2" data-line-number="2">x =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="st"> </span>Lng</a>
+<a class="sourceLine" id="cb233-3" data-line-number="3">y =<span class="st"> </span>x </a>
+<a class="sourceLine" id="cb233-4" data-line-number="4"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>Lng)</a>
+<a class="sourceLine" id="cb233-5" data-line-number="5">{sg =<span class="st"> </span>y[i]<span class="op">/</span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb233-6" data-line-number="6"> y[i] =<span class="st"> </span>y[i] <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1</span>,<span class="dv">0</span>, sg)}</a>
+<a class="sourceLine" id="cb233-7" data-line-number="7"><span class="kw">plot</span>(x,y, <span class="dt">main =</span> <span class="st">&quot;Longitud real y estimada&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Longitud real&quot;</span>,</a>
+<a class="sourceLine" id="cb233-8" data-line-number="8">     <span class="dt">ylab =</span> <span class="st">&quot;Longitud estimada&quot;</span>)</a>
+<a class="sourceLine" id="cb233-9" data-line-number="9">Inv =<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>x)</a>
+<a class="sourceLine" id="cb233-10" data-line-number="10"><span class="kw">abline</span>(Inv, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-143-1.png" width="672" /></p>
+<p>Usaremos las herramientas de diagnóstico sobre estos seis modelos. En
+algunos casos se cumplirán las condiciones y en otras no.
+Esto nos ayudará a entender cómo podemos establecer la bondad de la
+regresión que hemos aplicado.</p>
+</div>
+</div>
+<div id="cinco-diagnósticos" class="section level3">
+<h3><span class="header-section-number">14.3.2</span> Cinco diagnósticos</h3>
+<p>Una vez tenemos todos los modelos, veamos las cinco herramientas de
+diagnóstico: la primera nos permitirá determinar si el tipo de curva
+que hemos escogido para la regresión es adecuado, las tres siguientes
+son para determinar si se cumplen las condiciones de los residuos, y la
+última para determinar la influencia de posibles valores atípicos.</p>
+<p>El orden en el que voy a explicar las pruebas es la que considero más
+didáctica, pero no es la más adecuada dada la forma en la que R nos
+presenta la información. En la práctica no tiene mayor importancia el
+orden en que hagamos estas pruebas.</p>
+<p>Hay una condición que no se diagnostica con lo que veremos: los
+residuos deben ser independientes. Esto no es una cuestión
+estadística sino de procedimiento. Por lo tanto es la manera en que
+hemos tomado los datos lo que debemos estudiar para saber si se cumple
+esta condición o no. Vamos a ver las herramientas que tiene R para las
+demás.</p>
+<div id="tenemos-el-tipo-de-curva-correcto" class="section level4">
+<h4><span class="header-section-number">14.3.2.1</span> ¿Tenemos el tipo de curva correcto?</h4>
+<p>Los diagnósticos se basan sobre todo en cuatro gráficos generados por
+R sobre el resultado de la regresión. Para verlos, si <code>reg = lm(y ~ x)</code> es la regresión, <code>plot(reg)</code> nos dará las cuatro
+gráficas de diagnóstico, una por una.</p>
+<p>Para empezar el diagnóstico vamos a mirar la primera gráfica de
+diagnóstico que nos presenta R. Como ejemplo, usaremos la regresión de la
+resistencia aerodinámica. Hemos hecho dos, una lineal y otra
+cuadrática. Si miramos las gráficas de puntos y la regresión hecha,
+vemos que ambas parecen adecuadas. Y si miramos los coeficientes de
+correlación, apenas hay diferencia (0,96 y 0,98). Pero esta primera
+gráfica de diagnóstico nos va a revelar qué tipo es mejor.</p>
+<p>En esta gráfica tenemos en el eje X los valores de la variable
+dependiente, y en el eje Y los valores de los residuos. También
+tenemos una raya roja que nos da la “media” de los residuos en esa
+región de valores de la variable dependiente. En el caso de la
+cuadrática nuestra raya roja es horizontal y cercana al 0. Eso
+significa que a lo largo de toda la curva los residuos se distribuyen
+más o menos por igual a ambos lados de la curva propuesta. Que es lo
+que debiera pasar.
+<img src="imagenes/CurvaRAQ.jpg" /><!-- --></p>
+<p>En cambio, si miramos el modelo lineal vemos que la curva hace una
+“onda”: en los valores mayores y menores los residuos son positivos,
+mientras que en la parte central son negativos. Esto quiere decir que
+los puntos no se ajustan a nuestra propuesta, una recta en este caso,
+sino que hacen una curva alrededor de ella. Nuestra propuesta de una
+recta no es adecuada.</p>
+<p><img src="imagenes/CurvaRAL.jpg" /><!-- --></p>
+</div>
+<div id="la-media-de-los-residuos-es-0" class="section level4">
+<h4><span class="header-section-number">14.3.2.2</span> La media de los residuos es 0</h4>
+<p>Sabemos que los residuos deben seguir una distribución normal de
+media 0 y desviación tipica <span class="math inline">\(\sigma\)</span> y que además esta desviación
+típica deber ser constante a lo largo del rango de los datos.
+Empecemos por la media 0.</p>
+<p>La información necesaria la obtenemos del <code>summary()</code> de la
+regresión. Ejecutando <code>summary(RL1)</code> obtenemos esta
+información del modelos de la Ley de Ohm. La información relevante
+está en las primeras líneas:</p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" data-line-number="1"><span class="kw">summary</span>(RL1) <span class="co">#Good</span></a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = I1 ~ V)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -26.736  -9.839  -0.398   9.654  37.875 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  -2.1038     3.2633  -0.645    0.521    
+## V             9.2394     0.1598  57.827   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 13.51 on 68 degrees of freedom
+## Multiple R-squared:  0.9801, Adjusted R-squared:  0.9798 
+## F-statistic:  3344 on 1 and 68 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>La primera cosa que nos extraña es que aparezca la mediana y no la
+media. Esto es porque, dado cómo se calcula la regresión, la media de
+los residuos siempre es exactamente 0. Lo que queremos ver es si los valores
+obtenidos se distribuyen simétricamente alrededor del 0 o no. Por eso nos
+da la mediana, los cuartiles y los valores extremos.</p>
+<p>Vemos que la mediana es muy pequeña comparada con los cuartiles y los
+extremos. Además, está mas o menos centrada respecto a los cuartiles.
+El que no lo esté respecto a los valores extremos no es preocupante,
+pues basta un residuo muy positivo o negativo para que nos descompense
+los extremos. Por lo tanto consideramos que en este caso los residuos
+están adecuadamente centrados alrededor del 0, como deberían.</p>
+<p>En cambio si hacemos lo mismo con el modelo del tamaño y potencia de
+los coches obtenemos:</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" data-line-number="1"><span class="kw">summary</span>(C93) <span class="co">#Bad</span></a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Cars93$Horsepower ~ Longitud)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -63.061 -29.691  -7.376  10.527 164.479 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -218.1449    57.6695  -3.783 0.000277 ***
+## Longitud       0.7779     0.1235   6.296 1.06e-08 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 43.95 on 91 degrees of freedom
+## Multiple R-squared:  0.3035, Adjusted R-squared:  0.2958 
+## F-statistic: 39.64 on 1 and 91 DF,  p-value: 1.058e-08</code></pre>
+<p>Vemos que la mediana es relativamente grande, por ejemplo comparado
+con los valores de los cuartiles y que además está todo desplazado
+hacia valores negativos. Estos residuos no están centrados alrededor
+del 0.</p>
+<p>Si hiciera falta un estudio más a fondo, se podrían extraer los
+residuos (<code>C93\$residuals</code> en este ejemplo) y dibujar el
+diagrama de cajas y el histograma sobre ellos. No se puede hacer un
+t-test, pues, como hemos dicho, la media es siempre exactamente 0 y el
+t-test no nos diría nada. Pero en general con la información dada en
+el <code>summary()</code> nos basta.</p>
+</div>
+<div id="los-residuos-siguen-una-distribución-normal" class="section level4">
+<h4><span class="header-section-number">14.3.2.3</span> Los residuos siguen una distribución normal</h4>
+<p>La que nos indica lo bien o mal que los residuos siguen la
+distribución normal es la segunda de las gráficas de diagnóstico. Es
+el ya conocido <code>qqnorm()</code>. En el modelo de la resistencia
+aerodinámica cuadrática creamos los residuos con <code>rnorm()</code>, por
+lo tanto siguen una distribución normal. Su gráfica es:
+<img src="imagenes/qqRAQ.jpg" /><!-- --></p>
+<p>En cambio el modelo de los niños se desvía bastante:
+<img src="imagenes/qqPA.jpg" /><!-- --></p>
+<p>En estos casos teníamos 28 datos en el caso de la resistencia
+aerodinámica y más de 100 en el caso de los niños. Son suficientes
+para que esta gráfica nos sea útil. Pero si tenemos una regresión
+sobre una docena o menos datos, puede muy bien no ser posible
+establecer, ni con esta prueba ni con ninguna, si los datos siguen una
+distribución normal o no. En casos de muy pocos datos, normalmente
+damos el beneficio de la duda y los consideramos normales.</p>
+</div>
+<div id="la-desviación-típica-es-constante" class="section level4">
+<h4><span class="header-section-number">14.3.2.4</span> La desviación típica es constante</h4>
+<p>La distribución no sólo debe ser normal, sino que la desvación típica
+debe ser constante. Esto lo vemos en la tercera de las gráficas de
+diagnóstico. En esta gráfica tenemos en el eje horizontal los
+valores de la variable dependiente mientras que en el eje vertical
+tenemos los residuos estandarizados (no importa lo que son). Lo
+importante es la linea roja que nos indica como varía la “media” de
+los residuos estandarizados con los valores de la variable dependiente.</p>
+<p>Si lo miramos en la regresión de la Ley de Ohm, que sabemos que
+es ideal, vemos que esta linea roja es horizontal y que los puntos
+están distribuidos de una forma más o menos homogénea alrededor de
+esta linea. Luego la condición desesada se cumple.
+<img src="imagenes/SDconstLeyOhm.jpg" /><!-- --></p>
+<p>Mientras que si lo miramos en el modelo de la estima de longitudes,
+vemos que la linea sigue una clara pendiente a lo largo de todo su
+recorrido, indicando que la desviación típica va aumentando con la
+longitud estimada. La condición no se cumple:
+<img src="imagenes/SDconstRyE.jpg" /><!-- --></p>
+</div>
+<div id="la-influencia-de-los-valores-atípicos" class="section level4">
+<h4><span class="header-section-number">14.3.2.5</span> La influencia de los valores atípicos</h4>
+<p>La cuarta gráfica de diagnóstico nos muestra la influencia de los
+valores atípicos sobre los parámetros. A veces el valor atípico se ve
+claramente, pero otras veces tenemos valores atípicos que no son
+obvios y los descubrimos en esta cuarta gráfica.</p>
+<p>En este caso no importa tanto la raya roja, sino las lineas de puntos que
+representan la distancia de Cook: cuánto
+mayor es la distancia de Cook de un punto, más influencia tiene en los
+parámetros de la curva. En el caso de una recta, en la pendiente.</p>
+<p>En el caso de la resistencia aerodinámica cuadrática, sabemos que los
+residuos provienen de una normal y además no se apreciaba ningún
+valor muy alejado de al curva. La cuarta gráfica de diagnóstico nos
+confirma esto:
+<img src="imagenes/VARAQ.jpg" /><!-- --></p>
+<p>Casi todos los puntos están centrados y apenas hay alguno que se
+acerque a la linea de la distancia de Cook de 0,5.</p>
+<p>Como ejemplo donde hay un obvio valor atípico cogemos la ley de Ohm en
+donde hemos introducido uno a propósito. Claramente estaba muy
+alejado de la recta, pero no parecía que la pendiente hubiera cambiado
+mucho. Pero si miramos esta cuarta gráfica, vemos que hay un punto,
+nuestro valor atípico, que tiene una distancia de Cook muy superior a
+1 y que por lo tanto influye mucho más que los demás en la pendiente
+de la recta.
+<img src="imagenes/VARLout.jpg" /><!-- --></p>
+</div>
+<div id="diagnóstico-más-detallado" class="section level4">
+<h4><span class="header-section-number">14.3.2.6</span> Diagnóstico más detallado</h4>
+<p>Estas cinco pruebas de diagnóstico nos permiten valorar si hemos
+escogido el tipo de curva correcto, si se cumplen las condiciones
+sobre los residuos y si hay algún valor atípico que influye en exceso
+sobre los parámetros. A menudo, sobre todo en el caso de experimentos
+que no son de laboratorio y no siguen una ley natural, tenemos dudas
+en al menos una de estas pruebas. No es raro que lo que haga “fallar”
+la prueba sean sólo uno o dos puntos y entonces nos gustaría mirarlos
+más a fondo y posiblemente repetir la regresión sin esos puntos
+fastidiosos.</p>
+<p>Para ayudarnos en esta profundización del diagnóstico en los cuatro
+gráficos se añade el índice junto a los puntos que pueden ser más
+problemáticos. Por ejemplo, si miramos al caso del valor atípico,
+vemos que el punto que tiene una distancia de Cook tan elevada es el
+punto de índice 71. Ese sería nuestro valor atípico y sabiendo el
+índice es ahora inmediato identificarlo en nuestros datos.</p>
+<p>Fíjense que siempre nos da los puntos más problemáticos: incluso si
+todo es ideal, nos indica dos o tres índices por si queremos
+estudiarlos mas a fondo. Por eso, el que aparezca un número en una
+gráfica no es preocupante. Pero si los mismos numeros aparecen una y
+otra vez, conviene dedicarles nuestra atención.</p>
+</div>
+</div>
+<div id="resumen-de-diagnóstico" class="section level3">
+<h3><span class="header-section-number">14.3.3</span> Resumen de diagnóstico</h3>
+<p>Al ser condiciones sobre los residuos, no es fácil hacer un
+diagnóstico para valorar la bondad de una regresión lineal. Por
+suerte R nos proporciona información de los residuos y cuatro gráficos
+que nos ayudan a determinar si el tipo de curva que hemos escogido
+para la regresión es razonable, si los residuos siguen una
+distribución normal de media 0 y desviación típica <span class="math inline">\(\sigma\)</span>, si esta
+desviación típica es constante y si tenemos valores atípicos que nos
+influyen mucho en el valor de los parámetros.</p>
+<p>Con esta información es posible valorar, sin demasiada dificultad, la
+problematicidad de los datos de partida y asignar una fiabilidad a
+los datos obtenidos en nuestros cálculos.</p>
+</div>
+</div>
+<div id="inferencias" class="section level2">
+<h2><span class="header-section-number">14.4</span> Inferencias</h2>
+<p>Ya hemos visto que la función <code>lm()</code> viene con sus t-test
+incorporados para saber si los coeficientes son 0 y mediante la
+función <code>confint()</code> podemos obtener los intervalos de confianza
+de estos coeficientes. Pero quizá el valor 0 de los coeficientes no
+es el que más nos interese. Podemos querer saber, quizá, si el precio
+de la gasolina está creciendo más rapido que la inflación, o si lo
+está haciendo más rápido que el diesel. Con la información que
+obtenemos de R podemos crearnos nuestros propios constrastes de
+hipotesis e intervalos de confianza para averiguar lo que nosotros
+queremos. Lo primero que vamos a ver en este apartado es cómo hacerlo.</p>
+<div id="contrastes-de-hipótesis" class="section level3">
+<h3><span class="header-section-number">14.4.1</span> Contrastes de hipótesis</h3>
+<p>Sabemos que cuantas más cervezas consumimos mayor será nuestra Tasa de
+Alcohol en Sangre (TAS). Quremos saber a qué ritmo crece el TAS con
+el consumo de cervezas. Tenemos 10 individuos que están completamente
+sobrios. Tras tomar unas cuantas (o muchas) cervezas medimos su tasa
+de alcohol en sangre. Obtenemos estos datos experimentales:</p>
+<pre><code> Cervezas   5     2     9     8     3     7      3     5     3     5
+ TAS       0.10  0.03  0.19  0.12  0.04  0.095  0.07  0.06  0.02  0.05</code></pre>
+<p>Si dibujamos los puntos y hacemos la regresión lineal de la TAS en
+función de las cervezas consumidas, suponiendo una
+recta, obtenemos la siguiente gráfica:</p>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb239-1" data-line-number="1">Cervezas =<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">9</span>, <span class="dv">8</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb239-2" data-line-number="2">TAS =<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.10</span>, <span class="fl">0.03</span>, <span class="fl">0.19</span>, <span class="fl">0.12</span>, <span class="fl">0.04</span>, <span class="fl">0.095</span>, <span class="fl">0.07</span>, <span class="fl">0.06</span>, <span class="fl">0.02</span>, <span class="fl">0.05</span>)</a>
+<a class="sourceLine" id="cb239-3" data-line-number="3">Alc =<span class="st"> </span><span class="kw">lm</span>(TAS<span class="op">~</span>Cervezas)</a>
+<a class="sourceLine" id="cb239-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb239-5" data-line-number="5"><span class="kw">plot</span>(TAS<span class="op">~</span>Cervezas, <span class="dt">xlab =</span> <span class="st">&quot;Núm. Cervezas&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Tasa Alcohol en Sangre&quot;</span>,</a>
+<a class="sourceLine" id="cb239-6" data-line-number="6">      <span class="dt">main =</span> <span class="st">&quot;Tasa de alcohol en sangre al beber cerveza&quot;</span>)</a>
+<a class="sourceLine" id="cb239-7" data-line-number="7"><span class="kw">abline</span>(Alc, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-154-1.png" width="672" /></p>
+<p>Si hacen el diagnóstico verán que no es maravilloso, pero<br />
+suficiente para este ejemplo.</p>
+<p>El salida (parcial) del <code>summary()</code> de la regresión es:</p>
+<pre><code> &gt; summary(Alc)
+ 
+ Call:
+ lm(formula = TAS ~ Cervezas)
+
+              Estimate Std. Error t value Pr(&gt;|t|)    
+ (Intercept) -0.018500   0.019230  -0.962 0.364200    
+ Cervezas     0.019200   0.003511   5.469 0.000595
+
+ Residual standard error: 0.02483 on 8 degrees of freedom
+ Multiple R-squared:  0.789,    Adjusted R-squared:  0.7626 </code></pre>
+<p>El p-valor de la pendiente es 0,000595. Recordamos que la hipótesis
+nula es H0: el coeficiente es 0. Vamos a ver que efectivamente es un
+t-test. Recordemos que
+<span class="math display">\[ t = \frac{\hat{\mu} - \mu_{0}}{\mbox{se}}\]</span>
+En este caso tenemos que <span class="math inline">\(\hat{\mu}\)</span> es la pendiente y nos dan el
+error estándar. Luego:
+<span class="math display">\[ t = \frac{\hat{\mu} - \mu_{0}}{\mbox{se}} = \frac{0.0192 - 
+0}{0.0035} = 5.469\]</span>
+Lo que coincide con lo mostrado por el <code>summary()</code>.</p>
+<p>Pero el que el consumo de alcohol sube el TAS es obvio y no nos
+interesa este contraste de hipótesis. Lo que queremos saber es cuánto
+sube por cada cerveza. Digamos que en este caso lo que queremos es el
+contraste de hipótesis con la hipótesis nula que cada cerveza
+adicional nos sube la tasa de alcohol en 0,02 y con la hipótesis
+alternativa de que es menos. Simplemente hemos de calcular el nuevo
+valor del estadístico <span class="math inline">\(t\)</span> con el nuevo valor de <span class="math inline">\(\mu_{0} = 0.02\)</span>:
+<span class="math display">\[ t_2 =  \frac{0.0192 - 0.02}{0.0035} = -0.0322\]</span></p>
+<p>Y con este nuevo valor del estadístico hemos de calcular el nuevo
+p-valor. Como sabemos por la salida del <code>summary()</code> que hay 8
+grados de libertad, y que la hipótesis alternativa es que es menor,
+entonces ejecutamos <code>pt(t2, df = 8)</code> y obtenemos un p-valor de
+0.488. Nos quedamos con la hipótesis nula de que cada cerveza nos
+aumenta la TAS en 0,02.</p>
+</div>
+<div id="intervalos-de-confianza-3" class="section level3">
+<h3><span class="header-section-number">14.4.2</span> Intervalos de confianza</h3>
+<p>Usamos el conocido conjunto de datos Cars93, del paquete MASS. Nos
+interesa saber si la relación peso-potencia de los coches de tipo
+pequeño (<code>Small</code>) es la misma que la de los deportivos
+(<code>Sporty</code>). El escogemos los coches de cada tipo,
+pasamos los pesos a Kg,
+dibujamos los puntos en azul para los deportivos y en rojo para los
+pequeños, calculamos las regresiones y añadimos las rectas:</p>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb241-1" data-line-number="1">PotSpor =<span class="st"> </span>Cars93[Cars93<span class="op">$</span>Type <span class="op">==</span><span class="st"> &quot;Sporty&quot;</span>, <span class="st">&quot;Horsepower&quot;</span>]</a>
+<a class="sourceLine" id="cb241-2" data-line-number="2">PesoSpor =<span class="st"> </span>Cars93[Cars93<span class="op">$</span>Type <span class="op">==</span><span class="st"> &quot;Sporty&quot;</span>, <span class="st">&quot;Weight&quot;</span>]<span class="op">*</span><span class="fl">0.454</span></a>
+<a class="sourceLine" id="cb241-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb241-4" data-line-number="4">PotPeq =<span class="st"> </span>Cars93[Cars93<span class="op">$</span>Type <span class="op">==</span><span class="st"> &quot;Small&quot;</span>, <span class="st">&quot;Horsepower&quot;</span>]</a>
+<a class="sourceLine" id="cb241-5" data-line-number="5">PesoPeq =<span class="st"> </span>Cars93[Cars93<span class="op">$</span>Type <span class="op">==</span><span class="st"> &quot;Small&quot;</span>, <span class="st">&quot;Weight&quot;</span>]<span class="op">*</span><span class="fl">0.454</span></a>
+<a class="sourceLine" id="cb241-6" data-line-number="6">xl =<span class="st"> </span><span class="kw">c</span>(<span class="kw">min</span>(<span class="kw">c</span>(PesoPeq,PesoSpor)), <span class="kw">max</span>(<span class="kw">c</span>(PesoPeq,PesoSpor)))</a>
+<a class="sourceLine" id="cb241-7" data-line-number="7">yl =<span class="st"> </span><span class="kw">c</span>(<span class="kw">min</span>(<span class="kw">c</span>(PotPeq,PotSpor)), <span class="kw">max</span>(<span class="kw">c</span>(PotPeq,PotSpor)))</a>
+<a class="sourceLine" id="cb241-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb241-9" data-line-number="9"><span class="kw">plot</span>(PesoSpor, PotSpor, <span class="dt">xlim =</span> xl, <span class="dt">ylim =</span> yl,  </a>
+<a class="sourceLine" id="cb241-10" data-line-number="10">  <span class="dt">xlab =</span> <span class="st">&quot;Peso (Kg)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Potencia (CV)&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, </a>
+<a class="sourceLine" id="cb241-11" data-line-number="11">  <span class="dt">main =</span> <span class="st">&quot;Cars 93: deportivos y pequeños&quot;</span>)</a>
+<a class="sourceLine" id="cb241-12" data-line-number="12"><span class="kw">points</span>(PesoPeq, PotPeq, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)  </a>
+<a class="sourceLine" id="cb241-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb241-14" data-line-number="14">PPS =<span class="st"> </span><span class="kw">lm</span>(PotSpor<span class="op">~</span>PesoSpor)</a>
+<a class="sourceLine" id="cb241-15" data-line-number="15"><span class="kw">abline</span>(PPS, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a>
+<a class="sourceLine" id="cb241-16" data-line-number="16">PPP =<span class="st"> </span><span class="kw">lm</span>(PotPeq<span class="op">~</span>PesoPeq)</a>
+<a class="sourceLine" id="cb241-17" data-line-number="17"><span class="kw">abline</span>(PPP, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-155-1.png" width="672" /></p>
+<p>Vemos que los coches deportivos, como era de esperar, tienen una
+relación peso-potencia menor: añaden más caballos por cada Kg de peso
+adicional. Queremos calcular el intervalo de confianza de a
+diferencia de esta relación, es decir, de la diferencia de las
+pendientes.</p>
+<p>No podemos hacerlo exactamente, pero sí aproximadamente: sabemos los
+errores estándar y las pendientes, luego podemos aproximar el error
+estándar de la diferencia como la raíz cuadrada de la suma de los
+cuadrados, y a partir de aquí ya es simple. En el código que se
+muestra a continuación se ve cómo conseguir los errores estándar y
+las pendientes directamente y sin tener que copiarlas de la pantalla:</p>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb242-1" data-line-number="1"><span class="co"># Los errores estándar:</span></a>
+<a class="sourceLine" id="cb242-2" data-line-number="2">sePPS =<span class="st"> </span><span class="kw">summary</span>(PPS)<span class="op">$</span>coefficients[<span class="dv">2</span>, <span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb242-3" data-line-number="3">sePPP =<span class="st"> </span><span class="kw">summary</span>(PPP)<span class="op">$</span>coefficients[<span class="dv">2</span>, <span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb242-4" data-line-number="4"><span class="co"># Las pendientes:</span></a>
+<a class="sourceLine" id="cb242-5" data-line-number="5">pendPPS =<span class="st"> </span>PPS<span class="op">$</span>coefficients[<span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb242-6" data-line-number="6">pendPPP =<span class="st"> </span>PPP<span class="op">$</span>coefficients[<span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb242-7" data-line-number="7"><span class="co"># El error estándar de la diferencia</span></a>
+<a class="sourceLine" id="cb242-8" data-line-number="8">sedif =<span class="st"> </span><span class="kw">sqrt</span>(sePPS<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>sePPP<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb242-9" data-line-number="9"><span class="co"># Y ya el IC:</span></a>
+<a class="sourceLine" id="cb242-10" data-line-number="10">f =<span class="st"> </span><span class="kw">qt</span>(<span class="fl">0.975</span>, <span class="dt">df =</span> <span class="dv">12</span>)</a>
+<a class="sourceLine" id="cb242-11" data-line-number="11">ICdif =<span class="st"> </span>(pendPPS <span class="op">-</span><span class="st"> </span>pendPPP) <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="op">*</span>f<span class="op">*</span>sedif</a>
+<a class="sourceLine" id="cb242-12" data-line-number="12">ICdif</a></code></pre></div>
+<pre><code>## [1] 0.02439861 0.33972367</code></pre>
+<p>Obtenemos un ICdif = [0,024; 0,400]. Es decir que un coche deportivo
+tiene entre 0,02 y 0,4 CV adicionales por Kg de peso respecto a los
+pequeños.</p>
+</div>
+</div>
+<div id="predicciones" class="section level2">
+<h2><span class="header-section-number">14.5</span> Predicciones</h2>
+<p>El objetivo final de la estadística es casi siempre poder hacer
+predicciones. Como ya hemos visto, la regresión lineal es mucho más
+compleja que un t-test o un <span class="math inline">\(\chi^{2}\)</span> y hacer predicciones va a ser
+más difícil. Es
+intuitivo que si los puntos están cerca de la curva de regresión que
+estamos estudiando, es decir si el coeficiente de regresión <span class="math inline">\(R^{2}\)</span>
+es alto, la incertidumbre es baja. Pero si el coeficiente es bajo, la
+incertidumbre es mayor. Usando ejemplos de documentos anteriores, si
+queremos predecir la intensidad que pasa por nuestra resistencia a
+partir del voltaje, tenemos poca incertidumbre y el rango de valores
+psoibles es estrecho; en cambio si queremos predecir el peso de un
+niño en función de su altura, el rango será mucho mayor. En general,
+si queremos predecir el valor de la variable dependiente en función de
+la independiente vamos a tener que tener en cuenta no sólo el valor
+de la curva, sino al menos también el coeficiente
+<span class="math inline">\(R^{2}\)</span>. Los cálculos son complejos, pero los ordenadores acuden a
+nuestra ayuda. La función <code>predict()</code> nos va a ayudar a predecir
+rangos de valores de nuestra variable dependiente a partir de la
+independiente.</p>
+<p><br></p>
+<p>El ejemplo de base será la distancia de frenadas de coches. Usaremos
+el conjunto de datos <code>cars</code>, con velocidades y distancias de
+frenado de coches en los años 20 (por eso las velocidades son tan bajas).
+Lo primero que haremos es pasar las distancias a metros y las
+velocidades a Km/h. Después dibujaremos los puntos y calcularemos y
+dibujaremos la recta de regresión.</p>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb244-1" data-line-number="1">velocidad =<span class="st"> </span>cars<span class="op">$</span>speed<span class="op">*</span><span class="fl">1.609</span></a>
+<a class="sourceLine" id="cb244-2" data-line-number="2">distancia =<span class="st"> </span>cars<span class="op">$</span>dist<span class="op">*</span><span class="fl">0.305</span></a>
+<a class="sourceLine" id="cb244-3" data-line-number="3">DS =<span class="st"> </span><span class="kw">lm</span>(distancia<span class="op">~</span>velocidad)</a>
+<a class="sourceLine" id="cb244-4" data-line-number="4">DS</a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = distancia ~ velocidad)
+## 
+## Coefficients:
+## (Intercept)    velocidad  
+##     -5.3616       0.7454</code></pre>
+<p>Los coeficientes son <span class="math inline">\(-5.36\)</span> para la ordenada en el origen y <span class="math inline">\(0.745\)</span>
+para la pendiente. Es decir, la recta de regresión es
+<span class="math inline">\(\mbox{distancia} = -5,36 + 0,745 \cdot \mbox{velocidad}\)</span>.</p>
+<p>La gráfica resultante es:</p>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb246-1" data-line-number="1"><span class="co">#La regresión suponiendo una recta</span></a>
+<a class="sourceLine" id="cb246-2" data-line-number="2"><span class="kw">plot</span>(velocidad, distancia, <span class="dt">xlab =</span> <span class="st">&quot;Velocidad (Km/h)&quot;</span>,</a>
+<a class="sourceLine" id="cb246-3" data-line-number="3">     <span class="dt">ylab =</span> <span class="st">&quot;Distancia (m)&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Distancias de frenado&quot;</span>)</a>
+<a class="sourceLine" id="cb246-4" data-line-number="4"><span class="kw">abline</span>(DS, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-158-1.png" width="672" /></p>
+<p>Antes de hacer las predicciones, vamos a diagnosticar la bondad de la
+regresión. Juntamos las 4 gráficas en una usando <code>par(mfrow = c(2,2))</code>:</p>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb247-2" data-line-number="2"><span class="kw">plot</span>(DS)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-159-1.png" width="672" /></p>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb248-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</a></code></pre></div>
+<p>Vemos en la gráfica resultante que la regresión no es nada
+problemática. Pasemos pues a hacer predicciones.</p>
+<div id="predicción-de-la-curva" class="section level3">
+<h3><span class="header-section-number">14.5.1</span> Predicción de la curva</h3>
+<p>La función <code>predict()</code> tiene 3 parámetros. El primero es el
+resultado de la regresión; en el segundo tenemos los valores de la
+variable independiente sobre los que queremos hacer la predicción; y
+el tercero es el tipo de predicción.</p>
+<p>El segundo parámetro tiene una forma particular: debe ser un data
+frame con tantas filas y columnas como queramos pero una de las
+columnas debe llamarse <em>exactamente igual</em> que la variable
+independiente. Es de esa columna de la que extraerá los valores sobre
+las que hacer la predicción. No ajustarse a este formato es causa de
+muchos errores. Dos errores bastante frecuentes son dar un vector de valores
+en vez de un data frame y que la columna del data frame tenga un
+nombre que no es igual al de la variable independiente. Si la función
+les da error, asegúrense que no han cometido ninguno de estos dos errores.</p>
+<p>Hemos dicho que hay varios tipos de predicción. El primer tipo nos
+devuelve los valores de la curva para los valores que le demos. Si lo
+que tenemos es una recta, es una forma un tanto complicada de hacerlo,
+pero si es una curva compleja, puede ser más conveniente. Es el tipo
+de predicción por defecto y por lo tanto no necesitamos el tercer
+parámetro.</p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" data-line-number="1"><span class="co"># Predicciones: velocidades de 7 a 40 de 3 en 3</span></a>
+<a class="sourceLine" id="cb249-2" data-line-number="2">new =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">velocidad =</span> <span class="kw">seq</span>(<span class="dv">7</span>, <span class="dv">40</span>, <span class="dv">3</span>))</a>
+<a class="sourceLine" id="cb249-3" data-line-number="3"><span class="kw">predict</span>(DS, new)</a></code></pre></div>
+<pre><code>##         1         2         3         4         5         6         7         8 
+## -0.143667  2.092600  4.328868  6.565135  8.801402 11.037669 13.273937 15.510204 
+##         9        10        11        12 
+## 17.746471 19.982738 22.219006 24.455273</code></pre>
+<p>Es fácil comprobar que estos datos son, efectivamente, los
+correspondientes a nuestra recta:</p>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" data-line-number="1">DS<span class="op">$</span>coefficients[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>DS<span class="op">$</span>coefficients[<span class="dv">2</span>]<span class="op">*</span><span class="kw">seq</span>(<span class="dv">7</span>, <span class="dv">40</span>, <span class="dv">3</span>)</a></code></pre></div>
+<pre><code>##  [1] -0.143667  2.092600  4.328868  6.565135  8.801402 11.037669 13.273937
+##  [8] 15.510204 17.746471 19.982738 22.219006 24.455273</code></pre>
+</div>
+<div id="predicción-de-rango" class="section level3">
+<h3><span class="header-section-number">14.5.2</span> Predicción de rango</h3>
+<p>El segundo tipo de predicción es mucho más interesante. Queremos
+saber el rango de las distancias de frenado para un coche que vaya a
+una determinada velocidad. Hemos de añadir a la función <code>predict()</code> el
+parámetro <code>interval = &quot;prediction&quot;</code>. Vamos a usar el mismo data frame que
+antes. Los resultados son:</p>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" data-line-number="1"><span class="co"># Para cada velocidad, rango de posibles distancias de frenado</span></a>
+<a class="sourceLine" id="cb253-2" data-line-number="2">predInt =<span class="st"> </span><span class="kw">predict</span>(DS, new, <span class="dt">interval =</span> <span class="st">&quot;prediction&quot;</span>)</a>
+<a class="sourceLine" id="cb253-3" data-line-number="3"><span class="kw">round</span>(predInt, <span class="dv">2</span>)</a></code></pre></div>
+<pre><code>##      fit    lwr   upr
+## 1  -0.14 -10.08  9.79
+## 2   2.09  -7.72 11.90
+## 3   4.33  -5.38 14.04
+## 4   6.57  -3.06 16.19
+## 5   8.80  -0.77 18.37
+## 6  11.04   1.50 20.57
+## 7  13.27   3.75 22.80
+## 8  15.51   5.97 25.05
+## 9  17.75   8.17 27.32
+## 10 19.98  10.35 29.62
+## 11 22.22  12.50 31.94
+## 12 24.46  14.63 34.28</code></pre>
+<p>La primera columna nos da el valor de la curva, lo que habíamos
+obtenido antes. Las otras dos, los extremos inferior y superior del
+rango. Por ejemplo, para el tercer valor que hemos dado en el data
+frame (13 Km/h), el valor sobre la curva es 4,33 m, y predecimos que
+la distancia de frenado para un coche que vaya a 13 Km/h está entre
+<span class="math inline">\(-5,38\)</span> m y <span class="math inline">\(14,04\)</span>~m. Evidentemente, el valor negativo es absurdo, pero
+eso R no lo sabe. Con el décimo valor del data frame, predecimos para
+un coche que vaya a 34 Km/h, una distancia de frenado de entre <span class="math inline">\(10,35\)</span> m
+y <span class="math inline">\(29,62\)</span> m.</p>
+<p>Recordemos que estas predicciones se obtienen con nuestro conjunto de datos
+de partida. Con otro conjunto diferente obtendríamos una recta
+diferente y unas predicciones distintas.</p>
+</div>
+<div id="predicción-de-medias" class="section level3">
+<h3><span class="header-section-number">14.5.3</span> Predicción de medias</h3>
+<p>El tercer tipo de predicción es el del valor medio. Para nuestro
+ejemplo, en nuestro ejemplo, la distancia media de frenado de coches
+que vayan a las velocidades que hemos indicado. En este caso el valor
+del tercer parámetros es <code>interval = &quot;confidence&quot;</code>. La salida de
+la función es:</p>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" data-line-number="1"><span class="co"># Para cada velocidad, rango de distancias de frenado medias</span></a>
+<a class="sourceLine" id="cb255-2" data-line-number="2">predMed =<span class="st"> </span><span class="kw">predict</span>(DS, new, <span class="dt">interval =</span> <span class="st">&quot;confidence&quot;</span>)</a>
+<a class="sourceLine" id="cb255-3" data-line-number="3"><span class="kw">round</span>(predMed, <span class="dv">2</span>)</a></code></pre></div>
+<pre><code>##      fit   lwr   upr
+## 1  -0.14 -3.26  2.97
+## 2   2.09 -0.60  4.79
+## 3   4.33  2.04  6.62
+## 4   6.57  4.64  8.49
+## 5   8.80  7.18 10.42
+## 6  11.04  9.63 12.44
+## 7  13.27 11.94 14.61
+## 8  15.51 14.08 16.94
+## 9  17.75 16.09 19.40
+## 10 19.98 18.00 21.96
+## 11 22.22 19.87 24.57
+## 12 24.46 21.70 27.21</code></pre>
+<p>A partir de estos datos podemos predecir que un coche que vaya a 22
+Km/h (sexta fila), de media necesitará entre 9,63 m y 12,44 m para
+frenar y que un coche que vaya a 40 Km/h (última fila), de media
+necesitará entre 21,70 m y 27,21 m para frenar.</p>
+<p><br></p>
+<p>Podemos dibujar estas predicciones en nuestra nube de puntos. De paso
+veremos cómo dibujar lineas a trazos. Usaremos lineas azules para los
+intervalos de las medias y rojas para las del rango. El código es:</p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" data-line-number="1"><span class="kw">plot</span>(velocidad, distancia, <span class="dt">xlab =</span> <span class="st">&quot;Velocidad (Km/h)&quot;</span>,</a>
+<a class="sourceLine" id="cb257-2" data-line-number="2">     <span class="dt">ylab =</span> <span class="st">&quot;Distancia (m)&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Distancias de frenado&quot;</span>)</a>
+<a class="sourceLine" id="cb257-3" data-line-number="3"><span class="kw">abline</span>(DS)</a>
+<a class="sourceLine" id="cb257-4" data-line-number="4"><span class="kw">lines</span>(new<span class="op">$</span>velocidad, predInt[,<span class="dv">2</span>], <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
+<a class="sourceLine" id="cb257-5" data-line-number="5"><span class="kw">lines</span>(new<span class="op">$</span>velocidad, predInt[,<span class="dv">3</span>], <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
+<a class="sourceLine" id="cb257-6" data-line-number="6"><span class="kw">lines</span>(new<span class="op">$</span>velocidad, predMed[,<span class="dv">2</span>], <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a>
+<a class="sourceLine" id="cb257-7" data-line-number="7"><span class="kw">lines</span>(new<span class="op">$</span>velocidad, predMed[,<span class="dv">3</span>], <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-164-1.png" width="672" /></p>
+<p>Vemos que en los extremos los rangos son mayores que en el centro.
+Eso es debido a que cuantos más puntos cercanos haya menos
+incertidumbre tengo. En el centro tengo más puntos cercanos, los tengo por ambos
+lados, mientras que en los extremos tengo menos, sólo por un lado.</p>
+</div>
+<div id="resumen-de-predicciones" class="section level3">
+<h3><span class="header-section-number">14.5.4</span> Resumen de predicciones</h3>
+<p>Aunque R nos dé unos contrastes de hipótesis y unos intervalos de
+confianza de los parámetros, nos pueden interesar otros distintos.
+Con los datos que nos proporciona el <code>summary()</code> de una
+regresión podemos crear nuestros propios t-test y calcular los
+p-valores correspondientes. Para los intervalos de confianza no
+sabemos hacer el cálculo exacto, pero sí podemos calcular con
+facilidad el error estándar de la diferencia y a partir de ahí
+aproximar un intervalo de confianza de la diferencia de algún
+parámetro, de la pendiente, por ejemplo.</p>
+<p>A partir de mi regresión me interesa predecir no sólo los valores de
+la curva obtenida sino sobre todo rangos de valores, y un intervalo de
+confianza de los valores medios para cada posible valor de la
+variable independiente. No son cálculos sencillos, pero la función
+<code>predict()</code> nos da estos resultados. Esta función da mucha
+potencia a la regresión lineal.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="la-prueba-de-ji-cuadrado.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="problemas.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/16_Regresion.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Estadística.pdf", "Estadística.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

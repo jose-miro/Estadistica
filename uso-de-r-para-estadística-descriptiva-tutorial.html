@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 6 Uso de R para estadística descriptiva. Tutorial | Mera estadística</title>
+  <meta name="description" content="Capítulo 6 Uso de R para estadística descriptiva. Tutorial | Mera estadística" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 6 Uso de R para estadística descriptiva. Tutorial | Mera estadística" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 6 Uso de R para estadística descriptiva. Tutorial | Mera estadística" />
+  
+  
+  
+
+<meta name="author" content="Jose Miró Julià" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="estadística-descriptiva-de-datos-bivariantes.html"/>
+<link rel="next" href="probabilidad.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Estadística</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a></li>
+<li class="chapter" data-level="2" data-path="qué-es-y-no-es-la-estadística.html"><a href="qué-es-y-no-es-la-estadística.html"><i class="fa fa-check"></i><b>2</b> ¿Qué es (y no es) la estadística?</a><ul>
+<li class="chapter" data-level="2.1" data-path="qué-es-y-no-es-la-estadística.html"><a href="qué-es-y-no-es-la-estadística.html#el-proceso-estadístico"><i class="fa fa-check"></i><b>2.1</b> El proceso estadístico</a></li>
+<li class="chapter" data-level="2.2" data-path="qué-es-y-no-es-la-estadística.html"><a href="qué-es-y-no-es-la-estadística.html#es-la-estadística-parte-de-las-matemáticas"><i class="fa fa-check"></i><b>2.2</b> ¿Es la estadística parte de las matemáticas?</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html"><i class="fa fa-check"></i><b>3</b> Estadística descriptiva de datos numéricos univariantes</a><ul>
+<li class="chapter" data-level="3.1" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#tipos-de-datos"><i class="fa fa-check"></i><b>3.1</b> Tipos de datos</a></li>
+<li class="chapter" data-level="3.2" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#medidas-de-centralidad-y-dispersión"><i class="fa fa-check"></i><b>3.2</b> Medidas de centralidad y dispersión</a></li>
+<li class="chapter" data-level="3.3" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#gráficas-para-datos-cuantitativos"><i class="fa fa-check"></i><b>3.3</b> Gráficas para datos cuantitativos</a></li>
+<li class="chapter" data-level="3.4" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#análisis-de-los-datos"><i class="fa fa-check"></i><b>3.4</b> Análisis de los datos</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#modalidad"><i class="fa fa-check"></i><b>3.4.1</b> Modalidad</a></li>
+<li class="chapter" data-level="3.4.2" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#simetría"><i class="fa fa-check"></i><b>3.4.2</b> Simetría</a></li>
+<li class="chapter" data-level="3.4.3" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#valores-atípicos"><i class="fa fa-check"></i><b>3.4.3</b> Valores atípicos</a></li>
+<li class="chapter" data-level="3.4.4" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#problematicidad"><i class="fa fa-check"></i><b>3.4.4</b> Problematicidad</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><i class="fa fa-check"></i><b>4</b> Estadística descriptiva de datos cualitativos univariantes</a><ul>
+<li class="chapter" data-level="4.1" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#tablas-de-contingencia"><i class="fa fa-check"></i><b>4.1</b> Tablas de contingencia</a></li>
+<li class="chapter" data-level="4.2" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#gráficas-para-datos-cualitativos"><i class="fa fa-check"></i><b>4.2</b> Gráficas para datos cualitativos</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#gráficos-3d"><i class="fa fa-check"></i><b>4.2.1</b> Gráficos 3D</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#conclusión"><i class="fa fa-check"></i><b>4.3</b> Conclusión</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html"><i class="fa fa-check"></i><b>5</b> Estadística descriptiva de datos bivariantes</a><ul>
+<li class="chapter" data-level="5.1" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#dos-variables-numéricas"><i class="fa fa-check"></i><b>5.1</b> Dos variables numéricas</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#gráfica-de-nube-de-puntos"><i class="fa fa-check"></i><b>5.1.1</b> Gráfica de nube de puntos</a></li>
+<li class="chapter" data-level="5.1.2" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#rectas-de-regresión"><i class="fa fa-check"></i><b>5.1.2</b> Rectas de regresión</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#una-variable-numérica-y-una-cualitativa"><i class="fa fa-check"></i><b>5.2</b> Una variable numérica y una cualitativa</a></li>
+<li class="chapter" data-level="5.3" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#dos-variables-cualitativas"><i class="fa fa-check"></i><b>5.3</b> Dos variables cualitativas</a></li>
+<li class="chapter" data-level="5.4" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#resumen"><i class="fa fa-check"></i><b>5.4</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html"><i class="fa fa-check"></i><b>6</b> Uso de R para estadística descriptiva. Tutorial</a><ul>
+<li class="chapter" data-level="6.1" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#data-frames"><i class="fa fa-check"></i><b>6.1</b> Data frames</a></li>
+<li class="chapter" data-level="6.2" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-una-variable-cuantitativa"><i class="fa fa-check"></i><b>6.2</b> El caso de una variable cuantitativa</a></li>
+<li class="chapter" data-level="6.3" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-una-variable-cualitativa"><i class="fa fa-check"></i><b>6.3</b> El caso de una variable cualitativa</a></li>
+<li class="chapter" data-level="6.4" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-dos-variables-cuantitativas"><i class="fa fa-check"></i><b>6.4</b> El caso de dos variables cuantitativas</a></li>
+<li class="chapter" data-level="6.5" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-dos-variables-una-cuantitativa-y-una-cualitativa"><i class="fa fa-check"></i><b>6.5</b> El caso de dos variables, una cuantitativa y una cualitativa</a></li>
+<li class="chapter" data-level="6.6" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-dos-variables-cualitativas"><i class="fa fa-check"></i><b>6.6</b> El caso de dos variables cualitativas</a></li>
+<li class="chapter" data-level="6.7" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#resumen-final"><i class="fa fa-check"></i><b>6.7</b> Resumen final</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="probabilidad.html"><a href="probabilidad.html"><i class="fa fa-check"></i><b>7</b> Probabilidad</a><ul>
+<li class="chapter" data-level="7.1" data-path="probabilidad.html"><a href="probabilidad.html#ideas-básicas"><i class="fa fa-check"></i><b>7.1</b> Ideas básicas</a></li>
+<li class="chapter" data-level="7.2" data-path="probabilidad.html"><a href="probabilidad.html#operaciones-con-probabilidades"><i class="fa fa-check"></i><b>7.2</b> Operaciones con probabilidades</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-de-una-cosa-u-otra"><i class="fa fa-check"></i><b>7.2.1</b> Probabilidad de una cosa u otra</a></li>
+<li class="chapter" data-level="7.2.2" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-de-una-cosa-y-otra"><i class="fa fa-check"></i><b>7.2.2</b> Probabilidad de una cosa y otra</a></li>
+<li class="chapter" data-level="7.2.3" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-del-suceso-contrario"><i class="fa fa-check"></i><b>7.2.3</b> Probabilidad del suceso contrario</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-condicionada"><i class="fa fa-check"></i><b>7.3</b> Probabilidad condicionada</a></li>
+<li class="chapter" data-level="7.4" data-path="probabilidad.html"><a href="probabilidad.html#regla-de-bayes"><i class="fa fa-check"></i><b>7.4</b> Regla de Bayes</a></li>
+<li class="chapter" data-level="7.5" data-path="probabilidad.html"><a href="probabilidad.html#resumen-1"><i class="fa fa-check"></i><b>7.5</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html"><i class="fa fa-check"></i><b>8</b> Variables aleatorias</a><ul>
+<li class="chapter" data-level="8.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#qué-es-una-variable-aleatoria"><i class="fa fa-check"></i><b>8.1</b> ¿Qué es una variable aleatoria?</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#variables-discretas"><i class="fa fa-check"></i><b>8.1.1</b> Variables discretas</a></li>
+<li class="chapter" data-level="8.1.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#variables-continuas"><i class="fa fa-check"></i><b>8.1.2</b> Variables continuas</a></li>
+<li class="chapter" data-level="8.1.3" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#propiedades-de-estas-funciones"><i class="fa fa-check"></i><b>8.1.3</b> Propiedades de estas funciones</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#cálculo-de-probabilidades"><i class="fa fa-check"></i><b>8.2</b> Cálculo de probabilidades</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#calculando-a-mano"><i class="fa fa-check"></i><b>8.2.1</b> Calculando a mano</a></li>
+<li class="chapter" data-level="8.2.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#calculando-con-r"><i class="fa fa-check"></i><b>8.2.2</b> Calculando con R</a></li>
+<li class="chapter" data-level="8.2.3" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#resumen-2"><i class="fa fa-check"></i><b>8.2.3</b> Resumen</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><i class="fa fa-check"></i><b>9</b> Esperanzas y desviaciones típicas de variables aleatorias</a><ul>
+<li class="chapter" data-level="9.1" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#desviaciones-típicas"><i class="fa fa-check"></i><b>9.1</b> Desviaciones típicas</a></li>
+<li class="chapter" data-level="9.2" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#operaciones-con-variables-aleatorias"><i class="fa fa-check"></i><b>9.2</b> Operaciones con variables aleatorias</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#un-ejemplo"><i class="fa fa-check"></i><b>9.2.1</b> Un ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#resumen-3"><i class="fa fa-check"></i><b>9.3</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><i class="fa fa-check"></i><b>10</b> Intervalos de confianza: una medida de la incertidumbre</a><ul>
+<li class="chapter" data-level="10.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#incertidumbre-en-muestras-de-proporciones"><i class="fa fa-check"></i><b>10.1</b> Incertidumbre en muestras de proporciones</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#una-simulación"><i class="fa fa-check"></i><b>10.1.1</b> Una simulación</a></li>
+<li class="chapter" data-level="10.1.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>10.1.2</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="10.1.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#fuga-de-probabilidad"><i class="fa fa-check"></i><b>10.1.3</b> Fuga de probabilidad</a></li>
+<li class="chapter" data-level="10.1.4" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#un-ejemplo-1"><i class="fa fa-check"></i><b>10.1.4</b> Un ejemplo</a></li>
+<li class="chapter" data-level="10.1.5" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#resumen-de-intervalos-de-confianza-de-proporciones"><i class="fa fa-check"></i><b>10.1.5</b> Resumen de intervalos de confianza de proporciones</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#incertidumbre-en-muestras-de-medias"><i class="fa fa-check"></i><b>10.2</b> Incertidumbre en muestras de medias</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#una-simulación-1"><i class="fa fa-check"></i><b>10.2.1</b> Una simulación</a></li>
+<li class="chapter" data-level="10.2.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#intervalos-de-confianza-1"><i class="fa fa-check"></i><b>10.2.2</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="10.2.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#la-distribución-t-de-student"><i class="fa fa-check"></i><b>10.2.3</b> La distribución t de Student</a></li>
+<li class="chapter" data-level="10.2.4" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#fuga-de-probabilidades"><i class="fa fa-check"></i><b>10.2.4</b> Fuga de probabilidades</a></li>
+<li class="chapter" data-level="10.2.5" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#un-ejemplo-2"><i class="fa fa-check"></i><b>10.2.5</b> Un ejemplo</a></li>
+<li class="chapter" data-level="10.2.6" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#resumen-de-intervalos-de-confianza-de-medias"><i class="fa fa-check"></i><b>10.2.6</b> Resumen de intervalos de confianza de medias</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#comparación-de-intervalos-de-confianza"><i class="fa fa-check"></i><b>10.3</b> Comparación de intervalos de confianza</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#no-puedo-decir-que-sean-distintos"><i class="fa fa-check"></i><b>10.3.1</b> No puedo decir que sean distintos</a></li>
+<li class="chapter" data-level="10.3.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#cálculo-de-intervalos-de-confianza-de-diferencias"><i class="fa fa-check"></i><b>10.3.2</b> Cálculo de intervalos de confianza de diferencias</a></li>
+<li class="chapter" data-level="10.3.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#más-ejemplos"><i class="fa fa-check"></i><b>10.3.3</b> Más ejemplos</a></li>
+<li class="chapter" data-level="10.3.4" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#resumen-de-comparación-de-intervalos-de-confianza"><i class="fa fa-check"></i><b>10.3.4</b> Resumen de comparación de intervalos de confianza</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html"><i class="fa fa-check"></i><b>11</b> Contrastes de hipotesis</a><ul>
+<li class="chapter" data-level="11.1" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html#experimentos-estadísticos-para-un-contraste-de-hipótesis"><i class="fa fa-check"></i><b>11.1</b> Experimentos estadísticos para un contraste de hipótesis</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html#procedimiento-de-cálculo-del-p-valor."><i class="fa fa-check"></i><b>11.1.1</b> Procedimiento de cálculo del p-valor.</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html#interpretación-del-p-valor."><i class="fa fa-check"></i><b>11.2</b> Interpretación del p-valor.</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>12</b> ANOVA</a><ul>
+<li class="chapter" data-level="12.1" data-path="anova.html"><a href="anova.html#nada-es-gratis-y-los-errores-se-acumulan"><i class="fa fa-check"></i><b>12.1</b> Nada es gratis (y los errores se acumulan)</a></li>
+<li class="chapter" data-level="12.2" data-path="anova.html"><a href="anova.html#punto-de-partida"><i class="fa fa-check"></i><b>12.2</b> Punto de partida</a></li>
+<li class="chapter" data-level="12.3" data-path="anova.html"><a href="anova.html#tutorial-de-anova-en-r"><i class="fa fa-check"></i><b>12.3</b> Tutorial de ANOVA en R</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="anova.html"><a href="anova.html#el-problema"><i class="fa fa-check"></i><b>12.3.1</b> El problema</a></li>
+<li class="chapter" data-level="12.3.2" data-path="anova.html"><a href="anova.html#el-primer-método-oneway.test"><i class="fa fa-check"></i><b>12.3.2</b> El primer método: oneway.test()</a></li>
+<li class="chapter" data-level="12.3.3" data-path="anova.html"><a href="anova.html#el-segundo-método-aov"><i class="fa fa-check"></i><b>12.3.3</b> El segundo método: aov()</a></li>
+<li class="chapter" data-level="12.3.4" data-path="anova.html"><a href="anova.html#el-tercer-método"><i class="fa fa-check"></i><b>12.3.4</b> El tercer método</a></li>
+<li class="chapter" data-level="12.3.5" data-path="anova.html"><a href="anova.html#y-si-los-datos-no-están-como-los-quiere-r"><i class="fa fa-check"></i><b>12.3.5</b> ¿Y si los datos no están como los quiere R?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html"><i class="fa fa-check"></i><b>13</b> La prueba de Ji-Cuadrado</a><ul>
+<li class="chapter" data-level="13.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-de-ji-cuadrado-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>13.1</b> Prueba de ji-cuadrado de bondad de ajuste</a></li>
+<li class="chapter" data-level="13.2" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-de-bondad-de-ajuste-con-r"><i class="fa fa-check"></i><b>13.2</b> Prueba <span class="math inline">\(\chi^2\)</span> de bondad de ajuste con R</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#problematicidad-el-aviso-de-chisq.test"><i class="fa fa-check"></i><b>13.2.1</b> Problematicidad: el aviso de chisq.test()</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#la-prueba-chi2-de-homogeneidad"><i class="fa fa-check"></i><b>13.3</b> La prueba <span class="math inline">\(\chi^2\)</span> de homogeneidad</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#definición-formal"><i class="fa fa-check"></i><b>13.3.1</b> Definición formal</a></li>
+<li class="chapter" data-level="13.3.2" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-como-contraste-de-hipótesis"><i class="fa fa-check"></i><b>13.3.2</b> Prueba <span class="math inline">\(\chi^2\)</span> como contraste de hipótesis</a></li>
+<li class="chapter" data-level="13.3.3" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-de-homogeneidad-con-r"><i class="fa fa-check"></i><b>13.3.3</b> Prueba <span class="math inline">\(\chi^2\)</span> de homogeneidad con R</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#la-prueba-chi2-de-independencia"><i class="fa fa-check"></i><b>13.4</b> La prueba <span class="math inline">\(\chi^{2}\)</span> de independencia</a><ul>
+<li class="chapter" data-level="13.4.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-de-independencia-como-contraste-de-hipótesis"><i class="fa fa-check"></i><b>13.4.1</b> Prueba <span class="math inline">\(\chi^2\)</span> de independencia como contraste de hipótesis</a></li>
+<li class="chapter" data-level="13.4.2" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#un-ejemplo-3"><i class="fa fa-check"></i><b>13.4.2</b> Un ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#resumen-4"><i class="fa fa-check"></i><b>13.5</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="regresión-lineal.html"><a href="regresión-lineal.html"><i class="fa fa-check"></i><b>14</b> Regresión Lineal</a><ul>
+<li class="chapter" data-level="14.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#cálculo"><i class="fa fa-check"></i><b>14.1</b> Cálculo</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#fundamentos"><i class="fa fa-check"></i><b>14.1.1</b> Fundamentos</a></li>
+<li class="chapter" data-level="14.1.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#otro-ejemplo"><i class="fa fa-check"></i><b>14.1.2</b> Otro ejemplo</a></li>
+<li class="chapter" data-level="14.1.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#y-si-no-es-una-recta"><i class="fa fa-check"></i><b>14.1.3</b> ¿Y si no es una recta?</a></li>
+<li class="chapter" data-level="14.1.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-la-parte-de-cálculo"><i class="fa fa-check"></i><b>14.1.4</b> Resumen de la parte de cálculo</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#estadística"><i class="fa fa-check"></i><b>14.2</b> Estadística</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#incertidumbre-en-la-regresión-lineal"><i class="fa fa-check"></i><b>14.2.1</b> Incertidumbre en la regresión lineal</a></li>
+<li class="chapter" data-level="14.2.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#condiciones"><i class="fa fa-check"></i><b>14.2.2</b> Condiciones</a></li>
+<li class="chapter" data-level="14.2.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#salida-de-r"><i class="fa fa-check"></i><b>14.2.3</b> Salida de R</a></li>
+<li class="chapter" data-level="14.2.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#intervalos-de-confianza-2"><i class="fa fa-check"></i><b>14.2.4</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="14.2.5" data-path="regresión-lineal.html"><a href="regresión-lineal.html#otro-ejemplo-1"><i class="fa fa-check"></i><b>14.2.5</b> Otro ejemplo</a></li>
+<li class="chapter" data-level="14.2.6" data-path="regresión-lineal.html"><a href="regresión-lineal.html#la-regresión-no-muestra-qué-tipo-de-curva-es"><i class="fa fa-check"></i><b>14.2.6</b> La regresión no muestra qué tipo de curva es</a></li>
+<li class="chapter" data-level="14.2.7" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-la-parte-de-estadística"><i class="fa fa-check"></i><b>14.2.7</b> Resumen de la parte de estadística</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#diagnóstico"><i class="fa fa-check"></i><b>14.3</b> Diagnóstico</a><ul>
+<li class="chapter" data-level="14.3.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#seis-modelos"><i class="fa fa-check"></i><b>14.3.1</b> Seis modelos</a></li>
+<li class="chapter" data-level="14.3.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#cinco-diagnósticos"><i class="fa fa-check"></i><b>14.3.2</b> Cinco diagnósticos</a></li>
+<li class="chapter" data-level="14.3.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-diagnóstico"><i class="fa fa-check"></i><b>14.3.3</b> Resumen de diagnóstico</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#inferencias"><i class="fa fa-check"></i><b>14.4</b> Inferencias</a><ul>
+<li class="chapter" data-level="14.4.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#contrastes-de-hipótesis"><i class="fa fa-check"></i><b>14.4.1</b> Contrastes de hipótesis</a></li>
+<li class="chapter" data-level="14.4.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#intervalos-de-confianza-3"><i class="fa fa-check"></i><b>14.4.2</b> Intervalos de confianza</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicciones"><i class="fa fa-check"></i><b>14.5</b> Predicciones</a><ul>
+<li class="chapter" data-level="14.5.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-de-la-curva"><i class="fa fa-check"></i><b>14.5.1</b> Predicción de la curva</a></li>
+<li class="chapter" data-level="14.5.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-de-rango"><i class="fa fa-check"></i><b>14.5.2</b> Predicción de rango</a></li>
+<li class="chapter" data-level="14.5.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-de-medias"><i class="fa fa-check"></i><b>14.5.3</b> Predicción de medias</a></li>
+<li class="chapter" data-level="14.5.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-predicciones"><i class="fa fa-check"></i><b>14.5.4</b> Resumen de predicciones</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="problemas.html"><a href="problemas.html"><i class="fa fa-check"></i><b>15</b> Problemas</a><ul>
+<li class="chapter" data-level="15.1" data-path="problemas.html"><a href="problemas.html#qué-es-la-estadística"><i class="fa fa-check"></i><b>15.1</b> ¿Qué es la estadística?</a></li>
+<li class="chapter" data-level="15.2" data-path="problemas.html"><a href="problemas.html#manejo-de-r-y-simulaciones"><i class="fa fa-check"></i><b>15.2</b> Manejo de R y simulaciones</a></li>
+<li class="chapter" data-level="15.3" data-path="problemas.html"><a href="problemas.html#estadística-descriptiva"><i class="fa fa-check"></i><b>15.3</b> Estadística Descriptiva</a></li>
+<li class="chapter" data-level="15.4" data-path="problemas.html"><a href="problemas.html#probabilidad-y-variables-aleatórias"><i class="fa fa-check"></i><b>15.4</b> Probabilidad y variables aleatórias</a></li>
+<li class="chapter" data-level="15.5" data-path="problemas.html"><a href="problemas.html#razonamiento-estadístico."><i class="fa fa-check"></i><b>15.5</b> Razonamiento estadístico.</a><ul>
+<li class="chapter" data-level="15.5.1" data-path="problemas.html"><a href="problemas.html#intervalos-de-confianza-4"><i class="fa fa-check"></i><b>15.5.1</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="15.5.2" data-path="problemas.html"><a href="problemas.html#contrastes-de-hipótesis-1"><i class="fa fa-check"></i><b>15.5.2</b> Contrastes de hipótesis</a></li>
+<li class="chapter" data-level="15.5.3" data-path="problemas.html"><a href="problemas.html#razonamiento-estadístico-complejo"><i class="fa fa-check"></i><b>15.5.3</b> Razonamiento estadístico complejo</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="problemas.html"><a href="problemas.html#anova-1"><i class="fa fa-check"></i><b>15.6</b> Anova</a></li>
+<li class="chapter" data-level="15.7" data-path="problemas.html"><a href="problemas.html#ji-cuadrado"><i class="fa fa-check"></i><b>15.7</b> Ji-cuadrado</a></li>
+<li class="chapter" data-level="15.8" data-path="problemas.html"><a href="problemas.html#regresión-lineal-1"><i class="fa fa-check"></i><b>15.8</b> Regresión Lineal</a></li>
+<li class="chapter" data-level="15.9" data-path="problemas.html"><a href="problemas.html#problemas-con-todo"><i class="fa fa-check"></i><b>15.9</b> Problemas con todo</a></li>
+<li class="chapter" data-level="15.10" data-path="problemas.html"><a href="problemas.html#campos-elíseos"><i class="fa fa-check"></i><b>15.10</b> Campos Elíseos</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Mera estadística</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="uso-de-r-para-estadística-descriptiva.-tutorial" class="section level1">
+<h1><span class="header-section-number">Capítulo 6</span> Uso de R para estadística descriptiva. Tutorial</h1>
+<div id="data-frames" class="section level2">
+<h2><span class="header-section-number">6.1</span> Data frames</h2>
+<p>El <em>data frame</em> es la estructura de datos más utilizada en R. Es la
+tabla de datos de un experimento. Cada fila es un individuo y cada columna
+son las características medidas de ese individuo. Por ejemplo un individuo
+podría ser un alumno y las características la edad, el sexo, el número de
+créditos matriculados y el curso. O el individuo podría ser una máquina de
+una fábrica y las características, la marca, el modelo, la fecha de compra,
+fecha de la última reparación, etc.</p>
+<p>De esta estructura se deduce que cada columna es de un tipo (numérico,
+carácter, etc) mientras que diferentes columnas son de diferentes tipos.
+Por ejemplo tenemos un data frame llamado Alumnos, con columnas para Sexo,
+Edad, Créditos matriculados y Curso:</p>
+<pre><code>##   Sexo Edad Creditos Curso
+## 1    M   19       60     2
+## 2    M   19       54     2
+## 3    F   20       60     3
+## 4    M   18       69     2
+## 5    F   21       66     3
+## 6    M   19       48     3</code></pre>
+<p>Es importante recordar que esta debe ser la estructura. Cuando se opera
+sobre un data frame R espera que sea así: no se puede intercambiar filas
+por columnas. Se puede calcular la media de una columna (media de edad,
+por ejemplo) pero no de una fila, ya que sumar créditos y edad no tiene
+sentido. Podemos por ejemplo hacer un <code>summary()</code> de todo el data
+frame para obtener las información fundamental de los datos y R nos lo hace
+columna a columna:</p>
+<pre><code>##  Sexo       Edad          Creditos        Curso    
+##  F:2   Min.   :18.00   Min.   :48.0   Min.   :2.0  
+##  M:4   1st Qu.:19.00   1st Qu.:55.5   1st Qu.:2.0  
+##        Median :19.00   Median :60.0   Median :2.5  
+##        Mean   :19.33   Mean   :59.5   Mean   :2.5  
+##        3rd Qu.:19.75   3rd Qu.:64.5   3rd Qu.:3.0  
+##        Max.   :21.00   Max.   :69.0   Max.   :3.0</code></pre>
+<p>Aunque se puede hacer, R no está diseñado para crear y editar data frames.
+Es mucho mejor crearlos en una hoja de cálculo, exportarlos en formato CSV
+y después leerlos desde R. En la próxima sección enseñaremos cómo se
+lee un data frame.</p>
+</div>
+<div id="el-caso-de-una-variable-cuantitativa" class="section level2">
+<h2><span class="header-section-number">6.2</span> El caso de una variable cuantitativa</h2>
+<p>Empecemos por leer los datos. Tenemos en la carpeta de datos el fichero
+“Salud.csv”, un <em>data frame</em> con datos de 57 personas: la altura, el peso,
+el sexo y si padecen alguna enfermedad. La leemos con la instrucción
+<code>read.table()</code> y miramos las primeras líneas con <code>head()</code></p>
+<pre><code>##       Talla Peso   Sexo Enfermedades
+## ID001   175 63.7 Hombre      Ninguna
+## ID002   160 60.0 Hombre   Colesterol
+## ID003   160 45.4  Mujer      Espalda
+## ID004   167 54.7  Mujer      Alergia
+## ID005   170 62.2 Hombre   Colesterol
+## ID006   182 81.4 Hombre   Colesterol</code></pre>
+<p>Los parámetros de <code>read.table()</code> son el nombre del fichero, el carácter que
+se usa en el fichero para separar celdas (en nuestro caso “;”), <a href="problemas.html#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> si la primera fila es una cabecera o no (lo es) si hay
+una columna con el nombre de los individuos (la primera) y cuál es el
+separador decimal (La coma, es decir usamos “5,34” y no “5.34”).</p>
+<p>Empecemos por estudiar las características del <em>data frame</em>
+<code>Salud</code> y de paso vamos conociendo las instrucciones que R tiene
+para ello. Para acceder a una columna entera del data frame usamos el nombre del data frame, seguido del símbolo “<span class="math inline">\(” seguido del nombre de la columna. En nuestro ejemplo, “Salud\)</span>Enfermedades” es la columna de enfermedades o “Salud$Peso” es la de peso. Veamos el
+tipo de datos del <em>data frame</em> y de cada columna:</p>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+<p>Veamos los tipos de enfermedad recogidos en la tabla</p>
+<pre><code>## [1] &quot;Alergia&quot;      &quot;Colesterol&quot;   &quot;Espalda&quot;      &quot;Ninguna&quot;      &quot;Respiratorio&quot;</code></pre>
+<p>Extraigamos las columnas <code>Talla</code> y <code>Peso</code> y pongámosla en variables.<br />
+En cuanto tengamos un poco más de dominio de R no haremos esto,
+pero para un principiante es más sencillo. Lo haremos de dos formas
+diferentes para aprender las posibilidades de R:</p>
+<pre><code>##  [1] 175 160 160 167 170 182 180 180 172 166 165 173 180 165 176 168 179 175 175
+## [20] 160 160 182 177 180 174 181 168 160 173 170 160 188 170 177 165 178 164 163
+## [39] 172 181 164 165 168 161 159 165 162 163 160 170 163 160 157 169 180 180 181</code></pre>
+<pre><code>##  [1] 63.7 60.0 45.4 54.7 62.2 81.4 69.6 69.1 62.1 53.6 49.4 57.0 71.7 50.2 66.2
+## [16] 61.5 74.2 63.5 62.6 48.0 45.4 74.5 77.0 81.4 56.9 81.7 56.4 46.7 54.9 54.7
+## [31] 45.4 67.3 54.9 64.7 53.9 76.2 52.9 46.7 58.2 76.6 48.7 48.8 51.6 44.9 48.8
+## [46] 49.5 47.3 50.1 45.3 65.9 62.6 45.8 42.0 56.2 81.3 77.9 79.7</code></pre>
+<p>El primer caso es adecuado si se quiere la columna entera, el segundo es el
+que se debe usar si que quiere una parte de la columna. Si no se pone
+nada, se refiere a todas. Por lo tanto en este caso <code>Salud[,&quot;Peso&quot;]</code>
+significa “En <em>data frame</em> Salud, todas las filas, columna”Peso&quot;”. Por
+ejemplo, si queremos separar los pesos de los hombres y las mujeres en dos
+vectores debemos hacer:</p>
+<p>En este caso <code>Salud[Salud$Sexo == &quot;Mujer&quot;, &quot;Peso&quot;]</code> significa
+“en <em>data frame</em> Salud, filas en las que Salud$Sexo sea igual a”Mujer“, columna”Peso&quot;”.</p>
+<p>Describamos, es decir, obtengamos una visión global de las variables
+numéricas. Empecemos por la media y la desviación típica:</p>
+<pre><code>## [1] 170.1404</code></pre>
+<pre><code>## [1] 8.003211</code></pre>
+<pre><code>## [1] 59.62982</code></pre>
+<pre><code>## [1] 11.7349</code></pre>
+<p>R nos permite obtener los datos principales de una variable mediante la
+instrucción
+<code>summary()</code>:</p>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   157.0   163.0   170.0   170.1   177.0   188.0</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   42.00   49.40   56.90   59.63   67.30   81.70</code></pre>
+<p>Ahora “veamos” los datos. Empecemos por el diagrama de tallo y hojas:</p>
+<pre><code>## 
+##   The decimal point is 1 digit(s) to the right of the |
+## 
+##   15 | 79
+##   16 | 000000001233344
+##   16 | 55555678889
+##   17 | 000022334
+##   17 | 55567789
+##   18 | 00000011122
+##   18 | 8</code></pre>
+<pre><code>## 
+##   The decimal point is 1 digit(s) to the right of the |
+## 
+##   4 | 2
+##   4 | 55555677789999
+##   5 | 0002344
+##   5 | 555566778
+##   6 | 02223344
+##   6 | 56679
+##   7 | 024
+##   7 | 56778
+##   8 | 01112</code></pre>
+<p>Este diagrama era popular antes de la disponibilidad de ordenadores.
+Claramente es para hacer a mano, pero sigue siendo útil, sobre todo si se
+tienen pocos datos. Otro diagrama muy usado es el de caja, que obtenemos
+con la instrucción <code>boxplot()</code></p>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-30-1.png" width="672" /><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-30-2.png" width="672" /></p>
+<p>El tercer diagrama que veremos es el de puntos. A menudo se le llama
+<em>dotplot</em> pero en R la instrucción se llama <code>stripchart()</code>:</p>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-31-1.png" width="672" /><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-31-2.png" width="672" /></p>
+<p>Y el último que veremos es el conocido histograma:</p>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-32-1.png" width="672" /><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-32-2.png" width="672" /></p>
+<p>En el paquete <em>UsingR</em> se incluye una instrucción que permite dibujar
+simultáneamente el histograma y el diagrama de cajas. Para ello primero
+hemos de cargar el paquete.</p>
+<pre><code>## Loading required package: HistData</code></pre>
+<pre><code>## Loading required package: Hmisc</code></pre>
+<pre><code>## Loading required package: lattice</code></pre>
+<pre><code>## Loading required package: survival</code></pre>
+<pre><code>## Loading required package: Formula</code></pre>
+<pre><code>## Loading required package: ggplot2</code></pre>
+<pre><code>## 
+## Attaching package: &#39;Hmisc&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     format.pval, units</code></pre>
+<pre><code>## 
+## Attaching package: &#39;UsingR&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:survival&#39;:
+## 
+##     cancer</code></pre>
+<p>Nos indica otros paquetes que también carga y nos da algunos avisos a los
+que no hacemos caso. Y ahora podemos usar la instrucción
+<code>simple.hist.and.boxplot()</code></p>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-34-1.png" width="672" /><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-34-2.png" width="672" /></p>
+<p>Es importante notar que ambos diagramas no están a la misma escala. Con
+esto acabamos con las instrucciones para describir una variable
+cuantitativa.</p>
+</div>
+<div id="el-caso-de-una-variable-cualitativa" class="section level2">
+<h2><span class="header-section-number">6.3</span> El caso de una variable cualitativa</h2>
+<p>Veamos ahora las instrucciones que tiene R para el caso de una variable
+cualitativa (o factor). Ya hemos visto que la instrucción
+<code>levels()</code> nos permite inspeccionar los posibles valores de un
+factor. Empecemos por extraer las columnas como antes</p>
+<p>Es fácil darse cuenta que no hay medias de nada, por lo tanto no podemos calcular medias ni medianas ni nada de todo eso. Lo único que podemos hacer numéricamente es contar cuantos elementos hay en cada categoría. Para ello R nos proporciona la instrucción <code>table()</code></p>
+<pre><code>## Sexo
+## Hombre  Mujer 
+##     26     31</code></pre>
+<pre><code>## Enfermedades
+##      Alergia   Colesterol      Espalda      Ninguna Respiratorio 
+##            8           16           11           10           12</code></pre>
+<p>En el caso del sexo, como sólo hay dos, no es muy interesante. El de las
+enfermedades lo es algo más. Vemos que en los datos contenidos en Salud
+hay 8 personas con alergia, 16 con colesterol, etc. Para verlo de forma
+gráfica hagamos un diagrama de barras con la instrucción <code>barplot()</code>.</p>
+<p>Nuestro primera impulso es escribir <code>barplot(Enfermedades)</code>. Pero si lo hacemos, recibiremos un mensaje de error:</p>
+<pre><code> Error in barplot.default(Enfermedades) : 
+   &#39;height&#39; must be a vector or a matrix</code></pre>
+<p>Al principio, como todos los lenguajes, R es muy
+misterioso con sus mensajes de error. Con el tiempo se van entendiendo.
+Este nos dice que necesita un valor para poder dibujar la barra y no lo
+encuentra. Esto es porque hemos pasado el vector de enfermedades y no el
+conteo de cuántos hay en cada uno. Hagámoslo bien:</p>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+<p>Tenemos nuestro diagrama de barras. Pero los diagramas se ven mejor si los
+datos están ordenados de más frecuente a menos frecuente (o al revés, de
+menos a más). Hagamos esto paso a paso. Primero recojamos la tabla en una
+variable:</p>
+<p>Lo ordenamos de mayor a menor con la instrucción <code>sort()</code></p>
+<p>Y ahora podemos dibujar el diagrama de barras:</p>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<p>Y con esto hemos visto cómo describir una estadística de una variable y
+las instrucciones que R nos proporciona par ello.
+En la próxima sección veremos como describir estadísticas de dos variables</p>
+</div>
+<div id="el-caso-de-dos-variables-cuantitativas" class="section level2">
+<h2><span class="header-section-number">6.4</span> El caso de dos variables cuantitativas</h2>
+<p>Siempre que tengamos dos variables hemos de empezar por estudiar cada una
+por separado usando las técnicas descritas hasta ahora. Después podemos
+estudiarlas en conjunto. Veamos como.</p>
+<p>Si las dos variables son numéricas lo que corresponde es una nube de
+puntos Esto se consigue con la instrucción <code>plot()</code></p>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<p>La primera variable es la “x” y la segunda la “y”. Vemos que hay una clara
+correlación: a tallas mayores corresponden pesos mayores. Casi podemos
+adivinar una recta. Esta recta es la llamada <em>recta de regresión</em>
+Para obtener la recta y alguna idea numérica de la correlación usamos la
+instrucción <code>lm()</code>. Esta es una instrucción que hace muchas, muchas
+cosas. Ya la iremos conociendo mejor. No os asuste la gran cantidad de
+información que da. La aplicamos</p>
+<pre><code>## 
+## Call:
+## lm(formula = Peso ~ Talla)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -15.7775  -3.3811  -0.8744   2.7544  13.6833 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -163.74509   14.99511  -10.92 2.17e-15 ***
+## Talla          1.31289    0.08804   14.91  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 5.273 on 55 degrees of freedom
+## Multiple R-squared:  0.8017, Adjusted R-squared:  0.7981 
+## F-statistic: 222.4 on 1 and 55 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>La manera de pasar los parámetros extraña un poco. Es más facil de
+recordar si sabes que <code>~</code> se lee “en función de”. Por lo tanto
+<code>Peso~Talla</code> es “Peso en función de la talla”.</p>
+<p>De todo esto ahora nos interesan dos cosas <code>Talla    1.31289</code> y
+<code>Multiple R-squared:  0.8017</code>. El primer dato es la pendiente de
+la recta de regresión y nos indica que por cada cm que crece la persona
+pesa 1.3 Kg más y que la Talla explica el 80% de la variabilidad observada
+en el peso: estos datos muestran que se pesa más porque se es más alto
+(80%) y otras cosas (20%). Podemos dibujar la recta sobre nuestros puntos.
+Lo haremos en rojo:</p>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+</div>
+<div id="el-caso-de-dos-variables-una-cuantitativa-y-una-cualitativa" class="section level2">
+<h2><span class="header-section-number">6.5</span> El caso de dos variables, una cuantitativa y una cualitativa</h2>
+<p>Una vez visto el caso de dos variables cuantitativas, pasemos al caso de
+que una variable sea cuantitativa y otra cualitativa. En este caso lo que
+hay que hacer es separar la variable cuantitativa en conjuntos, uno por
+categoría de la variable cualitativa y comparar los resultados y gráficas.</p>
+<p>Se puede hacer “a mano”. Hemos separado antes las tallas de hombres y
+mujeres y ahora podemos comparar los resultados numéricos.</p>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   160.0   172.8   177.5   175.8   180.0   182.0</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   157.0   160.0   165.0   165.4   168.5   188.0</code></pre>
+<p>Vemos que la talla media y mediana es superior en los hombres.
+Curiosamente la mujer más alta es más alta que el hombre más alto. Podemos
+también crear gráficas, por ejemplo los histogramas:</p>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-45-1.png" width="672" /><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-45-2.png" width="672" /></p>
+<p>No es lo mejor, puesto que es difícil comparar los histogramas. Es más
+simple si podemos tener ambas gráficas una al lado de otra. Aunque se
+puede hacer “a mano“, lo más fácil es dejar que R se encargue. Para eso
+tenemos el operador <code>~</code> (que recordemos se lee”en función de“). Los
+diagramas de caja de la talla en función del sexo las podemos dibujar con
+este operador:</p>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+<p>Intentemos entender qué hace R: mira en ”Sexo“ los diferentes sexos
+posibles, separa las tallas y dibuja. Vemos en la gráfica que los hombres
+son más altos, con la excepción del ”outlier“ de 188 cm visto antes en las
+mujeres.</p>
+<p>Podemos hacer lo mismo para ver el peso en funcion de las enfermedades:</p>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<p>Por algún motivo parece que los que padecen alergia pesan algo menos que
+los demás. Podemos también dibujar stripcharts con el mismo método:</p>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<p>Y con esto acabamos la descripción del caso de una variable cuantitativa y
+una cualitativa. Finalmente nos queda analizar el caso de dos variables
+cualitativas.</p>
+</div>
+<div id="el-caso-de-dos-variables-cualitativas" class="section level2">
+<h2><span class="header-section-number">6.6</span> El caso de dos variables cualitativas</h2>
+<p>En el caso de una variable cualitativa creábamos tablas unidimensionales y
+dibujábamos diagramas de barras. En el caso de dos variables creamos
+tablas bidimensionales. llamadas tablas de contingencia. Para ahorrarnos
+escribir código, meteremos la tabla en una variable</p>
+<pre><code>##         Enfermedades
+## Sexo     Alergia Colesterol Espalda Ninguna Respiratorio
+##   Hombre       1         11       4       7            3
+##   Mujer        7          5       7       3            9</code></pre>
+<p>Notamos que hay muchas más mujeres con alergias que hombres. Esto quizá
+explique la diferencia de peso visto antes.</p>
+<p>Esta tabla de contingencia muestra frecuencias absolutas: por ejemplo vemos
+que hay en Salud 11 personas con dolor de espaldas: 7 hombres y 4 mujeres.
+Nos podría interesar más tener los porcentajes. Aunque es fácil hacerlo a
+mano, R tiene la función <code>prop.table()</code> para esto.</p>
+<p>La primera cuestión es qué tipo de porcentajes queremos (o tres posibles
+”cienes“). El primero es quizá el que primero se nos podría ocurrir:”cien“ es el número total de individuos en Salud</p>
+<pre><code>##         Enfermedades
+## Sexo        Alergia Colesterol    Espalda    Ninguna Respiratorio
+##   Hombre 0.01754386 0.19298246 0.07017544 0.12280702   0.05263158
+##   Mujer  0.12280702 0.08771930 0.12280702 0.05263158   0.15789474</code></pre>
+<p>Notad que se aplica <code>prop.table()</code> sobre la tabla, no los datos originales.
+En este caso el resultado de cada celda es el porcentaje sobre el total:
+Los hombres sin ninguna enfermedad representan el 12.3% del total. A veces
+nos interesa calcular procentajes dentro de cada variable. Por ejemplo si
+queremos que ”cien“ sea el número total de hombres o de mujeres, segun
+tenga sentido la instrucción es:</p>
+<pre><code>##         Enfermedades
+## Sexo        Alergia Colesterol    Espalda    Ninguna Respiratorio
+##   Hombre 0.03846154 0.42307692 0.15384615 0.26923077   0.11538462
+##   Mujer  0.22580645 0.16129032 0.22580645 0.09677419   0.29032258</code></pre>
+<p>La notación de añadir un 1 (o un 2 como veremos pronto) es poco intuitiva
+pero es la que hay. De estos datos vemos que el 22.6% de las mujeres
+sufren de alergia el 16,1% de colesterosl, el 22,6% sufren de la espalda,
+el 29% tienen problemas respiratorios y el 9,7% gozan de buena salud.
+las filas suman siempre 1.</p>
+<p>Si queremos calcular porcentajes según la otra variable, es decir,
+siqueremos que ”cien“ sea el número de individuos en cad a categoría de
+enfermedad la instrucción es:</p>
+<pre><code>##         Enfermedades
+## Sexo       Alergia Colesterol   Espalda   Ninguna Respiratorio
+##   Hombre 0.1250000  0.6875000 0.3636364 0.7000000    0.2500000
+##   Mujer  0.8750000  0.3125000 0.6363636 0.3000000    0.7500000</code></pre>
+<p>En este caso vemos que entre los que sufren de alergia el 12.5% son
+hombres y el 87.5% son mujeres. Ambas columnas suman 1.</p>
+<p>Pasemos a la gráfica. Podemos aplicar la función <code>barplot()</code> directamente
+sobre el resultado de <code>prop.table()</code>:</p>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+<p>En este diagrama el gris claro representa a las mujeres y el gris oscuro a
+los hombres. Veamos otra manera de ver gráficamente la diferencia de
+enfermedades entre mujeres y hombres:</p>
+<pre><code>##               Sexo
+## Enfermedades   Hombre Mujer
+##   Alergia           1     7
+##   Colesterol       11     5
+##   Espalda           4     7
+##   Ninguna           7     3
+##   Respiratorio      3     9</code></pre>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+<p>El parámetro <code>beside = T</code> nos permite agrupar las barras una al lado de
+otra. Hemos creado una nueva variable por un detalle técnico: R siempre
+agrupa los barplots por columnas, por lo tanto hemos tenido que crear la
+tabla de forma adecuada. El parámetro beside = T nos agrupa las barras.
+Notad que cada conjunto de barras suma 1. Vemos claramente en el diagrama
+que en los hombres el colesterol predomina, mientras que entre las mujeres
+no hay una enfermedad predominante.</p>
+<p>Hubiéramos podido aplicar la instrucción <code>barplot()</code> directamente sobre la
+variable, sin pasarlo por <code>prop.table()</code> y a veces es lo que conviene.
+Probadlo y veréis la diferencia e iréis aprendiendo cuándo usar una y
+cuándo la otra.</p>
+</div>
+<div id="resumen-final" class="section level2">
+<h2><span class="header-section-number">6.7</span> Resumen final</h2>
+<p>Hemos visto como describir de forma numérica y gráfica una variable
+numerica, una variable cualitativa y conjuntos de dos variables ya sea
+cuantitativa-cuantitativa, cuantitativa-cualitativa o
+cualitativa-cualitativa.</p>
+<ul>
+<li><p>En el caso de una variable cuantitativa teníamos <code>summary()</code> apra
+obtener un conjunto de información (mínimo, máximo, media, mediana y dos
+cuartiles). Hemos visto como dibujar un diagrama de tallo y hojas, de
+cajas, de puntos y un histograma.</p></li>
+<li><p>Si la vartiable es cualitativa hemnos de contar con <code>table()</code> el
+número de
+individuos en cada categoría. Esto lo podemos mostrar gráficamente con un
+diagrama de barras.</p></li>
+<li><p>Si tenemos dos variables primero las hemos de estudiar por separado.
+Después las podemos estudiar en conjunto. Si las dos variables son
+cuantitativas lo dibujamos mediante una nube de puntos. La compleja
+función <code>lm()</code> nos permite dibujar la recta de regresión y obtener
+alguna información numérica de esta recta y de la correlación.</p></li>
+<li><p>En el caso de una variable cuantitativa y una cualitativa hemos de hacer
+un estudio cuantitativo, con los números y diagramas, para los individuos
+en cada categoría y compararlos. El operador <code>~</code> nos puede resultar
+útil.</p></li>
+<li><p>Y en el último caso, dos variables cualitativas, hemos de crear las tablas
+de contingencia. Hemos de decidir qué tipo de porcentaje queremos.
+Finalmente podemos dibujar diagrams de barras de agrupaciones de
+barras.</p></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="estadística-descriptiva-de-datos-bivariantes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="probabilidad.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/06_TutorialED.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Estadística.pdf", "Estadística.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

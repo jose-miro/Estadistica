@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 8 Variables aleatorias | Mera estadística</title>
+  <meta name="description" content="Capítulo 8 Variables aleatorias | Mera estadística" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 8 Variables aleatorias | Mera estadística" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 8 Variables aleatorias | Mera estadística" />
+  
+  
+  
+
+<meta name="author" content="Jose Miró Julià" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="probabilidad.html"/>
+<link rel="next" href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Estadística</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a></li>
+<li class="chapter" data-level="2" data-path="qué-es-y-no-es-la-estadística.html"><a href="qué-es-y-no-es-la-estadística.html"><i class="fa fa-check"></i><b>2</b> ¿Qué es (y no es) la estadística?</a><ul>
+<li class="chapter" data-level="2.1" data-path="qué-es-y-no-es-la-estadística.html"><a href="qué-es-y-no-es-la-estadística.html#el-proceso-estadístico"><i class="fa fa-check"></i><b>2.1</b> El proceso estadístico</a></li>
+<li class="chapter" data-level="2.2" data-path="qué-es-y-no-es-la-estadística.html"><a href="qué-es-y-no-es-la-estadística.html#es-la-estadística-parte-de-las-matemáticas"><i class="fa fa-check"></i><b>2.2</b> ¿Es la estadística parte de las matemáticas?</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html"><i class="fa fa-check"></i><b>3</b> Estadística descriptiva de datos numéricos univariantes</a><ul>
+<li class="chapter" data-level="3.1" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#tipos-de-datos"><i class="fa fa-check"></i><b>3.1</b> Tipos de datos</a></li>
+<li class="chapter" data-level="3.2" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#medidas-de-centralidad-y-dispersión"><i class="fa fa-check"></i><b>3.2</b> Medidas de centralidad y dispersión</a></li>
+<li class="chapter" data-level="3.3" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#gráficas-para-datos-cuantitativos"><i class="fa fa-check"></i><b>3.3</b> Gráficas para datos cuantitativos</a></li>
+<li class="chapter" data-level="3.4" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#análisis-de-los-datos"><i class="fa fa-check"></i><b>3.4</b> Análisis de los datos</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#modalidad"><i class="fa fa-check"></i><b>3.4.1</b> Modalidad</a></li>
+<li class="chapter" data-level="3.4.2" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#simetría"><i class="fa fa-check"></i><b>3.4.2</b> Simetría</a></li>
+<li class="chapter" data-level="3.4.3" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#valores-atípicos"><i class="fa fa-check"></i><b>3.4.3</b> Valores atípicos</a></li>
+<li class="chapter" data-level="3.4.4" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#problematicidad"><i class="fa fa-check"></i><b>3.4.4</b> Problematicidad</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><i class="fa fa-check"></i><b>4</b> Estadística descriptiva de datos cualitativos univariantes</a><ul>
+<li class="chapter" data-level="4.1" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#tablas-de-contingencia"><i class="fa fa-check"></i><b>4.1</b> Tablas de contingencia</a></li>
+<li class="chapter" data-level="4.2" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#gráficas-para-datos-cualitativos"><i class="fa fa-check"></i><b>4.2</b> Gráficas para datos cualitativos</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#gráficos-3d"><i class="fa fa-check"></i><b>4.2.1</b> Gráficos 3D</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#conclusión"><i class="fa fa-check"></i><b>4.3</b> Conclusión</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html"><i class="fa fa-check"></i><b>5</b> Estadística descriptiva de datos bivariantes</a><ul>
+<li class="chapter" data-level="5.1" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#dos-variables-numéricas"><i class="fa fa-check"></i><b>5.1</b> Dos variables numéricas</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#gráfica-de-nube-de-puntos"><i class="fa fa-check"></i><b>5.1.1</b> Gráfica de nube de puntos</a></li>
+<li class="chapter" data-level="5.1.2" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#rectas-de-regresión"><i class="fa fa-check"></i><b>5.1.2</b> Rectas de regresión</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#una-variable-numérica-y-una-cualitativa"><i class="fa fa-check"></i><b>5.2</b> Una variable numérica y una cualitativa</a></li>
+<li class="chapter" data-level="5.3" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#dos-variables-cualitativas"><i class="fa fa-check"></i><b>5.3</b> Dos variables cualitativas</a></li>
+<li class="chapter" data-level="5.4" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#resumen"><i class="fa fa-check"></i><b>5.4</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html"><i class="fa fa-check"></i><b>6</b> Uso de R para estadística descriptiva. Tutorial</a><ul>
+<li class="chapter" data-level="6.1" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#data-frames"><i class="fa fa-check"></i><b>6.1</b> Data frames</a></li>
+<li class="chapter" data-level="6.2" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-una-variable-cuantitativa"><i class="fa fa-check"></i><b>6.2</b> El caso de una variable cuantitativa</a></li>
+<li class="chapter" data-level="6.3" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-una-variable-cualitativa"><i class="fa fa-check"></i><b>6.3</b> El caso de una variable cualitativa</a></li>
+<li class="chapter" data-level="6.4" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-dos-variables-cuantitativas"><i class="fa fa-check"></i><b>6.4</b> El caso de dos variables cuantitativas</a></li>
+<li class="chapter" data-level="6.5" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-dos-variables-una-cuantitativa-y-una-cualitativa"><i class="fa fa-check"></i><b>6.5</b> El caso de dos variables, una cuantitativa y una cualitativa</a></li>
+<li class="chapter" data-level="6.6" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-dos-variables-cualitativas"><i class="fa fa-check"></i><b>6.6</b> El caso de dos variables cualitativas</a></li>
+<li class="chapter" data-level="6.7" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#resumen-final"><i class="fa fa-check"></i><b>6.7</b> Resumen final</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="probabilidad.html"><a href="probabilidad.html"><i class="fa fa-check"></i><b>7</b> Probabilidad</a><ul>
+<li class="chapter" data-level="7.1" data-path="probabilidad.html"><a href="probabilidad.html#ideas-básicas"><i class="fa fa-check"></i><b>7.1</b> Ideas básicas</a></li>
+<li class="chapter" data-level="7.2" data-path="probabilidad.html"><a href="probabilidad.html#operaciones-con-probabilidades"><i class="fa fa-check"></i><b>7.2</b> Operaciones con probabilidades</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-de-una-cosa-u-otra"><i class="fa fa-check"></i><b>7.2.1</b> Probabilidad de una cosa u otra</a></li>
+<li class="chapter" data-level="7.2.2" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-de-una-cosa-y-otra"><i class="fa fa-check"></i><b>7.2.2</b> Probabilidad de una cosa y otra</a></li>
+<li class="chapter" data-level="7.2.3" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-del-suceso-contrario"><i class="fa fa-check"></i><b>7.2.3</b> Probabilidad del suceso contrario</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-condicionada"><i class="fa fa-check"></i><b>7.3</b> Probabilidad condicionada</a></li>
+<li class="chapter" data-level="7.4" data-path="probabilidad.html"><a href="probabilidad.html#regla-de-bayes"><i class="fa fa-check"></i><b>7.4</b> Regla de Bayes</a></li>
+<li class="chapter" data-level="7.5" data-path="probabilidad.html"><a href="probabilidad.html#resumen-1"><i class="fa fa-check"></i><b>7.5</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html"><i class="fa fa-check"></i><b>8</b> Variables aleatorias</a><ul>
+<li class="chapter" data-level="8.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#qué-es-una-variable-aleatoria"><i class="fa fa-check"></i><b>8.1</b> ¿Qué es una variable aleatoria?</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#variables-discretas"><i class="fa fa-check"></i><b>8.1.1</b> Variables discretas</a></li>
+<li class="chapter" data-level="8.1.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#variables-continuas"><i class="fa fa-check"></i><b>8.1.2</b> Variables continuas</a></li>
+<li class="chapter" data-level="8.1.3" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#propiedades-de-estas-funciones"><i class="fa fa-check"></i><b>8.1.3</b> Propiedades de estas funciones</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#cálculo-de-probabilidades"><i class="fa fa-check"></i><b>8.2</b> Cálculo de probabilidades</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#calculando-a-mano"><i class="fa fa-check"></i><b>8.2.1</b> Calculando a mano</a></li>
+<li class="chapter" data-level="8.2.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#calculando-con-r"><i class="fa fa-check"></i><b>8.2.2</b> Calculando con R</a></li>
+<li class="chapter" data-level="8.2.3" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#resumen-2"><i class="fa fa-check"></i><b>8.2.3</b> Resumen</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><i class="fa fa-check"></i><b>9</b> Esperanzas y desviaciones típicas de variables aleatorias</a><ul>
+<li class="chapter" data-level="9.1" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#desviaciones-típicas"><i class="fa fa-check"></i><b>9.1</b> Desviaciones típicas</a></li>
+<li class="chapter" data-level="9.2" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#operaciones-con-variables-aleatorias"><i class="fa fa-check"></i><b>9.2</b> Operaciones con variables aleatorias</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#un-ejemplo"><i class="fa fa-check"></i><b>9.2.1</b> Un ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#resumen-3"><i class="fa fa-check"></i><b>9.3</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><i class="fa fa-check"></i><b>10</b> Intervalos de confianza: una medida de la incertidumbre</a><ul>
+<li class="chapter" data-level="10.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#incertidumbre-en-muestras-de-proporciones"><i class="fa fa-check"></i><b>10.1</b> Incertidumbre en muestras de proporciones</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#una-simulación"><i class="fa fa-check"></i><b>10.1.1</b> Una simulación</a></li>
+<li class="chapter" data-level="10.1.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>10.1.2</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="10.1.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#fuga-de-probabilidad"><i class="fa fa-check"></i><b>10.1.3</b> Fuga de probabilidad</a></li>
+<li class="chapter" data-level="10.1.4" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#un-ejemplo-1"><i class="fa fa-check"></i><b>10.1.4</b> Un ejemplo</a></li>
+<li class="chapter" data-level="10.1.5" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#resumen-de-intervalos-de-confianza-de-proporciones"><i class="fa fa-check"></i><b>10.1.5</b> Resumen de intervalos de confianza de proporciones</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#incertidumbre-en-muestras-de-medias"><i class="fa fa-check"></i><b>10.2</b> Incertidumbre en muestras de medias</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#una-simulación-1"><i class="fa fa-check"></i><b>10.2.1</b> Una simulación</a></li>
+<li class="chapter" data-level="10.2.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#intervalos-de-confianza-1"><i class="fa fa-check"></i><b>10.2.2</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="10.2.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#la-distribución-t-de-student"><i class="fa fa-check"></i><b>10.2.3</b> La distribución t de Student</a></li>
+<li class="chapter" data-level="10.2.4" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#fuga-de-probabilidades"><i class="fa fa-check"></i><b>10.2.4</b> Fuga de probabilidades</a></li>
+<li class="chapter" data-level="10.2.5" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#un-ejemplo-2"><i class="fa fa-check"></i><b>10.2.5</b> Un ejemplo</a></li>
+<li class="chapter" data-level="10.2.6" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#resumen-de-intervalos-de-confianza-de-medias"><i class="fa fa-check"></i><b>10.2.6</b> Resumen de intervalos de confianza de medias</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#comparación-de-intervalos-de-confianza"><i class="fa fa-check"></i><b>10.3</b> Comparación de intervalos de confianza</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#no-puedo-decir-que-sean-distintos"><i class="fa fa-check"></i><b>10.3.1</b> No puedo decir que sean distintos</a></li>
+<li class="chapter" data-level="10.3.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#cálculo-de-intervalos-de-confianza-de-diferencias"><i class="fa fa-check"></i><b>10.3.2</b> Cálculo de intervalos de confianza de diferencias</a></li>
+<li class="chapter" data-level="10.3.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#más-ejemplos"><i class="fa fa-check"></i><b>10.3.3</b> Más ejemplos</a></li>
+<li class="chapter" data-level="10.3.4" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#resumen-de-comparación-de-intervalos-de-confianza"><i class="fa fa-check"></i><b>10.3.4</b> Resumen de comparación de intervalos de confianza</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html"><i class="fa fa-check"></i><b>11</b> Contrastes de hipotesis</a><ul>
+<li class="chapter" data-level="11.1" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html#experimentos-estadísticos-para-un-contraste-de-hipótesis"><i class="fa fa-check"></i><b>11.1</b> Experimentos estadísticos para un contraste de hipótesis</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html#procedimiento-de-cálculo-del-p-valor."><i class="fa fa-check"></i><b>11.1.1</b> Procedimiento de cálculo del p-valor.</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html#interpretación-del-p-valor."><i class="fa fa-check"></i><b>11.2</b> Interpretación del p-valor.</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>12</b> ANOVA</a><ul>
+<li class="chapter" data-level="12.1" data-path="anova.html"><a href="anova.html#nada-es-gratis-y-los-errores-se-acumulan"><i class="fa fa-check"></i><b>12.1</b> Nada es gratis (y los errores se acumulan)</a></li>
+<li class="chapter" data-level="12.2" data-path="anova.html"><a href="anova.html#punto-de-partida"><i class="fa fa-check"></i><b>12.2</b> Punto de partida</a></li>
+<li class="chapter" data-level="12.3" data-path="anova.html"><a href="anova.html#tutorial-de-anova-en-r"><i class="fa fa-check"></i><b>12.3</b> Tutorial de ANOVA en R</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="anova.html"><a href="anova.html#el-problema"><i class="fa fa-check"></i><b>12.3.1</b> El problema</a></li>
+<li class="chapter" data-level="12.3.2" data-path="anova.html"><a href="anova.html#el-primer-método-oneway.test"><i class="fa fa-check"></i><b>12.3.2</b> El primer método: oneway.test()</a></li>
+<li class="chapter" data-level="12.3.3" data-path="anova.html"><a href="anova.html#el-segundo-método-aov"><i class="fa fa-check"></i><b>12.3.3</b> El segundo método: aov()</a></li>
+<li class="chapter" data-level="12.3.4" data-path="anova.html"><a href="anova.html#el-tercer-método"><i class="fa fa-check"></i><b>12.3.4</b> El tercer método</a></li>
+<li class="chapter" data-level="12.3.5" data-path="anova.html"><a href="anova.html#y-si-los-datos-no-están-como-los-quiere-r"><i class="fa fa-check"></i><b>12.3.5</b> ¿Y si los datos no están como los quiere R?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html"><i class="fa fa-check"></i><b>13</b> La prueba de Ji-Cuadrado</a><ul>
+<li class="chapter" data-level="13.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-de-ji-cuadrado-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>13.1</b> Prueba de ji-cuadrado de bondad de ajuste</a></li>
+<li class="chapter" data-level="13.2" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-de-bondad-de-ajuste-con-r"><i class="fa fa-check"></i><b>13.2</b> Prueba <span class="math inline">\(\chi^2\)</span> de bondad de ajuste con R</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#problematicidad-el-aviso-de-chisq.test"><i class="fa fa-check"></i><b>13.2.1</b> Problematicidad: el aviso de chisq.test()</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#la-prueba-chi2-de-homogeneidad"><i class="fa fa-check"></i><b>13.3</b> La prueba <span class="math inline">\(\chi^2\)</span> de homogeneidad</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#definición-formal"><i class="fa fa-check"></i><b>13.3.1</b> Definición formal</a></li>
+<li class="chapter" data-level="13.3.2" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-como-contraste-de-hipótesis"><i class="fa fa-check"></i><b>13.3.2</b> Prueba <span class="math inline">\(\chi^2\)</span> como contraste de hipótesis</a></li>
+<li class="chapter" data-level="13.3.3" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-de-homogeneidad-con-r"><i class="fa fa-check"></i><b>13.3.3</b> Prueba <span class="math inline">\(\chi^2\)</span> de homogeneidad con R</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#la-prueba-chi2-de-independencia"><i class="fa fa-check"></i><b>13.4</b> La prueba <span class="math inline">\(\chi^{2}\)</span> de independencia</a><ul>
+<li class="chapter" data-level="13.4.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-de-independencia-como-contraste-de-hipótesis"><i class="fa fa-check"></i><b>13.4.1</b> Prueba <span class="math inline">\(\chi^2\)</span> de independencia como contraste de hipótesis</a></li>
+<li class="chapter" data-level="13.4.2" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#un-ejemplo-3"><i class="fa fa-check"></i><b>13.4.2</b> Un ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#resumen-4"><i class="fa fa-check"></i><b>13.5</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="regresión-lineal.html"><a href="regresión-lineal.html"><i class="fa fa-check"></i><b>14</b> Regresión Lineal</a><ul>
+<li class="chapter" data-level="14.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#cálculo"><i class="fa fa-check"></i><b>14.1</b> Cálculo</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#fundamentos"><i class="fa fa-check"></i><b>14.1.1</b> Fundamentos</a></li>
+<li class="chapter" data-level="14.1.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#otro-ejemplo"><i class="fa fa-check"></i><b>14.1.2</b> Otro ejemplo</a></li>
+<li class="chapter" data-level="14.1.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#y-si-no-es-una-recta"><i class="fa fa-check"></i><b>14.1.3</b> ¿Y si no es una recta?</a></li>
+<li class="chapter" data-level="14.1.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-la-parte-de-cálculo"><i class="fa fa-check"></i><b>14.1.4</b> Resumen de la parte de cálculo</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#estadística"><i class="fa fa-check"></i><b>14.2</b> Estadística</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#incertidumbre-en-la-regresión-lineal"><i class="fa fa-check"></i><b>14.2.1</b> Incertidumbre en la regresión lineal</a></li>
+<li class="chapter" data-level="14.2.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#condiciones"><i class="fa fa-check"></i><b>14.2.2</b> Condiciones</a></li>
+<li class="chapter" data-level="14.2.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#salida-de-r"><i class="fa fa-check"></i><b>14.2.3</b> Salida de R</a></li>
+<li class="chapter" data-level="14.2.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#intervalos-de-confianza-2"><i class="fa fa-check"></i><b>14.2.4</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="14.2.5" data-path="regresión-lineal.html"><a href="regresión-lineal.html#otro-ejemplo-1"><i class="fa fa-check"></i><b>14.2.5</b> Otro ejemplo</a></li>
+<li class="chapter" data-level="14.2.6" data-path="regresión-lineal.html"><a href="regresión-lineal.html#la-regresión-no-muestra-qué-tipo-de-curva-es"><i class="fa fa-check"></i><b>14.2.6</b> La regresión no muestra qué tipo de curva es</a></li>
+<li class="chapter" data-level="14.2.7" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-la-parte-de-estadística"><i class="fa fa-check"></i><b>14.2.7</b> Resumen de la parte de estadística</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#diagnóstico"><i class="fa fa-check"></i><b>14.3</b> Diagnóstico</a><ul>
+<li class="chapter" data-level="14.3.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#seis-modelos"><i class="fa fa-check"></i><b>14.3.1</b> Seis modelos</a></li>
+<li class="chapter" data-level="14.3.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#cinco-diagnósticos"><i class="fa fa-check"></i><b>14.3.2</b> Cinco diagnósticos</a></li>
+<li class="chapter" data-level="14.3.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-diagnóstico"><i class="fa fa-check"></i><b>14.3.3</b> Resumen de diagnóstico</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#inferencias"><i class="fa fa-check"></i><b>14.4</b> Inferencias</a><ul>
+<li class="chapter" data-level="14.4.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#contrastes-de-hipótesis"><i class="fa fa-check"></i><b>14.4.1</b> Contrastes de hipótesis</a></li>
+<li class="chapter" data-level="14.4.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#intervalos-de-confianza-3"><i class="fa fa-check"></i><b>14.4.2</b> Intervalos de confianza</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicciones"><i class="fa fa-check"></i><b>14.5</b> Predicciones</a><ul>
+<li class="chapter" data-level="14.5.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-de-la-curva"><i class="fa fa-check"></i><b>14.5.1</b> Predicción de la curva</a></li>
+<li class="chapter" data-level="14.5.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-de-rango"><i class="fa fa-check"></i><b>14.5.2</b> Predicción de rango</a></li>
+<li class="chapter" data-level="14.5.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-de-medias"><i class="fa fa-check"></i><b>14.5.3</b> Predicción de medias</a></li>
+<li class="chapter" data-level="14.5.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-predicciones"><i class="fa fa-check"></i><b>14.5.4</b> Resumen de predicciones</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="problemas.html"><a href="problemas.html"><i class="fa fa-check"></i><b>15</b> Problemas</a><ul>
+<li class="chapter" data-level="15.1" data-path="problemas.html"><a href="problemas.html#qué-es-la-estadística"><i class="fa fa-check"></i><b>15.1</b> ¿Qué es la estadística?</a></li>
+<li class="chapter" data-level="15.2" data-path="problemas.html"><a href="problemas.html#manejo-de-r-y-simulaciones"><i class="fa fa-check"></i><b>15.2</b> Manejo de R y simulaciones</a></li>
+<li class="chapter" data-level="15.3" data-path="problemas.html"><a href="problemas.html#estadística-descriptiva"><i class="fa fa-check"></i><b>15.3</b> Estadística Descriptiva</a></li>
+<li class="chapter" data-level="15.4" data-path="problemas.html"><a href="problemas.html#probabilidad-y-variables-aleatórias"><i class="fa fa-check"></i><b>15.4</b> Probabilidad y variables aleatórias</a></li>
+<li class="chapter" data-level="15.5" data-path="problemas.html"><a href="problemas.html#razonamiento-estadístico."><i class="fa fa-check"></i><b>15.5</b> Razonamiento estadístico.</a><ul>
+<li class="chapter" data-level="15.5.1" data-path="problemas.html"><a href="problemas.html#intervalos-de-confianza-4"><i class="fa fa-check"></i><b>15.5.1</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="15.5.2" data-path="problemas.html"><a href="problemas.html#contrastes-de-hipótesis-1"><i class="fa fa-check"></i><b>15.5.2</b> Contrastes de hipótesis</a></li>
+<li class="chapter" data-level="15.5.3" data-path="problemas.html"><a href="problemas.html#razonamiento-estadístico-complejo"><i class="fa fa-check"></i><b>15.5.3</b> Razonamiento estadístico complejo</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="problemas.html"><a href="problemas.html#anova-1"><i class="fa fa-check"></i><b>15.6</b> Anova</a></li>
+<li class="chapter" data-level="15.7" data-path="problemas.html"><a href="problemas.html#ji-cuadrado"><i class="fa fa-check"></i><b>15.7</b> Ji-cuadrado</a></li>
+<li class="chapter" data-level="15.8" data-path="problemas.html"><a href="problemas.html#regresión-lineal-1"><i class="fa fa-check"></i><b>15.8</b> Regresión Lineal</a></li>
+<li class="chapter" data-level="15.9" data-path="problemas.html"><a href="problemas.html#problemas-con-todo"><i class="fa fa-check"></i><b>15.9</b> Problemas con todo</a></li>
+<li class="chapter" data-level="15.10" data-path="problemas.html"><a href="problemas.html#campos-elíseos"><i class="fa fa-check"></i><b>15.10</b> Campos Elíseos</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Mera estadística</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="variables-aleatorias" class="section level1">
+<h1><span class="header-section-number">Capítulo 8</span> Variables aleatorias</h1>
+<p>Tienes dos dados en la mano y los vas a tirar. ¿Qué va a salir?
+Sólo sabes que será un número entre 2 (si sacas dos 1) y 12 (si sacas dos
+6). El valor que vas a sacar a los dados cuando los tires, cada vez que
+los tires, es un valor que no conoces de antemano. En probabilidad y
+estadística a lo deconocdo se le suele llamar aleatorio y una variable que va a tomar un valor <em>a priori</em> desconocido se le llama variable aleatoria.</p>
+<p>En este documento vamos a estudiar las características que tienen
+estas variables aleatorias y cómo podemos cuantificar la
+incertidumbre que tenemos con ellas.</p>
+<div id="qué-es-una-variable-aleatoria" class="section level2">
+<h2><span class="header-section-number">8.1</span> ¿Qué es una variable aleatoria?</h2>
+<div id="variables-discretas" class="section level3">
+<h3><span class="header-section-number">8.1.1</span> Variables discretas</h3>
+<p>Empecemos con los dados azul y rojo. Lo que queremos es de alguna
+manera cuantificar la incertidumbre de los dos dados. En este caso
+simple lo que podemos hacer es indicar en una tabla la probabilidad
+de sacar cada valor para cada dado:</p>
+<pre><code>                    Azul                   Rojo
+ Valor:         1    2    3           1    2    3
+ Probabilidad: 1/3  1/3  1/3         1/6  1/3  1/2</code></pre>
+<p>A esta función, que para cada valor de una variable indica la
+probabilidad que aparezca, se llama una función de masa.</p>
+<p>En nuestro ejemplo hemos indicado las funciones de masa de forma
+tabular, pero también lo podríamos haber hecho como una expresión
+algebraica. Para ello necesitamos un poco de notación. En el caso de
+funciones discretas, llamaremos <span class="math inline">\(k\)</span> al valor que puede tomar la
+variable aleatoria. Tambien aparecerá el símbolo <span class="math inline">\(n\)</span> que suele
+indicar el número de valores diferentes o al valor máximo que puede
+tomar la variable (suele quedar claro por el contexto). En este caso
+de los dados azul y rojo, <span class="math inline">\(k\)</span> puede valer 1, 2 o 3 y <span class="math inline">\(n\)</span> es 3. Las
+funciones de masa las podemos describir como:</p>
+<p><span class="math display">\[a(k) = \frac{1}{n} \qquad r(k) = \frac{k}{2n}\]</span></p>
+<p>Puedes comprobar que esto se corresponde con los valores de la tabla.</p>
+<p>Podemos definir formalmente la función de masa: la función de masa
+<span class="math inline">\(f(k)\)</span> de una variable aleatoria <span class="math inline">\(X\)</span> es la probabilidad de que <span class="math inline">\(X\)</span>
+tome el valor <span class="math inline">\(k\)</span>:</p>
+<p><span class="math display">\[f(k) = \mbox{P}(X = k)\]</span></p>
+<p>Veamos otro caso discreto, este infinito. Lanzamos un dado al aire
+hasta que nos salga cruz. Nos interesa saber cuántas caras han salido
+hasta llegar a esta primera cruz. Podemos tener 0 caras si la primera
+vez que lanzamos sacamos una cruz. La probabilidad de esto es <span class="math inline">\(1/2\)</span>.
+Para tener 1 cara debe salirnos primero una cara y después una cruz.
+Suponiendo razonablemente que las tiradas son independientes, la
+probabilidad de esto es <span class="math inline">\(1/2\cdot 1/2 = 1/4\)</span>. Para sacar exactamente
+2 caras, debemos sacar cara la primera vez, cara la segunda vez, y
+cruz la tercera. La probabilidad de esto es <span class="math inline">\(1/2\cdot 1/2 \cdot 1/2= 1/8\)</span>. No es difícil darse cuenta que la función de masa <span class="math inline">\(f(k)\)</span> es</p>
+<p><span class="math display">\[f(k) = P(\mbox{núm. caras} = k) = \frac{1}{2^{k+1}}\]</span></p>
+<p>Aunque es extremadamente improbable tener más de una docena de caras
+seguidas, <span class="math inline">\(k\)</span> puede potencialmente extenderse hasta el infinito. Esto
+nos impide describir esta función como una tabla y debemos hacerlo
+con una expresión.</p>
+<p>La función de masa es una manera de describir la distribución de una
+variable aleatoria. Hay otra, menos intuitiva, pero más útil, sobre
+todo antes de la disponibilidad de los ordenadores, que es la llamada
+función acumulativa de distribución. La palabra clave es
+<em>acumulativa</em>. Si la función de masa <span class="math inline">\(f(k)\)</span> es la probabilidad
+de que la variable aleatoria <span class="math inline">\(X\)</span> valga <span class="math inline">\(k\)</span>, la acumulativa <span class="math inline">\(F(k)\)</span> es
+la probabilidad acumulada hasta <span class="math inline">\(k\)</span>. Es decir, la probabilidad de que
+valga <span class="math inline">\(k\)</span> o menos:</p>
+<p><span class="math display">\[F(k)  = P(X = 1) + P(X = 2) + \cdots + P(X = k) = \mbox{P}(X \leq k)\]</span></p>
+<p>Es decir que <span class="math inline">\(F(1) = f(1)\)</span>, <span class="math inline">\(F(2) = f(1) + f(2)\)</span>, etc. (hemos
+supuesto que <span class="math inline">\(k\)</span> empezaba por 1. No tiene por qué ser así). Esta
+función, un tanto extraña, facilitaba el cálculo de probabilidades,
+como ilustraremos en el apartado correspondiente. Con la llegada de
+los ordenadores la diferencia es mucho menor, pero estas funciones
+siguen apareciendo en escritos y cálculos y por lo tanto sigue siendo
+necesario saber cómo son. Para nuestro ejemplo de los dados azul y
+rojo obtenemos:</p>
+<pre><code>                           Azul                  Rojo
+ Valor:                 1    2    3           1    2    3
+ f(k) (masa):          1/3  1/3  1/3        1/6  1/3  1/2
+ F(k) (distribución):  1/3  2/3   1         1/6  1/1   1 </code></pre>
+</div>
+<div id="variables-continuas" class="section level3">
+<h3><span class="header-section-number">8.1.2</span> Variables continuas</h3>
+<p>Cuando la variable es continua, la definición de función de masa ya
+no sirve. No sirve porque la probabilidad de que la variable
+aleatoria coja un valor concreto es siempre 0. ¿Cuál es la
+probabilidad de que una persona mida exactamente <span class="math inline">\(55 \pi\)</span> cm? Esto es
+172,787594743… cm. Habrá mucha gente que mida alrededor de 173 cm,
+¿pero 172,787594743… sin desviarse nada de los infinitos
+decimales? Imposible. Pues lo mismo con 175 cm, es decir
+175,000000…cm. La probabilidad es 0. Por lo tanto no podemos
+tener una función de masa como en el caso discreto.</p>
+<p>Lo que tenemos es una función que hace un papel similar y que se
+llama función de densidad. En la figura siguiente tenemos la
+función de densidad de la distribución normal, la conocida campana de
+Gauss.</p>
+<p><img src="imagenes/densidad.jpg" /><!-- --></p>
+<p>Vemos que para <span class="math inline">\(x = 0\)</span> la densidad vale alrededor de 0,4 y que
+para <span class="math inline">\(x = 1,7\)</span> vale aproximadamente 0,1. Notad que para las variables
+continuas usamos <span class="math inline">\(x\)</span> para los valores de la variable. Esto <em>no</em> quiere decir
+que la probabilidad de que la variable aleatoria <span class="math inline">\(X\)</span> valga 0 es 0,4.
+Ya hemos dicho que es 0. Lo que sí quiere decir que es unas 4 veces
+más probable que la variable valga algo que esté _alrededor} del 0 que
+algo que esté <em>alrededor</em> del 1,7. La función se llama de
+<em>densidad</em> debido a esto: la probabilidad es más “densa” alrededor del 0 que alrededor del <span class="math inline">\(2\)</span> y del <span class="math inline">\(-2\)</span>, y es casi 0 alrededor del <span class="math inline">\(4\)</span> y del <span class="math inline">\(-4\)</span>.</p>
+<p>La definición formal es la siguiente. Sea <span class="math inline">\(dP[ x &lt; X &lt; x + dx]\)</span> la
+probabilidad diferencial de que la variable aleatoria <span class="math inline">\(X\)</span> se encuentre
+entre los valores <span class="math inline">\(x\)</span> y <span class="math inline">\(x + dx,\)</span> entonces la función <span class="math inline">\(f(x)\)</span> es la que
+cumple que:</p>
+<p><span class="math display">\[f(x)\, dx = dP[ x &lt; X &lt; x + dx]\]</span></p>
+<p>Es decir, <span class="math inline">\(f(x)\, dx\)</span> es la probabilidad diferencial de que la
+variable aleatoria <span class="math inline">\(X\)</span> se encuentre entre los valores <span class="math inline">\(x\)</span> y <span class="math inline">\(x + dx\)</span>.</p>
+<p>Al igual que en el caso discreto, tenemos la función acumulativa de
+distribución, que se define de la misma manera: como la probabilidad
+acumulada de que valga <span class="math inline">\(x\)</span> o menos:</p>
+<p><span class="math display">\[F(x) = P[X \leq x]\]</span></p>
+<p>Dada la definición de función de densidad, podemos calcular esta
+probabilidad como una integral:</p>
+<p><span class="math display">\[F(x) = P[X \leq x] = \int_{-\infty}^{x}dP[ t &lt; X &lt; t + dt] = \int_{-\infty}^{x} f(t)dt\]</span></p>
+<p>donde usamos <span class="math inline">\(t\)</span> en la función para no confundirlo con la <span class="math inline">\(x\)</span> del
+límite superior. Otra vez, tenemos una función menos intuitiva, pero
+que nos será útil para calcular probabilidades.</p>
+</div>
+<div id="propiedades-de-estas-funciones" class="section level3">
+<h3><span class="header-section-number">8.1.3</span> Propiedades de estas funciones</h3>
+<p>La valores de la función de masa son probabilidades, por lo tanto
+tienen las características de una probabilidad. Han de ser valores
+entre 0 y 1 y la suma de todos los valores ha de ser 1.</p>
+<p>La función de densidad no es una probabilidad, por lo que puede tomar
+valores mayores que 1. Lo que no puede ser nunca es negativa: una
+densidad negativa implicaría que por esa zona tenemos probabilidades
+negativas.</p>
+<p>La función de distribución, tanto en el caso discreto como en el
+continuo, es una acumulación de probabilidades. Por lo tanto para <span class="math inline">\(X = -\infty\)</span> (o para el menor valor de <span class="math inline">\(X\)</span> posible) la función de
+distribución vale 0 (<span class="math inline">\(F(-\infty) = 0\)</span>). Para <span class="math inline">\(X = \infty\)</span> (o para el
+mayor valor de <span class="math inline">\(X\)</span> posible) hemos acumulado toda la probabilidad, y por
+lo tanto tiene que valer 1 (<span class="math inline">\(F(\infty) = 1\)</span>). Además esta función de
+distribución ha de ser creciente ya que acumulamos probabilidades, que
+siempre son positivas. En la figura siguiente tenemos dos funciones
+acumulativas de distribución: a la izquierda la función discreta del número de
+caras seguidas al tirar un dado antes de sacar la primera cruz, y a la derecha, la de la función normal. En la discreta tenemos saltos de probabilidad en los valores 0, 1, 2, etc. debido a
+que en esos puntos (y sólo en esos puntos) tenemos cambios en el
+valor de la probabilidad.</p>
+<p><img src="imagenes/DistrCyD.jpg" /><!-- --></p>
+</div>
+</div>
+<div id="cálculo-de-probabilidades" class="section level2">
+<h2><span class="header-section-number">8.2</span> Cálculo de probabilidades</h2>
+<div id="calculando-a-mano" class="section level3">
+<h3><span class="header-section-number">8.2.1</span> Calculando a mano</h3>
+<p>Veamos cómo utilizar las funciones de masa, de densidad y de
+distribución para calcular probabilidades. Empecemos por el caso de
+variables discretas. Usaremos como distribución para los ejemplos la
+del número de caras seguidas antes de la primera cruz. Ya vimos que
+la función de densidad es <span class="math inline">\(f(k) = 1/2^{k+1}\)</span>. Se puede deducir que
+la función de distribución es <span class="math inline">\(F(k) = 1 - (1/2^{k+1})\)</span>.</p>
+<ul>
+<li><p>Caso 1: <span class="math inline">\(P[X = k]\)</span>. Esta es fácil. Es la probabilidad que
+la variable tome un valor concreto. Eso es, por definición, la
+función de masa:
+<span class="math display">\[P[X = k] = f(k)\]</span></p>
+<p>La probabilidad de obtener 3 caras es
+<span class="math display">\[P[\mbox{Caras} = 3] = f(3) = \frac{1}{2^{3+1}} = \frac{1}{16}\]</span></p></li>
+<li><p>Caso 2: <span class="math inline">\(P[X \leq k]\)</span>. Otra que no es difícil. Esto es, por
+definición, la función acumulativa de distribución:
+<span class="math display">\[P[X \leq k] = F(k)\]</span></p>
+<p>La probabilidad de obtener 2 o menos caras es
+<span class="math display">\[P[\mbox{Caras} \leq 2] = F(2) = 1 - \frac{1}{2^{2+1}} = 
+  \frac{7}{8}\]</span>
+Ahora bien, si tenemos la función de masa, pero no la de
+distribución, lo podemos calcular también:
+<span class="math display">\[P[X \leq k] = f(0) + f(1) + \cdots + f(k)\]</span>
+(hemos supuesto que <span class="math inline">\(k\)</span> empieza en 0. Si empieza en otro valor,
+pues empezamos por ese).</p>
+<p>En nuestro ejemplo:
+<span class="math display">\[P[\mbox{Caras} \leq 2] = f(0) + f(1) + f(2) = \frac{1}{2} + 
+  \frac{1}{4} + \frac{1}{8} = \frac{7}{8}\]</span></p></li>
+<li><p>Caso 2(b): ¿Y si es menor estricto <span class="math inline">\(P[X &lt; k]\)</span>? La función
+de distribución está definida para menor o igual. Si es menor
+estricto, un pequeño truco:
+<span class="math display">\[P[X &lt; k] = P[X \leq k-1] = F(k-1)\]</span>
+Atención con los menores estrictos, que son causa de muchos
+errores. Conviene aprender el truco, pues se usa mucho.</p></li>
+<li><p>Caso 3: <span class="math inline">\(P[X &gt; k]\)</span>. Aplicamos la probabilidad del caso
+contrario:
+<span class="math display">\[P[X &gt; k] = 1 - P[X \leq k] = 1 - F(k)\]</span></p>
+<p>La probabilidad de obtener 3 o más caras es
+<span class="math display">\[P[\mbox{Caras} &gt; 3] = 1 - F(3) = 1 - \left(1 - 
+  \frac{1}{2^{3+1}}\right) = 
+  \frac{1}{16}\]</span></p>
+<p>Si sólo tenemos la función de masa podemos calcular la
+probabilidad directamente o por el caso contrario. Haremos lo que
+lleve menos operaciones:
+<span class="math display">\[P[X &gt; k] = f(k+1) + f(k+2) + \cdots + f(n) = 1 - (f(k) + f(k-1)
+  + \cdots + f(0))\]</span></p>
+<p>En nuestro ejemplo sólo podemos hacerlo de la segunda manera:
+<span class="math display">\[P[\mbox{Caras} &gt; 3] = 1 - (f(3) + f(2) + f(1) + f(0)) = 1 - 
+  \left(\frac{1}{2} + \frac{1}{4} + \frac{1}{8} + 
+  \frac{1}{16}\right) = \frac{1}{16}\]</span></p></li>
+<li><p>Caso 3(b): ¿Y si es mayor o igual? Ya sabemos qué hacer:
+<span class="math display">\[P[X \geq k] = P[X &gt; k-1] = 1 - F(k-1)\]</span></p></li>
+<li><p>Caso 4, el caso general: <span class="math inline">\(P[k_{1} &lt; X \leq k_{2}]\)</span>. Suponemos,
+naturalmente que <span class="math inline">\(k_{2} &gt; k_{1}\)</span>. Empecemos en este caso por la
+función de masa. Es fácil ver que:</p>
+<p><span class="math display">\[P[k_{1} &lt; X \leq k_{2}] = f(k_{1}+1) + f(k_{1} + 2) + \cdots + 
+  f(k_{2}).\]</span></p>
+<p>Para ver cómo calcularlo con funciones acumulativas de distribución vamos a sumar y restar <span class="math inline">\(f(0) + f(1) + \cdots + f(k_{1})\)</span> (seguimos suponiendo que empezamos en <span class="math inline">\(k = 0\)</span>):</p>
+<p><span class="math display">\[P[k_{1} &lt; X \leq k_{2}] = (f(0) + \cdots + f(k_{1})) + f(k_{1}+1) +  \cdots + 
+  f(k_{2}) -(f(0) + \cdots + f(k_{1})).\]</span></p>
+<p>Y ahora basta darse cuenta que <span class="math inline">\(f(0) + \cdots + f(k_{2}) = F(k_{2})\)</span> y que <span class="math inline">\(f(0) + \cdots + f(k_{1}) = F(k_{1})\)</span>. Por lo que queda:
+<span class="math display">\[P[k_{1} &lt; X \leq k_{2}] = F(k_{2}) - F(k_{1}).\]</span></p>
+<p>En nuestro ejemplo, la probabilidad de sacar más de 0 pero menos o igual a 4 caras es:
+<span class="math display">\[P[0 &lt; \mbox{Caras} \leq 4] = F(4) - F(0) = \frac{31}{32} - 
+  \frac{1}{2} = \frac{15}{32}\]</span></p>
+<p>Si en vez del <span class="math inline">\(&lt;\)</span> tenemos un <span class="math inline">\(\leq\)</span>, o en vez del <span class="math inline">\(\leq\)</span> tenemos un <span class="math inline">\(&lt;\)</span> aplicamos el truco de siempre. Entonces, por ejemplo,</p>
+<p><span class="math display">\[P[k_{1} \leq X \leq k_{2}] = P[k_{1}-1 &lt; X \leq k_{2}] = F(k_{2}) - F(k_{1}-1).\]</span></p>
+<p>Vemos aquí el motivo principal del uso de la función acumulativa de distribución. En vez de tener que sumar 20 o 30 términos, nos basta con restar 2.</p></li>
+</ul>
+<p>Pasemos ahora al caso de variables continuas. Hay menos casos debido
+a que <span class="math inline">\(P[X = x] = 0\)</span>. El caso 1 de las discretas ya no interesa.
+Además no hay que distinguir entre <span class="math inline">\(X \leq x\)</span> y <span class="math inline">\(X&lt;x\)</span> (o <span class="math inline">\(X \geq x\)</span> y
+<span class="math inline">\(X&gt;x\)</span>) ya que la única diferencia entre ambas es <span class="math inline">\(P[X = x]\)</span> que es 0.
+Como ejemplo usaremos la distribución uniforme entre 0 y 1. Esto
+quiere decir que cualquier valor real entre 0 y 1 es igualmente
+probable. La función de densidad es <span class="math inline">\(f(x) = 1\)</span> y la de distribución
+es</p>
+<p><span class="math display">\[F(x) = \left\{ \begin{array}{ll}
+                    0 &amp;\mbox{ si } x &lt; 0\\
+                    x &amp;\mbox{ si } 0 \leq x \leq 1\\
+                    1 &amp;\mbox{ si } x &gt; 1
+                    \end{array}\right. .\]</span></p>
+<ul>
+<li><p>Caso 1: <span class="math inline">\(P[X \leq x]\)</span>. Esto es por
+definición la función acumulativa de distribución:
+<span class="math display">\[P[X \leq x] = F(x)\]</span></p>
+<p>La probabilidad de obtener un valor menor que 0,2 en la
+distribución uniforme del ejemplo es
+<span class="math display">\[P[X \leq 0,2] = F(0,2) = 0,2\]</span></p>
+<p>Ahora bien, si tenemos la función de masa, pero no la de
+distribución, lo podemos calcular integrando:</p>
+<p><span class="math display">\[F(x) = P[X \leq x] = \int_{-\infty}^{x}f(t)dt\]</span></p>
+<p>En nuestro ejemplo:
+<span class="math display">\[P[X \leq 2] = \int_{0}^{0,2}1\,dt = \left. t \right|_{0}^{0,2} = 0,2 - 0 = 
+  0,2\]</span></p>
+<p>Vemos que en el caso continuo sí que es muy interesante usar la
+función acumulativa de distribución: nos ahorramos integrar (esta
+era fácil, pero las hay muy complicadas).</p></li>
+<li><p>Caso 2: <span class="math inline">\(P[X &gt; x]\)</span>. Aplicamos la probabilidad del caso
+contrario:
+<span class="math display">\[P[X &gt; x] = 1 - P[X \leq x] = 1 - F(x).\]</span></p>
+<p>En nuestro ejemplo, la probabilidad de que valga más de 0,6 es
+<span class="math display">\[P[X &gt; 0,6] = 1 - P[X \leq 0,6] = 1 - 0,6 = 0,4.\]</span></p>
+<p>Y si sólo tenemos la función de densidad, otra vez toca integrar:</p>
+<p><span class="math display">\[P[X &gt; x] = \int_{x}^{\infty}f(t)dt\]</span></p>
+<p>En nuestro ejemplo
+<span class="math display">\[P[X &gt; 0,6] = \int_{0,6}^{1} 1\,dt = \left. t \right|_{0,6}^{1} = 
+ 1 - 0,6 = 
+  0,4\]</span></p></li>
+<li><p>Caso general: <span class="math inline">\(P[x_{1} &lt; X \leq x_{2}]\)</span>. Podría sumar y
+restar integrales, de manera similar a como hicimos en el caso
+discreto, pero voy a usar otro argumento (que también se puede
+usar en el caso discreto). En vez de restar las integrales sumamos
+y restamos la probabilidad de <span class="math inline">\(P[X \leq x_{1}]\)</span>:</p>
+<p><span class="math display">\[P[x_{1} &lt; X \leq x_{2}] = P[X \leq x_{1}] + P[x_{1} &lt; 
+ X \leq x_{2}] - P[X \leq x_{1}].\]</span></p>
+<p>Ahora bien, <span class="math inline">\(P[X \leq x_{1}]\)</span> y <span class="math inline">\(P[x_{1} &lt;  X \leq x_{2}]\)</span> son probabilidades incompatibles, por lo tanto</p>
+<p><span class="math display">\[P[X \leq x_{1}] + P[x_{1} &lt; 
+ X \leq x_{2}] = P[X \leq x_{1} \mbox{ o } x_{1} &lt; X \leq x_{2}].\]</span></p>
+<p>Pero <span class="math inline">\(P[X \leq x_{1} \mbox{ o } x_{1} &lt; X \leq x_{2}] = P[X \leq  x_{2}]\)</span>. Y nos queda</p>
+<p><span class="math display">\[P[x_{1} &lt; X \leq x_{2}] = P[X \leq x_{2}] - P[X \leq x_{1}] = 
+ F(x_{2}) - F(x_{1}).\]</span></p>
+<p>En nuestro ejemplo, la probabilidad de que la variable tenga un
+valor entre 0,15 y 0,72 es
+<span class="math display">\[P[0,15 &lt; X \leq 0,72] =  
+ F(0,72) - F(0,15) = 0,72 - 0,15 = 0,57.\]</span></p>
+<p>Si no tenemos la función acumulativa de distribución, toca integrar:</p>
+<p><span class="math display">\[P[x_{1} &lt; X \leq x_{2}] = \int_{x_{1}}^{x_{2}} f(x)\, dx.\]</span></p>
+<p>Lo dejo como ejercicio para el caso de nuestro ejemplo.</p>
+<p>Vuelvo a recordar que en el caso continuo no hay diferencia entre
+menor o igual y menor estricto (o mayor o igual y mayor estricto),
+por lo que</p>
+<p><span class="math display">\[P[x_{1} \leq X &lt; x_{2}] = F(x_{2}) - F(x_{1}) = \int_{x_{1}}^{x_{2}} f(x)\, dx.\]</span></p></li>
+</ul>
+</div>
+<div id="calculando-con-r" class="section level3">
+<h3><span class="header-section-number">8.2.2</span> Calculando con R</h3>
+<p>R trae muchas distribuciones incorporadas: la normal, la binomial, la de Poisson, la uniforme, etc. Para cada una de estas distribuciones trae 4 funciones de las que en este momento nos interesan 2: la de densidad o masa, y la acumulativa de distribución. La nomenclatura es la siguiente: se antepone una “d” al nombre de la distribución para tener la función de densidad o masa, y una “p” para obtener la acumulativa de distribución. Así, para la distribución normal (que recordemos es continua) la función de densidad sería <code>dnorm()</code> y la de distribución <code>pnorm()</code>. Para la distribución de Poisson, que es discreta, <code>dpois()</code> sería la de masa y <code>ppois()</code> la de distribución.</p>
+<p>Así, si tenemos una distribución normal, continua, de media 0 y desviación estandar 1 (los valores que R usa por defecto), para calcular la probabilidad <span class="math inline">\(P[-1 &lt; X &lt; 0,5]\)</span> escribimos</p>
+<pre><code>  &gt; pnorm(0.5) - pnorm(-1)
+  [1] 0.5328072</code></pre>
+<p>Es decir que la probabilidad de que una variable aleatoria en una distribución normal de media 0 y desviación estandar 1 tome un valor entre <span class="math inline">\(-1\)</span> y <span class="math inline">\(0.5\)</span> es <span class="math inline">\(0.533\)</span>.</p>
+<p>R no integra, por lo que no tenemos otra forma de calcular la probabilidad. Si tenemos una distribución discreta, como la de Poisson, sí que podemos calcular la probabilidad tanto con la función de masa como con la de distribución.</p>
+<p>No vamos a entrar en detalles aquí con las características de la distribución de Poisson. En este momento hemos de decir que es discreta y que depende de un parámetro llamado <span class="math inline">\(\lambda\)</span> y al que le vamos a dar el valor de 2. Para calcular que una variable aleatoria que sigue una distribución de Poisson con parámetro <span class="math inline">\(\lambda = 2\)</span> valga 1 debemos usar la función de masa <code>dpois()</code>:</p>
+<pre><code>  &gt; dpois(1,2)
+  [1] 0.2706706</code></pre>
+<p>Luego la probabilidad <span class="math inline">\(P[X = 2] = 0.27\)</span>.</p>
+<p>Si queremos calcular la probabilidad <span class="math inline">\(P[1 &lt; X \leq 6]\)</span> lo podemos hacer tanto con la de masa como con la acumulativa de distribución:</p>
+<pre><code>  &gt; ppois(6,2)-ppois(1,2)
+  [1] 0.5894603
+  &gt; dpois(2,2) + dpois(3,2) + dpois(4,2) + dpois(5,2) + dpois(6,2)
+  [1] 0.5894603</code></pre>
+<p>En ambos casos da lo mismo (como toca): la probabilidad es de 0,59.</p>
+</div>
+<div id="resumen-2" class="section level3">
+<h3><span class="header-section-number">8.2.3</span> Resumen</h3>
+<p>Una variable aleatoria es una variable de la que desconocemos el
+valor que va a tomar. Eso sí, cada posible valor lo tomará con una
+determinada probabilidad. A esta se le llama la distribución de la
+variable aleatoria.</p>
+<p>Tenemos dos funciones para describir la distribución: la de masa o
+densidad y la acumulativa de distribución. La función de masa sólo se
+usa en variables discretas y es simplemente la probabilidad de que la
+variable tome el
+valor <span class="math inline">\(k\)</span>: <span class="math inline">\(f(k) = P[X = k]\)</span>. En el caso continuo usamos la función
+de densidad que nos da la densidad de probabilidad: cuanto mayor es
+el valor de esta función en un punto <span class="math inline">\(x\)</span>, más probable es que la variable tome
+valores alrededor de <span class="math inline">\(x\)</span>. Eso sí, la probabilidad de que la variable
+tome exactamente el valor <span class="math inline">\(x\)</span> es 0.</p>
+<p>Tanto en el caso discreto como el continuo la función acumulativa de
+distribución en el punto <span class="math inline">\(x\)</span> se define como la probabilidad acumulada
+hasta ese punto: <span class="math inline">\(F(x) = P[X \leq x]\)</span>.</p>
+<p>Podemos usar estas funciones para calcular probabilidades. En el caso
+discreto, la expresión general es
+<span class="math display">\[P[k_{1} &lt; X \leq k_{2}] = F(k_{2}) - F(k_{1}) = f(k_{1}+1) + f(k_{1} + 2) + \cdots + 
+    f(k_{2}).\]</span></p>
+<pre><code>y en el continuo</code></pre>
+<p><span class="math display">\[P[x_{1} \leq X &lt; x_{2}] = F(x_{2}) - F(x_{1}) = \int_{x_{1}}^{x_{2}} f(x)\, dx.\]</span></p>
+<p>R trae incorporadas las funciones de masa o densidad y distribución<br />
+de muchas distribuciones.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="probabilidad.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/08_VAleatorias.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Estadística.pdf", "Estadística.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
