@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 11 Incertidumbre en muestras de medias | Mera estadística</title>
+  <meta name="description" content="Capítulo 11 Incertidumbre en muestras de medias | Mera estadística" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 11 Incertidumbre en muestras de medias | Mera estadística" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 11 Incertidumbre en muestras de medias | Mera estadística" />
+  
+  
+  
+
+<meta name="author" content="Jose Miró Julià" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="incertidumbre-en-muestras-de-proporciones.html"/>
+<link rel="next" href="comparación-de-intervalos-de-confianza.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Estadística</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a></li>
+<li class="chapter" data-level="2" data-path="qué-es-y-no-es-la-estadística.html"><a href="qué-es-y-no-es-la-estadística.html"><i class="fa fa-check"></i><b>2</b> ¿Qué es (y no es) la estadística?</a><ul>
+<li class="chapter" data-level="2.1" data-path="qué-es-y-no-es-la-estadística.html"><a href="qué-es-y-no-es-la-estadística.html#el-proceso-estadístico"><i class="fa fa-check"></i><b>2.1</b> El proceso estadístico</a></li>
+<li class="chapter" data-level="2.2" data-path="qué-es-y-no-es-la-estadística.html"><a href="qué-es-y-no-es-la-estadística.html#es-la-estadística-parte-de-las-matemáticas"><i class="fa fa-check"></i><b>2.2</b> ¿Es la estadística parte de las matemáticas?</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html"><i class="fa fa-check"></i><b>3</b> Estadística descriptiva de datos numéricos univariantes</a><ul>
+<li class="chapter" data-level="3.1" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#tipos-de-datos"><i class="fa fa-check"></i><b>3.1</b> Tipos de datos</a></li>
+<li class="chapter" data-level="3.2" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#medidas-de-centralidad-y-dispersión"><i class="fa fa-check"></i><b>3.2</b> Medidas de centralidad y dispersión</a></li>
+<li class="chapter" data-level="3.3" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#gráficas-para-datos-cuantitativos"><i class="fa fa-check"></i><b>3.3</b> Gráficas para datos cuantitativos</a></li>
+<li class="chapter" data-level="3.4" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#análisis-de-los-datos"><i class="fa fa-check"></i><b>3.4</b> Análisis de los datos</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#modalidad"><i class="fa fa-check"></i><b>3.4.1</b> Modalidad</a></li>
+<li class="chapter" data-level="3.4.2" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#simetría"><i class="fa fa-check"></i><b>3.4.2</b> Simetría</a></li>
+<li class="chapter" data-level="3.4.3" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#valores-atípicos"><i class="fa fa-check"></i><b>3.4.3</b> Valores atípicos</a></li>
+<li class="chapter" data-level="3.4.4" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#problematicidad"><i class="fa fa-check"></i><b>3.4.4</b> Problematicidad</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><i class="fa fa-check"></i><b>4</b> Estadística descriptiva de datos cualitativos univariantes</a><ul>
+<li class="chapter" data-level="4.1" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#tablas-de-contingencia"><i class="fa fa-check"></i><b>4.1</b> Tablas de contingencia</a></li>
+<li class="chapter" data-level="4.2" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#gráficas-para-datos-cualitativos"><i class="fa fa-check"></i><b>4.2</b> Gráficas para datos cualitativos</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#gráficos-3d"><i class="fa fa-check"></i><b>4.2.1</b> Gráficos 3D</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#conclusión"><i class="fa fa-check"></i><b>4.3</b> Conclusión</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html"><i class="fa fa-check"></i><b>5</b> Estadística descriptiva de datos bivariantes</a><ul>
+<li class="chapter" data-level="5.1" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#dos-variables-numéricas"><i class="fa fa-check"></i><b>5.1</b> Dos variables numéricas</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#gráfica-de-nube-de-puntos"><i class="fa fa-check"></i><b>5.1.1</b> Gráfica de nube de puntos</a></li>
+<li class="chapter" data-level="5.1.2" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#rectas-de-regresión"><i class="fa fa-check"></i><b>5.1.2</b> Rectas de regresión</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#una-variable-numérica-y-una-cualitativa"><i class="fa fa-check"></i><b>5.2</b> Una variable numérica y una cualitativa</a></li>
+<li class="chapter" data-level="5.3" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#dos-variables-cualitativas"><i class="fa fa-check"></i><b>5.3</b> Dos variables cualitativas</a></li>
+<li class="chapter" data-level="5.4" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#resumen"><i class="fa fa-check"></i><b>5.4</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html"><i class="fa fa-check"></i><b>6</b> Uso de R para estadística descriptiva. Tutorial</a><ul>
+<li class="chapter" data-level="6.1" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#data-frames"><i class="fa fa-check"></i><b>6.1</b> Data frames</a></li>
+<li class="chapter" data-level="6.2" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-una-variable-cuantitativa"><i class="fa fa-check"></i><b>6.2</b> El caso de una variable cuantitativa</a></li>
+<li class="chapter" data-level="6.3" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-una-variable-cualitativa"><i class="fa fa-check"></i><b>6.3</b> El caso de una variable cualitativa</a></li>
+<li class="chapter" data-level="6.4" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-dos-variables-cuantitativas"><i class="fa fa-check"></i><b>6.4</b> El caso de dos variables cuantitativas</a></li>
+<li class="chapter" data-level="6.5" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-dos-variables-una-cuantitativa-y-una-cualitativa"><i class="fa fa-check"></i><b>6.5</b> El caso de dos variables, una cuantitativa y una cualitativa</a></li>
+<li class="chapter" data-level="6.6" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-dos-variables-cualitativas"><i class="fa fa-check"></i><b>6.6</b> El caso de dos variables cualitativas</a></li>
+<li class="chapter" data-level="6.7" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#resumen-final"><i class="fa fa-check"></i><b>6.7</b> Resumen final</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="probabilidad.html"><a href="probabilidad.html"><i class="fa fa-check"></i><b>7</b> Probabilidad</a><ul>
+<li class="chapter" data-level="7.1" data-path="probabilidad.html"><a href="probabilidad.html#ideas-básicas"><i class="fa fa-check"></i><b>7.1</b> Ideas básicas</a></li>
+<li class="chapter" data-level="7.2" data-path="probabilidad.html"><a href="probabilidad.html#operaciones-con-probabilidades"><i class="fa fa-check"></i><b>7.2</b> Operaciones con probabilidades</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-de-una-cosa-u-otra"><i class="fa fa-check"></i><b>7.2.1</b> Probabilidad de una cosa u otra</a></li>
+<li class="chapter" data-level="7.2.2" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-de-una-cosa-y-otra"><i class="fa fa-check"></i><b>7.2.2</b> Probabilidad de una cosa y otra</a></li>
+<li class="chapter" data-level="7.2.3" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-del-suceso-contrario"><i class="fa fa-check"></i><b>7.2.3</b> Probabilidad del suceso contrario</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-condicionada"><i class="fa fa-check"></i><b>7.3</b> Probabilidad condicionada</a></li>
+<li class="chapter" data-level="7.4" data-path="probabilidad.html"><a href="probabilidad.html#regla-de-bayes"><i class="fa fa-check"></i><b>7.4</b> Regla de Bayes</a></li>
+<li class="chapter" data-level="7.5" data-path="probabilidad.html"><a href="probabilidad.html#resumen-1"><i class="fa fa-check"></i><b>7.5</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html"><i class="fa fa-check"></i><b>8</b> Variables aleatorias</a><ul>
+<li class="chapter" data-level="8.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#qué-es-una-variable-aleatoria"><i class="fa fa-check"></i><b>8.1</b> ¿Qué es una variable aleatoria?</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#variables-discretas"><i class="fa fa-check"></i><b>8.1.1</b> Variables discretas</a></li>
+<li class="chapter" data-level="8.1.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#variables-continuas"><i class="fa fa-check"></i><b>8.1.2</b> Variables continuas</a></li>
+<li class="chapter" data-level="8.1.3" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#propiedades-de-estas-funciones"><i class="fa fa-check"></i><b>8.1.3</b> Propiedades de estas funciones</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#cálculo-de-probabilidades"><i class="fa fa-check"></i><b>8.2</b> Cálculo de probabilidades</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#calculando-a-mano"><i class="fa fa-check"></i><b>8.2.1</b> Calculando a mano</a></li>
+<li class="chapter" data-level="8.2.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#calculando-con-r"><i class="fa fa-check"></i><b>8.2.2</b> Calculando con R</a></li>
+<li class="chapter" data-level="8.2.3" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#resumen-2"><i class="fa fa-check"></i><b>8.2.3</b> Resumen</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><i class="fa fa-check"></i><b>9</b> Esperanzas y desviaciones típicas de variables aleatorias</a><ul>
+<li class="chapter" data-level="9.1" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#desviaciones-típicas"><i class="fa fa-check"></i><b>9.1</b> Desviaciones típicas</a></li>
+<li class="chapter" data-level="9.2" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#operaciones-con-variables-aleatorias"><i class="fa fa-check"></i><b>9.2</b> Operaciones con variables aleatorias</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#un-ejemplo"><i class="fa fa-check"></i><b>9.2.1</b> Un ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#resumen-3"><i class="fa fa-check"></i><b>9.3</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="incertidumbre-en-muestras-de-proporciones.html"><a href="incertidumbre-en-muestras-de-proporciones.html"><i class="fa fa-check"></i><b>10</b> Incertidumbre en muestras de proporciones</a><ul>
+<li class="chapter" data-level="10.1" data-path="incertidumbre-en-muestras-de-proporciones.html"><a href="incertidumbre-en-muestras-de-proporciones.html#una-simulación"><i class="fa fa-check"></i><b>10.1</b> Una simulación</a></li>
+<li class="chapter" data-level="10.2" data-path="incertidumbre-en-muestras-de-proporciones.html"><a href="incertidumbre-en-muestras-de-proporciones.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>10.2</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="10.3" data-path="incertidumbre-en-muestras-de-proporciones.html"><a href="incertidumbre-en-muestras-de-proporciones.html#fuga-de-probabilidad"><i class="fa fa-check"></i><b>10.3</b> Fuga de probabilidad</a></li>
+<li class="chapter" data-level="10.4" data-path="incertidumbre-en-muestras-de-proporciones.html"><a href="incertidumbre-en-muestras-de-proporciones.html#un-ejemplo-1"><i class="fa fa-check"></i><b>10.4</b> Un ejemplo</a></li>
+<li class="chapter" data-level="10.5" data-path="incertidumbre-en-muestras-de-proporciones.html"><a href="incertidumbre-en-muestras-de-proporciones.html#resumen-4"><i class="fa fa-check"></i><b>10.5</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="incertidumbre-en-muestras-de-medias.html"><a href="incertidumbre-en-muestras-de-medias.html"><i class="fa fa-check"></i><b>11</b> Incertidumbre en muestras de medias</a><ul>
+<li class="chapter" data-level="11.1" data-path="incertidumbre-en-muestras-de-medias.html"><a href="incertidumbre-en-muestras-de-medias.html#una-simulación-1"><i class="fa fa-check"></i><b>11.1</b> Una simulación</a></li>
+<li class="chapter" data-level="11.2" data-path="incertidumbre-en-muestras-de-medias.html"><a href="incertidumbre-en-muestras-de-medias.html#intervalos-de-confianza-1"><i class="fa fa-check"></i><b>11.2</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="11.3" data-path="incertidumbre-en-muestras-de-medias.html"><a href="incertidumbre-en-muestras-de-medias.html#la-distribución-t-de-student"><i class="fa fa-check"></i><b>11.3</b> La distribución t de Student</a></li>
+<li class="chapter" data-level="11.4" data-path="incertidumbre-en-muestras-de-medias.html"><a href="incertidumbre-en-muestras-de-medias.html#fuga-de-probabilidades"><i class="fa fa-check"></i><b>11.4</b> Fuga de probabilidades</a></li>
+<li class="chapter" data-level="11.5" data-path="incertidumbre-en-muestras-de-medias.html"><a href="incertidumbre-en-muestras-de-medias.html#un-ejemplo-2"><i class="fa fa-check"></i><b>11.5</b> Un ejemplo</a></li>
+<li class="chapter" data-level="11.6" data-path="incertidumbre-en-muestras-de-medias.html"><a href="incertidumbre-en-muestras-de-medias.html#resumen-5"><i class="fa fa-check"></i><b>11.6</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="comparación-de-intervalos-de-confianza.html"><a href="comparación-de-intervalos-de-confianza.html"><i class="fa fa-check"></i><b>12</b> Comparación de intervalos de confianza</a><ul>
+<li class="chapter" data-level="12.1" data-path="comparación-de-intervalos-de-confianza.html"><a href="comparación-de-intervalos-de-confianza.html#no-puedo-decir-que-sean-distintos"><i class="fa fa-check"></i><b>12.1</b> No puedo decir que sean distintos</a></li>
+<li class="chapter" data-level="12.2" data-path="comparación-de-intervalos-de-confianza.html"><a href="comparación-de-intervalos-de-confianza.html#cálculo-de-intervalos-de-confianza-de-diferencias"><i class="fa fa-check"></i><b>12.2</b> Cálculo de intervalos de confianza de diferencias</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="comparación-de-intervalos-de-confianza.html"><a href="comparación-de-intervalos-de-confianza.html#calculando-intervalos-con-r"><i class="fa fa-check"></i><b>12.2.1</b> Calculando intervalos con R</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="comparación-de-intervalos-de-confianza.html"><a href="comparación-de-intervalos-de-confianza.html#más-ejemplos"><i class="fa fa-check"></i><b>12.3</b> Más ejemplos</a></li>
+<li class="chapter" data-level="12.4" data-path="comparación-de-intervalos-de-confianza.html"><a href="comparación-de-intervalos-de-confianza.html#resumen-6"><i class="fa fa-check"></i><b>12.4</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html"><i class="fa fa-check"></i><b>13</b> Contrastes de hipotesis</a><ul>
+<li class="chapter" data-level="13.1" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html#experimentos-estadísticos-para-un-contraste-de-hipótesis"><i class="fa fa-check"></i><b>13.1</b> Experimentos estadísticos para un contraste de hipótesis</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html#procedimiento-de-cálculo-del-p-valor."><i class="fa fa-check"></i><b>13.1.1</b> Procedimiento de cálculo del p-valor.</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html#interpretación-del-p-valor."><i class="fa fa-check"></i><b>13.2</b> Interpretación del p-valor.</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>14</b> ANOVA</a><ul>
+<li class="chapter" data-level="14.1" data-path="anova.html"><a href="anova.html#nada-es-gratis-y-los-errores-se-acumulan"><i class="fa fa-check"></i><b>14.1</b> Nada es gratis (y los errores se acumulan)</a></li>
+<li class="chapter" data-level="14.2" data-path="anova.html"><a href="anova.html#punto-de-partida"><i class="fa fa-check"></i><b>14.2</b> Punto de partida</a></li>
+<li class="chapter" data-level="14.3" data-path="anova.html"><a href="anova.html#tutorial-de-anova-en-r"><i class="fa fa-check"></i><b>14.3</b> Tutorial de ANOVA en R</a><ul>
+<li class="chapter" data-level="14.3.1" data-path="anova.html"><a href="anova.html#el-problema"><i class="fa fa-check"></i><b>14.3.1</b> El problema</a></li>
+<li class="chapter" data-level="14.3.2" data-path="anova.html"><a href="anova.html#el-primer-método-oneway.test"><i class="fa fa-check"></i><b>14.3.2</b> El primer método: oneway.test()</a></li>
+<li class="chapter" data-level="14.3.3" data-path="anova.html"><a href="anova.html#el-segundo-método-aov"><i class="fa fa-check"></i><b>14.3.3</b> El segundo método: aov()</a></li>
+<li class="chapter" data-level="14.3.4" data-path="anova.html"><a href="anova.html#el-tercer-método"><i class="fa fa-check"></i><b>14.3.4</b> El tercer método</a></li>
+<li class="chapter" data-level="14.3.5" data-path="anova.html"><a href="anova.html#y-si-los-datos-no-están-como-los-quiere-r"><i class="fa fa-check"></i><b>14.3.5</b> ¿Y si los datos no están como los quiere R?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html"><i class="fa fa-check"></i><b>15</b> La prueba de Ji-Cuadrado</a><ul>
+<li class="chapter" data-level="15.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-de-ji-cuadrado-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>15.1</b> Prueba de ji-cuadrado de bondad de ajuste</a></li>
+<li class="chapter" data-level="15.2" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-de-bondad-de-ajuste-con-r"><i class="fa fa-check"></i><b>15.2</b> Prueba <span class="math inline">\(\chi^2\)</span> de bondad de ajuste con R</a><ul>
+<li class="chapter" data-level="15.2.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#problematicidad-el-aviso-de-chisq.test"><i class="fa fa-check"></i><b>15.2.1</b> Problematicidad: el aviso de chisq.test()</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#la-prueba-chi2-de-homogeneidad"><i class="fa fa-check"></i><b>15.3</b> La prueba <span class="math inline">\(\chi^2\)</span> de homogeneidad</a><ul>
+<li class="chapter" data-level="15.3.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#definición-formal"><i class="fa fa-check"></i><b>15.3.1</b> Definición formal</a></li>
+<li class="chapter" data-level="15.3.2" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-como-contraste-de-hipótesis"><i class="fa fa-check"></i><b>15.3.2</b> Prueba <span class="math inline">\(\chi^2\)</span> como contraste de hipótesis</a></li>
+<li class="chapter" data-level="15.3.3" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-de-homogeneidad-con-r"><i class="fa fa-check"></i><b>15.3.3</b> Prueba <span class="math inline">\(\chi^2\)</span> de homogeneidad con R</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#la-prueba-chi2-de-independencia"><i class="fa fa-check"></i><b>15.4</b> La prueba <span class="math inline">\(\chi^{2}\)</span> de independencia</a><ul>
+<li class="chapter" data-level="15.4.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-de-independencia-como-contraste-de-hipótesis"><i class="fa fa-check"></i><b>15.4.1</b> Prueba <span class="math inline">\(\chi^2\)</span> de independencia como contraste de hipótesis</a></li>
+<li class="chapter" data-level="15.4.2" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#un-ejemplo-3"><i class="fa fa-check"></i><b>15.4.2</b> Un ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#resumen-7"><i class="fa fa-check"></i><b>15.5</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="regresión-lineal.html"><a href="regresión-lineal.html"><i class="fa fa-check"></i><b>16</b> Regresión Lineal</a><ul>
+<li class="chapter" data-level="16.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#cálculo"><i class="fa fa-check"></i><b>16.1</b> Cálculo</a><ul>
+<li class="chapter" data-level="16.1.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#fundamentos"><i class="fa fa-check"></i><b>16.1.1</b> Fundamentos</a></li>
+<li class="chapter" data-level="16.1.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#otro-ejemplo"><i class="fa fa-check"></i><b>16.1.2</b> Otro ejemplo</a></li>
+<li class="chapter" data-level="16.1.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#y-si-no-es-una-recta"><i class="fa fa-check"></i><b>16.1.3</b> ¿Y si no es una recta?</a></li>
+<li class="chapter" data-level="16.1.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-la-parte-de-cálculo"><i class="fa fa-check"></i><b>16.1.4</b> Resumen de la parte de cálculo</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#estadística"><i class="fa fa-check"></i><b>16.2</b> Estadística</a><ul>
+<li class="chapter" data-level="16.2.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#incertidumbre-en-la-regresión-lineal"><i class="fa fa-check"></i><b>16.2.1</b> Incertidumbre en la regresión lineal</a></li>
+<li class="chapter" data-level="16.2.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#condiciones"><i class="fa fa-check"></i><b>16.2.2</b> Condiciones</a></li>
+<li class="chapter" data-level="16.2.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#salida-de-r"><i class="fa fa-check"></i><b>16.2.3</b> Salida de R</a></li>
+<li class="chapter" data-level="16.2.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#intervalos-de-confianza-2"><i class="fa fa-check"></i><b>16.2.4</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="16.2.5" data-path="regresión-lineal.html"><a href="regresión-lineal.html#otro-ejemplo-1"><i class="fa fa-check"></i><b>16.2.5</b> Otro ejemplo</a></li>
+<li class="chapter" data-level="16.2.6" data-path="regresión-lineal.html"><a href="regresión-lineal.html#la-regresión-no-muestra-qué-tipo-de-curva-es"><i class="fa fa-check"></i><b>16.2.6</b> La regresión no muestra qué tipo de curva es</a></li>
+<li class="chapter" data-level="16.2.7" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-la-parte-de-estadística"><i class="fa fa-check"></i><b>16.2.7</b> Resumen de la parte de estadística</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#diagnóstico"><i class="fa fa-check"></i><b>16.3</b> Diagnóstico</a><ul>
+<li class="chapter" data-level="16.3.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#seis-modelos"><i class="fa fa-check"></i><b>16.3.1</b> Seis modelos</a></li>
+<li class="chapter" data-level="16.3.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#cinco-diagnósticos"><i class="fa fa-check"></i><b>16.3.2</b> Cinco diagnósticos</a></li>
+<li class="chapter" data-level="16.3.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-diagnóstico"><i class="fa fa-check"></i><b>16.3.3</b> Resumen de diagnóstico</a></li>
+</ul></li>
+<li class="chapter" data-level="16.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#inferencias"><i class="fa fa-check"></i><b>16.4</b> Inferencias</a><ul>
+<li class="chapter" data-level="16.4.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#contrastes-de-hipótesis"><i class="fa fa-check"></i><b>16.4.1</b> Contrastes de hipótesis</a></li>
+<li class="chapter" data-level="16.4.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#intervalos-de-confianza-3"><i class="fa fa-check"></i><b>16.4.2</b> Intervalos de confianza</a></li>
+</ul></li>
+<li class="chapter" data-level="16.5" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicciones"><i class="fa fa-check"></i><b>16.5</b> Predicciones</a><ul>
+<li class="chapter" data-level="16.5.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-de-la-curva"><i class="fa fa-check"></i><b>16.5.1</b> Predicción de la curva</a></li>
+<li class="chapter" data-level="16.5.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-de-rango"><i class="fa fa-check"></i><b>16.5.2</b> Predicción de rango</a></li>
+<li class="chapter" data-level="16.5.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-de-medias"><i class="fa fa-check"></i><b>16.5.3</b> Predicción de medias</a></li>
+<li class="chapter" data-level="16.5.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-predicciones"><i class="fa fa-check"></i><b>16.5.4</b> Resumen de predicciones</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="problemas.html"><a href="problemas.html"><i class="fa fa-check"></i><b>17</b> Problemas</a><ul>
+<li class="chapter" data-level="17.1" data-path="problemas.html"><a href="problemas.html#qué-es-la-estadística"><i class="fa fa-check"></i><b>17.1</b> ¿Qué es la estadística?</a></li>
+<li class="chapter" data-level="17.2" data-path="problemas.html"><a href="problemas.html#manejo-de-r-y-simulaciones"><i class="fa fa-check"></i><b>17.2</b> Manejo de R y simulaciones</a></li>
+<li class="chapter" data-level="17.3" data-path="problemas.html"><a href="problemas.html#estadística-descriptiva"><i class="fa fa-check"></i><b>17.3</b> Estadística Descriptiva</a></li>
+<li class="chapter" data-level="17.4" data-path="problemas.html"><a href="problemas.html#probabilidad-y-variables-aleatórias"><i class="fa fa-check"></i><b>17.4</b> Probabilidad y variables aleatórias</a></li>
+<li class="chapter" data-level="17.5" data-path="problemas.html"><a href="problemas.html#razonamiento-estadístico."><i class="fa fa-check"></i><b>17.5</b> Razonamiento estadístico.</a><ul>
+<li class="chapter" data-level="17.5.1" data-path="problemas.html"><a href="problemas.html#intervalos-de-confianza-4"><i class="fa fa-check"></i><b>17.5.1</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="17.5.2" data-path="problemas.html"><a href="problemas.html#contrastes-de-hipótesis-1"><i class="fa fa-check"></i><b>17.5.2</b> Contrastes de hipótesis</a></li>
+<li class="chapter" data-level="17.5.3" data-path="problemas.html"><a href="problemas.html#razonamiento-estadístico-complejo"><i class="fa fa-check"></i><b>17.5.3</b> Razonamiento estadístico complejo</a></li>
+</ul></li>
+<li class="chapter" data-level="17.6" data-path="problemas.html"><a href="problemas.html#anova-1"><i class="fa fa-check"></i><b>17.6</b> Anova</a></li>
+<li class="chapter" data-level="17.7" data-path="problemas.html"><a href="problemas.html#ji-cuadrado"><i class="fa fa-check"></i><b>17.7</b> Ji-cuadrado</a></li>
+<li class="chapter" data-level="17.8" data-path="problemas.html"><a href="problemas.html#regresión-lineal-1"><i class="fa fa-check"></i><b>17.8</b> Regresión Lineal</a></li>
+<li class="chapter" data-level="17.9" data-path="problemas.html"><a href="problemas.html#problemas-con-todo"><i class="fa fa-check"></i><b>17.9</b> Problemas con todo</a></li>
+<li class="chapter" data-level="17.10" data-path="problemas.html"><a href="problemas.html#campos-elíseos"><i class="fa fa-check"></i><b>17.10</b> Campos Elíseos</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Mera estadística</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="incertidumbre-en-muestras-de-medias" class="section level1">
+<h1><span class="header-section-number">Capítulo 11</span> Incertidumbre en muestras de medias</h1>
+<p>El muestreo consiste en escoger los datos de algunos individuos de una población, llamada una muestra, para obtener información de <em>toda</em> la
+población a partir de ella. No es difícil darse cuenta que si tomo
+dos muestras de la misma población es muy poco probable obtener
+exactamente los mismos resultados. Incluso si lo hago perfectamente
+bien y no cometo ningún error, cada vez que tome una muestra
+obtendré resultados algo diferentes. La estadística nos permite
+cuantificar la incertidumbre asociada a un muestreo bien hecho. Esto
+se hace a través de los llamados intervalos de confianza. Veamos
+cómo se calcula el intervalo de confianza de una media de valores.</p>
+<div id="una-simulación-1" class="section level2">
+<h2><span class="header-section-number">11.1</span> Una simulación</h2>
+<p>Empecemos por una simulación. Tenemos una población muy numerosa,
+potencialmente infinita, y medimos una característica numérica de cada
+uno de los individuos. Quizá la población es de fuentes de
+alimentación y medimos el voltaje de salida; o la población es de
+personas y la característica es la altura o el peso; o son años y la
+característica es la cantidad de lluvia caída en una estación
+meteorológica determinada. En nuestro caso vamos a recrear los datos
+tomados por el científico belga Adolphe Quetelet. Quetelet midió el
+perímetro torácico de 5738 soldados escoceses y encontró que se
+aproximaba muy bien a una distribución normal de media 101.1 cm y
+desviación típica 5,2 cm.</p>
+<p>Hagamos una simulación con R. Empezamos por recrear los datos de
+Quetelet. La hacemos a partir de <code>rnorm</code>. Usamos la función
+<code>set.seed()</code> que nos permite establecer la “semilla” del
+generador de números aleatorios. Así, aunque la secuencia sigue
+siendo aleatoria, cada vez que ejecute el programa me saldrá la misma
+secuencia. Esto significa que si ejecutan este <em>script</em>
+deberían obtener exactamente los mismos resultados que los mostrados
+aquí.</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1"><span class="co"># Recreamos los datos de los 5738 soldados escoceses tomados por Quetelet. </span></a>
+<a class="sourceLine" id="cb89-2" data-line-number="2"><span class="co"># Medida de pecho: 101.1 cm de media y 5.2 cm de desviacion tipica. Usamos</span></a>
+<a class="sourceLine" id="cb89-3" data-line-number="3"><span class="co"># set.seed para poder reproducir valores aleatorios</span></a>
+<a class="sourceLine" id="cb89-4" data-line-number="4"><span class="kw">set.seed</span>(<span class="dv">2101</span>)</a>
+<a class="sourceLine" id="cb89-5" data-line-number="5">chest =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">5738</span>,<span class="fl">101.1</span>,<span class="fl">5.2</span>)</a>
+<a class="sourceLine" id="cb89-6" data-line-number="6">mu =<span class="st"> </span><span class="kw">mean</span>(chest)</a></code></pre></div>
+<p>La media de toda la población la representamos con una letra<br />
+griega, <span class="math inline">\(\mu\)</span>. En este caso, es <span class="math inline">\(\mu =\)</span> 101.07, ligeramente diferente del 101.1 introducido en <code>rnorm()</code>. Vamos a coger ahora 1000
+muestras diferentes, cada una de 15 individuos. Lo vamos a organizar
+en una matriz donde cada columna es una muestra. No es necesario
+coger las 1000 muestras una por una: basta coger los 15 000 valores de
+golpe y organizarlos adecuadamente.</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1"><span class="co"># Creamos 1000 muestras de 15 elementos</span></a>
+<a class="sourceLine" id="cb90-2" data-line-number="2">dt =<span class="st"> </span><span class="kw">sample</span>(chest, <span class="dv">15000</span>, <span class="dt">replace =</span> T)</a>
+<a class="sourceLine" id="cb90-3" data-line-number="3">muestras =<span class="st"> </span><span class="kw">matrix</span>(dt, <span class="dt">nrow =</span> <span class="dv">15</span>, <span class="dt">ncol =</span> <span class="dv">1000</span>)</a></code></pre></div>
+<p>Calculamos las medias de cada muestra. Como cada columna es una
+muestra, hemos de calcular las medias de las columnas. R tiene una
+función para esto:</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1"><span class="co">#Calculamos las medias</span></a>
+<a class="sourceLine" id="cb91-2" data-line-number="2">mu_techo =<span class="st"> </span><span class="kw">colMeans</span>(muestras)</a>
+<a class="sourceLine" id="cb91-3" data-line-number="3">mu_techo[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
+<pre><code>## [1]  98.62854 102.12771 102.01141 102.89417 101.27689</code></pre>
+<p>Vemos que los 5 primeros valores son 98.63, 102.13, 102.01, 102.89, 101.28.</p>
+<p>Llamamos a cada una de las medias de las muestras “mu-techo” o
+“mu-gorro” y lo vamos a representar por <span class="math inline">\(\hat{\mu}\)</span>. A menudo se
+le representa con <span class="math inline">\(\bar{x}\)</span>, con la barra sobre la variable indicando
+que es una media. Esto es confuso, pues la variable poblacional es
+<span class="math inline">\(\mu\)</span> y las de la muestra <span class="math inline">\(x\)</span>, y prefiero mantener la notación que las
+variables poblacionales sean letras griegas y los circunflejos indican
+que son valores de muestras.</p>
+<p>El histograma de los <span class="math inline">\(\hat{\mu}\)</span> de la simulación es</p>
+<p><img src="imagenes/x_barra.jpg" /><!-- --></p>
+<p>Camo en el caso de las proporciones, estamos interesados en el rango
+del 90% central de los datos. Hacemos lo mismo que entoneces:
+eliminamos el 5% más bajo y el 5% más alto y miramos el rango de lo
+que nos queda. Para ello ordenamos los <span class="math inline">\(\hat{\mu}\)</span> y miramos el que
+está en la posición 50 y 950. Es prácticamente el mismo código que
+el usado en la sección anterior:</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1"><span class="co"># Las ordenamos</span></a>
+<a class="sourceLine" id="cb93-2" data-line-number="2">mu_techo =<span class="st"> </span><span class="kw">sort</span>(mu_techo)</a>
+<a class="sourceLine" id="cb93-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb93-4" data-line-number="4"><span class="co"># El 90% central</span></a>
+<a class="sourceLine" id="cb93-5" data-line-number="5">prob1 =<span class="st"> </span><span class="fl">0.90</span></a>
+<a class="sourceLine" id="cb93-6" data-line-number="6">mu_techo[((<span class="dv">1</span><span class="op">-</span>prob1)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
+<pre><code>## [1] 98.85767</code></pre>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1">mu_techo[((<span class="dv">1</span><span class="op">+</span>prob1)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
+<pre><code>## [1] 103.322</code></pre>
+<p>En esta simulación en concreto obtenemos que el rango está entre 98.9 y 103.3. Es decir que si escogemos una muestra de las 1000 al azar, tenemos una probabilidad del 90% de que <span class="math inline">\(\hat{\mu}\)</span> de esta
+muestra esté entre estos dos valores. Podemos escribirlo como
+<span class="math display">\[P[98,9 \leq \hat{\mu} \leq 103,3] = 0.9\]</span></p>
+<p>Como hemos creado este mundo, conocemos la media. Esto nos permite
+reescribir la expresión como
+<span class="math display">\[P[101,07 - 98,95 = 2,11 \leq \hat{\mu} - \mu \leq 103,3 - 101,07 = 
+2,24] = 0.9\]</span>
+Y esto nos permite escribir
+<span class="math display">\[P[ \hat{\mu} - 2,11 \leq \mu \leq \hat{\mu} +  2,24] = 0.9\]</span></p>
+<p>Es decir, que si cogemos una muestra al azar y medimos la proporción
+de esta muestra, <span class="math inline">\(\hat{\mu}\)</span>, tenemos una probabilidad de <span class="math inline">\(0.9\)</span> de que
+<span class="math inline">\(\mu\)</span>, la media de la población total, esté <span class="math inline">\(2,11\)</span> por debajo o <span class="math inline">\(2,24\)</span>
+por encima de este valor.</p>
+<p>Podemos repetir esto con cualquier probabilidad que queramos. Por
+ejemplo 0.8 o 0.95:</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1"><span class="co"># El 80% central</span></a>
+<a class="sourceLine" id="cb97-2" data-line-number="2">prob2 =<span class="st"> </span><span class="fl">0.80</span></a>
+<a class="sourceLine" id="cb97-3" data-line-number="3">mu_techo[((<span class="dv">1</span><span class="op">-</span>prob2)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
+<pre><code>## [1] 99.35537</code></pre>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1">mu_techo[((<span class="dv">1</span><span class="op">+</span>prob2)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
+<pre><code>## [1] 102.7825</code></pre>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1"><span class="co"># El 95% central</span></a>
+<a class="sourceLine" id="cb101-2" data-line-number="2">prob3 =<span class="st"> </span><span class="fl">0.95</span></a>
+<a class="sourceLine" id="cb101-3" data-line-number="3">mu_techo[((<span class="dv">1</span><span class="op">-</span>prob3)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
+<pre><code>## [1] 98.51402</code></pre>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" data-line-number="1">mu_techo[((<span class="dv">1</span><span class="op">+</span>prob3)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
+<pre><code>## [1] 103.7399</code></pre>
+<p>En estos casos obtenemos que hay una probabilidad de 0.8 de que la
+media de la población total <span class="math inline">\(\mu\)</span> esté en <span class="math inline">\([99.35,\, 102.79]\)</span> o, lo
+que es lo mismo, en <span class="math inline">\(\hat{\mu}\pm 0,045\)</span>. Y una probabilidad de <span class="math inline">\(0.95\)</span>
+de que esté en <span class="math inline">\([98.51,\, 103.74]\)</span> o, lo que es lo mismo, en <span class="math inline">\(\hat{\mu}\pm 2,61\)</span>.</p>
+<p>Es importantísimo no olvidar que esto son probabilidades. Hay un buen
+número de muestras, perfectamente hechas y perfectamente válidas, que
+están fuera de nuestra horquilla. Además, en nuevas simulaciones
+obtendríamos valores diferentes. Estamos cuantificando la
+incertidumbre. Esa es la palabra clave: incertidumbre. Y la
+cuantificamos, no la eliminamos.</p>
+</div>
+<div id="intervalos-de-confianza-1" class="section level2">
+<h2><span class="header-section-number">11.2</span> Intervalos de confianza</h2>
+<p>En nuestra simulación, nuestra creación, conocíamos <span class="math inline">\(\mu\)</span> y esto nos
+permitía calcular la horquilla. Pero el caso real es que no conocemos
+<span class="math inline">\(\mu\)</span>. Precisamente tomamos la muestra para saber algo de <span class="math inline">\(\mu\)</span>. Para
+poder rigurosamente saber algo de <span class="math inline">\(\mu\)</span> a partir de <span class="math inline">\(\hat{\mu}\)</span>
+necesitamos el razonamiento matemático —casi análogo al hecho en el
+caso de las proporciones— que vamos a detallar.</p>
+<p><br></p>
+<p>Sea <span class="math inline">\(X\)</span> una variable aleatoria que es el resultado de una medida
+numérica. De <span class="math inline">\(X\)</span> no sabemos nada: no sabemos su distribución, no
+sabemos ni tan siquiera si es continua o discreta. Llamaremos <span class="math inline">\(\mu\)</span> al
+valor esperado de <span class="math inline">\(X\)</span>, <span class="math inline">\(E[X] = \mu\)</span>, y <span class="math inline">\(\sigma\)</span> a la desviación
+típica de <span class="math inline">\(X\)</span>, <span class="math inline">\(\sigma = \mbox{sd}[X]\)</span>.</p>
+<p>Tomamos una muestra de <span class="math inline">\(n\)</span> elementos. La muestra la tomamos de manera que
+las medidas sean independientes. Obtenemos así <span class="math inline">\(n\)</span> valores de <span class="math inline">\(X\)</span>,
+todas independientes e idénticamente distribuidas, lo que llamábamos
+<em>iid</em>. La media de la muestra es <span class="math inline">\(\hat{\mu}\)</span> y la desviación típica de la muestras es <span class="math inline">\(\hat{\sigma}\)</span> (aquí si usamos el circunflejo). La media de la muestra, es otra variable aleatoria:
+<span class="math display">\[\hat{\mu} = \frac{X + X + \cdots + X}{n}.\]</span></p>
+<p>El valor esperado de <span class="math inline">\(\hat{\mu}\)</span> es:
+<span class="math display">\[E[\hat{\mu}] = E\left[\frac{X + X + \cdots + X}{n}\right] = \frac{E[X 
++ X + 
+\cdots + X]}{n} = \frac{n \, E[X]}{n} = \mu\]</span></p>
+<p>Esto quiere decir que el valor medido, y conocido, <span class="math inline">\(\hat{\mu}\)</span> va a estar alrededor de donde está nuestro desconocido <span class="math inline">\(\mu\)</span>. Es una buena noticia.</p>
+<p>Calculemos ahora la desviación típica de <span class="math inline">\(\bar{X}\)</span>, la media de las
+variables aleatorias: <span class="math inline">\(\mbox{sd}[\bar{X}]\)</span>. Es la desviación típica de una suma de variables aleatorias, dividida por una constante:
+<span class="math display">\[\begin{eqnarray*}
+ \mbox{sd}[\bar{X}] &amp; = &amp; \mbox{sd}\left[\frac{X + X + \cdots + 
+ X}{n}\right]\\
+  &amp; = &amp; \frac{\mbox{sd}[X + X + \cdots + X]}{n}\\
+  &amp; = &amp; \frac{\sqrt{\sigma^2 + \sigma^2 + \cdots + \sigma^2}}{n}\\
+  &amp; = &amp; \frac{\sqrt{n \cdot \sigma^2}}{n} = \frac{\sigma}{\sqrt{n}}
+\end{eqnarray*}\]</span></p>
+<p>Desgraciadamente esto no nos ayuda mucho. Hemos obtenido la
+desviación típica de <span class="math inline">\(\hat{\mu}\)</span> en función de la desconocida <span class="math inline">\(\sigma\)</span>.</p>
+<p>Para resolver este problema hacemos algo muy parecido a lo que
+hacíamos en el caso de las proporciones: calculamos la desviación
+típica de la muestra y definimos el error estándar de <span class="math inline">\(\hat{\mu}\)</span>,
+<span class="math inline">\(\mathrm{se}(\hat{\mu})\)</span>, como
+<span class="math display">\[\mathrm{se}(\hat{\mu}) = \frac{\hat{\sigma}}{\sqrt{n}}\]</span></p>
+<p>Es decir, el error estándar tiene la misma expresión que la
+desviación típica, pero sustituyendo la desconocida <span class="math inline">\(\sigma\)</span> por la
+conocida <span class="math inline">\(\hat{\sigma}\)</span>.</p>
+<p>Estamos en condiciones de volver a aplicar el teorema central del
+límite. Podemos establecer que
+<span class="math display">\[\frac{\hat{\mu} - \mu}{\mathrm{se(}\hat{\mu})} \leadsto \mathrm{N}(0, 1)\]</span>
+%
+Otra vez, cuanto mayor es <span class="math inline">\(n\)</span> más cerca está la distribución de
+<span class="math inline">\((\hat{\mu} - \mu)/\mathrm{se}(\hat{\mu})\)</span> de la normal de media 0 y
+desviación típica 1.</p>
+<p>Sabiendo esto podemos recuperar la estrategia que usamos en la
+simulación. Suponemos que <span class="math inline">\(n\)</span> es lo suficientemente grande para que
+podamos usar la normal N(0, 1) sin demasiado error. Como en la
+simulación, nos interesa el rango del, digamos, 90% central de los
+datos, “quitamos” de N(0, 1) el 5% del extremo inferior y el 5%
+del extremo superior. Esto lo podemos hacer con R con la función
+<code>qnorm()</code>. La instrucción sería <code>qnorm(0.05, 0, 1)</code>
+para el inferior y <code>qnorm(0.95, 0, 1)</code> para el superior. Los
+valores que obtenemos son <span class="math inline">\(-1,645\)</span> y <span class="math inline">\(1,645\)</span>. Ahora podemos escribir:
+<span class="math display">\[P[-1,645 \leq \frac{\hat{\mu} - \mu}{\mathrm{se(}\hat{\mu})} \leq 1,645] = 
+0.9\]</span></p>
+<p>lo que con un poco de álgebra se convierte en:
+<span class="math display">\[P[\hat{\mu}-1,645\,\mathrm{se(}\hat{\mu}) \leq  \mu \leq \hat{\mu} + 1,645\,\mathrm{se(}\hat{\mu})] = 
+0.9.\]</span></p>
+<p>Es decir que hay una probabilidad de 0,9 de que el valor de toda la
+población, esa desconocida <span class="math inline">\(\mu\)</span>, esté a 1,645 veces el error estandar
+por encima o por debajo del <span class="math inline">\(\hat{\mu}\)</span>, el valor medido en nuestra
+muestra. Este es el Intervalo de Confianza de la media.</p>
+<p>Naturalmente, podemos repetir esto para cualquier valor de
+probabilidad que nos interese. Lo hemos hecho con 0,9, pero lo
+podemos hacer con 0,8, 0,95, 0,7732… A esta probabilidad se le
+llama el nivel de confianza.</p>
+<p>Un <em>intervalo de confianza de medias</em> a un nivel de
+confianza NC es el intervalo centrado en <span class="math inline">\(\hat{\mu}\)</span> en el que se estima
+que estará la media de la población <span class="math inline">\(\mu\)</span> con una probabilidad NC.</p>
+<p>Algunas cuestiones a tener en cuenta. Estas son similares a las que
+teníamos en el caso de las proporciones:</p>
+<ul>
+<li><p>Nadie asegura que <span class="math inline">\(\mu\)</span> esté en el intervalo de confianza.
+Siempre hay una probabilidad de que esté fuera.</p></li>
+<li><p>A la hora de calcular el intervalo estamos suponiendo que
+hemos tomado la muestra con todo rigor: de forma aleatoria, sin
+sesgos, etc. Si no es así, si la muestra está mal tomada, no
+significa que el intervalo es mayor, significa que no sabemos
+nada: puede ser mayor, puede ser menor, puede estar en otro lado.</p></li>
+<li><p>Estamos suponiendo <em>independencia.</em></p></li>
+<li><p>Cuánto mayor es el nivel de confianza, mayor será el
+intervalo: si queremos estar más seguros que el valor de la
+población está en el intervalo, debemos hacerlo mayor.</p></li>
+</ul>
+<p>Hay una cuestión específica al caso de intervalos de confianza de
+medias: ¿cómo de rápido se acerca <span class="math inline">\((\hat{\mu} - \mu)/\mathrm{se}(\hat{\mu})\)</span> a la distribución normal? Esto depende mucho de la problematicidad de la población. Y requiere un apartado propio.</p>
+</div>
+<div id="la-distribución-t-de-student" class="section level2">
+<h2><span class="header-section-number">11.3</span> La distribución t de Student</h2>
+<p>No hemos puesto ninguna condición sobre la distribución de <span class="math inline">\(X\)</span>.
+Mientras nos aseguremos que los elementos de la muestra son
+independientes, puede ser cualquier cosa. Pero ya nos podemos
+imaginar que no va a dar lo mismo una distribución que otra. Aquí es
+donde entra en juego la problematicidad de la población. Distingamos
+varios casos, de menos problemáticos a más.</p>
+<p><strong>Caso 1: distribución normal.</strong> El primer caso es que <span class="math inline">\(X\)</span>
+sigue una distribución normal. En este caso se sabe exactamente cómo
+se acerca <span class="math inline">\((\hat{\mu} - \mu)/\mathrm{se}(\hat{\mu})\)</span> a la distribución
+normal al aumentar <span class="math inline">\(n\)</span>. Esto lo recoge la distribución t de
+Student. Esta distribución la desarrolló William S. Gosset mientras
+trabajaba para la Guiness en el control de calidad de las cervezas.
+Tenía prohibido por la empresa publicar nada (para guardar el secreto
+industrial) y por eso usó un seudónimo: Student. La distribución t tiene un
+único parámetro: los grados de libertad. Es un número mayor que 0 y
+para el cálculo de los intervalos de confianza equivale a <span class="math inline">\(n-1\)</span>. A
+medida que <span class="math inline">\(n\)</span> aumenta, la distribución t se acerca a la normal N(0,
+1) exactamente de la forma que queremos. Por lo tanto si <span class="math inline">\(X\)</span> sigue
+una distribución normal, usando la distribución t en vez de N(0, 1)
+tenemos el intervalo de confianza de forma exacta y no aproximada
+incluso para valores tan pequeños como <span class="math inline">\(n = 3\)</span>. Lo único que cambia en el
+método de trabajo es que hemos de usar la función <code>qt()</code> en
+vez de <code>qnorm()</code>.</p>
+<p><strong>Caso 2: distribuciones de problematicidad baja.</strong> En caso
+de problematicidad baja, la distribución de <span class="math inline">\(\hat{\mu}\)</span> se acerca a
+N(0, 1) bastante rápidamente. Seguimos usando la distribución t para
+mayor seguridad y se considera que con valores tan pequeños como <span class="math inline">\(n = 6\)</span> la aproximación es buena.</p>
+<p><strong>Caso 3: distribuciones de problematicidad media.</strong> Si la
+problematicidad es media, porque es claramente asimétrica o tenemos
+algunos valores atípicos no muy extremos, podemos seguir usando el
+método descrito con la distribución t si cogemos <span class="math inline">\(n = 15\)</span> o mayor.
+Pero la incertidumbre es mayor y no nos podemos fiar mucho de los
+resultados.</p>
+<p><strong>Caso 4: distribuciones de problematicidad alta.</strong> Si
+la problematicidad es alta, con distribuciones fuertemente asimetricas
+y valores atípicos extremos, <em>nunca</em> podemos sentirnos seguros.
+Podemos calcular el intervalo de confianza si las <span class="math inline">\(n\)</span> son grandes
+(30, 50 o más) pero es por poder decir algo. La incertidumbre es
+demasiado alta para poder usar los resultados.</p>
+</div>
+<div id="fuga-de-probabilidades" class="section level2">
+<h2><span class="header-section-number">11.4</span> Fuga de probabilidades</h2>
+<p>Al igual que en el caso de las proporciones, puede darse el caso de
+tener un intervalo de confianza que incluya valores imposibles, por
+ejemplo pesos negativos. Es menos habitual que en el caso de las
+proporciones. Cuando se da, normalmente se trata el caso como si
+fuera de problemáticidad alta.</p>
+</div>
+<div id="un-ejemplo-2" class="section level2">
+<h2><span class="header-section-number">11.5</span> Un ejemplo</h2>
+<p>Queremos medir el peso de las galletas que entran en una bolsa en
+una fábrica artesanal. No tenemos aparatos de medida, sino que se meten
+galletas hasta que “esté llena”. Los datos parecen no ser problemáticos y por lo tanto cogemos el peso de 8 bolsas para hacer nuestra media. Los valores que obtenemos son:</p>
+<pre><code> 443, 439, 466, 486, 462, 443, 494 y 476</code></pre>
+<p>Calculamos la media y la distribución estándar de la muestra y
+obtenemos
+<span class="math display">\[\hat{\mu} = 463.62; \qquad \hat{\sigma} = 20.85\]</span></p>
+<p>El error estándar es
+<span class="math display">\[\mathrm{se}(\hat{\mu}) = \frac{\hat{\sigma}}{\sqrt{n}} = 
+\frac{20.85}{\sqrt{8}} = 7.37.\]</span></p>
+<p>Queremos calcular el intervalo de confianza con niveles de confianza
+del 85% y 95%. Usamos la distribución t de Student con 7 grados de
+libertad para determinar los factores por los que hemos de multiplicar
+el error estándar. En R</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" data-line-number="1"><span class="kw">qt</span>(<span class="fl">0.925</span>,<span class="dv">7</span>)</a></code></pre></div>
+<pre><code>## [1] 1.616592</code></pre>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1"><span class="kw">qt</span>(<span class="fl">0.975</span>,<span class="dv">7</span>)</a></code></pre></div>
+<pre><code>## [1] 2.364624</code></pre>
+<p>Entonces el intervalo de confianza con un nivel de confianza del 85%
+es
+<span class="math display">\[[463.62 - 7.37\cdot 1.617,\; 463.62 + 7.37\cdot 1.617] = [451.7,\; 475.5]\]</span></p>
+<p>y con un nivel de confianza del 95% es
+<span class="math display">\[[463.62 - 7.37\cdot 2.365,\; 463.62 + 7.37\cdot 2.365] = [446.2,\; 481.1]\]</span></p>
+</div>
+<div id="resumen-5" class="section level2">
+<h2><span class="header-section-number">11.6</span> Resumen</h2>
+<p>Sea <span class="math inline">\(\mu\)</span> la media de toda una población de una variable de interés.
+Tomamos una muestra de tamaño <span class="math inline">\(n\)</span>, suficientemente grande. La muestra
+ha sido tomada con todo rigor. Llamamos <span class="math inline">\(\hat{\mu}\)</span> a la media de la
+muestra de la variable de interés.</p>
+<p>Un <em>intervalo de confianza de medias</em> a un nivel de
+confianza NC es el intervalo centrado en <span class="math inline">\(\hat{\mu}\)</span> en el que se estima
+que estará la madia de la población <span class="math inline">\(\mu\)</span> con una probabilidad NC.</p>
+<p>Para calcular el intervalo de confianza debemos:</p>
+<ul>
+<li><p>Estudiar la problematicidad de la distribución y escoger un
+tamaño de muestra adecuado si no es muy problemática. Si es muy
+problemática los resultados jamás serán suficientemente fiables.</p></li>
+<li><p>Calcular <span class="math inline">\(\hat{\mu}\)</span>;</p></li>
+<li><p>Calcular el error estándar
+<span class="math display">\[\mathrm{se}(\hat{\mu}) = \frac{\hat{\sigma}}{\sqrt{n}}\]</span></p></li>
+<li><p>Determinar el nivel de confianza NC que queremos para
+nuestro intervalo;</p></li>
+<li><p>Calcular el factor <span class="math inline">\(\mathit{fc}\)</span> para este nivel de confianza
+usando la distribución t. En R podemos usar la función
+<code>qt()}:</code>fc = qt((1+nc)/2, n-1)};</p></li>
+<li><p>El intervalo de confianza para este nivel de confianza es
+<span class="math display">\[ [\hat{\mu} - \mathit{fc}\cdot \mathrm{se}(\hat{\mu}), \; \hat{\mu} +
+  \mathit{fc}\cdot \mathrm{se}(\hat{\mu})].\]</span></p></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="incertidumbre-en-muestras-de-proporciones.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="comparación-de-intervalos-de-confianza.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/11_ICMedias.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Estadística.pdf", "Estadística.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 3 Estadística descriptiva de datos numéricos univariantes | Mera estadística</title>
+  <meta name="description" content="Capítulo 3 Estadística descriptiva de datos numéricos univariantes | Mera estadística" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 3 Estadística descriptiva de datos numéricos univariantes | Mera estadística" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 3 Estadística descriptiva de datos numéricos univariantes | Mera estadística" />
+  
+  
+  
+
+<meta name="author" content="Jose Miró Julià" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="qué-es-y-no-es-la-estadística.html"/>
+<link rel="next" href="estadística-descriptiva-de-datos-cualitativos-univariantes.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Estadística</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a></li>
+<li class="chapter" data-level="2" data-path="qué-es-y-no-es-la-estadística.html"><a href="qué-es-y-no-es-la-estadística.html"><i class="fa fa-check"></i><b>2</b> ¿Qué es (y no es) la estadística?</a><ul>
+<li class="chapter" data-level="2.1" data-path="qué-es-y-no-es-la-estadística.html"><a href="qué-es-y-no-es-la-estadística.html#el-proceso-estadístico"><i class="fa fa-check"></i><b>2.1</b> El proceso estadístico</a></li>
+<li class="chapter" data-level="2.2" data-path="qué-es-y-no-es-la-estadística.html"><a href="qué-es-y-no-es-la-estadística.html#es-la-estadística-parte-de-las-matemáticas"><i class="fa fa-check"></i><b>2.2</b> ¿Es la estadística parte de las matemáticas?</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html"><i class="fa fa-check"></i><b>3</b> Estadística descriptiva de datos numéricos univariantes</a><ul>
+<li class="chapter" data-level="3.1" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#tipos-de-datos"><i class="fa fa-check"></i><b>3.1</b> Tipos de datos</a></li>
+<li class="chapter" data-level="3.2" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#medidas-de-centralidad-y-dispersión"><i class="fa fa-check"></i><b>3.2</b> Medidas de centralidad y dispersión</a></li>
+<li class="chapter" data-level="3.3" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#gráficas-para-datos-cuantitativos"><i class="fa fa-check"></i><b>3.3</b> Gráficas para datos cuantitativos</a></li>
+<li class="chapter" data-level="3.4" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#análisis-de-los-datos"><i class="fa fa-check"></i><b>3.4</b> Análisis de los datos</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#modalidad"><i class="fa fa-check"></i><b>3.4.1</b> Modalidad</a></li>
+<li class="chapter" data-level="3.4.2" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#simetría"><i class="fa fa-check"></i><b>3.4.2</b> Simetría</a></li>
+<li class="chapter" data-level="3.4.3" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#valores-atípicos"><i class="fa fa-check"></i><b>3.4.3</b> Valores atípicos</a></li>
+<li class="chapter" data-level="3.4.4" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#problematicidad"><i class="fa fa-check"></i><b>3.4.4</b> Problematicidad</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><i class="fa fa-check"></i><b>4</b> Estadística descriptiva de datos cualitativos univariantes</a><ul>
+<li class="chapter" data-level="4.1" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#tablas-de-contingencia"><i class="fa fa-check"></i><b>4.1</b> Tablas de contingencia</a></li>
+<li class="chapter" data-level="4.2" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#gráficas-para-datos-cualitativos"><i class="fa fa-check"></i><b>4.2</b> Gráficas para datos cualitativos</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#gráficos-3d"><i class="fa fa-check"></i><b>4.2.1</b> Gráficos 3D</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#conclusión"><i class="fa fa-check"></i><b>4.3</b> Conclusión</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html"><i class="fa fa-check"></i><b>5</b> Estadística descriptiva de datos bivariantes</a><ul>
+<li class="chapter" data-level="5.1" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#dos-variables-numéricas"><i class="fa fa-check"></i><b>5.1</b> Dos variables numéricas</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#gráfica-de-nube-de-puntos"><i class="fa fa-check"></i><b>5.1.1</b> Gráfica de nube de puntos</a></li>
+<li class="chapter" data-level="5.1.2" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#rectas-de-regresión"><i class="fa fa-check"></i><b>5.1.2</b> Rectas de regresión</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#una-variable-numérica-y-una-cualitativa"><i class="fa fa-check"></i><b>5.2</b> Una variable numérica y una cualitativa</a></li>
+<li class="chapter" data-level="5.3" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#dos-variables-cualitativas"><i class="fa fa-check"></i><b>5.3</b> Dos variables cualitativas</a></li>
+<li class="chapter" data-level="5.4" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#resumen"><i class="fa fa-check"></i><b>5.4</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html"><i class="fa fa-check"></i><b>6</b> Uso de R para estadística descriptiva. Tutorial</a><ul>
+<li class="chapter" data-level="6.1" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#data-frames"><i class="fa fa-check"></i><b>6.1</b> Data frames</a></li>
+<li class="chapter" data-level="6.2" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-una-variable-cuantitativa"><i class="fa fa-check"></i><b>6.2</b> El caso de una variable cuantitativa</a></li>
+<li class="chapter" data-level="6.3" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-una-variable-cualitativa"><i class="fa fa-check"></i><b>6.3</b> El caso de una variable cualitativa</a></li>
+<li class="chapter" data-level="6.4" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-dos-variables-cuantitativas"><i class="fa fa-check"></i><b>6.4</b> El caso de dos variables cuantitativas</a></li>
+<li class="chapter" data-level="6.5" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-dos-variables-una-cuantitativa-y-una-cualitativa"><i class="fa fa-check"></i><b>6.5</b> El caso de dos variables, una cuantitativa y una cualitativa</a></li>
+<li class="chapter" data-level="6.6" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-dos-variables-cualitativas"><i class="fa fa-check"></i><b>6.6</b> El caso de dos variables cualitativas</a></li>
+<li class="chapter" data-level="6.7" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#resumen-final"><i class="fa fa-check"></i><b>6.7</b> Resumen final</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="probabilidad.html"><a href="probabilidad.html"><i class="fa fa-check"></i><b>7</b> Probabilidad</a><ul>
+<li class="chapter" data-level="7.1" data-path="probabilidad.html"><a href="probabilidad.html#ideas-básicas"><i class="fa fa-check"></i><b>7.1</b> Ideas básicas</a></li>
+<li class="chapter" data-level="7.2" data-path="probabilidad.html"><a href="probabilidad.html#operaciones-con-probabilidades"><i class="fa fa-check"></i><b>7.2</b> Operaciones con probabilidades</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-de-una-cosa-u-otra"><i class="fa fa-check"></i><b>7.2.1</b> Probabilidad de una cosa u otra</a></li>
+<li class="chapter" data-level="7.2.2" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-de-una-cosa-y-otra"><i class="fa fa-check"></i><b>7.2.2</b> Probabilidad de una cosa y otra</a></li>
+<li class="chapter" data-level="7.2.3" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-del-suceso-contrario"><i class="fa fa-check"></i><b>7.2.3</b> Probabilidad del suceso contrario</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-condicionada"><i class="fa fa-check"></i><b>7.3</b> Probabilidad condicionada</a></li>
+<li class="chapter" data-level="7.4" data-path="probabilidad.html"><a href="probabilidad.html#regla-de-bayes"><i class="fa fa-check"></i><b>7.4</b> Regla de Bayes</a></li>
+<li class="chapter" data-level="7.5" data-path="probabilidad.html"><a href="probabilidad.html#resumen-1"><i class="fa fa-check"></i><b>7.5</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html"><i class="fa fa-check"></i><b>8</b> Variables aleatorias</a><ul>
+<li class="chapter" data-level="8.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#qué-es-una-variable-aleatoria"><i class="fa fa-check"></i><b>8.1</b> ¿Qué es una variable aleatoria?</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#variables-discretas"><i class="fa fa-check"></i><b>8.1.1</b> Variables discretas</a></li>
+<li class="chapter" data-level="8.1.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#variables-continuas"><i class="fa fa-check"></i><b>8.1.2</b> Variables continuas</a></li>
+<li class="chapter" data-level="8.1.3" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#propiedades-de-estas-funciones"><i class="fa fa-check"></i><b>8.1.3</b> Propiedades de estas funciones</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#cálculo-de-probabilidades"><i class="fa fa-check"></i><b>8.2</b> Cálculo de probabilidades</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#calculando-a-mano"><i class="fa fa-check"></i><b>8.2.1</b> Calculando a mano</a></li>
+<li class="chapter" data-level="8.2.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#calculando-con-r"><i class="fa fa-check"></i><b>8.2.2</b> Calculando con R</a></li>
+<li class="chapter" data-level="8.2.3" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#resumen-2"><i class="fa fa-check"></i><b>8.2.3</b> Resumen</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><i class="fa fa-check"></i><b>9</b> Esperanzas y desviaciones típicas de variables aleatorias</a><ul>
+<li class="chapter" data-level="9.1" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#desviaciones-típicas"><i class="fa fa-check"></i><b>9.1</b> Desviaciones típicas</a></li>
+<li class="chapter" data-level="9.2" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#operaciones-con-variables-aleatorias"><i class="fa fa-check"></i><b>9.2</b> Operaciones con variables aleatorias</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#un-ejemplo"><i class="fa fa-check"></i><b>9.2.1</b> Un ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#resumen-3"><i class="fa fa-check"></i><b>9.3</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><i class="fa fa-check"></i><b>10</b> Intervalos de confianza: una medida de la incertidumbre</a><ul>
+<li class="chapter" data-level="10.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#incertidumbre-en-muestras-de-proporciones"><i class="fa fa-check"></i><b>10.1</b> Incertidumbre en muestras de proporciones</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#una-simulación"><i class="fa fa-check"></i><b>10.1.1</b> Una simulación</a></li>
+<li class="chapter" data-level="10.1.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>10.1.2</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="10.1.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#fuga-de-probabilidad"><i class="fa fa-check"></i><b>10.1.3</b> Fuga de probabilidad</a></li>
+<li class="chapter" data-level="10.1.4" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#un-ejemplo-1"><i class="fa fa-check"></i><b>10.1.4</b> Un ejemplo</a></li>
+<li class="chapter" data-level="10.1.5" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#resumen-de-intervalos-de-confianza-de-proporciones"><i class="fa fa-check"></i><b>10.1.5</b> Resumen de intervalos de confianza de proporciones</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#incertidumbre-en-muestras-de-medias"><i class="fa fa-check"></i><b>10.2</b> Incertidumbre en muestras de medias</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#una-simulación-1"><i class="fa fa-check"></i><b>10.2.1</b> Una simulación</a></li>
+<li class="chapter" data-level="10.2.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#intervalos-de-confianza-1"><i class="fa fa-check"></i><b>10.2.2</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="10.2.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#la-distribución-t-de-student"><i class="fa fa-check"></i><b>10.2.3</b> La distribución t de Student</a></li>
+<li class="chapter" data-level="10.2.4" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#fuga-de-probabilidades"><i class="fa fa-check"></i><b>10.2.4</b> Fuga de probabilidades</a></li>
+<li class="chapter" data-level="10.2.5" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#un-ejemplo-2"><i class="fa fa-check"></i><b>10.2.5</b> Un ejemplo</a></li>
+<li class="chapter" data-level="10.2.6" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#resumen-de-intervalos-de-confianza-de-medias"><i class="fa fa-check"></i><b>10.2.6</b> Resumen de intervalos de confianza de medias</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#comparación-de-intervalos-de-confianza"><i class="fa fa-check"></i><b>10.3</b> Comparación de intervalos de confianza</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#no-puedo-decir-que-sean-distintos"><i class="fa fa-check"></i><b>10.3.1</b> No puedo decir que sean distintos</a></li>
+<li class="chapter" data-level="10.3.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#cálculo-de-intervalos-de-confianza-de-diferencias"><i class="fa fa-check"></i><b>10.3.2</b> Cálculo de intervalos de confianza de diferencias</a></li>
+<li class="chapter" data-level="10.3.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#más-ejemplos"><i class="fa fa-check"></i><b>10.3.3</b> Más ejemplos</a></li>
+<li class="chapter" data-level="10.3.4" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#resumen-de-comparación-de-intervalos-de-confianza"><i class="fa fa-check"></i><b>10.3.4</b> Resumen de comparación de intervalos de confianza</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html"><i class="fa fa-check"></i><b>11</b> Contrastes de hipotesis</a><ul>
+<li class="chapter" data-level="11.1" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html#experimentos-estadísticos-para-un-contraste-de-hipótesis"><i class="fa fa-check"></i><b>11.1</b> Experimentos estadísticos para un contraste de hipótesis</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html#procedimiento-de-cálculo-del-p-valor."><i class="fa fa-check"></i><b>11.1.1</b> Procedimiento de cálculo del p-valor.</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html#interpretación-del-p-valor."><i class="fa fa-check"></i><b>11.2</b> Interpretación del p-valor.</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>12</b> ANOVA</a><ul>
+<li class="chapter" data-level="12.1" data-path="anova.html"><a href="anova.html#nada-es-gratis-y-los-errores-se-acumulan"><i class="fa fa-check"></i><b>12.1</b> Nada es gratis (y los errores se acumulan)</a></li>
+<li class="chapter" data-level="12.2" data-path="anova.html"><a href="anova.html#punto-de-partida"><i class="fa fa-check"></i><b>12.2</b> Punto de partida</a></li>
+<li class="chapter" data-level="12.3" data-path="anova.html"><a href="anova.html#tutorial-de-anova-en-r"><i class="fa fa-check"></i><b>12.3</b> Tutorial de ANOVA en R</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="anova.html"><a href="anova.html#el-problema"><i class="fa fa-check"></i><b>12.3.1</b> El problema</a></li>
+<li class="chapter" data-level="12.3.2" data-path="anova.html"><a href="anova.html#el-primer-método-oneway.test"><i class="fa fa-check"></i><b>12.3.2</b> El primer método: oneway.test()</a></li>
+<li class="chapter" data-level="12.3.3" data-path="anova.html"><a href="anova.html#el-segundo-método-aov"><i class="fa fa-check"></i><b>12.3.3</b> El segundo método: aov()</a></li>
+<li class="chapter" data-level="12.3.4" data-path="anova.html"><a href="anova.html#el-tercer-método"><i class="fa fa-check"></i><b>12.3.4</b> El tercer método</a></li>
+<li class="chapter" data-level="12.3.5" data-path="anova.html"><a href="anova.html#y-si-los-datos-no-están-como-los-quiere-r"><i class="fa fa-check"></i><b>12.3.5</b> ¿Y si los datos no están como los quiere R?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html"><i class="fa fa-check"></i><b>13</b> La prueba de Ji-Cuadrado</a><ul>
+<li class="chapter" data-level="13.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-de-ji-cuadrado-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>13.1</b> Prueba de ji-cuadrado de bondad de ajuste</a></li>
+<li class="chapter" data-level="13.2" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-de-bondad-de-ajuste-con-r"><i class="fa fa-check"></i><b>13.2</b> Prueba <span class="math inline">\(\chi^2\)</span> de bondad de ajuste con R</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#problematicidad-el-aviso-de-chisq.test"><i class="fa fa-check"></i><b>13.2.1</b> Problematicidad: el aviso de chisq.test()</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#la-prueba-chi2-de-homogeneidad"><i class="fa fa-check"></i><b>13.3</b> La prueba <span class="math inline">\(\chi^2\)</span> de homogeneidad</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#definición-formal"><i class="fa fa-check"></i><b>13.3.1</b> Definición formal</a></li>
+<li class="chapter" data-level="13.3.2" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-como-contraste-de-hipótesis"><i class="fa fa-check"></i><b>13.3.2</b> Prueba <span class="math inline">\(\chi^2\)</span> como contraste de hipótesis</a></li>
+<li class="chapter" data-level="13.3.3" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-de-homogeneidad-con-r"><i class="fa fa-check"></i><b>13.3.3</b> Prueba <span class="math inline">\(\chi^2\)</span> de homogeneidad con R</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#la-prueba-chi2-de-independencia"><i class="fa fa-check"></i><b>13.4</b> La prueba <span class="math inline">\(\chi^{2}\)</span> de independencia</a><ul>
+<li class="chapter" data-level="13.4.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-de-independencia-como-contraste-de-hipótesis"><i class="fa fa-check"></i><b>13.4.1</b> Prueba <span class="math inline">\(\chi^2\)</span> de independencia como contraste de hipótesis</a></li>
+<li class="chapter" data-level="13.4.2" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#un-ejemplo-3"><i class="fa fa-check"></i><b>13.4.2</b> Un ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#resumen-4"><i class="fa fa-check"></i><b>13.5</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="regresión-lineal.html"><a href="regresión-lineal.html"><i class="fa fa-check"></i><b>14</b> Regresión Lineal</a><ul>
+<li class="chapter" data-level="14.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#cálculo"><i class="fa fa-check"></i><b>14.1</b> Cálculo</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#fundamentos"><i class="fa fa-check"></i><b>14.1.1</b> Fundamentos</a></li>
+<li class="chapter" data-level="14.1.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#otro-ejemplo"><i class="fa fa-check"></i><b>14.1.2</b> Otro ejemplo</a></li>
+<li class="chapter" data-level="14.1.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#y-si-no-es-una-recta"><i class="fa fa-check"></i><b>14.1.3</b> ¿Y si no es una recta?</a></li>
+<li class="chapter" data-level="14.1.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-la-parte-de-cálculo"><i class="fa fa-check"></i><b>14.1.4</b> Resumen de la parte de cálculo</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#estadística"><i class="fa fa-check"></i><b>14.2</b> Estadística</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#incertidumbre-en-la-regresión-lineal"><i class="fa fa-check"></i><b>14.2.1</b> Incertidumbre en la regresión lineal</a></li>
+<li class="chapter" data-level="14.2.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#condiciones"><i class="fa fa-check"></i><b>14.2.2</b> Condiciones</a></li>
+<li class="chapter" data-level="14.2.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#salida-de-r"><i class="fa fa-check"></i><b>14.2.3</b> Salida de R</a></li>
+<li class="chapter" data-level="14.2.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#intervalos-de-confianza-2"><i class="fa fa-check"></i><b>14.2.4</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="14.2.5" data-path="regresión-lineal.html"><a href="regresión-lineal.html#otro-ejemplo-1"><i class="fa fa-check"></i><b>14.2.5</b> Otro ejemplo</a></li>
+<li class="chapter" data-level="14.2.6" data-path="regresión-lineal.html"><a href="regresión-lineal.html#la-regresión-no-muestra-qué-tipo-de-curva-es"><i class="fa fa-check"></i><b>14.2.6</b> La regresión no muestra qué tipo de curva es</a></li>
+<li class="chapter" data-level="14.2.7" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-la-parte-de-estadística"><i class="fa fa-check"></i><b>14.2.7</b> Resumen de la parte de estadística</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#diagnóstico"><i class="fa fa-check"></i><b>14.3</b> Diagnóstico</a><ul>
+<li class="chapter" data-level="14.3.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#seis-modelos"><i class="fa fa-check"></i><b>14.3.1</b> Seis modelos</a></li>
+<li class="chapter" data-level="14.3.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#cinco-diagnósticos"><i class="fa fa-check"></i><b>14.3.2</b> Cinco diagnósticos</a></li>
+<li class="chapter" data-level="14.3.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-diagnóstico"><i class="fa fa-check"></i><b>14.3.3</b> Resumen de diagnóstico</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#inferencias"><i class="fa fa-check"></i><b>14.4</b> Inferencias</a><ul>
+<li class="chapter" data-level="14.4.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#contrastes-de-hipótesis"><i class="fa fa-check"></i><b>14.4.1</b> Contrastes de hipótesis</a></li>
+<li class="chapter" data-level="14.4.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#intervalos-de-confianza-3"><i class="fa fa-check"></i><b>14.4.2</b> Intervalos de confianza</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicciones"><i class="fa fa-check"></i><b>14.5</b> Predicciones</a><ul>
+<li class="chapter" data-level="14.5.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-de-la-curva"><i class="fa fa-check"></i><b>14.5.1</b> Predicción de la curva</a></li>
+<li class="chapter" data-level="14.5.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-de-rango"><i class="fa fa-check"></i><b>14.5.2</b> Predicción de rango</a></li>
+<li class="chapter" data-level="14.5.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-de-medias"><i class="fa fa-check"></i><b>14.5.3</b> Predicción de medias</a></li>
+<li class="chapter" data-level="14.5.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-predicciones"><i class="fa fa-check"></i><b>14.5.4</b> Resumen de predicciones</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="problemas.html"><a href="problemas.html"><i class="fa fa-check"></i><b>15</b> Problemas</a><ul>
+<li class="chapter" data-level="15.1" data-path="problemas.html"><a href="problemas.html#qué-es-la-estadística"><i class="fa fa-check"></i><b>15.1</b> ¿Qué es la estadística?</a></li>
+<li class="chapter" data-level="15.2" data-path="problemas.html"><a href="problemas.html#manejo-de-r-y-simulaciones"><i class="fa fa-check"></i><b>15.2</b> Manejo de R y simulaciones</a></li>
+<li class="chapter" data-level="15.3" data-path="problemas.html"><a href="problemas.html#estadística-descriptiva"><i class="fa fa-check"></i><b>15.3</b> Estadística Descriptiva</a></li>
+<li class="chapter" data-level="15.4" data-path="problemas.html"><a href="problemas.html#probabilidad-y-variables-aleatórias"><i class="fa fa-check"></i><b>15.4</b> Probabilidad y variables aleatórias</a></li>
+<li class="chapter" data-level="15.5" data-path="problemas.html"><a href="problemas.html#razonamiento-estadístico."><i class="fa fa-check"></i><b>15.5</b> Razonamiento estadístico.</a><ul>
+<li class="chapter" data-level="15.5.1" data-path="problemas.html"><a href="problemas.html#intervalos-de-confianza-4"><i class="fa fa-check"></i><b>15.5.1</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="15.5.2" data-path="problemas.html"><a href="problemas.html#contrastes-de-hipótesis-1"><i class="fa fa-check"></i><b>15.5.2</b> Contrastes de hipótesis</a></li>
+<li class="chapter" data-level="15.5.3" data-path="problemas.html"><a href="problemas.html#razonamiento-estadístico-complejo"><i class="fa fa-check"></i><b>15.5.3</b> Razonamiento estadístico complejo</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="problemas.html"><a href="problemas.html#anova-1"><i class="fa fa-check"></i><b>15.6</b> Anova</a></li>
+<li class="chapter" data-level="15.7" data-path="problemas.html"><a href="problemas.html#ji-cuadrado"><i class="fa fa-check"></i><b>15.7</b> Ji-cuadrado</a></li>
+<li class="chapter" data-level="15.8" data-path="problemas.html"><a href="problemas.html#regresión-lineal-1"><i class="fa fa-check"></i><b>15.8</b> Regresión Lineal</a></li>
+<li class="chapter" data-level="15.9" data-path="problemas.html"><a href="problemas.html#problemas-con-todo"><i class="fa fa-check"></i><b>15.9</b> Problemas con todo</a></li>
+<li class="chapter" data-level="15.10" data-path="problemas.html"><a href="problemas.html#campos-elíseos"><i class="fa fa-check"></i><b>15.10</b> Campos Elíseos</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Mera estadística</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="estadística-descriptiva-de-datos-numéricos-univariantes" class="section level1">
+<h1><span class="header-section-number">Capítulo 3</span> Estadística descriptiva de datos numéricos univariantes</h1>
+<p>Lo primero que hay que hacer cuando se quiere hacer un análisis
+estadístico sobre un conjunto de datos es entenderlos. Para ello hay
+que hacer algunos cálculos básicos y mirar algunas gráficas. A esto
+se llama <em>estadística descriptiva</em>. Cuanto mejor se entiendan
+los datos, mejor se podrá decidir qué técnicas y pruebas estadísticas
+hay que usar y cuánto nos podemos fiar de los resultados. Veamos las
+bases de la estadística descriptiva de una variable numérica.</p>
+<div id="tipos-de-datos" class="section level2">
+<h2><span class="header-section-number">3.1</span> Tipos de datos</h2>
+<p>Una variable puede ser de dos tipos. Si la variable se tiene que representar mediante un número y puede operarse, tenemos una variable cuantitativa o numérica. Si en cambio se representa mediante un concepto o término y no puede operarse con ella, es de tipo cualitativo o factor. Ejemplos típicos de variables numéricas son el peso, la altura, la temperatura, la resistencia…
+Ejemplos típicos de los factores son el color de ojos o de pelo, el sexo o estados varios (casado, soltero, viudo, divorciado; funcionando, parado, estropeado).</p>
+<p>Las variables cuantitativas pueden ser continuas o discretas. En una variable discreta sól se pueden tomar ciertos valores y no los intermedios. Por
+ejemplo el número de hermanos es discreto, pues puede ser 0, 1, 2… pero no puede tomar ningñun valor entre 1 y 2: no puede ser 1,7.</p>
+<p>La temperatura o el peso son continuas, pues pueden tomar cualquier valor. Uno puede medir 173 cm o 174 cm o cualquier valor entre medias. Es cierto que normalmente no usamos estos valores intermedios, no decimos que una persona mide 173,2 cm, pero eso no es una característica de la variable, sino de la <em>precisión</em> que hemos elegido para nuestra variable. Es una decisión que podemos cambiar cuando queramos.</p>
+<p><br></p>
+<p>Como hemos dicho, una variable cualitativa o factor representa conceptos o términos. Los diferentes valores que puede tomar un factor se llaman los <em>niveles</em> del factor. Por ejemplo la variable color de ojos puede tomar los niveles “azul”, “verde”, “marrón” y “negro”. A veces es una decisión subjetiva cuáles son los niveles que puede tomar un factor: alguno puede opinar que existen los ojos grises, y otros pueden opinar que no.</p>
+<p>A veces una variable cualitativa puede representarse mediante un número, pero no <em>es</em> un número, pues no se puede operar con él. Por ejemplo tenemos los meses o años: 2 (febrero) + 3 (marzo) no es 5 (mayo). El año 1914 más el 1930 no es el año 3844. Por lo tnato el mes o el año, aunqeu lo representemos mediante nñumeros, no son variables cuantitativas, sino cualitativas.</p>
+<p>A veces nos conviene pasar una varaible cuantitativa a cualitativa. Esto lo hacemos agrupando los valores numéricos en intervalos. Por ejemplo si agrupamos los niveles de renta en “Menos de 15 000”, “Entre 15 000 y 30 000”,
+“Entre 30 000 y 60 000” y “Más de 60 000” hemos convertido de forma objetiva los números de la variable numérica, en términos que podríamos llamar “Muy bajo”, “Bajo”, “Medio” y “Alto”.</p>
+<p>En lo que resta de este capítulo vamos a trabajar con variables numéricas. En un capítulo posterior miraremos la estadística descriptiva de las
+variables cualitativas.</p>
+</div>
+<div id="medidas-de-centralidad-y-dispersión" class="section level2">
+<h2><span class="header-section-number">3.2</span> Medidas de centralidad y dispersión</h2>
+<p>La media es la medida más conocida que nos da una idea de valor “central”,
+valor que representa al “centro” de los datos. Todos
+sabemos que es la suma de todos los datos dividido por el número de
+datos. Si los datos son poco problemáticos (ya definiremos más
+adelante que significa esto), la media es una buena medida del centro
+de los datos.</p>
+<p>Otra medida, menos conocida, es la mediana. Es, de entre los valores
+de los datos, aquel que hace que la mitad sean menores que él y la
+mitad sean mayores. Lo podemos calcular ordenando los datos y
+cogiendo el del medio. Si tenemos 7 datos, 4, 7, 13, 8, 10, 13 y 3, los
+ordenamos y cogemos el cuarto. Así tenemos 3 por debajo y 3 por
+encima:</p>
+<p><br>
+3, 4, 7, <strong>8</strong>, 10, 13, 13.
+<br></p>
+<p>En este caso la mediana es 8. ¿pero qué pasa si tenemos 8 datos? Ningún
+dato deja tantos por encima
+como por debajo. En ese caso se define la mediana como la media
+aritmética de los dos del medio. Si a los datos anteriores añadimos
+un 16, tenemos:</p>
+<p><br>
+3, 4, 7, <strong>8</strong>, <strong>10</strong>, 13, 13, 16.
+<br></p>
+<p>La mediana sería en este caso 9, la media de 8 y 10.</p>
+<p>Una extensión de la mediana son los cuartiles. El primer quartil (o
+Q1) es un valor que es mayor que el 25% de los datos. El segundo
+quartil sería la mediana, y el tercer quartil (o Q3) es un valor que
+es mayor que el 75% de los datos. A diferencia de la mediana, no hay
+una definición clara de qué hacer si no coincide con un dato. No es
+tampoco demasiado importante. En nuestro ejemplo (con 8 datos)
+diremos que el Q1 es cualquier valor entre 4 y 7, y que el Q3 vale 13.</p>
+<p>La mediana es mucho más <em>robusta</em> que la media. Un solo valor
+muy gande o pequeño hace que la media cambie mucho. Esto no pasa con
+la mediana. Supongamos que partimos estamos mirando el número medio
+de seguidores de Twitter de la población. Cogemos una muestra de 9
+twiteros y supongamos que nos salen que tienen 28, 31, 75, 90, 105,
+201, 250, 400 y 586 seguidores. Esto nos da una media de 172,9
+seguidores y una mediana de 105 seguidores. Algo diferente pero
+podemos decir que ambos valores son representativos del conjunto.
+Pero cogemos al décimo seguidor al azar y sale que es Donald Trump
+(<span class="citation">@realDonaldTrump</span>) que tiene (en el momento de escribir este documento)
+más de 25 millones de seguidores. Pongamos que tiene 25 millones y medio. La
+mediana pasa a ser 153, que podemos seguir considerando
+representativa de la mayoría de la población. En cambio la media pasa
+a valer más de dos millones y medio y ya no representa a nadie.</p>
+<p>A este valor tan alejado de todos se le llama un <em>valor atípico</em>
+(<em>outlier</em> en inglés). Como ya vemos en este ejemplo influyen
+mucho en el estudio de los datos.</p>
+<p><br></p>
+<p>La media o la mediana no nos dice todo sobre los datos. Por ejemplo,
+las muestras (5, 7, 9) y (2, 7, 12) tienen la misma media, pero la
+segunda muestra está mucho más dispersa que la primera. Para medir
+esta dispersión usamos la <em>desviación típica</em>. No daremos aquí
+la definición (la podéis encontrar en Wikipedia, si queréis) pero sí
+la idea general. La desviación típica nos da una idea de cuánto
+están alejados los datos de la media de la muestra. Si es grande, es
+que están muy alejados; si es pequeña, es que están casi todos
+concentrados alrededor de la media.</p>
+<p>La desviación típica (generalmente representada por <span class="math inline">\(\sigma\)</span>) nos
+sirve de unidad. En muchas distribuciones más o menos dos tercios de
+los datos están a menos de una desviación típica (o <span class="math inline">\(\sigma\)</span>) por
+encima o por debajo de la media (los datos están dentro de [media <span class="math inline">\(- \sigma\)</span>, media <span class="math inline">\(+ \sigma\)</span>]; el 95% de los datos están a menos de dos
+desviaciones típicas (o <span class="math inline">\(2 \sigma\)</span>) por encima o por debajo de la
+media (dentro de [media <span class="math inline">\(- 2\sigma\)</span>, media <span class="math inline">\(+ 2\sigma\)</span>]); y el 99% de
+los datos está a menos de <span class="math inline">\(3 \sigma\)</span> por encima o por debajo de la
+media (dentro de [media <span class="math inline">\(- 3\sigma\)</span>, media <span class="math inline">\(+ 3\sigma\)</span>]). Si nos
+dicen que el peso de un ganso concreto es 300 g por encima de la media no
+sabemos si es mucho o poco. Pero si nos dicen que está a <span class="math inline">\(0.3\sigma\)</span>
+por encima sabemos que es prácticamente un ganso medio. En cambio, si
+nos dicen que está a <span class="math inline">\(1.8\sigma\)</span> de la media, sabemos que es un ganso
+muy grande.</p>
+<p><br></p>
+<p>Para calcular estas medidas en R tenemos varias funciones. Sea
+<code>datos</code> el vector con nuestros datos. La función
+<code>mean(datos)</code> nos calcula la media. La función
+<code>median(datos)</code> nos calcula la mediana. La función
+<code>summary(datos)</code> nos hace un resumen de los datos, dándonos la
+media, la mediana, los cuartiles y los valores máximos y mínimos. La
+función <code>sd(datos)</code> nos calcula la desviación típica. Veamos
+un ejemplo.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">datos =<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.0</span>, <span class="fl">3.1</span>, <span class="fl">2.3</span>, <span class="fl">4.2</span>, <span class="fl">0.2</span>, <span class="fl">1.5</span>, <span class="fl">2.0</span>)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">mean</span>(datos)</a></code></pre></div>
+<pre><code>## [1] 2.042857</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">median</span>(datos)</a></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">summary</span>(datos)</a></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   0.200   1.250   2.000   2.043   2.700   4.200</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">sd</span>(datos)</a></code></pre></div>
+<pre><code>## [1] 1.330234</code></pre>
+<p>Estas medidas de centralidad y dispersión nos dan una cierta idea de
+cómo pueden ser los datos. Pero para entenderlo bien, necesitamos
+verlos de forma gráfica.</p>
+</div>
+<div id="gráficas-para-datos-cuantitativos" class="section level2">
+<h2><span class="header-section-number">3.3</span> Gráficas para datos cuantitativos</h2>
+<p>Las gráficas son una parte fundamental de la estadística descriptiva.
+Los números están bien, pero una gráfica es más informativa. Vamos a
+ver las cuatro gráficas fundamentales para variables numéricas:
+diagramas de puntos, histogramas, diagramas de tallo y hojas y
+diagramas de cajas.</p>
+<p><strong>Diagrama de puntos.</strong> Un diagrama de puntos representa
+todos los puntos de nuestros datos. Como sólo hay una variable, es un
+gráfico unidimensional, fácil de crear e interpretar. En R se obtiene
+esta gráfica con la función <code>stripchart()</code>. Podemos ver
+un ejemplo del peso de 57 personas en la figura siguiente.</p>
+<p><img src="imagenes/stripch.jpg" /><!-- --></p>
+<p>Cada cuadradito representa un dato. Podemos ver si están más juntos o
+dispersos o si se “apelotonan” alrededor de un punto o varios. En
+la figura se ve que están bastante dispersos y parece que se
+apelotonan un poco alrededor del 50.</p>
+<p>Lo mejor del diagrama de puntos es que puedes ver cada dato.
+Naturalmente esto sólo es posible si tenemos una cantidad pequeña o
+modarada de datos. Si tenemos miles, es obvio que no veremos nada.</p>
+<p><br></p>
+<p><strong>Histogramas.</strong> Un histograma es una gráfica bidimensional
+para representar nuestra variable numérica.
+En el eje X tenemos el valor de los datos, mientras que en el eje
+vertical tenemos la frecuencia, es decir, cuántos datos tenemos en
+cada intervalo. En la figura siguiente vemos un histograma, con los mismos datos del peso de
+57 personas.</p>
+<p><img src="imagenes/histED.jpg" /><!-- --></p>
+<p>Vemos que para crear el histograma se divide los posibles valores de
+la variable en intervalos. En este caso son intervalos de 5 kg: de
+40&amp;npsp;Kg a 45&amp;npsp;Kg, de 45&amp;npsp;Kg a 50&amp;npsp;Kg, etc. Podemos leer
+del histograma que entre 40&amp;npsp;Kg y 45&amp;npsp;Kg hay dos personas,
+mientras que entre 65&amp;npsp;Kg y 70&amp;npsp;Kg
+hay 5. Se confirma que hay un montículo alrededor del 50. R crea
+histogramas con la función <code>hist()</code>.</p>
+<p>Un histograma es muy útil y se usa mucho. Lo malo es que necesita
+muchos datos. Fijaos que hay varios intervalos con 5 o menos
+personas. Una sola persona que pese unos cientos de gramos más o
+menos y que por eso pase de un intervalo al contiguo hace que el
+aspecto del histograma cambie mucho. Y lo mismo pasa por cómo se
+escogen los intervalos: si en vez de (40, 45); (45,50); (50,55) etc.
+hubiéramos cogido (41,46); (46,51); etc. podría dar lugar a un
+histograma muy diferente. Cuantos menos datos tenemos, menos fiable
+es el histograma. Y por debajo de unos 30 datos, se recomienda ni
+siquiera hacerlo.</p>
+<p><br></p>
+<p><strong>Diagrama de tallo y hojas.</strong> Un diagrama de tallo y hojas
+es una especie de histograma hecho a mano. Escogemos de cada dato las
+dos cifras más significativas, la de la izquierda es el tallo y la de
+la derecha es la hoja. Por ejemplo si tenemos 532, 574, 533, 591, 603, 617
+y 648, la cifra de la izquierda es el tallo (5 en los primeros, 6 en
+los últimos) y el siguiente
+(redondeado) serían las hojas (3, 7, 7, 9, 0, 2 y 5). Ahora el diagrama
+sería:</p>
+<pre><code>5|3779
+6|025</code></pre>
+<p>Como en el histograma, vemos que en el intervalo 500 a 600 tenemos 4
+datos y en el de 600 a 700 tenemos 3. Lo que permite este diagrama,
+que no permite el histograma, es ver el valor de cada elemento. Esto
+nos permite detectar cosas interesantes. Supongamos el siguiente
+diagrama:</p>
+<pre><code>3|2256788999
+4|1389
+5|000112356</code></pre>
+<p>Parece a primera vista que hay muchos “3” y “5” y pocos “4”. Pero podemos
+ver que hay varios “3|9” y “5|0” lo que nos hace concluir que hay
+un número similar de “3”, “4” y “5” y que la diferencia
+aparente es pura casualidad. Esto no se puede apreciar en un
+histograma.</p>
+<p>La instrucción de R para crear un diagrama de tallo y hojas es
+<code>stem()</code>:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">Peso =<span class="st"> </span><span class="kw">c</span>(<span class="dv">42</span>, <span class="dv">45</span>, <span class="dv">45</span>, <span class="dv">45</span>, <span class="dv">45</span>, <span class="dv">45</span>, <span class="dv">46</span>, <span class="dv">47</span>, <span class="dv">47</span>, <span class="dv">47</span>, <span class="dv">48</span>, <span class="dv">49</span>, <span class="dv">49</span>, <span class="dv">49</span>, <span class="dv">49</span>, <span class="dv">50</span>,</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="dv">50</span>, <span class="dv">50</span>, <span class="dv">52</span>, <span class="dv">53</span>, <span class="dv">54</span>, <span class="dv">54</span>, <span class="dv">55</span>, <span class="dv">55</span>, <span class="dv">55</span>, <span class="dv">55</span>, <span class="dv">56</span>, <span class="dv">56</span>, <span class="dv">57</span>, <span class="dv">57</span>, <span class="dv">58</span> , <span class="dv">60</span>, <span class="dv">62</span>, <span class="dv">62</span>,</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="dv">62</span>, <span class="dv">63</span>, <span class="dv">63</span>, <span class="dv">64</span>, <span class="dv">64</span>, <span class="dv">65</span>, <span class="dv">66</span>, <span class="dv">66</span>, <span class="dv">67</span>, <span class="dv">69</span> , <span class="dv">70</span>, <span class="dv">72</span>, <span class="dv">74</span> , <span class="dv">75</span>, <span class="dv">76</span>, <span class="dv">77</span>, <span class="dv">77</span>, <span class="dv">78</span>,</a>
+<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="dv">80</span>, <span class="dv">81</span>, <span class="dv">81</span>, <span class="dv">81</span>, <span class="dv">82</span>)</a>
+<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="kw">stem</span>(Peso)</a></code></pre></div>
+<pre><code>## 
+##   The decimal point is 1 digit(s) to the right of the |
+## 
+##   4 | 2
+##   4 | 55555677789999
+##   5 | 0002344
+##   5 | 555566778
+##   6 | 02223344
+##   6 | 56679
+##   7 | 024
+##   7 | 56778
+##   8 | 01112</code></pre>
+<p>Fijaos que la salida empieza con la frase “The decimal point is 1
+digit(s) to the right of the |”. Con sólo “4|2” no sabemos si
+representa 4,2 o 0,00042 o 4200. Esta frase nos indica que es “42”</p>
+<p><br></p>
+<p><strong>Diagrama de cajas.</strong> El diagrama de cajas (o de caja y
+bigotes) parte de los cuartiles y la mediana. Para construirlo
+debemos primero calcular la mediana, Q1 y Q3. Después calculamos el
+<em>rango intercuartílico</em> que es Q3 &amp;emdash; Q1. La <em>caja</em> la
+delimitan Q1 y Q3, con una raya que indica Q2. A veces se
+añade un punto o un diamante que representa la media. Los <em>bigotes</em> llegan
+hasta el dato más alejado a la caja pero que esté a menos que 1,5 veces el
+rango intercuartílico. Los datos que están más allá de los bigotes se
+representan como círculos y los podemos considerar datos atípicos
+potenciales. En la figura siguiente vemos un diagrama de cajas
+creado con la función <code>boxplot()</code> de R.</p>
+<p><img src="imagenes/boxp.jpg" /><!-- --></p>
+<p>Un diagrama de cajas nos permite ver bien la asimetría, tanto de la
+parte central como de los extremos, y si hay algún valor atípico.</p>
+</div>
+<div id="análisis-de-los-datos" class="section level2">
+<h2><span class="header-section-number">3.4</span> Análisis de los datos</h2>
+<p>Cómo hemos dicho, miramos los datos para entenderlos mejor. ¿Pero
+entender el qué? Empecemos por estudiar tres características
+esenciales: la modalidad, la simetría y la presencia de valores
+atípicos.</p>
+<div id="modalidad" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> Modalidad</h3>
+<p>Si miramos un histograma, la modalidad es el número de picos que
+tenemos. Por ejemplo la figura siguiente nos muestra dos poblaciones
+unimodales.</p>
+<p><img src="imagenes/NormalPicudayPlana.jpg" /><!-- --></p>
+<p>Es cierto que vemos fluctutaciones pequeñas, pero eso son artefactos
+típicos de los histogramas y realmente, an mabos casos, sólo hay un
+pico, es decir, un modo.</p>
+<p>En cambio en la figura siguiente vemos un histograma claramente bimodal.</p>
+<p><img src="imagenes/BimodalAnts.jpg" /><!-- -->
+Esta gráfica es de longitud de una muestra de hormigas y vemos que en
+nuestra muestra hay dos poblaciones, ya sea dos tipos de hormiga diferentes
+o dos castas de hormigas, obreras y soldados, de un mismo tipo.</p>
+<p>La modalidad se puede ver con el histograma, el de
+tallo y hojas e incluso con el de puntos (donde cada modo se muestra
+como una aglomeración de puntos). Un diagrama de cajas no muestra
+esta característica. Hay que ir con cuidado de no confundir pequeñas
+fluctuaciones, como los de las gráficas unimodales de arriba, con los modos.</p>
+<p>Que una variable sea unimodal significa que tenemos una población
+homogénea, con más o menos dispersión. Si además es
+simétrica, es muy
+fácil describir los datos: basta dar la media y la desviación típica.</p>
+<p>Si la variable es bimodal, como la figura anterior, suele querer
+decir que tenemos dos poblaciones. No tiene mucho sentido dar un sólo
+conjunto de datos para ambas: supongamos que tenemos dos especies de
+hormigas muy distintas. Dar la “media de la longitud de las
+hormigas” es absurdo. En este caso es conveniente dividir las dos
+poblaciones (esto lo tiene que hacer un experto en hormigas o en la
+población bajo estudio) y estudiar cada uno por separado. Pero esto
+no siempre es posible: por ejemplo la talla y peso de la población de
+personas es bimodal ya que los hombres y las mujeres tiene alturas y
+pesos diferentes, pero si estamos diseñando los asientos de un tren o
+avión, no podemos tener asientos para hombres y asientos para mujeres
+y tendremos que considerar la población en conjunto.</p>
+</div>
+<div id="simetría" class="section level3">
+<h3><span class="header-section-number">3.4.2</span> Simetría</h3>
+<p>Ninguna variable real es exactamente simétrica, por lo tanto una leve
+asimetría es de esperar. Lo que da características propias a una
+variable es que sea moderada o fuertemente asimétrica, como es el
+caso de la figura&amp;npsp;. En este caso la media es
+poco representativa de la población: sólo una fracción pequeña está
+cerca del valor medio. Normalmente la mediana (y los cuartiles) dan
+una información más reveladora. Otra cosa a tener en cuenta es que la
+desviación típica nos da poca información en una variable muy
+asimétrica ya que el “montículo” con más pobación quizá no
+esté dentro del rango <em>media ± desviación</em>.</p>
+<p><img src="imagenes/AsimPosNeg.png" /><!-- --></p>
+<p>Todas las gráficas nos permiten ver la asimetría: el histograma, el
+diagrama de puntos, el de tronco y hojas, pero el que lo muestra más
+claramente es el de cajas, en donde se ve si hay asimetría tanto en
+donde se encuantra la parte <code>central</code> de la población (dentro de la
+caja) como la más periférica (los bigotes). La figura siguiente nos
+muestra un diagrama de cajas de una variable
+claramente asimétrica y con valores atípicos</p>
+<p><img src="imagenes/boxplotAsim.jpg" /><!-- --></p>
+</div>
+<div id="valores-atípicos" class="section level3">
+<h3><span class="header-section-number">3.4.3</span> Valores atípicos</h3>
+<p>Al mirar unos datos a menudo puedes ver una gran mayoría que muestran
+unas características comunes, pero con uno o unos pocos que se
+alejan del grupo. Estos son los llamados valores atípicos (o
+<em>outliers</em>). Estos valores tiene una gran influencia en el
+cálculo de la media (en cambio no en el de la mediana), o a la hora
+de estimar la tendencia. Las loterías usan de estos valores extremos:
+un único gran premio hace que la media de lo que se puede obtener sea
+razonable (alrededor del 75% de lo apostado), mientras que lo más
+probable sea que no ganes nada.</p>
+<p>Por eso hay que estudiar estos valores atípicos con detenimiento. A
+menudo son errores (hemos tecleado 190.5 en vez de 109.5, o tenemos
+medidas erróneas debido a un fallo de la batería). En este caso la
+solución es sencilla: se eliminan estos valores. En cambio otras veces
+son valores reales. En este caso se deben identificar y ya es cuestión
+del especialista (con nuestra ayuda) decidir qué hacer con ellos.</p>
+<p>Hay dos gráficas donde los valores atípicos se ven muy bien: el
+diagrama de cajas y el diagrama de puntos. Se ven peor en histogramas
+y diagramas de tallo y hojas.</p>
+</div>
+<div id="problematicidad" class="section level3">
+<h3><span class="header-section-number">3.4.4</span> Problematicidad</h3>
+<p>El objetivo de la estadística es sacar pronósticos e inferencias a partir de los datos que nuestra muestra. Si los datos son muy “regulares” podemos tener una buena confianza en nuestros pronósticos e inferencias, pero si son muy irreguares, dudamos mucho más de nuestras deducciones. A veces se dice qeu tenemos “buenos datos” o “malos datos”, pero esto es erróneo: los datos son los que son, no son ni buenos ni malos. Aquí vamos a utilizar el término “problemático” para describir los datos. Si los datos son poco problemáticos, podemos tener bastante confianza en nuestras deducciones. Si son muy problemáticos, muy poca.</p>
+<p>Otra manera de verlo es que si tenemos datos poco problemáticos y tomamos otra muestra, seguramente haremos las mismas deducciones con la segunda muestra que con la primera. Si son algo problemáticos, la segunda muestra puede ser diferente a la primera. Si son muy problemáticos, una segunda muestra puede parecerse muy poco a la primera, y sacaríamos conclusiones muy diferentes.</p>
+<p>Aqui es donde entra enormemente la experiencia del estadístico, pero para empezar, con el estudio de la modalidad, asimetría y la presencia o no de
+valores atípicos, podemos sopesar si nuestros datos son o no
+problemáticos. Para ellos tenemos que mirar las medidas de
+centralidad y dispersión y todas las gráficas posibles. Si tenemos
+suerte los datos seran unimodales, simétricos y sin valores atípicos.
+Son datos nada problemáticos. El caso ideal es ver algo parecido a una campana de Gauss. En este caso una muestra pequeña nos bastará y las deducciones que hagamos serán bastante fiables.</p>
+<p>Si tenemos peor suerte los datos serán bimodales, o asimétricos o
+tendrán algún valor atípico. En este caso nuestros datos son algo
+problemáticos. Necesitamos una muestra mucho mayor para tener unos
+resultados algo fiables.</p>
+<p>El pero caso es si es multimodal, fuertemente asimétrico y con
+valores muy atípicos. Incluso con muestras muy grandes no nos
+podremos fiar gran cosa de nuestros resultados. En estos casos extremos, generalmente no podemos hacer deducción alguna a partir de los datos, aunque casi siempre lo intentaremos. Es esencial recordar que hay muchísima incertidumbre y cualquier deducción que hagamos puede estar muy alejado de la realidad.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="qué-es-y-no-es-la-estadística.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03_Univariantes.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Estadística.pdf", "Estadística.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

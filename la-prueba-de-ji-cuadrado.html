@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 13 La prueba de Ji-Cuadrado | Mera estadística</title>
+  <meta name="description" content="Capítulo 13 La prueba de Ji-Cuadrado | Mera estadística" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 13 La prueba de Ji-Cuadrado | Mera estadística" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 13 La prueba de Ji-Cuadrado | Mera estadística" />
+  
+  
+  
+
+<meta name="author" content="Jose Miró Julià" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="anova.html"/>
+<link rel="next" href="regresión-lineal.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Estadística</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a></li>
+<li class="chapter" data-level="2" data-path="qué-es-y-no-es-la-estadística.html"><a href="qué-es-y-no-es-la-estadística.html"><i class="fa fa-check"></i><b>2</b> ¿Qué es (y no es) la estadística?</a><ul>
+<li class="chapter" data-level="2.1" data-path="qué-es-y-no-es-la-estadística.html"><a href="qué-es-y-no-es-la-estadística.html#el-proceso-estadístico"><i class="fa fa-check"></i><b>2.1</b> El proceso estadístico</a></li>
+<li class="chapter" data-level="2.2" data-path="qué-es-y-no-es-la-estadística.html"><a href="qué-es-y-no-es-la-estadística.html#es-la-estadística-parte-de-las-matemáticas"><i class="fa fa-check"></i><b>2.2</b> ¿Es la estadística parte de las matemáticas?</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html"><i class="fa fa-check"></i><b>3</b> Estadística descriptiva de datos numéricos univariantes</a><ul>
+<li class="chapter" data-level="3.1" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#tipos-de-datos"><i class="fa fa-check"></i><b>3.1</b> Tipos de datos</a></li>
+<li class="chapter" data-level="3.2" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#medidas-de-centralidad-y-dispersión"><i class="fa fa-check"></i><b>3.2</b> Medidas de centralidad y dispersión</a></li>
+<li class="chapter" data-level="3.3" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#gráficas-para-datos-cuantitativos"><i class="fa fa-check"></i><b>3.3</b> Gráficas para datos cuantitativos</a></li>
+<li class="chapter" data-level="3.4" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#análisis-de-los-datos"><i class="fa fa-check"></i><b>3.4</b> Análisis de los datos</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#modalidad"><i class="fa fa-check"></i><b>3.4.1</b> Modalidad</a></li>
+<li class="chapter" data-level="3.4.2" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#simetría"><i class="fa fa-check"></i><b>3.4.2</b> Simetría</a></li>
+<li class="chapter" data-level="3.4.3" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#valores-atípicos"><i class="fa fa-check"></i><b>3.4.3</b> Valores atípicos</a></li>
+<li class="chapter" data-level="3.4.4" data-path="estadística-descriptiva-de-datos-numéricos-univariantes.html"><a href="estadística-descriptiva-de-datos-numéricos-univariantes.html#problematicidad"><i class="fa fa-check"></i><b>3.4.4</b> Problematicidad</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><i class="fa fa-check"></i><b>4</b> Estadística descriptiva de datos cualitativos univariantes</a><ul>
+<li class="chapter" data-level="4.1" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#tablas-de-contingencia"><i class="fa fa-check"></i><b>4.1</b> Tablas de contingencia</a></li>
+<li class="chapter" data-level="4.2" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#gráficas-para-datos-cualitativos"><i class="fa fa-check"></i><b>4.2</b> Gráficas para datos cualitativos</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#gráficos-3d"><i class="fa fa-check"></i><b>4.2.1</b> Gráficos 3D</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="estadística-descriptiva-de-datos-cualitativos-univariantes.html"><a href="estadística-descriptiva-de-datos-cualitativos-univariantes.html#conclusión"><i class="fa fa-check"></i><b>4.3</b> Conclusión</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html"><i class="fa fa-check"></i><b>5</b> Estadística descriptiva de datos bivariantes</a><ul>
+<li class="chapter" data-level="5.1" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#dos-variables-numéricas"><i class="fa fa-check"></i><b>5.1</b> Dos variables numéricas</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#gráfica-de-nube-de-puntos"><i class="fa fa-check"></i><b>5.1.1</b> Gráfica de nube de puntos</a></li>
+<li class="chapter" data-level="5.1.2" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#rectas-de-regresión"><i class="fa fa-check"></i><b>5.1.2</b> Rectas de regresión</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#una-variable-numérica-y-una-cualitativa"><i class="fa fa-check"></i><b>5.2</b> Una variable numérica y una cualitativa</a></li>
+<li class="chapter" data-level="5.3" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#dos-variables-cualitativas"><i class="fa fa-check"></i><b>5.3</b> Dos variables cualitativas</a></li>
+<li class="chapter" data-level="5.4" data-path="estadística-descriptiva-de-datos-bivariantes.html"><a href="estadística-descriptiva-de-datos-bivariantes.html#resumen"><i class="fa fa-check"></i><b>5.4</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html"><i class="fa fa-check"></i><b>6</b> Uso de R para estadística descriptiva. Tutorial</a><ul>
+<li class="chapter" data-level="6.1" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#data-frames"><i class="fa fa-check"></i><b>6.1</b> Data frames</a></li>
+<li class="chapter" data-level="6.2" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-una-variable-cuantitativa"><i class="fa fa-check"></i><b>6.2</b> El caso de una variable cuantitativa</a></li>
+<li class="chapter" data-level="6.3" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-una-variable-cualitativa"><i class="fa fa-check"></i><b>6.3</b> El caso de una variable cualitativa</a></li>
+<li class="chapter" data-level="6.4" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-dos-variables-cuantitativas"><i class="fa fa-check"></i><b>6.4</b> El caso de dos variables cuantitativas</a></li>
+<li class="chapter" data-level="6.5" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-dos-variables-una-cuantitativa-y-una-cualitativa"><i class="fa fa-check"></i><b>6.5</b> El caso de dos variables, una cuantitativa y una cualitativa</a></li>
+<li class="chapter" data-level="6.6" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#el-caso-de-dos-variables-cualitativas"><i class="fa fa-check"></i><b>6.6</b> El caso de dos variables cualitativas</a></li>
+<li class="chapter" data-level="6.7" data-path="uso-de-r-para-estadística-descriptiva-tutorial.html"><a href="uso-de-r-para-estadística-descriptiva-tutorial.html#resumen-final"><i class="fa fa-check"></i><b>6.7</b> Resumen final</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="probabilidad.html"><a href="probabilidad.html"><i class="fa fa-check"></i><b>7</b> Probabilidad</a><ul>
+<li class="chapter" data-level="7.1" data-path="probabilidad.html"><a href="probabilidad.html#ideas-básicas"><i class="fa fa-check"></i><b>7.1</b> Ideas básicas</a></li>
+<li class="chapter" data-level="7.2" data-path="probabilidad.html"><a href="probabilidad.html#operaciones-con-probabilidades"><i class="fa fa-check"></i><b>7.2</b> Operaciones con probabilidades</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-de-una-cosa-u-otra"><i class="fa fa-check"></i><b>7.2.1</b> Probabilidad de una cosa u otra</a></li>
+<li class="chapter" data-level="7.2.2" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-de-una-cosa-y-otra"><i class="fa fa-check"></i><b>7.2.2</b> Probabilidad de una cosa y otra</a></li>
+<li class="chapter" data-level="7.2.3" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-del-suceso-contrario"><i class="fa fa-check"></i><b>7.2.3</b> Probabilidad del suceso contrario</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="probabilidad.html"><a href="probabilidad.html#probabilidad-condicionada"><i class="fa fa-check"></i><b>7.3</b> Probabilidad condicionada</a></li>
+<li class="chapter" data-level="7.4" data-path="probabilidad.html"><a href="probabilidad.html#regla-de-bayes"><i class="fa fa-check"></i><b>7.4</b> Regla de Bayes</a></li>
+<li class="chapter" data-level="7.5" data-path="probabilidad.html"><a href="probabilidad.html#resumen-1"><i class="fa fa-check"></i><b>7.5</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html"><i class="fa fa-check"></i><b>8</b> Variables aleatorias</a><ul>
+<li class="chapter" data-level="8.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#qué-es-una-variable-aleatoria"><i class="fa fa-check"></i><b>8.1</b> ¿Qué es una variable aleatoria?</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#variables-discretas"><i class="fa fa-check"></i><b>8.1.1</b> Variables discretas</a></li>
+<li class="chapter" data-level="8.1.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#variables-continuas"><i class="fa fa-check"></i><b>8.1.2</b> Variables continuas</a></li>
+<li class="chapter" data-level="8.1.3" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#propiedades-de-estas-funciones"><i class="fa fa-check"></i><b>8.1.3</b> Propiedades de estas funciones</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#cálculo-de-probabilidades"><i class="fa fa-check"></i><b>8.2</b> Cálculo de probabilidades</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#calculando-a-mano"><i class="fa fa-check"></i><b>8.2.1</b> Calculando a mano</a></li>
+<li class="chapter" data-level="8.2.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#calculando-con-r"><i class="fa fa-check"></i><b>8.2.2</b> Calculando con R</a></li>
+<li class="chapter" data-level="8.2.3" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#resumen-2"><i class="fa fa-check"></i><b>8.2.3</b> Resumen</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><i class="fa fa-check"></i><b>9</b> Esperanzas y desviaciones típicas de variables aleatorias</a><ul>
+<li class="chapter" data-level="9.1" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#desviaciones-típicas"><i class="fa fa-check"></i><b>9.1</b> Desviaciones típicas</a></li>
+<li class="chapter" data-level="9.2" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#operaciones-con-variables-aleatorias"><i class="fa fa-check"></i><b>9.2</b> Operaciones con variables aleatorias</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#un-ejemplo"><i class="fa fa-check"></i><b>9.2.1</b> Un ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html"><a href="esperanzas-y-desviaciones-típicas-de-variables-aleatorias.html#resumen-3"><i class="fa fa-check"></i><b>9.3</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><i class="fa fa-check"></i><b>10</b> Intervalos de confianza: una medida de la incertidumbre</a><ul>
+<li class="chapter" data-level="10.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#incertidumbre-en-muestras-de-proporciones"><i class="fa fa-check"></i><b>10.1</b> Incertidumbre en muestras de proporciones</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#una-simulación"><i class="fa fa-check"></i><b>10.1.1</b> Una simulación</a></li>
+<li class="chapter" data-level="10.1.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>10.1.2</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="10.1.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#fuga-de-probabilidad"><i class="fa fa-check"></i><b>10.1.3</b> Fuga de probabilidad</a></li>
+<li class="chapter" data-level="10.1.4" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#un-ejemplo-1"><i class="fa fa-check"></i><b>10.1.4</b> Un ejemplo</a></li>
+<li class="chapter" data-level="10.1.5" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#resumen-de-intervalos-de-confianza-de-proporciones"><i class="fa fa-check"></i><b>10.1.5</b> Resumen de intervalos de confianza de proporciones</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#incertidumbre-en-muestras-de-medias"><i class="fa fa-check"></i><b>10.2</b> Incertidumbre en muestras de medias</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#una-simulación-1"><i class="fa fa-check"></i><b>10.2.1</b> Una simulación</a></li>
+<li class="chapter" data-level="10.2.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#intervalos-de-confianza-1"><i class="fa fa-check"></i><b>10.2.2</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="10.2.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#la-distribución-t-de-student"><i class="fa fa-check"></i><b>10.2.3</b> La distribución t de Student</a></li>
+<li class="chapter" data-level="10.2.4" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#fuga-de-probabilidades"><i class="fa fa-check"></i><b>10.2.4</b> Fuga de probabilidades</a></li>
+<li class="chapter" data-level="10.2.5" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#un-ejemplo-2"><i class="fa fa-check"></i><b>10.2.5</b> Un ejemplo</a></li>
+<li class="chapter" data-level="10.2.6" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#resumen-de-intervalos-de-confianza-de-medias"><i class="fa fa-check"></i><b>10.2.6</b> Resumen de intervalos de confianza de medias</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#comparación-de-intervalos-de-confianza"><i class="fa fa-check"></i><b>10.3</b> Comparación de intervalos de confianza</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#no-puedo-decir-que-sean-distintos"><i class="fa fa-check"></i><b>10.3.1</b> No puedo decir que sean distintos</a></li>
+<li class="chapter" data-level="10.3.2" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#cálculo-de-intervalos-de-confianza-de-diferencias"><i class="fa fa-check"></i><b>10.3.2</b> Cálculo de intervalos de confianza de diferencias</a></li>
+<li class="chapter" data-level="10.3.3" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#más-ejemplos"><i class="fa fa-check"></i><b>10.3.3</b> Más ejemplos</a></li>
+<li class="chapter" data-level="10.3.4" data-path="intervalos-de-confianza-una-medida-de-la-incertidumbre.html"><a href="intervalos-de-confianza-una-medida-de-la-incertidumbre.html#resumen-de-comparación-de-intervalos-de-confianza"><i class="fa fa-check"></i><b>10.3.4</b> Resumen de comparación de intervalos de confianza</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html"><i class="fa fa-check"></i><b>11</b> Contrastes de hipotesis</a><ul>
+<li class="chapter" data-level="11.1" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html#experimentos-estadísticos-para-un-contraste-de-hipótesis"><i class="fa fa-check"></i><b>11.1</b> Experimentos estadísticos para un contraste de hipótesis</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html#procedimiento-de-cálculo-del-p-valor."><i class="fa fa-check"></i><b>11.1.1</b> Procedimiento de cálculo del p-valor.</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="contrastes-de-hipotesis.html"><a href="contrastes-de-hipotesis.html#interpretación-del-p-valor."><i class="fa fa-check"></i><b>11.2</b> Interpretación del p-valor.</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>12</b> ANOVA</a><ul>
+<li class="chapter" data-level="12.1" data-path="anova.html"><a href="anova.html#nada-es-gratis-y-los-errores-se-acumulan"><i class="fa fa-check"></i><b>12.1</b> Nada es gratis (y los errores se acumulan)</a></li>
+<li class="chapter" data-level="12.2" data-path="anova.html"><a href="anova.html#punto-de-partida"><i class="fa fa-check"></i><b>12.2</b> Punto de partida</a></li>
+<li class="chapter" data-level="12.3" data-path="anova.html"><a href="anova.html#tutorial-de-anova-en-r"><i class="fa fa-check"></i><b>12.3</b> Tutorial de ANOVA en R</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="anova.html"><a href="anova.html#el-problema"><i class="fa fa-check"></i><b>12.3.1</b> El problema</a></li>
+<li class="chapter" data-level="12.3.2" data-path="anova.html"><a href="anova.html#el-primer-método-oneway.test"><i class="fa fa-check"></i><b>12.3.2</b> El primer método: oneway.test()</a></li>
+<li class="chapter" data-level="12.3.3" data-path="anova.html"><a href="anova.html#el-segundo-método-aov"><i class="fa fa-check"></i><b>12.3.3</b> El segundo método: aov()</a></li>
+<li class="chapter" data-level="12.3.4" data-path="anova.html"><a href="anova.html#el-tercer-método"><i class="fa fa-check"></i><b>12.3.4</b> El tercer método</a></li>
+<li class="chapter" data-level="12.3.5" data-path="anova.html"><a href="anova.html#y-si-los-datos-no-están-como-los-quiere-r"><i class="fa fa-check"></i><b>12.3.5</b> ¿Y si los datos no están como los quiere R?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html"><i class="fa fa-check"></i><b>13</b> La prueba de Ji-Cuadrado</a><ul>
+<li class="chapter" data-level="13.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-de-ji-cuadrado-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>13.1</b> Prueba de ji-cuadrado de bondad de ajuste</a></li>
+<li class="chapter" data-level="13.2" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-de-bondad-de-ajuste-con-r"><i class="fa fa-check"></i><b>13.2</b> Prueba <span class="math inline">\(\chi^2\)</span> de bondad de ajuste con R</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#problematicidad-el-aviso-de-chisq.test"><i class="fa fa-check"></i><b>13.2.1</b> Problematicidad: el aviso de chisq.test()</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#la-prueba-chi2-de-homogeneidad"><i class="fa fa-check"></i><b>13.3</b> La prueba <span class="math inline">\(\chi^2\)</span> de homogeneidad</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#definición-formal"><i class="fa fa-check"></i><b>13.3.1</b> Definición formal</a></li>
+<li class="chapter" data-level="13.3.2" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-como-contraste-de-hipótesis"><i class="fa fa-check"></i><b>13.3.2</b> Prueba <span class="math inline">\(\chi^2\)</span> como contraste de hipótesis</a></li>
+<li class="chapter" data-level="13.3.3" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-de-homogeneidad-con-r"><i class="fa fa-check"></i><b>13.3.3</b> Prueba <span class="math inline">\(\chi^2\)</span> de homogeneidad con R</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#la-prueba-chi2-de-independencia"><i class="fa fa-check"></i><b>13.4</b> La prueba <span class="math inline">\(\chi^{2}\)</span> de independencia</a><ul>
+<li class="chapter" data-level="13.4.1" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#prueba-chi2-de-independencia-como-contraste-de-hipótesis"><i class="fa fa-check"></i><b>13.4.1</b> Prueba <span class="math inline">\(\chi^2\)</span> de independencia como contraste de hipótesis</a></li>
+<li class="chapter" data-level="13.4.2" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#un-ejemplo-3"><i class="fa fa-check"></i><b>13.4.2</b> Un ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="la-prueba-de-ji-cuadrado.html"><a href="la-prueba-de-ji-cuadrado.html#resumen-4"><i class="fa fa-check"></i><b>13.5</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="regresión-lineal.html"><a href="regresión-lineal.html"><i class="fa fa-check"></i><b>14</b> Regresión Lineal</a><ul>
+<li class="chapter" data-level="14.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#cálculo"><i class="fa fa-check"></i><b>14.1</b> Cálculo</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#fundamentos"><i class="fa fa-check"></i><b>14.1.1</b> Fundamentos</a></li>
+<li class="chapter" data-level="14.1.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#otro-ejemplo"><i class="fa fa-check"></i><b>14.1.2</b> Otro ejemplo</a></li>
+<li class="chapter" data-level="14.1.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#y-si-no-es-una-recta"><i class="fa fa-check"></i><b>14.1.3</b> ¿Y si no es una recta?</a></li>
+<li class="chapter" data-level="14.1.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-la-parte-de-cálculo"><i class="fa fa-check"></i><b>14.1.4</b> Resumen de la parte de cálculo</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#estadística"><i class="fa fa-check"></i><b>14.2</b> Estadística</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#incertidumbre-en-la-regresión-lineal"><i class="fa fa-check"></i><b>14.2.1</b> Incertidumbre en la regresión lineal</a></li>
+<li class="chapter" data-level="14.2.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#condiciones"><i class="fa fa-check"></i><b>14.2.2</b> Condiciones</a></li>
+<li class="chapter" data-level="14.2.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#salida-de-r"><i class="fa fa-check"></i><b>14.2.3</b> Salida de R</a></li>
+<li class="chapter" data-level="14.2.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#intervalos-de-confianza-2"><i class="fa fa-check"></i><b>14.2.4</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="14.2.5" data-path="regresión-lineal.html"><a href="regresión-lineal.html#otro-ejemplo-1"><i class="fa fa-check"></i><b>14.2.5</b> Otro ejemplo</a></li>
+<li class="chapter" data-level="14.2.6" data-path="regresión-lineal.html"><a href="regresión-lineal.html#la-regresión-no-muestra-qué-tipo-de-curva-es"><i class="fa fa-check"></i><b>14.2.6</b> La regresión no muestra qué tipo de curva es</a></li>
+<li class="chapter" data-level="14.2.7" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-la-parte-de-estadística"><i class="fa fa-check"></i><b>14.2.7</b> Resumen de la parte de estadística</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#diagnóstico"><i class="fa fa-check"></i><b>14.3</b> Diagnóstico</a><ul>
+<li class="chapter" data-level="14.3.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#seis-modelos"><i class="fa fa-check"></i><b>14.3.1</b> Seis modelos</a></li>
+<li class="chapter" data-level="14.3.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#cinco-diagnósticos"><i class="fa fa-check"></i><b>14.3.2</b> Cinco diagnósticos</a></li>
+<li class="chapter" data-level="14.3.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-diagnóstico"><i class="fa fa-check"></i><b>14.3.3</b> Resumen de diagnóstico</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#inferencias"><i class="fa fa-check"></i><b>14.4</b> Inferencias</a><ul>
+<li class="chapter" data-level="14.4.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#contrastes-de-hipótesis"><i class="fa fa-check"></i><b>14.4.1</b> Contrastes de hipótesis</a></li>
+<li class="chapter" data-level="14.4.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#intervalos-de-confianza-3"><i class="fa fa-check"></i><b>14.4.2</b> Intervalos de confianza</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicciones"><i class="fa fa-check"></i><b>14.5</b> Predicciones</a><ul>
+<li class="chapter" data-level="14.5.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-de-la-curva"><i class="fa fa-check"></i><b>14.5.1</b> Predicción de la curva</a></li>
+<li class="chapter" data-level="14.5.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-de-rango"><i class="fa fa-check"></i><b>14.5.2</b> Predicción de rango</a></li>
+<li class="chapter" data-level="14.5.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-de-medias"><i class="fa fa-check"></i><b>14.5.3</b> Predicción de medias</a></li>
+<li class="chapter" data-level="14.5.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#resumen-de-predicciones"><i class="fa fa-check"></i><b>14.5.4</b> Resumen de predicciones</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="problemas.html"><a href="problemas.html"><i class="fa fa-check"></i><b>15</b> Problemas</a><ul>
+<li class="chapter" data-level="15.1" data-path="problemas.html"><a href="problemas.html#qué-es-la-estadística"><i class="fa fa-check"></i><b>15.1</b> ¿Qué es la estadística?</a></li>
+<li class="chapter" data-level="15.2" data-path="problemas.html"><a href="problemas.html#manejo-de-r-y-simulaciones"><i class="fa fa-check"></i><b>15.2</b> Manejo de R y simulaciones</a></li>
+<li class="chapter" data-level="15.3" data-path="problemas.html"><a href="problemas.html#estadística-descriptiva"><i class="fa fa-check"></i><b>15.3</b> Estadística Descriptiva</a></li>
+<li class="chapter" data-level="15.4" data-path="problemas.html"><a href="problemas.html#probabilidad-y-variables-aleatórias"><i class="fa fa-check"></i><b>15.4</b> Probabilidad y variables aleatórias</a></li>
+<li class="chapter" data-level="15.5" data-path="problemas.html"><a href="problemas.html#razonamiento-estadístico."><i class="fa fa-check"></i><b>15.5</b> Razonamiento estadístico.</a><ul>
+<li class="chapter" data-level="15.5.1" data-path="problemas.html"><a href="problemas.html#intervalos-de-confianza-4"><i class="fa fa-check"></i><b>15.5.1</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="15.5.2" data-path="problemas.html"><a href="problemas.html#contrastes-de-hipótesis-1"><i class="fa fa-check"></i><b>15.5.2</b> Contrastes de hipótesis</a></li>
+<li class="chapter" data-level="15.5.3" data-path="problemas.html"><a href="problemas.html#razonamiento-estadístico-complejo"><i class="fa fa-check"></i><b>15.5.3</b> Razonamiento estadístico complejo</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="problemas.html"><a href="problemas.html#anova-1"><i class="fa fa-check"></i><b>15.6</b> Anova</a></li>
+<li class="chapter" data-level="15.7" data-path="problemas.html"><a href="problemas.html#ji-cuadrado"><i class="fa fa-check"></i><b>15.7</b> Ji-cuadrado</a></li>
+<li class="chapter" data-level="15.8" data-path="problemas.html"><a href="problemas.html#regresión-lineal-1"><i class="fa fa-check"></i><b>15.8</b> Regresión Lineal</a></li>
+<li class="chapter" data-level="15.9" data-path="problemas.html"><a href="problemas.html#problemas-con-todo"><i class="fa fa-check"></i><b>15.9</b> Problemas con todo</a></li>
+<li class="chapter" data-level="15.10" data-path="problemas.html"><a href="problemas.html#campos-elíseos"><i class="fa fa-check"></i><b>15.10</b> Campos Elíseos</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Mera estadística</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="la-prueba-de-ji-cuadrado" class="section level1">
+<h1><span class="header-section-number">Capítulo 13</span> La prueba de Ji-Cuadrado</h1>
+<p>Cuando estudiamos estadística descriptiva, vimos que los datos a realizar y las gráicas a dibujar dependían del tipo de datos. Si teníamos una variable numérica, podíamos calcular medias, caurtiles, etc. y realizar histogramas, daigramas de cajas. Si era una cualitativa, podíamos dibujar un diagrama de barras, si eran dos cualitativas, una tabla de contingencia y diagramas de barras agrupados, etc.</p>
+<p>Y lo mismo pasa con los contrastes de hipótesis. Tenemos diferentes tipos de pruebas en función de las variables: si tenemos una variable cualitativa con dos niveles, usamos un <code>prop.test</code>; si tenemos una varaible numérica, usamos un <code>t-test</code>; Si tenemos dos variables, una de ellas numéricaa, y la otra cualitativa, un ANOVA.</p>
+<p>La siguiente prueba que vamos a estudiar es la de <span class="math inline">\(\chi^2\)</span>, pronunciado “ji-cuadrado” que nos sirve si tenemos una variable cualitativa con más de dos niveles, o dos variables cualitativas.</p>
+<hr />
+<p>Uno nota lingüística: <span class="math inline">\(\chi\)</span> es una letra griega que en Español se llama
+“ji” y en Catalán, “ki”. En Inglés se escribe “chi” y se pronuncia “kai”.
+Desgraciadamente lo habitual es hacer un híbrido y escribirlo en
+ingles y pronunciarlo a la española: “chi cuadrado”. La pronunciación correcta es “ji-cuadrado” en Español, “ki-quadrat” en Catalán y “kai-squared” en Inglés.</p>
+<hr />
+<div id="prueba-de-ji-cuadrado-de-bondad-de-ajuste" class="section level2">
+<h2><span class="header-section-number">13.1</span> Prueba de ji-cuadrado de bondad de ajuste</h2>
+<p>En una distribución binomial sólo hay dos posibles resultados que
+llamamos <code>éxito'' y</code>fracaso’’. Esto corresponde a una variable
+cualitativa con sólo dos niveles y mediante un prop-test podemos
+establecer si la proporción poblacional sigue o no algún valor
+predicho, por ejemplo, si al lanzar una moneda obtenemos cara la mitad
+de las veces. Pero muchas veces tenemos variables cualitativas con
+más de dos niveles y queremos saber si la proporción de cada nivel se
+ajusta a lo que debería. Es el caso del lanzamiento de un dado, con 6
+posibles resultados. Una posibilidad es hacer un prop-test por cada
+nivel: ¿ha salido el “1” 1/6 de las veces? ¿ha salido el “2” 1/6 de
+las veces?… Pero como vimos al estudiar el ANOVA, hacer muchas
+pruebas, 6 prop-test en este caso, nos crea un problema de equilibrio
+entre la confianza de nuestro resultado y la precisión obtenida.</p>
+<p>Como en aquel caso, lo que nos interesa es tener una única prueba que
+nos haga todas las comparaciones de golpe. Es decir, una única prueba
+que nos determine si el dado está cargado o no. Esta es la prueba de
+<span class="math inline">\(\chi^2\)</span> de bondad de ajuste.</p>
+<p><br></p>
+<p>Si tiramos una moneda sólo hay dos posibilidades y el uso del
+prop-test es perfectamente adecuado. Pero si tiramos un dado tenemos
+6 probabilidades. Si quisiéramos usar los prop-test tendríamos que
+hacer 6 y ver si la probabilidad de que salga un “1” es 1/6 o no;
+la probabilidad de que salga un “2” es 1/6 o no, etc. Supongamos
+que tiramos un dado 180 veces con los siguientes resultados:</p>
+<pre><code> 1    2    3    4    5    6
+33   38   25   24   27   33</code></pre>
+<p>Sabemos que si el dado es “bueno” tocaría salir cada número 30
+veces. Entendemos que es normal que no salga exactamente 30 veces,
+pero esos 38 doses nos preocupan un poco. ¿Cómo podríamos medir lo
+diferente que es la salida que hemos obtenido (en conjunto) con la
+salida teórica de un dado?</p>
+<p>Pensando un poco es fácil pensar en la siguiente solución: miramos la
+diferencia entre cada salida y lo que debería haber salido y lo
+sumamos:
+<span class="math display">\[3 + 8 + 5 + 6 + 3 + 3 = 28.\]</span>
+En otras palabras, hacemos
+<span class="math display">\[\sum |x_{o} - x_{t}|,\]</span>
+siendo <span class="math inline">\(x_{o}\)</span> el número de veces observado (lo que nos ha salido) y
+<span class="math inline">\(x_{t}\)</span> el número de veces teórico que nos predice la teoría de la
+probabilidad.</p>
+<p>Este método tiene dos problemas. Uno es técnico: el valor absoluto no
+es derivable en el 0 y es además una función complicada de usar. El
+otro es fundamental: cuantas más tiradas hagamos más grande nos saldrá
+la diferencia. Una diferencia de 5 puede ser malísimo si hemos tirado
+el dado 10 veces pero buenísimo si lo hemos tirado 100. Hemos de
+meter el número de tiradas que hemos hecho de alguna manera. Para
+eliminar el valor absoluto usamos la técnica habitual de sustituirlo
+por la diferencia al cuadrado. Y para meter el número de tiradas,
+dividimos estas diferencias por el número de veces teórico que tocaría
+salir. Entonces nos queda
+<span class="math display">\[\chi^{2}_{0} = \sum \frac{(x_{0} - x_{t})^{2}}{x_{t}}.\]</span>
+En nuestro ejemplo nos queda
+<span class="math display">\[\chi^{2}_{0} = \frac{(33 - 30)^{2}}{30} + \frac{(38 - 30)^{2}}{30} 
++ \frac{(25 - 30)^{2}}{30} + 
+\frac{(24 - 30)^{2}}{30} + \frac{(27 - 30)^{2}}{30} + \frac{(33 - 
+30)^{2}}{30} = 5.067.\]</span></p>
+<p>Este método tiene dos problemas. Uno es técnico: el valor absoluto no
+es derivable en el 0 y es además una función complicada de usar. El
+otro es fundamental: cuántas más tiradas hagamos más grande nos saldrá
+la diferencia. Una diferencia de 5 puede ser malísimo si hemos tirado
+el dado 10 veces pero buenísimo si lo hemos tirado 100. Hemos de
+meter de alguna manera en nuestra fórmula el número de tiradas que
+hemos hecho. Para eliminar el valor absoluto usamos la técnica
+habitual de sustituirlo por la diferencia al cuadrado. Y para meter
+el número de tiradas, dividimos estas diferencias por el número de
+veces teórico que tocaría salir. Entonces nos queda
+<span class="math display">\[\chi^{2}_{0} = \sum \frac{(x_{0} - x_{t})^{2}}{x_{t}}.\]</span>
+En nuestro ejemplo nos queda
+<span class="math display">\[\chi^{2}_{0} = \frac{(33 - 30)^{2}}{30} + \frac{(38 - 30)^{2}}{30} 
++ \frac{(25 - 30)^{2}}{30} + 
+\frac{(24 - 30)^{2}}{30} + \frac{(27 - 30)^{2}}{30} + \frac{(33 - 
+30)^{2}}{30} = 5.067.\]</span></p>
+<p>Pues ya tenemos una medida: <span class="math inline">\(\chi^{2}_{0} = 5.067\)</span> (en esta prueba el valor muestral se escribe <span class="math inline">\(\chi^{2}_{0}\)</span> y no <span class="math inline">\(\hat{\chi}^{2}\)</span>. El motivo es
+probablemente tipográfico: el superíndice y el curcunflejo se
+molestan). ¿Pero eso es mucho o poco? Por suerte la variable aleatoria que hemos calculado, <span class="math inline">\(\chi^{2}_{0}\)</span>,
+tiene una distribución conocida y podemos saber lo probable que es
+tener un valor como <span class="math inline">\(5.067\)</span> o peor. ¿Qué queremos decir con “peor”?
+Pues peor quiere decir más alejado de la distribución teórica, y por
+lo tanto un valor <span class="math inline">\(\chi^{2}_{0}\)</span> aún mayor que el <span class="math inline">\(5.067\)</span> de nuestra
+muestra. La distribución se llama, como podríamos suponer,
+<span class="math inline">\(\chi^{2}\)</span>. Esta distribución tiene un parámetro llamado grados de
+libertad. En este caso tenemos 5 grados de libertad: sólo hay 5
+valores independientes ya que si sabemos qué ha salido para 5
+cualesquiera de los valores del dado podemos calcular cuánto ha salido
+en el otro. Naturalmente, R tiene funciones para calcular
+probabilidades según esta distribución. Usando la función
+ calculamos la probabilidad de que nos haya salido un
+valor <span class="math inline">\(\chi^{2}_{0} = 5.067\)</span> o mayor: . La probabilidad calculada es <span class="math inline">\(0.408\)</span>, casi un
+41%.</p>
+<p>Pongamos lo que hemos hecho en la forma de un contraste de hipótesis. La
+hipótesis nula es que el dado sigue una una distribución determinada
+(en este caso 1/6 en todos los casos); la hipótesis alternativa es
+que no la sigue; calculamos como estadístico <span class="math inline">\(\chi^{2}_{0}\)</span>; y
+obtenemos un p-valor: la probabilidad de que el valor del estadístico sea
+como el calculado o peor suponiendo cierta la hipótesis nula. Escribamos este contraste de hipótesis de forma
+esquemática: La hipótesis nula es H0: <span class="math inline">\(\chi^{2} = 0.\)</span> Este valor ocurre su la variable sigue la distribución de probabilidad fijada. La hipótesis alternativa es Ha:<span class="math inline">\(\chi^{2} &gt; 0.\)</span> Esto ocurre cuando la variable no sigue la distribución de probabilidad fijada. Calculamos el valor muestral (es costumbre usar <span class="math inline">\(\chi^{2}_{0}\)</span> y no <span class="math inline">\(\hat{\chi}^2\)</span>) <span class="math display">\[\chi^{2}_{0} = \sum \frac{(\mbox{observado} - \mbox{teórico})^{2}}{\mbox{teórico}}.\]</span>
+El p-valor es Prob[<span class="math inline">\(\chi^{2} &gt; \chi^{2}_{0} \; |\)</span> H0]. Esto lo podemos calcular en R con la instrucción <code>pchisq($\chi^{2}_{0}$, df = n-1, lower.tail = FALSE)</code></p>
+<p>Después, con el p-valor, las gráficas, información adicional, nuestra experiencia y todo lo que podamos, tomamos la decisión que corresponda.</p>
+<p>En este caso, si las probabilidades son iguales (el dado es justo),
+la probabilidad de obtener valores como los que vemos o más alejados
+de “todos iguales a 1/6” es del 41%. Luego no tenemos evidencia para
+creer que no se cumple la hipótesis nula, es decir, no tenemos
+evidencia para creer que el dado está cargado.</p>
+<p>Esta prueba recibe el nombre de prueba <span class="math inline">\(\chi^2\)</span> de bondad de ajuste: nos da una indicación de lo bien (o mal) que se ajusta la variable aleatoria a una distribución de probabilidad dada. Veamos otro ejemplo.</p>
+<p>Antes de una elecciones generales un periódico hizo una encuesta a
+2400 personas y obtuvo los siguientes resultados:</p>
+<pre><code>            PSOE        PP     Podemos  Ciudadanos    IU
+ Encuesta    809       655       382       226       180</code></pre>
+<p>En las elecciones se obtuvieron las siguientes proporciones:</p>
+<pre><code>               PSOE        PP     Podemos   Ciudadanos     IU
+ Elecciones   0,3543    0,2676     0,1484     0,0928     0,0689</code></pre>
+<p>¿Podemos considerar que la encuesta hizo una buena predicción del resultado de las elecciones?</p>
+<p>Si somos concienzudos y hacemos, como debemos, unas comprobaciones
+previas, notaremos dos problemas: se encuestaron a 2400 personas pero
+aqui sólo aparecen 2252, y en el resultado de las elecciones las
+proporciones no suman 1.0 sino 0.932. El motivo es claro: sólo
+tenemos los resultados de los 5 partidos con más votos.</p>
+<p>Hay dos formas de resolver este problema. Uno es eliminar las
+opciones minoritarias: aunque se haya entrevistado a 2400 personas,
+sólo consideramos las 2252 respuestas de los 5 partidos minoritarios.
+Esto implica también reescalar los resultados de las elecciones para
+que sumen 1.000. Para ello dividimos lo que tenemos por la suma. En
+este caso dividimos entre 0.932: el PSOE tendría una proporción
+ajustada de 0.3543/0.932 = 0.3802; el PP de 0.2676/0.932 = 0.2871,
+etc. Así las proporciones suman 1.</p>
+<p>La otra forma de resolver el problema es agrupar todas las opciones
+minoritarias en una sola, que podemos llamar “Otros” y le asignamos
+las <span class="math inline">\(2400-2252 = 148\)</span> encuestas y la proporción de votos que nos
+falta: <span class="math inline">\(1.0 - 0.932 = 0.068\)</span>. Cuál de las dos soluciones escogemos
+dependerá de cada caso.</p>
+<p>Vamos a usar la primera opción. Los resultados electorales
+reescalados son:</p>
+<pre><code>               PSOE        PP     Podemos   Ciudadanos     IU
+ Elecciones   0,3802    0,2871     0,1592     0,0996     0,0739</code></pre>
+<p>Calculemos según las elecciones cuál debería haber sido la respuesta
+“ideal” a la encuesta:</p>
+<p>Encuesta a 2252 personas:</p>
+<pre><code>            PSOE        PP     Podemos  Ciudadanos    IU
+ Encuesta    809       655       382       226       180
+ Ideal       856.1     646.6     358.6     224.2     166.5</code></pre>
+<p>No hay ningún problema que los valores teóricos tengan decimales. Son
+eso, valores teóricos y no personas. Ahora podemos calcular el estadístico <span class="math inline">\(\chi^{2}_{0}\)</span>:
+<span class="math display">\[\begin{eqnarray*}
+    \chi^{2}_{0} &amp; = &amp; \frac{(809 - 856.10)^{2}}{856.10} + 
+\frac{(655-646.60)^{2}}{646.60} 
++ \frac{(382-358.58)^{2}}{358.58} + \\
+  &amp; &amp; 
+ + \frac{(226-224.23)^{2}}{224.23} + \frac{(180-166.48)^{2}}{166.48}\\
+ &amp; = &amp; 
+5.34.
+\end{eqnarray*}\]</span></p>
+<p>Ahora calculamos el p-valor con la ayuda de R: <code>pchisq(5.34, 4, lower.tail = FALSE)</code>. Obtenemos esta probabilidad es <span class="math inline">\(0.254\)</span>, un 25%.</p>
+<p>Interpretemos: Si los votos en el momento de la encuesta se
+distribuyen como indica el resultado de las elecciones hay un 25% de
+probabilidades de que, por variabilidad del muestreo, en la encuesta
+obtengamos datos como estos o peores (más separados de lo que pasó en
+las elecciones). Otra vez no tenemos evidencia sufieciente para
+pensar que lo obtenido en la encuesta sea diferente de lo que se
+obtuvo en las elecciones. Podemos considerar que la encuesta hizo una
+predicción adecuada de los resultados electorales.</p>
+</div>
+<div id="prueba-chi2-de-bondad-de-ajuste-con-r" class="section level2">
+<h2><span class="header-section-number">13.2</span> Prueba <span class="math inline">\(\chi^2\)</span> de bondad de ajuste con R</h2>
+<p>Hemos visto como calcular el estadístico <span class="math inline">\(\chi^{2}_{0}\)</span> y el p-valor
+con <code>pchisq()</code>. Pero, como podíamos suponer, R tiene una
+función que calcula la prueba <span class="math inline">\(\chi^2\)</span> de bondad de ajuste
+directamente: <code>chisq.test()</code>.</p>
+<p>Para el caso de bondad de ajuste, la función tiene 3 parámetros:</p>
+<p><code>pchisq.test(x, p = rep(1/length(x), length(x)), rescale.p =  FALSE)</code>.</p>
+<p>El primer parámetro, <code>x</code>, es el vector de valores obtenidos en
+nuestra observación o experimento. El segundo parámetro, <code>p</code>,
+es el vector de probabilidades a la que suponemos se ajusta
+<code>x</code>. Debe tener la misma longitud que <code>x</code> y por defecto
+toma el valor de que todas las probabilidades sean iguales. El tercer
+parámetro, <code>rescale.p</code>, es para el caso que hayamos eliminado
+algunos casos minoritario y queremos que reescale el vector de
+probabilidades para que sume 1. Si mantenemos el valor por defecto
+(no se reescala) y el vector de probabilidades no suma 1, nos dará un
+error.</p>
+<p>Al usar esta función, la hipótesis nula es que el vector <code>x</code>
+sigue la distribucion de probabilidades de <code>p</code> y la
+alternativa es que no la sigue. La función nos calcula el estadístico
+<span class="math inline">\(\chi^{2}_{0}\)</span> y el p-valor.</p>
+<p>Veamos el uso de esta función con nuestros dos ejemplos.</p>
+<p><br></p>
+<p><strong>El dado.</strong> Es el caso más simple. Debemos introducir lo que
+hemos obtenido lanzando el dado y como nuestra distribución de
+probabilidades es que todas sean iguales y este es el valor por
+defecto, no hay que escribirlo. Entonces queda:</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" data-line-number="1"><span class="kw">chisq.test</span>(<span class="kw">c</span>(<span class="dv">33</span>, <span class="dv">38</span>, <span class="dv">25</span>,  <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">33</span>))</a></code></pre></div>
+<pre><code>## 
+##  Chi-squared test for given probabilities
+## 
+## data:  c(33, 38, 25, 24, 27, 33)
+## X-squared = 5.0667, df = 5, p-value = 0.4078</code></pre>
+<p>Nos sale exactamente lo mismo: <span class="math inline">\(\chi^{2}_{0}\)</span> = 5.0667 y un p-valor
+de 0.4078.
+<br></p>
+<p><strong>La encuesta.</strong> Este caso es un poco más complejo y tiene
+más posibilidades que vamos a explorar. Empezamos por crear las
+variables:</p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" data-line-number="1">encuesta =<span class="st"> </span><span class="kw">c</span>(<span class="dv">809</span>, <span class="dv">655</span>, <span class="dv">382</span>, <span class="dv">226</span>, <span class="dv">180</span>)</a>
+<a class="sourceLine" id="cb171-2" data-line-number="2">elecciones =<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.3543</span>, <span class="fl">0.2676</span>, <span class="fl">0.1484</span>, <span class="fl">0.0928</span>, <span class="fl">0.0689</span>)</a></code></pre></div>
+<p>Pero si hacemos la prueba, <code>chisq.test(encuesta, p = elecciones)</code>
+obtenemos un mensaje de error:</p>
+<pre><code>Error in chisq.test(encuesta, p = elecciones) : 
+   probabilities must sum to 1.</code></pre>
+<p>R nos ha pillado que las probabilidades no suman 1. Si reescalamos se arregla todo:</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" data-line-number="1"><span class="kw">chisq.test</span>(encuesta, <span class="dt">p =</span> elecciones, <span class="dt">rescale.p =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## 
+##  Chi-squared test for given probabilities
+## 
+## data:  encuesta
+## X-squared = 5.341, df = 4, p-value = 0.2541</code></pre>
+<p>y obtenemos lo mismo que cuando lo hicimos a mano.</p>
+<p>¿Y si hubiéramos añadido el apartado de “otros” qué hbiera salido?
+Es fácil hacerlo. Creamos dos nuevas variables añadiendo lo que nos
+falta y hacemos la prueba:</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" data-line-number="1">encuestaCom =<span class="st"> </span><span class="kw">c</span>(encuesta,<span class="dv">148</span>)</a>
+<a class="sourceLine" id="cb175-2" data-line-number="2">eleccionesCom =<span class="st"> </span><span class="kw">c</span>(elecciones,<span class="fl">0.068</span>)</a>
+<a class="sourceLine" id="cb175-3" data-line-number="3"><span class="kw">chisq.test</span>(encuestaCom,<span class="dt">p =</span> eleccionesCom)</a></code></pre></div>
+<pre><code>## 
+##  Chi-squared test for given probabilities
+## 
+## data:  encuestaCom
+## X-squared = 6.8963, df = 5, p-value = 0.2285</code></pre>
+<p>El p-valor baja un poquito, pero esencialmente no cambia.</p>
+<div id="problematicidad-el-aviso-de-chisq.test" class="section level3">
+<h3><span class="header-section-number">13.2.1</span> Problematicidad: el aviso de chisq.test()</h3>
+<p>Supongamos que el objetivo de resultados académicos de esta asignatura
+fuera tener un 15% de sobresalientes, un 30% de notables, un 40% de
+aprobados, un 10% de suspensos y un 5% de no presentados. Al final
+de un curso con 70 matriculados obtenemos 12 sobresalientes, 18
+notables, 26 aprobados, 10 suspensos y 4 no presentados. Queremos
+saber si podemos considerar que hemos cumplido los objetivos. Hacemos
+un <span class="math inline">\(\chi^2\)</span> de bondad de ajuste con R:</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb177-1" data-line-number="1">obj =<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.15</span>,<span class="fl">0.30</span>,<span class="fl">0.40</span>,<span class="fl">0.10</span>,<span class="fl">0.05</span>)</a>
+<a class="sourceLine" id="cb177-2" data-line-number="2">resAc =<span class="st"> </span><span class="kw">c</span>(<span class="dv">12</span>,<span class="dv">18</span>,<span class="dv">26</span>,<span class="dv">10</span>,<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb177-3" data-line-number="3"><span class="kw">chisq.test</span>(resAc, <span class="dt">p =</span> obj)</a></code></pre></div>
+<pre><code>## Warning in chisq.test(resAc, p = obj): Chi-squared approximation may be
+## incorrect</code></pre>
+<pre><code>## 
+##  Chi-squared test for given probabilities
+## 
+## data:  resAc
+## X-squared = 2.1429, df = 4, p-value = 0.7095</code></pre>
+<p>El p-valor es muy alto, lo que nos puede llevar a pensar que el ajuste es adecuado, pero obtenemos un aviso de que los
+resultados pueden ser incorrectos. ¿Qué ha pasado? Lo que ha pasado es que nuestros datos son demasiado problemáticos. Veamos por qué.</p>
+<p>Al calcular <span class="math inline">\(\chi^{2}_{0}\)</span> cada sumando es una fracción de (obtenido –
+teórico)<span class="math inline">\(^{2}\)</span>/teórico. Si el valor teórico en algún caso es muy
+pequeño esa fraccción será muy grande y dominará sobre las demás. Y
+además cualquier pequeño cambio para este nivel minoritario
+representará un cambio muy grande en el conjunto. En nuestro ejemplo,
+un no presentado más o menos puede cambiarlo todo. Por eso los datos son problemáticos.</p>
+<p>Es importante darse cuenta lo que convierte los datos en problemáticos
+no son los resultados obtenidos, sino los valores teóricos que
+deberíamos obtener. En este caso no nos molesta los 4 no presentados
+obtenidos, sino que teóricamente deberíamos tener 3,5 (un 5% de 70).
+En general, el aviso aparece si el número teórico que deberíamos
+obtener para uno o más niveles es menor que 5.</p>
+<p>La manera más adecuada de resolver el problema es de previsión: un
+breve estudio preliminar nos puede indicar las proporciones
+aproximadas que vamos a obtener y entonces diseñamos el experimento de
+manera que la muestra sea de tamaño suficiente. Pero a veces calculamos mal y tras conseguir la muestra tenemos algún nivel con un valor teórico demasiado bajo. O no podemos elegir el tamaño de la muestra. Por ejemplo en este caso tenemos los alumnos que tenemos y no podemos conseguir más.</p>
+<p>Ya vimos las soluciones posibles: eliminar los no presentados y
+reescalar las probabilidades o unir niveles. En este caso tiene
+sentido unir los no presentados con los suspensos. Lo hacemos así:</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" data-line-number="1">obj2 =<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.15</span>,<span class="fl">0.30</span>,<span class="fl">0.40</span>,<span class="fl">0.15</span>)</a>
+<a class="sourceLine" id="cb180-2" data-line-number="2">resAc2 =<span class="st"> </span><span class="kw">c</span>(<span class="dv">12</span>,<span class="dv">18</span>,<span class="dv">26</span>,<span class="dv">14</span>)</a>
+<a class="sourceLine" id="cb180-3" data-line-number="3"><span class="kw">chisq.test</span>(resAc2, <span class="dt">p =</span> obj2)</a></code></pre></div>
+<pre><code>## 
+##  Chi-squared test for given probabilities
+## 
+## data:  resAc2
+## X-squared = 1.9524, df = 3, p-value = 0.5823</code></pre>
+<p>El aviso ha desaparecido. Tenemos un p-valor de 0,58, lo que nos indica
+que no hay evidencia para pensar que no se hayan cumplido los
+objetivos.</p>
+<p><br></p>
+<p>Ya hemos visto que la prueba de <span class="math inline">\(\chi^2\)</span> de bondad de ajuste es una
+extensión del prop-test si tenemos una variable cualitativa con más de
+dos niveles. Vamos a extender ahora al caso de tener dos variables
+cualitativas. En este caso tenemos dos pruebas de <span class="math inline">\(\chi^2\)</span>: la de
+homogeneidad y la de independencia, que como veremos, es en el fondo
+la misma prueba.</p>
+</div>
+</div>
+<div id="la-prueba-chi2-de-homogeneidad" class="section level2">
+<h2><span class="header-section-number">13.3</span> La prueba <span class="math inline">\(\chi^2\)</span> de homogeneidad</h2>
+<p>Cuando empezaron a utilizarse los cinturones de seguridad en los
+coches había dudas de su efectividad. Incluso había algunos que
+defendían que eran perjudiciales y era más seguro ir sin cinturón.
+Para saber si hay algo de cierto en estas dudas, se recogieron datos
+de accidentes en los que estuvieron involucradas 86 769 personas. De
+estas 13 861 llevaban cinturón y en 72 908, no. Se clasificaron los
+daños recibidos por cada persona involucrada en “nada” (sin daños),
+“leve”, “medio” y “grave”. Los datos, en forma tabular, son los
+siguientes:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">nada</th>
+<th align="right">leve</th>
+<th align="right">medio</th>
+<th align="right">grave</th>
+<th align="right">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>con cinturón</td>
+<td align="right">12 813</td>
+<td align="right">647</td>
+<td align="right">359</td>
+<td align="right">42</td>
+<td align="right">13 861</td>
+</tr>
+<tr class="even">
+<td>sin cinturón</td>
+<td align="right">65 963</td>
+<td align="right">4000</td>
+<td align="right">2642</td>
+<td align="right">303</td>
+<td align="right">72 908</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td align="right">78 776</td>
+<td align="right">4647</td>
+<td align="right">3001</td>
+<td align="right">345</td>
+<td align="right">86 769</td>
+</tr>
+</tbody>
+</table>
+<p>Queremos saber si los que llevaban cinturón salieron mejor parados
+que los que no.</p>
+<p>Empecemos por mostrar los datos gráficamente. En la figura siguiente
+representemos los porcentajes de personas con y sin cinturon para cada una de los niveles de gravedad de los daños.</p>
+<p><img src="imagenes/cinturon.jpg" /><!-- --></p>
+<p>No parece que haya mucha diferencia, aunque vemos en la tabla que la
+diferencia mayor es entre los “grave” y esta diferencia apenas se
+ve en el gráfico.</p>
+<p>Queremos aplicar la misma idea que la prueba <span class="math inline">\(\chi^2\)</span> de bondad de
+ajuste: sumar las diferencias al cuadrado de los valores observados
+con los teóricos. ¿Pero cuáles son los valores teóricos? No tenemos
+una distribución de probabilidad de la que partir.</p>
+<p>Vamos a suponer que la distribución de daños entre los que llevaban
+cinturón es la misma que entre los que no la llevaban. No sé cuál es
+esa distribución, pero supongamos que es la misma en ambos casos.
+¿Cuántos casos debería haber en cada una de las 8 celdas de la tabla?</p>
+<p>Queremos una tabla con los mismo valores que tenemos en los totales
+de filas y columnas pero que tengan en ambas filas la misma
+distribución. Nótese que no hay ninguna diferencia <em>a priori</em>
+entre las dos variables, por lo tanto podríamos buscar que tuvieran
+las mismas distribuciones en las columnas. Los resultados serían
+idénticos. Fijémonos en la primera columna. Queremos que haya un
+total de 78 776 y que su proporción sea de 13 861 a 72 908. No es
+difícil ver que queremos
+<span class="math display">\[\frac{78~776}{13~861 + 72~908}\times 13~861 = 12~584,15\]</span>
+en la fila superior y
+<span class="math display">\[\frac{78~776}{13~861 + 72~908}\times 72~908 = 66~191,85\]</span>
+en la fila inferior.</p>
+<p>Repetimos para todas las columnas y obtenemos la tabla de valores
+teóricos siguiente:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">nada</th>
+<th align="right">leve</th>
+<th align="right">medio</th>
+<th align="right">grave</th>
+<th align="right">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>con cinturón</td>
+<td align="right">12 584,15</td>
+<td align="right">742,34</td>
+<td align="right">479,40</td>
+<td align="right">55,11</td>
+<td align="right">13 861</td>
+</tr>
+<tr class="even">
+<td>sin cinturón</td>
+<td align="right">66 191,85</td>
+<td align="right">3904,66</td>
+<td align="right">2521,60</td>
+<td align="right">289,89</td>
+<td align="right">72 908</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td align="right">78 776</td>
+<td align="right">4647</td>
+<td align="right">3001</td>
+<td align="right">345</td>
+<td align="right">86 769</td>
+</tr>
+</tbody>
+</table>
+<p>Ahora podemos calcular el estadístico <span class="math inline">\(\chi_{0}^{2}\)</span> igual que lo
+hacíamos en el caso de bondad de ajuste:
+<span class="math display">\[\chi_{0}^{2} = \frac{(12~813 - 12~584,15)^{2}}{12~584,15} + 
+\frac{(647-742,34)^{2}}{742,34} + \cdots + 
+\frac{(303-289,89)^{2}}{289,89} = 59,22\]</span></p>
+<p>El número de grados de libertad es el número de filas menos uno por el
+número de columnas menos uno: <span class="math inline">\((4-1)(2-1) = 3\)</span>: si nos dan los
+totales y el valor de 3 de las celdas, podemos reconstruir la tabla entera.</p>
+<p>Ahora podemos calcular la probabilidad de, si las distribuciones
+fueran iguales, obtener un valor de <span class="math inline">\(\chi_{0}^{2}\)</span> como este o aún
+mayor: <code>pchisq(59.224, 3, lower.tail = FALSE)</code>.La
+probabilidad es de <span class="math inline">\(8,6\times 10^{-13}\)</span>, es decir, minúscula. Lo más
+probable es que las distribuciones sean diferentes entre los que
+lleven cinturón y los que no. Es decir, que a la hora de sufrir daños
+en un accidente no es lo mismo llevar cinturón que no. La prueba de
+<span class="math inline">\(\chi^2\)</span> no nos dice cuál es “mejor”, sólo que son distintos. Mirando los
+datos y las gráficas hemos de establecer qué diferencias hay y lo
+importantes que son. En este caso vemos que los que llevan cinturón
+tienen una mayor probabilidad de no sufrir ningún daño, una pequeña
+menor probabilidad de tener daños leves o medios y una probabilidad
+bastante menor de sufrir daños graves. Vemos que hay una clara
+correlación entre llevar cinturón y la gravedad de las lesiones en un
+accidente. Por medios no estadísticos, podemos establecer que llevar
+cinturón causa una disminución de las lesiones, sobre todo de las
+graves, en caso de accidente.</p>
+<div id="definición-formal" class="section level3">
+<h3><span class="header-section-number">13.3.1</span> Definición formal</h3>
+<p>Generalicemos lo que hemos hecho en este ejemplo. Tenemos dos
+variables, que llamaremos A y B, ambas cualitativas. La variable A
+tiene niveles <span class="math inline">\(a_{1}, \dots, a_{i}, \dots, a_{n}\)</span> y la variable B
+tiene niveles <span class="math inline">\(b_{1}, \dots, b_{j}, \dots, b_{m}\)</span>. Los valores
+observados <span class="math inline">\(o_{ij}\)</span> los tenemos en la tabla de contingencias de frecuencias
+absolutas es:</p>
+<p><span class="math display">\[
+    \begin{array}{c|ccccc|c}
+         &amp; b_{1} &amp; … &amp; b_{j} &amp; … &amp; b_{m} &amp; Totales\\\hline
+   a_{1} &amp; o_{11} &amp; … &amp;o_{1j} &amp; … &amp; o_{1m} &amp; T_{a1} \\
+       … &amp; … &amp; … &amp; … &amp; … &amp; … &amp; … \\
+   a_{i} &amp; o_{i1} &amp; … &amp;o_{ij} &amp; … &amp; o_{im} &amp; T_{ai} \\
+       … &amp; … &amp; … &amp; … &amp; … &amp; … &amp; … \\
+   a_{n} &amp; o_{n1} &amp; … &amp;o_{nj} &amp; … &amp; o_{nm} &amp; T_{an} \\\hline
+    Totales &amp; T_{b1} &amp; … &amp; T_{bj} &amp; … &amp; T_{bm} &amp; T
+    \end{array}\]</span></p>
+<p>Los totales de fila <span class="math inline">\(T_{ai} = o_{i1} + \cdots + o_{ij} + \cdots + o_{im}\)</span> son el total de individuos que hay en cada nivel de la
+variable A y análogamente con los totales de columnas <span class="math inline">\(T_{bj}\)</span>.
+Naturalmente, <span class="math inline">\(T\)</span> es el total de individuos de la tabla.</p>
+<p>Para calcular los valores teóricos <span class="math inline">\(t_{ij}\)</span> seguimos lo hecho en el
+ejemplo. Vemos entonces que son
+<span class="math display">\[t_{ij} = \frac{T_{bj}}{T} \cdot T_{ai} = \frac{T_{ai}\cdot T_{bj}}{T}\]</span>
+Este cálculo es simétrico en filas y columnas, es decir, si
+trasponemos la tabla y convertimos las filas en columnas y viceversa,
+obtenemos los mismos valores teóricos, como debe ser.</p>
+<p>Con los valores observados y teóricos, el valor de <span class="math inline">\(\chi_{0}^{2}\)</span> es</p>
+<p><span class="math display">\[\chi_{0}^{2} = \sum_{i,j} \frac{(o_{ij} - t_{ij})^{2}}{t_{ij}}\]</span></p>
+<p>Y con este valor de <span class="math inline">\(\chi_{0}^{2}\)</span> podemos calcular el p-valor usando
+la distribución <span class="math inline">\(\chi^{2}\)</span> con <span class="math inline">\((n-1)(m-1)\)</span> grados de libertad.</p>
+</div>
+<div id="prueba-chi2-como-contraste-de-hipótesis" class="section level3">
+<h3><span class="header-section-number">13.3.2</span> Prueba <span class="math inline">\(\chi^2\)</span> como contraste de hipótesis</h3>
+<p>Reescribamos lo visto de manera formal. Tenemos dos variables
+cualitativas, en el ejemplo, una variable es el cinturón, con dos
+niveles: “con” y “sin”; la otra variable es el nivel de lesiones tras
+el accidente, con cuatro niveles “nada”, “leve”, “medio” y
+“grave”. La hipótesis nula es H0: <span class="math inline">\(\chi_{0}^{2} = 0\)</span> que sucede si una variable sigue la misma distribución con respecto a los niveles de la otra variable (es homogenea). La hipótesis alternativa es Ha: <span class="math inline">\(\chi_{0}^{2} &gt; 0\)</span>, que sucede cuando no siguen la misma distribución.. El estadístico es <span class="math inline">\(\chi_{0}^{2}\)</span>, el sumatorio de (observado – teórico)<span class="math inline">\(^{2}\)</span>/teórico. Los valores teóricos se calculan fácilmente a partir de los observados. La distribución es una <span class="math inline">\(\chi^2\)</span> y podemos calcular el p-valor: la probabilidad, suponiendo cierta la hipótesis nula, de obtener un valor de <span class="math inline">\(\chi_{0}^{2}\)</span> como el obtenido o mayor.</p>
+</div>
+<div id="prueba-chi2-de-homogeneidad-con-r" class="section level3">
+<h3><span class="header-section-number">13.3.3</span> Prueba <span class="math inline">\(\chi^2\)</span> de homogeneidad con R</h3>
+<p>Hemos visto como calcular el estadístico <span class="math inline">\(\chi^{2}_{0}\)</span> y el p-valor
+con <code>pchisq()</code>. También hemos visto que es necesario calcular
+previemante los valores esperados. No es que sea difícil, pero es un
+tanto largo y complejo. Es más conveniente usar <code>chisq.test()</code>.</p>
+<p>En el caso de la prueba de homogeneidad hemos de darle los datos como
+una matriz de observaciones. No es necesario dar las
+probabilidades, que ni siquiera existen. Creamos los vectores <code>con</code>
+(con cinturón) y <code>sin</code> (sin cinturón) la matriz y añadimos
+nombres para que sea más legible. A partir de estos dos vectores
+creamos la matriz con la instrucción <code>rbind()</code>:</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" data-line-number="1">con =<span class="st"> </span><span class="kw">c</span>(<span class="dv">12813</span>, <span class="dv">647</span>,<span class="dv">359</span>,<span class="dv">42</span>)</a>
+<a class="sourceLine" id="cb182-2" data-line-number="2"><span class="kw">names</span>(con) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;nada&quot;</span>, <span class="st">&quot;leve&quot;</span>, <span class="st">&quot;medio&quot;</span>, <span class="st">&quot;grave&quot;</span>)</a>
+<a class="sourceLine" id="cb182-3" data-line-number="3">sin =<span class="st"> </span><span class="kw">c</span>(<span class="dv">65963</span>,<span class="dv">4000</span>,<span class="dv">2642</span>,<span class="dv">303</span>)</a>
+<a class="sourceLine" id="cb182-4" data-line-number="4"><span class="kw">names</span>(sin) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;nada&quot;</span>, <span class="st">&quot;leve&quot;</span>, <span class="st">&quot;medio&quot;</span>, <span class="st">&quot;grave&quot;</span>)</a>
+<a class="sourceLine" id="cb182-5" data-line-number="5">cint =<span class="st"> </span><span class="kw">rbind</span>(con,sin)</a></code></pre></div>
+<p>Teniendo la matriz, la instrucción <code>chisq.test(cint)</code> nos da lo que queremos:</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" data-line-number="1"><span class="kw">chisq.test</span>(cint)</a></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  cint
+## X-squared = 59.224, df = 3, p-value = 8.61e-13</code></pre>
+</div>
+</div>
+<div id="la-prueba-chi2-de-independencia" class="section level2">
+<h2><span class="header-section-number">13.4</span> La prueba <span class="math inline">\(\chi^{2}\)</span> de independencia</h2>
+<p>Como vimos al estudiar teoría de probabilidad, decimos que dos
+variables aleatorias A y B son independientes si y sólo si Prob[A y B]
+= Prob[A]<span class="math inline">\(\cdot\)</span>Prob[B] para cualquier par de valores que puedan tomar
+las variables. Si A y B son variables discretas y finitas,
+podemos estudiar la independencia de dos variables mediante un
+experimento estadístico. Para ello debemos coger una muestra y
+comparar <em>en conjunto</em> las probabilidades Prob[A y B] y
+Prob[A]<span class="math inline">\(\cdot\)</span>Prob[B]. Como estos estudios conjuntos los hemos hecho
+con una prueba de <span class="math inline">\(\chi^2\)</span>, parece razonable pensar que podemos usar una
+prueba de <span class="math inline">\(\chi^2\)</span> para determinar la independencia de probabilidad de dos
+variables. Veamos cómo se hace.</p>
+<p>Hemos cogido nuestra muestra y esto da lugar a una tabla de
+contingencia de valores observados como la que hemos mostrado
+anteriormente y reproducimos aquí:</p>
+<p><span class="math display">\[
+    \begin{array}{c|ccccc|c}
+         &amp; b_{1} &amp; … &amp; b_{j} &amp; … &amp; b_{m} &amp; Totales\\\hline
+   a_{1} &amp; o_{11} &amp; … &amp;o_{1j} &amp; … &amp; o_{1m} &amp; T_{a1} \\
+       … &amp; … &amp; … &amp; … &amp; … &amp; … &amp; … \\
+   a_{i} &amp; o_{i1} &amp; … &amp;o_{ij} &amp; … &amp; o_{im} &amp; T_{ai} \\
+       … &amp; … &amp; … &amp; … &amp; … &amp; … &amp; … \\
+   a_{n} &amp; o_{n1} &amp; … &amp;o_{nj} &amp; … &amp; o_{nm} &amp; T_{an} \\\hline
+    Totales &amp; T_{b1} &amp; … &amp; T_{bj} &amp; … &amp; T_{bm} &amp; T
+    \end{array}
+\]</span></p>
+<p>De esta tabla podemos leer la probabilidad Prob[(A = <span class="math inline">\(a_{i}\)</span>) y (B =
+<span class="math inline">\(b_{j}\)</span>)]: es <span class="math inline">\(o_{ij}/T\)</span>. Esto quiere decir que <span class="math inline">\(o_{ij}\)</span> = Prob[(A =
+<span class="math inline">\(a_{i}\)</span>) y (B = <span class="math inline">\(b_{j}\)</span>)]<span class="math inline">\(\cdot T\)</span>. Para poder comparar, hemos de
+calcular cuántos teóricamente deberíamos tener si la probabilidad
+fuera el producto de probabilidades. Es fácil ver que es:
+<span class="math display">\[t_{ij} = \mbox{Prob[A } = a_{i}] \cdot \mbox{Prob[B } = b_{j}] 
+\cdot \mbox{T}\]</span>
+Las dos probabilidades Prob[A = <span class="math inline">\(a_{i}\)</span>] y Prob[B = <span class="math inline">\(b_{j}\)</span>] también
+las podemos sacar de la tabla:
+<span class="math display">\[ \mbox{Prob[A } = a_{i}] = \frac{T_{ai}}{T} \quad \mbox{y} \quad
+\mbox{Prob[B } = b_{j}] = \frac{T_{bj}}{T}.\]</span>
+Y nos queda
+<span class="math display">\[t_{ij} = \frac{T_{ai}}{T} \cdot \frac{T_{bj}}{T} \cdot T = \frac{T_{ai}\cdot T_{bj}}{T}\]</span>
+Que es exactamente el mismo valor teórico que habíamos obtenido
+en la prueba de homogeneidad. Por lo tanto, desde el punto de vista
+del cálculo, las pruebas de homogeneidad y de independencia son la
+misma prueba.</p>
+<p>Si lo pensamos un poco, es lo natural: si, por ejemplo, el color de
+ojos fuera independiente del color de pelo, entonces podríamos
+esperar que para cada color de pelo la distribución de color de ojos
+fuera siempre la misma. Como no lo es, sabemos que no son
+independientes. Y análogamente, si vemos que hay la misma distribución
+del color de pelo para cada color de ojos, querría decir que ambos
+colores son independentes. Como las distribuciones no son iguales,
+establecemos que hay una dependencia.</p>
+<p>En conclusión, la prueba de <span class="math inline">\(\chi^2\)</span> de homogeneidad y la prueba de <span class="math inline">\(\chi^2\)</span>
+de independencia son en el fondo la misma prueba. Lo que cambia es la
+forma de plantear la pregunta.</p>
+<hr />
+<p>Hay una diferencia importante
+que no tratamos aquí: el diseño de un experimento donde queremos
+estudiar la independencia es diferente del diseño que haríamos en el
+caso de homogeneidad. Dado que en esta asignatura no estudiamos
+diseño de experimentos, podemos considerar la diferencia entre ambas
+pruebas de <span class="math inline">\(\chi^2\)</span> una cuestión de nomenclatura y nada más.
+***</p>
+<div id="prueba-chi2-de-independencia-como-contraste-de-hipótesis" class="section level3">
+<h3><span class="header-section-number">13.4.1</span> Prueba <span class="math inline">\(\chi^2\)</span> de independencia como contraste de hipótesis</h3>
+<p>¿Cuál es la hipótesis nula en la prueba de <span class="math inline">\(\chi^2\)</span> de independencia?
+Tiene que ser “la misma” que en el caso de homogeneidad. Como
+acabamos de ver, si hay homogeneidad, es que tenemos independencia.
+Luego, informalmente, la hipótesis nula es que hay independencia, y la
+alternativa es que no, que hay dependencias entre las variables.
+Formalmente, la nula es que <span class="math inline">\(\chi^{2}_{0} = 0\)</span> y la alternativa es que
+<span class="math inline">\(\chi^{2}_{0} &gt; 0\)</span>. Formamente en el contraste de hipótesis la hipótesis nula es H0: <span class="math inline">\(\chi^{2} = 0\)</span>, que es lo que tendríamos si las variables fueran
+independientes. La hipótesis alternativa es Ha: <span class="math inline">\(\chi^{2} &gt; 0\)</span>, que es lo que debe aarecer si las variables no son independientes. A partir de la muestra calculamos
+<span class="math display">\[\chi^{2}_{0} = \sum \frac{(\mbox{observado} - 
+            \mbox{teórico})^{2}}{\mbox{teórico}}.\]</span></p>
+<p>Esto nos permite calcular el p-valor como Prob[<span class="math inline">\(X &gt; \chi^{2}_{0} \; |\; \chi^{2} = 0\)</span>].</p>
+</div>
+<div id="un-ejemplo-3" class="section level3">
+<h3><span class="header-section-number">13.4.2</span> Un ejemplo</h3>
+<p>Queremos saber si el consumo de tabaco en adolescentes depende del
+sexo. Usamos el conjunto de datos <code>samhda</code> del paquete UsingR
+que contiene datos del comportamiento de chicos en edad escolar.
+Usamos dos variables: <code>amt.smoke</code>, que indica la cantidad de
+días que ha fumado en el último mes, y la variable <code>gender</code>,
+con el sexo. La codificación de las variables es la siguiente:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">amt.smoke</th>
+<th align="left">gender</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1: todos los días</td>
+<td align="left">1: hombre</td>
+</tr>
+<tr class="even">
+<td align="left">2: 20 a 29 días</td>
+<td align="left">2: mujer</td>
+</tr>
+<tr class="odd">
+<td align="left">3: 10 a 19 días</td>
+<td align="left">7: NS/NC</td>
+</tr>
+<tr class="even">
+<td align="left">4: 6 a 9 días</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">5: 3 a 5 días</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">6: 1 a 2 días</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">7: ningún día</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">98 y 99: NS/NC</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Empezamos por crear un data frame reducido, que llamaremos <code>Aux</code>
+con las dos variables que nos interesan y quitando los NS/NC. Después
+crearemos la tabla de contingencias de frecuencias absolutas.
+Llamaremos esta tabla TabSex:</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" data-line-number="1"><span class="kw">library</span>(UsingR)</a>
+<a class="sourceLine" id="cb185-2" data-line-number="2">Aux =<span class="st"> </span><span class="kw">subset</span>(samhda, amt.smoke <span class="op">&lt;</span><span class="st"> </span><span class="dv">98</span> <span class="op">&amp;</span><span class="st"> </span>gender <span class="op">&lt;</span><span class="st"> </span><span class="dv">7</span>, </a>
+<a class="sourceLine" id="cb185-3" data-line-number="3">                             <span class="dt">select =</span> <span class="kw">c</span>( <span class="st">&quot;gender&quot;</span>, <span class="st">&quot;amt.smoke&quot;</span>))</a>
+<a class="sourceLine" id="cb185-4" data-line-number="4">TabSex =<span class="st"> </span><span class="kw">table</span>(Aux)</a></code></pre></div>
+<p>La tabla resultante es la siguiente:</p>
+<pre><code>                amt.smoke
+ gender   1   2   3   4   5   6   7 
+    1    16   3   5   6   7  24  64
+    2    16   4   8   4   7  19  40</code></pre>
+<p>Vemos que dados algunos valores bajos, sospechamos que al hacer el
+<span class="math inline">\(\chi^2\)</span> tendremos el aviso de la función. Antes de seguir, lo
+comprobamos. Y efectivamente es así:</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" data-line-number="1"><span class="kw">chisq.test</span>(TabSex)</a></code></pre></div>
+<pre><code>## Warning in chisq.test(TabSex): Chi-squared approximation may be incorrect</code></pre>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  TabSex
+## X-squared = 4.1468, df = 6, p-value = 0.6568</code></pre>
+<p>Podemos juntar las columnas con valores 2 y 3 por un lado y con
+valores 4 y 5 por otro. Así tendríamos los niveles “Siempre”, “A menudo”, “Ocasionalmente”, “Casi nunca” y “Nunca”, lo que parece bastante razonable.</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" data-line-number="1">TabSex2 =<span class="st"> </span><span class="kw">cbind</span>(TabSex[,<span class="dv">1</span>], TabSex[,<span class="dv">2</span>] <span class="op">+</span><span class="st"> </span>TabSex[,<span class="dv">3</span>], </a>
+<a class="sourceLine" id="cb190-2" data-line-number="2">                TabSex[,<span class="dv">4</span>] <span class="op">+</span><span class="st"> </span>TabSex[,<span class="dv">5</span>], TabSex[,<span class="dv">6</span>], TabSex[,<span class="dv">7</span>])</a>
+<a class="sourceLine" id="cb190-3" data-line-number="3"><span class="kw">colnames</span>(TabSex2) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Siempre&quot;</span>, <span class="st">&quot;A menudo&quot;</span>, <span class="st">&quot;Ocasionalmente&quot;</span>, </a>
+<a class="sourceLine" id="cb190-4" data-line-number="4">                           <span class="st">&quot;Casi nunca&quot;</span>, <span class="st">&quot;Nunca&quot;</span>)</a></code></pre></div>
+<p>Hacemos la gráfica:</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" data-line-number="1"><span class="kw">barplot</span>(<span class="kw">prop.table</span>(TabSex2, <span class="dv">1</span>), <span class="dt">beside =</span> T, </a>
+<a class="sourceLine" id="cb191-2" data-line-number="2">             <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;lightblue&quot;</span>, <span class="st">&quot;forestgreen&quot;</span>))</a>
+<a class="sourceLine" id="cb191-3" data-line-number="3"><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Hombres&quot;</span>, <span class="st">&quot;Mujeres&quot;</span>), </a>
+<a class="sourceLine" id="cb191-4" data-line-number="4">           <span class="dt">fill =</span> <span class="kw">c</span>(<span class="st">&quot;lightblue&quot;</span>, <span class="st">&quot;forestgreen&quot;</span>))</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-109-1.png" width="672" /></p>
+<p>Vemos que hay algunas diferencias, las mayores en los niveles “A
+menudo” y “Nunca”’. Veremos si esto es suficiente para romper la
+independencia.</p>
+<p>Hacemos la prueba de <span class="math inline">\(\chi^2\)</span> . La hipótesis nula es que el consumo de
+tabaco es independiente del sexo y la alternativa es que sí depende.</p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" data-line-number="1"><span class="kw">chisq.test</span>(TabSex2)</a></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  TabSex2
+## X-squared = 3.8743, df = 4, p-value = 0.4233</code></pre>
+<p>Con un p-valor de 0,42 estos datos no aportan evidencia para
+apartarnos de la hipótesis nula. Consideramos que el consumo de
+tabaco es el mismo para dolescentes de ambos sexos.</p>
+</div>
+</div>
+<div id="resumen-4" class="section level2">
+<h2><span class="header-section-number">13.5</span> Resumen</h2>
+<p>Si tenemos una variable cualitativa con sólo dos niveles y queremos saber si el número de “exitos” es algún valor previsto concreto, podemos hacer un prop-test. Si tenemos más de dos niveles, ya no podemos usar el prop-test, pues tendríamos que hacer muchas pruebas y la probabilidad de error se va a acumular. Es el mismo problema que teníamos con el ANOVA. Y al igual que con el ANOVA, la solución es utilizar una nueva prueba que calcule lo bien qeu se ajustan todos los niveles simultáneamente: es la prueba de %^2$ de bondad de ajuste.</p>
+<p>Es en el fondo un contraste de hipótesis donde la hipótesis nula es, informalmente, que todos los niveles siguen las probabilidades de alguna distribución prefijada, y la alternativa es que no lo siguen. La función de R <code>chisq.test()</code> nos realiza lso cálculos.</p>
+<p>Si nuestros datos son tales que los niveles menos abundantes tienen muy pocos casos teóricos, típicamente menos que 5, consideramos que son datos demasiado problemáticos. Podemos obtener un valor de <span class="math inline">\(\chi_0^2\)</span> y un p-valor, pero son poco fiables. En este caso a veces tenemos la posibilidad de agrupar los casos menos abundantes en “otros” o directamente eliminarlos. Pero hay que ir con cuidado, pues esto no siempre tiene sentido.</p>
+<p><br></p>
+<p>Si tenemos dos variables cualitativas, hay dos pruebas basadas en
+<span class="math inline">\(\chi^2\)</span> que podemos realizar. Una es la prueba de homogeneidad en la que
+la hipótesis nula es que las distribuciones de todas las filas (o
+columnas) es la misma, mientras que la alternativa es que no son
+todas la misma. La otra prueba es la prueba de <span class="math inline">\(\chi^2\)</span> de independencia,
+en la que la hipótesis nula es que las dos variables son
+independientes y la alternativa es que no lo son.
+Desde el punto de vista del cálculo a realizar, las dos pruebas son la
+misma, lo que cambia es la forma de plantear la pregunta que queremos
+contesar.</p>
+<p>Para realizar las pruebas con R usamos la función
+<code>chisq.test(tcont)</code>. Tiene un único parámetro que es la tabla de
+contingencia de frecuencias absolutas.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="anova.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="regresión-lineal.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/15_JiCuadrado.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Estadística.pdf", "Estadística.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
