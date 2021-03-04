@@ -304,6 +304,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.8" data-path="problemas.html"><a href="problemas.html#regresión-lineal-1"><i class="fa fa-check"></i><b>15.8</b> Regresión Lineal</a></li>
 <li class="chapter" data-level="15.9" data-path="problemas.html"><a href="problemas.html#problemas-con-todo"><i class="fa fa-check"></i><b>15.9</b> Problemas con todo</a></li>
 <li class="chapter" data-level="15.10" data-path="problemas.html"><a href="problemas.html#campos-elíseos"><i class="fa fa-check"></i><b>15.10</b> Campos Elíseos</a></li>
+<li class="chapter" data-level="15.11" data-path="problemas.html"><a href="problemas.html#tipos-de-datos-1"><i class="fa fa-check"></i><b>15.11</b> Tipos de datos</a></li>
+<li class="chapter" data-level="15.12" data-path="problemas.html"><a href="problemas.html#estadística-descriptiva-1"><i class="fa fa-check"></i><b>15.12</b> Estadística descriptiva</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -363,16 +365,16 @@ cada una. Un «0» representa un fracaso y un «1» representa
 un éxito. Lo metemos en una matriz de 200 filas y 1000 columnas.
 Cada columna es una muestra. El código de R para hacer esto es el
 siguiente:</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1"><span class="co"># La proporción </span></a>
-<a class="sourceLine" id="cb75-2" data-line-number="2">pr =<span class="st"> </span><span class="fl">0.38</span></a>
-<a class="sourceLine" id="cb75-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb75-4" data-line-number="4"><span class="co"># 1000 muestras de 200 individuos</span></a>
-<a class="sourceLine" id="cb75-5" data-line-number="5">dt =<span class="st"> </span><span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">1</span>, <span class="dv">200000</span>, <span class="dt">replace =</span> T, <span class="dt">prob =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">-</span>pr,pr))</a>
-<a class="sourceLine" id="cb75-6" data-line-number="6">muestreo =<span class="st"> </span><span class="kw">matrix</span>(dt, <span class="dt">nrow =</span> <span class="dv">200</span>, <span class="dt">ncol =</span> <span class="dv">1000</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" data-line-number="1"><span class="co"># La proporción </span></a>
+<a class="sourceLine" id="cb128-2" data-line-number="2">pr =<span class="st"> </span><span class="fl">0.38</span></a>
+<a class="sourceLine" id="cb128-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb128-4" data-line-number="4"><span class="co"># 1000 muestras de 200 individuos</span></a>
+<a class="sourceLine" id="cb128-5" data-line-number="5">dt =<span class="st"> </span><span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">1</span>, <span class="dv">200000</span>, <span class="dt">replace =</span> T, <span class="dt">prob =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">-</span>pr,pr))</a>
+<a class="sourceLine" id="cb128-6" data-line-number="6">muestreo =<span class="st"> </span><span class="kw">matrix</span>(dt, <span class="dt">nrow =</span> <span class="dv">200</span>, <span class="dt">ncol =</span> <span class="dv">1000</span>)</a></code></pre></div>
 <p>Calculamos la proporción de éxitos de cada prueba. Como astutamente
 los éxitos son «1» y los fracasos son «0», nos basta sumar las
 columnas y dividir por el tamaño de la muestra:</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1">zetatecho =<span class="st"> </span><span class="kw">colSums</span>(muestreo)<span class="op">/</span><span class="dv">200</span></a></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" data-line-number="1">zetatecho =<span class="st"> </span><span class="kw">colSums</span>(muestreo)<span class="op">/</span><span class="dv">200</span></a></code></pre></div>
 <p>En estadística se pone un circunflejo (<span class="math inline">\(\hat{}\)</span>) encima de una variable
 para indicar que es el valor medido en un muestreo de esa variable.
 Así, <span class="math inline">\(\theta\)</span> es la proporción en una población, mientras que <span class="math inline">\(\hat{\theta}\)</span>,
@@ -392,14 +394,14 @@ de lo que nos queda. Para ello ordenamos los <span class="math inline">\(\hat{\t
 que está en la posición 50 y 950. Para poder reutilizar el código,
 usamos unas variables que calculan las posiciones que tenemos que
 mirar para obtener este rango:</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1"><span class="co"># Las ordenamos</span></a>
-<a class="sourceLine" id="cb77-2" data-line-number="2">zetatecho =<span class="st"> </span><span class="kw">sort</span>(zetatecho)</a>
-<a class="sourceLine" id="cb77-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb77-4" data-line-number="4"><span class="co"># El 90% central</span></a>
-<a class="sourceLine" id="cb77-5" data-line-number="5">prob1 =<span class="st"> </span><span class="fl">0.90</span></a>
-<a class="sourceLine" id="cb77-6" data-line-number="6">zetatecho[((<span class="dv">1</span><span class="op">-</span>prob1)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1"><span class="co"># Las ordenamos</span></a>
+<a class="sourceLine" id="cb130-2" data-line-number="2">zetatecho =<span class="st"> </span><span class="kw">sort</span>(zetatecho)</a>
+<a class="sourceLine" id="cb130-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb130-4" data-line-number="4"><span class="co"># El 90% central</span></a>
+<a class="sourceLine" id="cb130-5" data-line-number="5">prob1 =<span class="st"> </span><span class="fl">0.90</span></a>
+<a class="sourceLine" id="cb130-6" data-line-number="6">zetatecho[((<span class="dv">1</span><span class="op">-</span>prob1)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
 <pre><code>## [1] 0.325</code></pre>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1">zetatecho[((<span class="dv">1</span><span class="op">+</span>prob1)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" data-line-number="1">zetatecho[((<span class="dv">1</span><span class="op">+</span>prob1)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
 <pre><code>## [1] 0.435</code></pre>
 <p>En esta simulación en concreto obtenemos que el rango está entre
 0,325 y 0,435. Es decir que si escogemos una muestra de las 1000 al
@@ -417,18 +419,18 @@ el valor de la población total esté <span class="math inline">\(0.055\)</span>
 este valor.</p>
 <p>Podemos repetir esto con cualquier probabilidad que queramos. Por
 ejemplo 0.8 o 0.95:</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" data-line-number="1"><span class="co"># El 80% central</span></a>
-<a class="sourceLine" id="cb81-2" data-line-number="2">prob2 =<span class="st"> </span><span class="fl">0.80</span></a>
-<a class="sourceLine" id="cb81-3" data-line-number="3">zetatecho[((<span class="dv">1</span><span class="op">-</span>prob2)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" data-line-number="1"><span class="co"># El 80% central</span></a>
+<a class="sourceLine" id="cb134-2" data-line-number="2">prob2 =<span class="st"> </span><span class="fl">0.80</span></a>
+<a class="sourceLine" id="cb134-3" data-line-number="3">zetatecho[((<span class="dv">1</span><span class="op">-</span>prob2)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
 <pre><code>## [1] 0.335</code></pre>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" data-line-number="1">zetatecho[((<span class="dv">1</span><span class="op">+</span>prob2)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1">zetatecho[((<span class="dv">1</span><span class="op">+</span>prob2)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
 <pre><code>## [1] 0.425</code></pre>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1"><span class="co"># El 95% central</span></a>
-<a class="sourceLine" id="cb85-2" data-line-number="2">prob3 =<span class="st"> </span><span class="fl">0.95</span></a>
-<a class="sourceLine" id="cb85-3" data-line-number="3">zetatecho[((<span class="dv">1</span><span class="op">-</span>prob3)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1"><span class="co"># El 95% central</span></a>
+<a class="sourceLine" id="cb138-2" data-line-number="2">prob3 =<span class="st"> </span><span class="fl">0.95</span></a>
+<a class="sourceLine" id="cb138-3" data-line-number="3">zetatecho[((<span class="dv">1</span><span class="op">-</span>prob3)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
 <pre><code>## [1] 0.315</code></pre>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1">zetatecho[((<span class="dv">1</span><span class="op">+</span>prob3)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
-<pre><code>## [1] 0.445</code></pre>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" data-line-number="1">zetatecho[((<span class="dv">1</span><span class="op">+</span>prob3)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
+<pre><code>## [1] 0.45</code></pre>
 <p>En estos casos obtenemos que hay una probabilidad de 0.8 de que la proporción
 de la población total <span class="math inline">\(\theta\)</span> esté en <span class="math inline">\([0.335, 0.425]\)</span> o, lo que es lo
 mismo, en <span class="math inline">\(\hat{\theta}\pm 0,045\)</span> (en esta simulación concreta. En otras
@@ -688,27 +690,27 @@ siendo aleatoria, cada vez que ejecute el programa me saldrá la misma
 secuencia. Esto significa que si ejecutan este <em>script</em>
 deberían obtener exactamente los mismos resultados que los mostrados
 aquí.</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1"><span class="co"># Recreamos los datos de los 5738 soldados escoceses tomados por Quetelet. </span></a>
-<a class="sourceLine" id="cb89-2" data-line-number="2"><span class="co"># Medida de pecho: 101.1 cm de media y 5.2 cm de desviacion tipica. Usamos</span></a>
-<a class="sourceLine" id="cb89-3" data-line-number="3"><span class="co"># set.seed para poder reproducir valores aleatorios</span></a>
-<a class="sourceLine" id="cb89-4" data-line-number="4"><span class="kw">set.seed</span>(<span class="dv">2101</span>)</a>
-<a class="sourceLine" id="cb89-5" data-line-number="5">chest =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">5738</span>,<span class="fl">101.1</span>,<span class="fl">5.2</span>)</a>
-<a class="sourceLine" id="cb89-6" data-line-number="6">mu =<span class="st"> </span><span class="kw">mean</span>(chest)</a></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" data-line-number="1"><span class="co"># Recreamos los datos de los 5738 soldados escoceses tomados por Quetelet. </span></a>
+<a class="sourceLine" id="cb142-2" data-line-number="2"><span class="co"># Medida de pecho: 101.1 cm de media y 5.2 cm de desviacion tipica. Usamos</span></a>
+<a class="sourceLine" id="cb142-3" data-line-number="3"><span class="co"># set.seed para poder reproducir valores aleatorios</span></a>
+<a class="sourceLine" id="cb142-4" data-line-number="4"><span class="kw">set.seed</span>(<span class="dv">2101</span>)</a>
+<a class="sourceLine" id="cb142-5" data-line-number="5">chest =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">5738</span>,<span class="fl">101.1</span>,<span class="fl">5.2</span>)</a>
+<a class="sourceLine" id="cb142-6" data-line-number="6">mu =<span class="st"> </span><span class="kw">mean</span>(chest)</a></code></pre></div>
 <p>La media de toda la población la representamos con una letra<br />
 griega, <span class="math inline">\(\mu\)</span>. En este caso, es <span class="math inline">\(\mu =\)</span> 101.07, ligeramente diferente del 101.1 introducido en <code>rnorm()</code>. Vamos a coger ahora 1000
 muestras diferentes, cada una de 15 individuos. Lo vamos a organizar
 en una matriz donde cada columna es una muestra. No es necesario
 coger las 1000 muestras una por una: basta coger los 15 000 valores de
 golpe y organizarlos adecuadamente.</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1"><span class="co"># Creamos 1000 muestras de 15 elementos</span></a>
-<a class="sourceLine" id="cb90-2" data-line-number="2">dt =<span class="st"> </span><span class="kw">sample</span>(chest, <span class="dv">15000</span>, <span class="dt">replace =</span> T)</a>
-<a class="sourceLine" id="cb90-3" data-line-number="3">muestras =<span class="st"> </span><span class="kw">matrix</span>(dt, <span class="dt">nrow =</span> <span class="dv">15</span>, <span class="dt">ncol =</span> <span class="dv">1000</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" data-line-number="1"><span class="co"># Creamos 1000 muestras de 15 elementos</span></a>
+<a class="sourceLine" id="cb143-2" data-line-number="2">dt =<span class="st"> </span><span class="kw">sample</span>(chest, <span class="dv">15000</span>, <span class="dt">replace =</span> T)</a>
+<a class="sourceLine" id="cb143-3" data-line-number="3">muestras =<span class="st"> </span><span class="kw">matrix</span>(dt, <span class="dt">nrow =</span> <span class="dv">15</span>, <span class="dt">ncol =</span> <span class="dv">1000</span>)</a></code></pre></div>
 <p>Calculamos las medias de cada muestra. Como cada columna es una
 muestra, hemos de calcular las medias de las columnas. R tiene una
 función para esto:</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1"><span class="co">#Calculamos las medias</span></a>
-<a class="sourceLine" id="cb91-2" data-line-number="2">mu_techo =<span class="st"> </span><span class="kw">colMeans</span>(muestras)</a>
-<a class="sourceLine" id="cb91-3" data-line-number="3">mu_techo[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" data-line-number="1"><span class="co">#Calculamos las medias</span></a>
+<a class="sourceLine" id="cb144-2" data-line-number="2">mu_techo =<span class="st"> </span><span class="kw">colMeans</span>(muestras)</a>
+<a class="sourceLine" id="cb144-3" data-line-number="3">mu_techo[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
 <pre><code>## [1]  98.62854 102.12771 102.01141 102.89417 101.27689</code></pre>
 <p>Vemos que los 5 primeros valores son 98.63, 102.13, 102.01, 102.89, 101.28.</p>
 <p>Llamamos a cada una de las medias de las muestras “mu-techo” o
@@ -726,14 +728,14 @@ eliminamos el 5% más bajo y el 5% más alto y miramos el rango de lo
 que nos queda. Para ello ordenamos los <span class="math inline">\(\hat{\mu}\)</span> y miramos el que
 está en la posición 50 y 950. Es prácticamente el mismo código que
 el usado en la sección anterior:</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1"><span class="co"># Las ordenamos</span></a>
-<a class="sourceLine" id="cb93-2" data-line-number="2">mu_techo =<span class="st"> </span><span class="kw">sort</span>(mu_techo)</a>
-<a class="sourceLine" id="cb93-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb93-4" data-line-number="4"><span class="co"># El 90% central</span></a>
-<a class="sourceLine" id="cb93-5" data-line-number="5">prob1 =<span class="st"> </span><span class="fl">0.90</span></a>
-<a class="sourceLine" id="cb93-6" data-line-number="6">mu_techo[((<span class="dv">1</span><span class="op">-</span>prob1)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" data-line-number="1"><span class="co"># Las ordenamos</span></a>
+<a class="sourceLine" id="cb146-2" data-line-number="2">mu_techo =<span class="st"> </span><span class="kw">sort</span>(mu_techo)</a>
+<a class="sourceLine" id="cb146-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb146-4" data-line-number="4"><span class="co"># El 90% central</span></a>
+<a class="sourceLine" id="cb146-5" data-line-number="5">prob1 =<span class="st"> </span><span class="fl">0.90</span></a>
+<a class="sourceLine" id="cb146-6" data-line-number="6">mu_techo[((<span class="dv">1</span><span class="op">-</span>prob1)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
 <pre><code>## [1] 98.85767</code></pre>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1">mu_techo[((<span class="dv">1</span><span class="op">+</span>prob1)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" data-line-number="1">mu_techo[((<span class="dv">1</span><span class="op">+</span>prob1)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
 <pre><code>## [1] 103.322</code></pre>
 <p>En esta simulación en concreto obtenemos que el rango está entre 98.9 y 103.3. Es decir que si escogemos una muestra de las 1000 al azar, tenemos una probabilidad del 90% de que <span class="math inline">\(\hat{\mu}\)</span> de esta
 muestra esté entre estos dos valores. Podemos escribirlo como
@@ -750,17 +752,17 @@ de esta muestra, <span class="math inline">\(\hat{\mu}\)</span>, tenemos una pro
 por encima de este valor.</p>
 <p>Podemos repetir esto con cualquier probabilidad que queramos. Por
 ejemplo 0.8 o 0.95:</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1"><span class="co"># El 80% central</span></a>
-<a class="sourceLine" id="cb97-2" data-line-number="2">prob2 =<span class="st"> </span><span class="fl">0.80</span></a>
-<a class="sourceLine" id="cb97-3" data-line-number="3">mu_techo[((<span class="dv">1</span><span class="op">-</span>prob2)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1"><span class="co"># El 80% central</span></a>
+<a class="sourceLine" id="cb150-2" data-line-number="2">prob2 =<span class="st"> </span><span class="fl">0.80</span></a>
+<a class="sourceLine" id="cb150-3" data-line-number="3">mu_techo[((<span class="dv">1</span><span class="op">-</span>prob2)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
 <pre><code>## [1] 99.35537</code></pre>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1">mu_techo[((<span class="dv">1</span><span class="op">+</span>prob2)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" data-line-number="1">mu_techo[((<span class="dv">1</span><span class="op">+</span>prob2)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
 <pre><code>## [1] 102.7825</code></pre>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1"><span class="co"># El 95% central</span></a>
-<a class="sourceLine" id="cb101-2" data-line-number="2">prob3 =<span class="st"> </span><span class="fl">0.95</span></a>
-<a class="sourceLine" id="cb101-3" data-line-number="3">mu_techo[((<span class="dv">1</span><span class="op">-</span>prob3)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1"><span class="co"># El 95% central</span></a>
+<a class="sourceLine" id="cb154-2" data-line-number="2">prob3 =<span class="st"> </span><span class="fl">0.95</span></a>
+<a class="sourceLine" id="cb154-3" data-line-number="3">mu_techo[((<span class="dv">1</span><span class="op">-</span>prob3)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
 <pre><code>## [1] 98.51402</code></pre>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" data-line-number="1">mu_techo[((<span class="dv">1</span><span class="op">+</span>prob3)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" data-line-number="1">mu_techo[((<span class="dv">1</span><span class="op">+</span>prob3)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">1000</span>]</a></code></pre></div>
 <pre><code>## [1] 103.7399</code></pre>
 <p>En estos casos obtenemos que hay una probabilidad de 0.8 de que la
 media de la población total <span class="math inline">\(\mu\)</span> esté en <span class="math inline">\([99.35,\, 102.79]\)</span> o, lo
@@ -931,9 +933,9 @@ obtenemos
 del 85% y 95%. Usamos la distribución t de Student con 7 grados de
 libertad para determinar los factores por los que hemos de multiplicar
 el error estándar. En R</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" data-line-number="1"><span class="kw">qt</span>(<span class="fl">0.925</span>,<span class="dv">7</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" data-line-number="1"><span class="kw">qt</span>(<span class="fl">0.925</span>,<span class="dv">7</span>)</a></code></pre></div>
 <pre><code>## [1] 1.616592</code></pre>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1"><span class="kw">qt</span>(<span class="fl">0.975</span>,<span class="dv">7</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" data-line-number="1"><span class="kw">qt</span>(<span class="fl">0.975</span>,<span class="dv">7</span>)</a></code></pre></div>
 <pre><code>## [1] 2.364624</code></pre>
 <p>Entonces el intervalo de confianza con un nivel de confianza del 85%
 es
@@ -1137,7 +1139,7 @@ principales son: <code>x</code> es el número de éxitos, <code>n</code> es el
 número de intentos y <code>conf.level</code> es el nivel de confianza, que
 por defecto es del 95%. Para calcular el intervalo de confianza del
 primer caso del ejemplo inicial escribimos <code>prop.test(475, 1234, 0.9)</code>. La salida que obtenemos es:</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1"><span class="kw">prop.test</span>(<span class="dv">476</span>,<span class="dv">1374</span>, <span class="dt">conf.level =</span> <span class="fl">0.9</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" data-line-number="1"><span class="kw">prop.test</span>(<span class="dv">476</span>,<span class="dv">1374</span>, <span class="dt">conf.level =</span> <span class="fl">0.9</span>)</a></code></pre></div>
 <pre><code>## 
 ##  1-sample proportions test with continuity correction
 ## 
@@ -1171,7 +1173,7 @@ y (512, 1412)). No es esto lo que R quiere, sino por un lado los
 éxitos y por otro los intentos.
 Supongamos que ahora queremos que el nivel de confianza sea del 95%.
 Como es el valor por defecto no tenemos que ponerlo y nos queda:</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1"><span class="kw">prop.test</span>(<span class="kw">c</span>(<span class="dv">476</span>,<span class="dv">512</span>),<span class="kw">c</span>(<span class="dv">1374</span>,<span class="dv">1412</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb165-1" data-line-number="1"><span class="kw">prop.test</span>(<span class="kw">c</span>(<span class="dv">476</span>,<span class="dv">512</span>),<span class="kw">c</span>(<span class="dv">1374</span>,<span class="dv">1412</span>))</a></code></pre></div>
 <pre><code>## 
 ##  2-sample test for equality of proportions with continuity correction
 ## 
@@ -1200,8 +1202,8 @@ vector de datos, y <code>conf.level</code>, el nivel de confianza, con un
 valor por defecto de 0.95. En el ejemplo calculábamos el intervalo de
 confianza con un nivel de confianza del 85%. Creamos el vector
 <code>pesoGalletas</code> y lo introducimos como parámetro en <code>t.test()</code>:</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" data-line-number="1">pesoGalletas =<span class="st"> </span><span class="kw">c</span>(<span class="dv">443</span>, <span class="dv">439</span>, <span class="dv">466</span>, <span class="dv">486</span>, <span class="dv">462</span>, <span class="dv">443</span>, <span class="dv">494</span>, <span class="dv">476</span>)</a>
-<a class="sourceLine" id="cb115-2" data-line-number="2"><span class="kw">t.test</span>(pesoGalletas, <span class="dt">conf.level =</span> <span class="fl">0.85</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" data-line-number="1">pesoGalletas =<span class="st"> </span><span class="kw">c</span>(<span class="dv">443</span>, <span class="dv">439</span>, <span class="dv">466</span>, <span class="dv">486</span>, <span class="dv">462</span>, <span class="dv">443</span>, <span class="dv">494</span>, <span class="dv">476</span>)</a>
+<a class="sourceLine" id="cb168-2" data-line-number="2"><span class="kw">t.test</span>(pesoGalletas, <span class="dt">conf.level =</span> <span class="fl">0.85</span>)</a></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -1231,11 +1233,11 @@ Metemos los 64 valores de la cadena Fox en el vector BAf y los 55 de
 la revista Newsweek en el vector BAn y buscamos el intervalo de
 confianza de la diferencia con un nivel de confianza del 95% con
 <code>t.test()</code>:</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" data-line-number="1"><span class="kw">library</span>(UsingR)</a>
-<a class="sourceLine" id="cb117-2" data-line-number="2"><span class="kw">attach</span>(BushApproval)</a>
-<a class="sourceLine" id="cb117-3" data-line-number="3">BAf =<span class="st"> </span>BushApproval[who <span class="op">==</span><span class="st"> &quot;fox&quot;</span>,]<span class="op">$</span>approval</a>
-<a class="sourceLine" id="cb117-4" data-line-number="4">BAn =<span class="st"> </span>BushApproval[who <span class="op">==</span><span class="st"> &quot;newsweek&quot;</span>,]<span class="op">$</span>approval</a>
-<a class="sourceLine" id="cb117-5" data-line-number="5"><span class="kw">t.test</span>(BAf, BAn)</a></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" data-line-number="1"><span class="kw">library</span>(UsingR)</a>
+<a class="sourceLine" id="cb170-2" data-line-number="2"><span class="kw">attach</span>(BushApproval)</a>
+<a class="sourceLine" id="cb170-3" data-line-number="3">BAf =<span class="st"> </span>BushApproval[who <span class="op">==</span><span class="st"> &quot;fox&quot;</span>,]<span class="op">$</span>approval</a>
+<a class="sourceLine" id="cb170-4" data-line-number="4">BAn =<span class="st"> </span>BushApproval[who <span class="op">==</span><span class="st"> &quot;newsweek&quot;</span>,]<span class="op">$</span>approval</a>
+<a class="sourceLine" id="cb170-5" data-line-number="5"><span class="kw">t.test</span>(BAf, BAn)</a></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -1247,7 +1249,7 @@ confianza de la diferencia con un nivel de confianza del 95% con
 ## sample estimates:
 ## mean of x mean of y 
 ##  65.67188  65.10909</code></pre>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" data-line-number="1"><span class="kw">detach</span>(BushApproval)</a></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" data-line-number="1"><span class="kw">detach</span>(BushApproval)</a></code></pre></div>
 <p>Recordamos que 0.95 es el valor del nivel de confianza por defecto y
 por lo tanto no hace falta introducirlo. Vemos en la salida que las
 medias de aprobación son <span class="math inline">\(65.67\)</span> para la Fox y <span class="math inline">\(65.10\)</span> para Newsweek,
@@ -1279,9 +1281,9 @@ diferencia entre las proporciones reales o no. En forma gráfica, los resultados
 <p><img src="imagenes/cervezas.jpg" /><!-- --></p>
 <p>Calculemos el intervalo de confianza de la diferencia. El código de R
 es:</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1">BoMB =<span class="st"> </span><span class="kw">c</span>(<span class="dv">183</span>, <span class="dv">251</span>)</a>
-<a class="sourceLine" id="cb120-2" data-line-number="2">n =<span class="st"> </span><span class="kw">c</span>(<span class="dv">434</span>, <span class="dv">501</span>)</a>
-<a class="sourceLine" id="cb120-3" data-line-number="3"><span class="kw">prop.test</span>(BoMB, n)</a></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" data-line-number="1">BoMB =<span class="st"> </span><span class="kw">c</span>(<span class="dv">183</span>, <span class="dv">251</span>)</a>
+<a class="sourceLine" id="cb173-2" data-line-number="2">n =<span class="st"> </span><span class="kw">c</span>(<span class="dv">434</span>, <span class="dv">501</span>)</a>
+<a class="sourceLine" id="cb173-3" data-line-number="3"><span class="kw">prop.test</span>(BoMB, n)</a></code></pre></div>
 <pre><code>## 
 ##  2-sample test for equality of proportions with continuity correction
 ## 
@@ -1318,20 +1320,20 @@ queremos saber si la altura media de todos los jóvenes mallorquines,
 <p>Empecemos por obtener los datos. Leemos en R el fichero,
 eliminamos los duplicados y las alumnas y los datos incompletos
 (algunos alumnos no dieron toda la información pedida):</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1">alturas =<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;datos/Alturas2013.csv&quot;</span>, <span class="dt">header =</span> T, <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>)</a>
-<a class="sourceLine" id="cb122-2" data-line-number="2"><span class="co">#Solo hombre y no duplicados</span></a>
-<a class="sourceLine" id="cb122-3" data-line-number="3">altHSD =<span class="st"> </span>alturas[alturas<span class="op">$</span>Duplicado <span class="op">==</span><span class="st"> &quot;N&quot;</span> <span class="op">&amp;</span><span class="st"> </span>alturas<span class="op">$</span>Sexo <span class="op">==</span><span class="st"> &quot;H&quot;</span>,]</a>
-<a class="sourceLine" id="cb122-4" data-line-number="4"><span class="co">#Quitamos datos con NA</span></a>
-<a class="sourceLine" id="cb122-5" data-line-number="5">altHSD =<span class="st"> </span>altHSD[<span class="kw">complete.cases</span>(altHSD),]</a></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" data-line-number="1">alturas =<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;datos/Alturas2013.csv&quot;</span>, <span class="dt">header =</span> T, <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>)</a>
+<a class="sourceLine" id="cb175-2" data-line-number="2"><span class="co">#Solo hombre y no duplicados</span></a>
+<a class="sourceLine" id="cb175-3" data-line-number="3">altHSD =<span class="st"> </span>alturas[alturas<span class="op">$</span>Duplicado <span class="op">==</span><span class="st"> &quot;N&quot;</span> <span class="op">&amp;</span><span class="st"> </span>alturas<span class="op">$</span>Sexo <span class="op">==</span><span class="st"> &quot;H&quot;</span>,]</a>
+<a class="sourceLine" id="cb175-4" data-line-number="4"><span class="co">#Quitamos datos con NA</span></a>
+<a class="sourceLine" id="cb175-5" data-line-number="5">altHSD =<span class="st"> </span>altHSD[<span class="kw">complete.cases</span>(altHSD),]</a></code></pre></div>
 <p>Lo primero que haremos es calcular los intervalos de confianza de las
 medias de las dos poblaciones. Seguimos eligiendo un nivel de confianza
 del 95%:</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1"><span class="kw">attach</span>(altHSD)</a></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" data-line-number="1"><span class="kw">attach</span>(altHSD)</a></code></pre></div>
 <pre><code>## The following objects are masked _by_ .GlobalEnv:
 ## 
 ##     Curso, Sexo, Talla, TallaM</code></pre>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1"><span class="co">#Padres e hijos por separado</span></a>
-<a class="sourceLine" id="cb125-2" data-line-number="2"><span class="kw">t.test</span>(Talla)</a></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" data-line-number="1"><span class="co">#Padres e hijos por separado</span></a>
+<a class="sourceLine" id="cb178-2" data-line-number="2"><span class="kw">t.test</span>(Talla)</a></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -1343,7 +1345,7 @@ del 95%:</p>
 ## sample estimates:
 ## mean of x 
 ##  170.1404</code></pre>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" data-line-number="1"><span class="kw">t.test</span>(TallaP)</a></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" data-line-number="1"><span class="kw">t.test</span>(TallaP)</a></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 

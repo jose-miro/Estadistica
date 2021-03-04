@@ -304,6 +304,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.8" data-path="problemas.html"><a href="problemas.html#regresión-lineal-1"><i class="fa fa-check"></i><b>15.8</b> Regresión Lineal</a></li>
 <li class="chapter" data-level="15.9" data-path="problemas.html"><a href="problemas.html#problemas-con-todo"><i class="fa fa-check"></i><b>15.9</b> Problemas con todo</a></li>
 <li class="chapter" data-level="15.10" data-path="problemas.html"><a href="problemas.html#campos-elíseos"><i class="fa fa-check"></i><b>15.10</b> Campos Elíseos</a></li>
+<li class="chapter" data-level="15.11" data-path="problemas.html"><a href="problemas.html#tipos-de-datos-1"><i class="fa fa-check"></i><b>15.11</b> Tipos de datos</a></li>
+<li class="chapter" data-level="15.12" data-path="problemas.html"><a href="problemas.html#estadística-descriptiva-1"><i class="fa fa-check"></i><b>15.12</b> Estadística descriptiva</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -403,9 +405,9 @@ el valor que obtenemos) y tomamos nuestras medidas. Son las siguientes:</p>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" data-line-number="1">V =<span class="st"> </span><span class="kw">c</span>(<span class="fl">3.0</span>,  <span class="fl">5.0</span>,  <span class="fl">7.0</span>,  <span class="fl">9.0</span>, <span class="fl">11.0</span>, <span class="fl">14.0</span>, <span class="fl">17.0</span>, <span class="fl">20.0</span>, <span class="fl">25.0</span>,  <span class="fl">30.0</span>)</a>
-<a class="sourceLine" id="cb194-2" data-line-number="2">I =<span class="st"> </span><span class="kw">c</span>(<span class="dv">20</span>, <span class="dv">34</span>, <span class="dv">57</span>, <span class="dv">82</span>, <span class="dv">111</span>, <span class="dv">141</span>, <span class="dv">165</span>, <span class="dv">180</span>,  <span class="dv">235</span>, <span class="dv">275</span>)</a>
-<a class="sourceLine" id="cb194-3" data-line-number="3"><span class="kw">plot</span>(V, I)</a></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" data-line-number="1">V =<span class="st"> </span><span class="kw">c</span>(<span class="fl">3.0</span>,  <span class="fl">5.0</span>,  <span class="fl">7.0</span>,  <span class="fl">9.0</span>, <span class="fl">11.0</span>, <span class="fl">14.0</span>, <span class="fl">17.0</span>, <span class="fl">20.0</span>, <span class="fl">25.0</span>,  <span class="fl">30.0</span>)</a>
+<a class="sourceLine" id="cb247-2" data-line-number="2">I =<span class="st"> </span><span class="kw">c</span>(<span class="dv">20</span>, <span class="dv">34</span>, <span class="dv">57</span>, <span class="dv">82</span>, <span class="dv">111</span>, <span class="dv">141</span>, <span class="dv">165</span>, <span class="dv">180</span>,  <span class="dv">235</span>, <span class="dv">275</span>)</a>
+<a class="sourceLine" id="cb247-3" data-line-number="3"><span class="kw">plot</span>(V, I)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
 <p>Estos son los datos. A la variable que está en el eje X se le llama <em>variable independiente</em> o <em>estímulo</em>. A la variable que está en el eje Y se le llama <em>variable dependiente</em> o <em>respuesta</em>. Nosotros introducimos la variable independiente, puede tomar cualquier valor que queramos, pero medimos la dependiente, que toma el valor que corresponda. Otra forma de verlo es que estimulamos con el voltaje y el componente responde con una cierta intensidad.</p>
 <p>Vemos que los puntos siguen una extraña curva que no identificamos. Además, durante las pruebas nos fijamos que siempre obteníamos alguna extraña curva, pero que no siempre se parecía a esta. Notamos también que en este caso (y en todos los anteriores) los puntos no formaban exactamente una recta, pero siempre se acercaban bastante. Esto nos lleva a hacer una suposición: vamos a suponer que los puntos deberían seguir realmente una recta y que si no la siguen son por errores experimentales: aunque el primer punto es, dentro de
@@ -458,8 +460,8 @@ instrucción tiene la forma <code>lm(y~x)</code>, que se lee “<span class="mat
 función de <span class="math inline">\(x\)</span>”. Recordemos que <span class="math inline">\(y\)</span> es la variable dependiente, la
 respuesta, y que <span class="math inline">\(x\)</span> es la variable independiente, el estímulo. Para
 nuestro ejemplo:</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" data-line-number="1">R =<span class="st"> </span><span class="kw">lm</span>(I<span class="op">~</span>V)</a>
-<a class="sourceLine" id="cb195-2" data-line-number="2">R</a></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb248-1" data-line-number="1">R =<span class="st"> </span><span class="kw">lm</span>(I<span class="op">~</span>V)</a>
+<a class="sourceLine" id="cb248-2" data-line-number="2">R</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = I ~ V)
@@ -509,19 +511,19 @@ peso, lo que estimamos.</p>
 del paquete UsingR. Seleccionamos a los mayores de 4 años (48 meses).
 Creamos las variables <code>alt</code>, con la altura de los niños y
 <code>peso</code>, con su peso. Lo dibujamos y miramos los datos:</p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb197-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;UsingR&quot;</span>)</a>
-<a class="sourceLine" id="cb197-2" data-line-number="2"><span class="co">#Mayores de 4 años</span></a>
-<a class="sourceLine" id="cb197-3" data-line-number="3">KW4 =<span class="st"> </span>kid.weights[kid.weights<span class="op">$</span>age <span class="op">&gt;=</span><span class="dv">48</span>,]</a>
-<a class="sourceLine" id="cb197-4" data-line-number="4">peso =<span class="st"> </span>KW4<span class="op">$</span>weight<span class="op">*</span><span class="fl">0.454</span></a>
-<a class="sourceLine" id="cb197-5" data-line-number="5">alt =<span class="st"> </span>KW4<span class="op">$</span>height<span class="op">*</span><span class="fl">2.54</span></a>
-<a class="sourceLine" id="cb197-6" data-line-number="6"><span class="kw">plot</span>(alt, peso, <span class="dt">xlab =</span> <span class="st">&quot;altura (cm)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;peso (Kg)&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb250-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;UsingR&quot;</span>)</a>
+<a class="sourceLine" id="cb250-2" data-line-number="2"><span class="co">#Mayores de 4 años</span></a>
+<a class="sourceLine" id="cb250-3" data-line-number="3">KW4 =<span class="st"> </span>kid.weights[kid.weights<span class="op">$</span>age <span class="op">&gt;=</span><span class="dv">48</span>,]</a>
+<a class="sourceLine" id="cb250-4" data-line-number="4">peso =<span class="st"> </span>KW4<span class="op">$</span>weight<span class="op">*</span><span class="fl">0.454</span></a>
+<a class="sourceLine" id="cb250-5" data-line-number="5">alt =<span class="st"> </span>KW4<span class="op">$</span>height<span class="op">*</span><span class="fl">2.54</span></a>
+<a class="sourceLine" id="cb250-6" data-line-number="6"><span class="kw">plot</span>(alt, peso, <span class="dt">xlab =</span> <span class="st">&quot;altura (cm)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;peso (Kg)&quot;</span>)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-114-1.png" width="672" /></p>
 <p>Parecen bastante dispersos. No está claro qué curva sería la que más
 se aproxima a los puntos. Ni siquiera sabemos si la tal curva
 existe. Vamos a empezar por suponer que es una recta (para qué complicarse la vida de entrada).
 La calculamos:</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" data-line-number="1">PA =<span class="st"> </span><span class="kw">lm</span>(peso<span class="op">~</span>alt)</a>
-<a class="sourceLine" id="cb198-2" data-line-number="2">PA</a></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" data-line-number="1">PA =<span class="st"> </span><span class="kw">lm</span>(peso<span class="op">~</span>alt)</a>
+<a class="sourceLine" id="cb251-2" data-line-number="2">PA</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = peso ~ alt)
@@ -539,8 +541,8 @@ recta dentro de este rango: no tienen validez fuera de él (y hemos de
 tener más dudas en los extremos que en el centro). Esta recta, este
 modelo, no puede extrapolarse fuera del rango de los datos de partida.</p>
 <p>Gráficamente queda:</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" data-line-number="1"><span class="kw">plot</span>(alt, peso, <span class="dt">xlab =</span> <span class="st">&quot;altura (cm)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;peso (Kg)&quot;</span>)</a>
-<a class="sourceLine" id="cb200-2" data-line-number="2"><span class="kw">abline</span>(PA, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" data-line-number="1"><span class="kw">plot</span>(alt, peso, <span class="dt">xlab =</span> <span class="st">&quot;altura (cm)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;peso (Kg)&quot;</span>)</a>
+<a class="sourceLine" id="cb253-2" data-line-number="2"><span class="kw">abline</span>(PA, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-116-1.png" width="672" /></p>
 <p>Vemos que hay muchos puntos alejados de la recta. Quizá la regresión
 no sea la solución que buscábamos. Cuando estudiemos la parte de
@@ -595,14 +597,14 @@ teléfonos por cada 100 habitante en varios países. Cojamos el caso de
 Nicaragua. Si dibujamos el número de teléfonos por cada 100
 habitantes en Nicaragua en función del año, tenemos la siguiente
 gráfica:</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" data-line-number="1">Tel =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;datos/Telefono.csv&quot;</span>, <span class="dt">header =</span> T, <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;,&quot;</span>)</a>
-<a class="sourceLine" id="cb201-2" data-line-number="2">Nicaragua =<span class="st"> </span>Tel<span class="op">$</span>Nicaragua</a>
-<a class="sourceLine" id="cb201-3" data-line-number="3"><span class="kw">plot</span>(Tel<span class="op">$</span>Year, Nicaragua, <span class="dt">xlab =</span> <span class="st">&quot;Año&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Teléfonos/100 hab&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb254-1" data-line-number="1">Tel =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;datos/Telefono.csv&quot;</span>, <span class="dt">header =</span> T, <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;,&quot;</span>)</a>
+<a class="sourceLine" id="cb254-2" data-line-number="2">Nicaragua =<span class="st"> </span>Tel<span class="op">$</span>Nicaragua</a>
+<a class="sourceLine" id="cb254-3" data-line-number="3"><span class="kw">plot</span>(Tel<span class="op">$</span>Year, Nicaragua, <span class="dt">xlab =</span> <span class="st">&quot;Año&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Teléfonos/100 hab&quot;</span>)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-117-1.png" width="672" /></p>
 <p>Vemos que podría ser un crecimiento exponencial. Para comprobarlo
 vamos a dibujar el logaritmo del numero de teléfonos en función del
 año:</p>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" data-line-number="1"><span class="kw">plot</span>(Tel<span class="op">$</span>Year, <span class="kw">log</span>(Nicaragua), <span class="dt">xlab =</span> <span class="st">&quot;Año&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;log(Teléfonos/100 hab)&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" data-line-number="1"><span class="kw">plot</span>(Tel<span class="op">$</span>Year, <span class="kw">log</span>(Nicaragua), <span class="dt">xlab =</span> <span class="st">&quot;Año&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;log(Teléfonos/100 hab)&quot;</span>)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-118-1.png" width="672" /></p>
 <p>Vemos que a partir de 1991 hasta el 2006 tenemos algo que se parece a
 una recta, es decir, un crecimiento aproximadamente exponencial. Lo
@@ -612,7 +614,7 @@ quiere decir <span class="math inline">\(e^{2} = 7,4\)</span> teléfonos por 100
 nos permite dibujar el logaritmo, pero ajustando la escala al número
 de teléfonos. Para ello hay que añadir el parámetro <code>log = &quot;y&quot;+</code> a la
 función <code>plot</code>:</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" data-line-number="1"><span class="kw">plot</span>(Tel<span class="op">$</span>Year, Nicaragua, <span class="dt">log =</span> <span class="st">&quot;y&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Año&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Teléfonos/100 hab&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb256-1" data-line-number="1"><span class="kw">plot</span>(Tel<span class="op">$</span>Year, Nicaragua, <span class="dt">log =</span> <span class="st">&quot;y&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Año&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Teléfonos/100 hab&quot;</span>)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-119-1.png" width="672" />
 Este tipo de gráficas se llaman semilogarítmicas, pues un eje
 tiene escala lineal y el otro, logarítmico.</p>
@@ -629,12 +631,12 @@ modelo para el crecimiento de teléfonos en Nicaragua es
 donde <span class="math inline">\(t\)</span> es el tiempo, medido en años, transcurridos desde el 1 de
 enero de 1991. Les dejo como ejercicio que averigüen de dónde sale el
 <span class="math inline">\(0,886\)</span>. La gráfica, con la curva de regresión añadida es la siguiente:</p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" data-line-number="1">TNic =<span class="st"> </span>Tel[Tel<span class="op">$</span>Year <span class="op">&gt;</span><span class="st"> </span><span class="dv">1990</span>,]<span class="op">$</span>Nicaragua</a>
-<a class="sourceLine" id="cb204-2" data-line-number="2">Tiempo =<span class="st"> </span>Tel[Tel<span class="op">$</span>Year <span class="op">&gt;</span><span class="st"> </span><span class="dv">1990</span>,]<span class="op">$</span>Year <span class="op">-</span><span class="st"> </span><span class="dv">1991</span></a>
-<a class="sourceLine" id="cb204-3" data-line-number="3">Crec =<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(TNic)<span class="op">~</span>Tiempo)</a>
-<a class="sourceLine" id="cb204-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb204-5" data-line-number="5"><span class="kw">plot</span>(Tel<span class="op">$</span>Year, Nicaragua, <span class="dt">log =</span> <span class="st">&quot;y&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Año&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Teléfonos/100 hab&quot;</span>)</a>
-<a class="sourceLine" id="cb204-6" data-line-number="6"><span class="kw">curve</span>(<span class="kw">exp</span>(Crec[[<span class="dv">1</span>]][<span class="dv">1</span>])<span class="op">*</span><span class="kw">exp</span>(Crec[[<span class="dv">1</span>]][<span class="dv">2</span>]<span class="op">*</span>(x<span class="dv">-1991</span>)), <span class="dt">from =</span> <span class="dv">1991</span>, <span class="dt">to =</span> <span class="dv">2006</span>, <span class="dt">add =</span> T, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" data-line-number="1">TNic =<span class="st"> </span>Tel[Tel<span class="op">$</span>Year <span class="op">&gt;</span><span class="st"> </span><span class="dv">1990</span>,]<span class="op">$</span>Nicaragua</a>
+<a class="sourceLine" id="cb257-2" data-line-number="2">Tiempo =<span class="st"> </span>Tel[Tel<span class="op">$</span>Year <span class="op">&gt;</span><span class="st"> </span><span class="dv">1990</span>,]<span class="op">$</span>Year <span class="op">-</span><span class="st"> </span><span class="dv">1991</span></a>
+<a class="sourceLine" id="cb257-3" data-line-number="3">Crec =<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(TNic)<span class="op">~</span>Tiempo)</a>
+<a class="sourceLine" id="cb257-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb257-5" data-line-number="5"><span class="kw">plot</span>(Tel<span class="op">$</span>Year, Nicaragua, <span class="dt">log =</span> <span class="st">&quot;y&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Año&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Teléfonos/100 hab&quot;</span>)</a>
+<a class="sourceLine" id="cb257-6" data-line-number="6"><span class="kw">curve</span>(<span class="kw">exp</span>(Crec[[<span class="dv">1</span>]][<span class="dv">1</span>])<span class="op">*</span><span class="kw">exp</span>(Crec[[<span class="dv">1</span>]][<span class="dv">2</span>]<span class="op">*</span>(x<span class="dv">-1991</span>)), <span class="dt">from =</span> <span class="dv">1991</span>, <span class="dt">to =</span> <span class="dv">2006</span>, <span class="dt">add =</span> T, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>) </a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-120-1.png" width="672" /></p>
 <p>Como hemos explicado, el crecimiento porcentual viene dado por <span class="math inline">\(e^{b}-1\)</span>. Hacemos el cálculo: <span class="math inline">\(e^{0,2218}-1 = 0,25\)</span>. El crecimiento anual medio de
 teléfonos en este periodos fue del 25%.</p>
@@ -690,14 +692,14 @@ aerodinámica.</p>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" data-line-number="1">Vel =<span class="st"> </span><span class="kw">c</span>(<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">26</span>, <span class="dv">31</span>, <span class="dv">36</span>, <span class="dv">42</span>)</a>
-<a class="sourceLine" id="cb205-2" data-line-number="2">RA =<span class="st"> </span><span class="kw">c</span>(<span class="dv">101</span>, <span class="dv">133</span>, <span class="dv">145</span>, <span class="dv">238</span>, <span class="dv">331</span>, <span class="dv">442</span>, <span class="dv">640</span>)</a>
-<a class="sourceLine" id="cb205-3" data-line-number="3"><span class="kw">plot</span>(Vel, RA, <span class="dt">xlab =</span> <span class="st">&quot;Velocidad (m/s)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Res. Aero. (Nw)&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" data-line-number="1">Vel =<span class="st"> </span><span class="kw">c</span>(<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">26</span>, <span class="dv">31</span>, <span class="dv">36</span>, <span class="dv">42</span>)</a>
+<a class="sourceLine" id="cb258-2" data-line-number="2">RA =<span class="st"> </span><span class="kw">c</span>(<span class="dv">101</span>, <span class="dv">133</span>, <span class="dv">145</span>, <span class="dv">238</span>, <span class="dv">331</span>, <span class="dv">442</span>, <span class="dv">640</span>)</a>
+<a class="sourceLine" id="cb258-3" data-line-number="3"><span class="kw">plot</span>(Vel, RA, <span class="dt">xlab =</span> <span class="st">&quot;Velocidad (m/s)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Res. Aero. (Nw)&quot;</span>)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-121-1.png" width="672" /></p>
 <p>Para calcular el coeficiente queremos hallar la curva de regresión que mejor
 se ajusta a los datos medidos, es decir, la que minimiza la suma de los cuadrados de. Sabemos, por las leyes físicas de la aerodinámica, que la curva es de la forma <span class="math inline">\(F_{RA} = a + bV^{2}\)</span>. Hacemos el cálculo con R.</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb206-1" data-line-number="1">RRA =<span class="st"> </span><span class="kw">lm</span>(RA<span class="op">~</span><span class="kw">I</span>(Vel<span class="op">^</span><span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb206-2" data-line-number="2">RRA</a></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb259-1" data-line-number="1">RRA =<span class="st"> </span><span class="kw">lm</span>(RA<span class="op">~</span><span class="kw">I</span>(Vel<span class="op">^</span><span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb259-2" data-line-number="2">RRA</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = RA ~ I(Vel^2))
@@ -723,8 +725,8 @@ cuadrático al término lineal que teníamos a ver qué pasa. Es decir,
 queremos una función del tipo
 <span class="math display">\[\mbox{Peso} = a + b\cdot \mbox{altura} + c\cdot\mbox{altura}^{2}.\]</span></p>
 <p>Indicamos a R la función que queremos y miramos los resultados:</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb208-1" data-line-number="1">PAQ =<span class="st"> </span><span class="kw">lm</span>(peso <span class="op">~</span><span class="st"> </span>alt <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(alt<span class="op">^</span><span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb208-2" data-line-number="2">PAQ</a></code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb261-1" data-line-number="1">PAQ =<span class="st"> </span><span class="kw">lm</span>(peso <span class="op">~</span><span class="st"> </span>alt <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(alt<span class="op">^</span><span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb261-2" data-line-number="2">PAQ</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = peso ~ alt + I(alt^2))
@@ -736,8 +738,8 @@ queremos una función del tipo
 cuadrado es:</p>
 <p><span class="math display">\[\mbox{Peso} = 67,6  -1,11\cdot \mbox{altura} + 0,0062\cdot\mbox{altura}^{2}.\]</span></p>
 <p>Si la dibujamos queda:</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb210-1" data-line-number="1"><span class="kw">plot</span>(alt, peso, <span class="dt">xlab =</span> <span class="st">&quot;altura (cm)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;peso (Kg)&quot;</span>)</a>
-<a class="sourceLine" id="cb210-2" data-line-number="2"><span class="kw">curve</span>(PAQ[[<span class="dv">1</span>]][<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>PAQ[[<span class="dv">1</span>]][<span class="dv">2</span>]<span class="op">*</span>x <span class="op">+</span><span class="st"> </span>PAQ[[<span class="dv">1</span>]][<span class="dv">3</span>]<span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>, <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb263-1" data-line-number="1"><span class="kw">plot</span>(alt, peso, <span class="dt">xlab =</span> <span class="st">&quot;altura (cm)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;peso (Kg)&quot;</span>)</a>
+<a class="sourceLine" id="cb263-2" data-line-number="2"><span class="kw">curve</span>(PAQ[[<span class="dv">1</span>]][<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>PAQ[[<span class="dv">1</span>]][<span class="dv">2</span>]<span class="op">*</span>x <span class="op">+</span><span class="st"> </span>PAQ[[<span class="dv">1</span>]][<span class="dv">3</span>]<span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>, <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-124-1.png" width="672" /></p>
 <p>Tiene mejor pinta que el caso de la recta, aunque es obvio que esta
 curva no tiene ningún sentido anatómico: predice que entre los 60 cm y
@@ -806,19 +808,19 @@ la intensidad. Después le añadí el “error experimental”, es
 decir los residuos, mediante unos valores aleatorios que siguen una
 distribución normal de media 0 y desviación típica adecuadamente baja.
 Si la dibujamos queda:</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" data-line-number="1">V =<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">17</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>)</a>
-<a class="sourceLine" id="cb211-2" data-line-number="2">Ie =<span class="st"> </span>(<span class="dv">1000</span><span class="op">/</span><span class="dv">110</span>)<span class="op">*</span>V <span class="co"># en mA</span></a>
-<a class="sourceLine" id="cb211-3" data-line-number="3">I =<span class="st"> </span>Ie<span class="op">+</span><span class="kw">rnorm</span>(<span class="kw">length</span>(V), <span class="dv">0</span>, <span class="dv">1500</span><span class="op">/</span><span class="dv">110</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb264-1" data-line-number="1">V =<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">17</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>)</a>
+<a class="sourceLine" id="cb264-2" data-line-number="2">Ie =<span class="st"> </span>(<span class="dv">1000</span><span class="op">/</span><span class="dv">110</span>)<span class="op">*</span>V <span class="co"># en mA</span></a>
+<a class="sourceLine" id="cb264-3" data-line-number="3">I =<span class="st"> </span>Ie<span class="op">+</span><span class="kw">rnorm</span>(<span class="kw">length</span>(V), <span class="dv">0</span>, <span class="dv">1500</span><span class="op">/</span><span class="dv">110</span>)</a></code></pre></div>
 <p>Cada vez que ejecute la última instrucción obtendré una nueva
 muestra de la intensidad, pero siempre de la misma población. Si cojo
 4 muestras y calculo sus rectas de regresión, obtengo el gráfico
 siguiente (sin los puntos):</p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb212-1" data-line-number="1"><span class="kw">plot</span>(V,Ie, <span class="dt">xlab =</span><span class="st">&quot;V (voltios)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;I (mA)&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>)</a>
-<a class="sourceLine" id="cb212-2" data-line-number="2"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) </a>
-<a class="sourceLine" id="cb212-3" data-line-number="3">  { I =<span class="st"> </span>Ie<span class="op">+</span><span class="kw">rnorm</span>(<span class="kw">length</span>(V), <span class="dv">0</span>, <span class="dv">1500</span><span class="op">/</span><span class="dv">110</span>)</a>
-<a class="sourceLine" id="cb212-4" data-line-number="4">    <span class="kw">abline</span>(<span class="kw">lm</span>(I<span class="op">~</span>V), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
-<a class="sourceLine" id="cb212-5" data-line-number="5">}</a>
-<a class="sourceLine" id="cb212-6" data-line-number="6"><span class="kw">abline</span>(<span class="dv">0</span>, <span class="dv">100</span><span class="op">/</span><span class="dv">11</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb265-1" data-line-number="1"><span class="kw">plot</span>(V,Ie, <span class="dt">xlab =</span><span class="st">&quot;V (voltios)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;I (mA)&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>)</a>
+<a class="sourceLine" id="cb265-2" data-line-number="2"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) </a>
+<a class="sourceLine" id="cb265-3" data-line-number="3">  { I =<span class="st"> </span>Ie<span class="op">+</span><span class="kw">rnorm</span>(<span class="kw">length</span>(V), <span class="dv">0</span>, <span class="dv">1500</span><span class="op">/</span><span class="dv">110</span>)</a>
+<a class="sourceLine" id="cb265-4" data-line-number="4">    <span class="kw">abline</span>(<span class="kw">lm</span>(I<span class="op">~</span>V), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
+<a class="sourceLine" id="cb265-5" data-line-number="5">}</a>
+<a class="sourceLine" id="cb265-6" data-line-number="6"><span class="kw">abline</span>(<span class="dv">0</span>, <span class="dv">100</span><span class="op">/</span><span class="dv">11</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-126-1.png" width="672" /></p>
 <p>Las rectas rojas son las obtenidas de la regresión, la recta azul es
 la que sigue la Ley de Ohm. Vemos que todas las regresiones se
@@ -879,7 +881,7 @@ enormemente.</p>
 <p>En el apartado de cálculo hicimos la regresión lineal <code>R = lm(I ~ V)}</code> y vimos uqe escribiendo <code>R</code> obteníamos los coeficientes de la
 regresión y nada más. Para obtener mucha más información, usamos
 <code>summary()</code>:</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1"><span class="kw">summary</span>(R)</a></code></pre></div>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb266-1" data-line-number="1"><span class="kw">summary</span>(R)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = I ~ V)
@@ -953,7 +955,7 @@ quiere decir que también podemos calcular intervalos de confianza.
 Lo podemos hacer a partir de los datos del <code>summary()</code>:
 tenemos la media, el error estándar e incluso los grados de libertad, luego no es difícil calcular el intervalo de confianza con cualquier nivel de confianza que queramos. Pero es mucho más conveniente ceder este trabajo a R. La función <code>confint()</code> nos calcula los intervalos de confianza de los
 coeficientes de la regresión:</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1"><span class="kw">confint</span>(R)</a></code></pre></div>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb268-1" data-line-number="1"><span class="kw">confint</span>(R)</a></code></pre></div>
 <pre><code>##                  2.5 %    97.5 %
 ## (Intercept) -16.385313  6.632307
 ## V             8.864656 10.266763</code></pre>
@@ -986,18 +988,18 @@ cierta precisión la carga del vehículo para construir una atracción
 más eficiente. Por eso podemos ir probando curvas a ver si hay
 alguna que nos funcione.</p>
 <p>Usábamos como muestra el conjunto de datos kid.weights del paquete UsingR. Seleccionamos a los mayores de 4 años (48 meses). Creamos las variables <code>alt</code>, con la altura de los niños y <code>peso</code>,con su peso. Empezamos estudiando el caso de la recta.</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;UsingR&quot;</span>)</a>
-<a class="sourceLine" id="cb217-2" data-line-number="2"><span class="co">#Mayores de 4 años</span></a>
-<a class="sourceLine" id="cb217-3" data-line-number="3">KW4 =<span class="st"> </span>kid.weights[kid.weights<span class="op">$</span>age <span class="op">&gt;=</span><span class="dv">48</span>,]</a>
-<a class="sourceLine" id="cb217-4" data-line-number="4">peso =<span class="st"> </span>KW4<span class="op">$</span>weight<span class="op">*</span><span class="fl">0.454</span></a>
-<a class="sourceLine" id="cb217-5" data-line-number="5">alt =<span class="st"> </span>KW4<span class="op">$</span>height<span class="op">*</span><span class="fl">2.54</span></a>
-<a class="sourceLine" id="cb217-6" data-line-number="6">PA =<span class="st"> </span><span class="kw">lm</span>(peso<span class="op">~</span>alt)</a>
-<a class="sourceLine" id="cb217-7" data-line-number="7"><span class="kw">plot</span>(alt, peso, <span class="dt">xlab =</span> <span class="st">&quot;altura (cm)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;peso (Kg)&quot;</span>)</a>
-<a class="sourceLine" id="cb217-8" data-line-number="8"><span class="kw">abline</span>(PA, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb270-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;UsingR&quot;</span>)</a>
+<a class="sourceLine" id="cb270-2" data-line-number="2"><span class="co">#Mayores de 4 años</span></a>
+<a class="sourceLine" id="cb270-3" data-line-number="3">KW4 =<span class="st"> </span>kid.weights[kid.weights<span class="op">$</span>age <span class="op">&gt;=</span><span class="dv">48</span>,]</a>
+<a class="sourceLine" id="cb270-4" data-line-number="4">peso =<span class="st"> </span>KW4<span class="op">$</span>weight<span class="op">*</span><span class="fl">0.454</span></a>
+<a class="sourceLine" id="cb270-5" data-line-number="5">alt =<span class="st"> </span>KW4<span class="op">$</span>height<span class="op">*</span><span class="fl">2.54</span></a>
+<a class="sourceLine" id="cb270-6" data-line-number="6">PA =<span class="st"> </span><span class="kw">lm</span>(peso<span class="op">~</span>alt)</a>
+<a class="sourceLine" id="cb270-7" data-line-number="7"><span class="kw">plot</span>(alt, peso, <span class="dt">xlab =</span> <span class="st">&quot;altura (cm)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;peso (Kg)&quot;</span>)</a>
+<a class="sourceLine" id="cb270-8" data-line-number="8"><span class="kw">abline</span>(PA, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-131-1.png" width="672" /></p>
 <p>Veamos los datos estadísticos que obtenemos haciendo un
 <code>summary()</code> sobre el resultado de la regresión:</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" data-line-number="1"><span class="kw">summary</span>(PA)</a></code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb271-1" data-line-number="1"><span class="kw">summary</span>(PA)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = peso ~ alt)
@@ -1025,12 +1027,12 @@ queda explicado por la recta. El sexo, constitución, etc. explica la
 mayor parte. Si usamos una recta, los pronósticos van a ser poco menos
 que inútiles.</p>
 <p>Si añadíamos un término cuadrático el gráfico parecía mejor.</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" data-line-number="1">PAQ =<span class="st"> </span><span class="kw">lm</span>(peso <span class="op">~</span><span class="st"> </span>alt <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(alt<span class="op">^</span><span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb220-2" data-line-number="2"><span class="kw">plot</span>(alt, peso, <span class="dt">xlab =</span> <span class="st">&quot;altura (cm)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;peso (Kg)&quot;</span>)</a>
-<a class="sourceLine" id="cb220-3" data-line-number="3"><span class="kw">curve</span>(PAQ[[<span class="dv">1</span>]][<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>PAQ[[<span class="dv">1</span>]][<span class="dv">2</span>]<span class="op">*</span>x <span class="op">+</span><span class="st"> </span>PAQ[[<span class="dv">1</span>]][<span class="dv">3</span>]<span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>, <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb273-1" data-line-number="1">PAQ =<span class="st"> </span><span class="kw">lm</span>(peso <span class="op">~</span><span class="st"> </span>alt <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(alt<span class="op">^</span><span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb273-2" data-line-number="2"><span class="kw">plot</span>(alt, peso, <span class="dt">xlab =</span> <span class="st">&quot;altura (cm)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;peso (Kg)&quot;</span>)</a>
+<a class="sourceLine" id="cb273-3" data-line-number="3"><span class="kw">curve</span>(PAQ[[<span class="dv">1</span>]][<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>PAQ[[<span class="dv">1</span>]][<span class="dv">2</span>]<span class="op">*</span>x <span class="op">+</span><span class="st"> </span>PAQ[[<span class="dv">1</span>]][<span class="dv">3</span>]<span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>, <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-133-1.png" width="672" />
 Repetimos el estudio estadístico para ver la mejoría que obtenemos.</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" data-line-number="1"><span class="kw">summary</span>(PAQ)</a></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb274-1" data-line-number="1"><span class="kw">summary</span>(PAQ)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = peso ~ alt + I(alt^2))
@@ -1085,12 +1087,12 @@ debe determinarse mediante principios científicos y no estadísticos.</p>
 <p>Para ilustrarlo, volvamos al ejemplo de la ley de Ohm. Ya tenemos la
 recta de regresión. Vamos a hacer la regresión ahora sobre una
 función nueva: la suma de una cuadrática y una cúbica. Creamos una muestra aleatoria y calculamos la regresión:</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">127</span>)</a>
-<a class="sourceLine" id="cb223-2" data-line-number="2">V =<span class="st"> </span><span class="kw">c</span>(<span class="fl">3.0</span>,  <span class="fl">5.0</span>,  <span class="fl">7.0</span>,  <span class="fl">9.0</span>, <span class="fl">11.0</span>, <span class="fl">14.0</span>, <span class="fl">17.0</span>, <span class="fl">20.0</span>, <span class="fl">25.0</span>,  <span class="fl">30.0</span>)</a>
-<a class="sourceLine" id="cb223-3" data-line-number="3">I =<span class="st"> </span>(<span class="dv">1</span><span class="op">/</span><span class="dv">110</span>)<span class="op">*</span>V<span class="op">+</span><span class="kw">rnorm</span>(<span class="kw">length</span>(V), <span class="dv">0</span>, <span class="fl">1.5</span><span class="op">/</span><span class="dv">110</span>)</a>
-<a class="sourceLine" id="cb223-4" data-line-number="4">I =<span class="st"> </span><span class="dv">1000</span><span class="op">*</span>I <span class="co">#en mA</span></a>
-<a class="sourceLine" id="cb223-5" data-line-number="5">RD =<span class="st"> </span><span class="kw">lm</span>(I<span class="op">~</span><span class="kw">I</span>(V<span class="op">^</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(V<span class="op">^</span><span class="dv">3</span>))</a>
-<a class="sourceLine" id="cb223-6" data-line-number="6"><span class="kw">summary</span>(RD)</a></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb276-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">127</span>)</a>
+<a class="sourceLine" id="cb276-2" data-line-number="2">V =<span class="st"> </span><span class="kw">c</span>(<span class="fl">3.0</span>,  <span class="fl">5.0</span>,  <span class="fl">7.0</span>,  <span class="fl">9.0</span>, <span class="fl">11.0</span>, <span class="fl">14.0</span>, <span class="fl">17.0</span>, <span class="fl">20.0</span>, <span class="fl">25.0</span>,  <span class="fl">30.0</span>)</a>
+<a class="sourceLine" id="cb276-3" data-line-number="3">I =<span class="st"> </span>(<span class="dv">1</span><span class="op">/</span><span class="dv">110</span>)<span class="op">*</span>V<span class="op">+</span><span class="kw">rnorm</span>(<span class="kw">length</span>(V), <span class="dv">0</span>, <span class="fl">1.5</span><span class="op">/</span><span class="dv">110</span>)</a>
+<a class="sourceLine" id="cb276-4" data-line-number="4">I =<span class="st"> </span><span class="dv">1000</span><span class="op">*</span>I <span class="co">#en mA</span></a>
+<a class="sourceLine" id="cb276-5" data-line-number="5">RD =<span class="st"> </span><span class="kw">lm</span>(I<span class="op">~</span><span class="kw">I</span>(V<span class="op">^</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(V<span class="op">^</span><span class="dv">3</span>))</a>
+<a class="sourceLine" id="cb276-6" data-line-number="6"><span class="kw">summary</span>(RD)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = I ~ I(V^2) + I(V^3))
@@ -1199,14 +1201,14 @@ Tenemos una resistencia al que se le aplica un voltaje y se mide la
 intensidad. La variable independiente es el voltaje y la variable
 dependiente es la intensidad. Este es un ejemplo fabricado usando
 el código siguiente:</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" data-line-number="1">V =<span class="st"> </span>(<span class="dv">1</span><span class="op">:</span><span class="dv">70</span>)<span class="op">/</span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb225-2" data-line-number="2">Ie =<span class="st"> </span>(<span class="dv">100</span><span class="op">/</span><span class="dv">11</span>)<span class="op">*</span>V</a>
-<a class="sourceLine" id="cb225-3" data-line-number="3">I1 =<span class="st"> </span>Ie<span class="op">+</span><span class="kw">rnorm</span>(<span class="kw">length</span>(V), <span class="dv">0</span>, <span class="dv">1500</span><span class="op">/</span><span class="dv">110</span>)</a>
-<a class="sourceLine" id="cb225-4" data-line-number="4">I1[I1 <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>] =<span class="st"> </span><span class="dv">5</span> <span class="co"># No queremos intensidades negativas…</span></a>
-<a class="sourceLine" id="cb225-5" data-line-number="5">RL1 =<span class="st"> </span><span class="kw">lm</span>(I1<span class="op">~</span>V)</a></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb278-1" data-line-number="1">V =<span class="st"> </span>(<span class="dv">1</span><span class="op">:</span><span class="dv">70</span>)<span class="op">/</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb278-2" data-line-number="2">Ie =<span class="st"> </span>(<span class="dv">100</span><span class="op">/</span><span class="dv">11</span>)<span class="op">*</span>V</a>
+<a class="sourceLine" id="cb278-3" data-line-number="3">I1 =<span class="st"> </span>Ie<span class="op">+</span><span class="kw">rnorm</span>(<span class="kw">length</span>(V), <span class="dv">0</span>, <span class="dv">1500</span><span class="op">/</span><span class="dv">110</span>)</a>
+<a class="sourceLine" id="cb278-4" data-line-number="4">I1[I1 <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>] =<span class="st"> </span><span class="dv">5</span> <span class="co"># No queremos intensidades negativas…</span></a>
+<a class="sourceLine" id="cb278-5" data-line-number="5">RL1 =<span class="st"> </span><span class="kw">lm</span>(I1<span class="op">~</span>V)</a></code></pre></div>
 <p>La gráfica de los datos con la regresión es:</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" data-line-number="1"><span class="kw">plot</span>(V,I1, <span class="dt">xlab =</span><span class="st">&quot;V (voltios)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;I (mA)&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Voltaje e Intensidad&quot;</span>)</a>
-<a class="sourceLine" id="cb226-2" data-line-number="2"><span class="kw">abline</span>(RL1, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb279-1" data-line-number="1"><span class="kw">plot</span>(V,I1, <span class="dt">xlab =</span><span class="st">&quot;V (voltios)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;I (mA)&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Voltaje e Intensidad&quot;</span>)</a>
+<a class="sourceLine" id="cb279-2" data-line-number="2"><span class="kw">abline</span>(RL1, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-137-1.png" width="672" /></p>
 <p>Este es un ejemplo ideal, que cumple completamente las condiciones
 sobre los residuos.</p>
@@ -1217,11 +1219,11 @@ sobre los residuos.</p>
 punto más, con un valor atípico, con una intensidad del doble de lo
 que debería ser. Es sólo un punto de 70 y sobre la gráfica no parece
 que haya cambiado mucho la recta. El código usado es:</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" data-line-number="1">Vout =<span class="st"> </span><span class="kw">c</span>(V, <span class="dv">36</span>)</a>
-<a class="sourceLine" id="cb227-2" data-line-number="2">Iout =<span class="st"> </span><span class="kw">c</span>(I1, <span class="dv">700</span>)</a>
-<a class="sourceLine" id="cb227-3" data-line-number="3">RLout =<span class="st"> </span><span class="kw">lm</span>(Iout <span class="op">~</span>Vout)</a>
-<a class="sourceLine" id="cb227-4" data-line-number="4"><span class="kw">plot</span>(Vout,Iout, <span class="dt">xlab =</span><span class="st">&quot;V (voltios)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;I (mA)&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Ley de Ohm (v.a.)&quot;</span>)</a>
-<a class="sourceLine" id="cb227-5" data-line-number="5"><span class="kw">abline</span>(RLout, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)   </a></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb280-1" data-line-number="1">Vout =<span class="st"> </span><span class="kw">c</span>(V, <span class="dv">36</span>)</a>
+<a class="sourceLine" id="cb280-2" data-line-number="2">Iout =<span class="st"> </span><span class="kw">c</span>(I1, <span class="dv">700</span>)</a>
+<a class="sourceLine" id="cb280-3" data-line-number="3">RLout =<span class="st"> </span><span class="kw">lm</span>(Iout <span class="op">~</span>Vout)</a>
+<a class="sourceLine" id="cb280-4" data-line-number="4"><span class="kw">plot</span>(Vout,Iout, <span class="dt">xlab =</span><span class="st">&quot;V (voltios)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;I (mA)&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Ley de Ohm (v.a.)&quot;</span>)</a>
+<a class="sourceLine" id="cb280-5" data-line-number="5"><span class="kw">abline</span>(RLout, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)   </a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-138-1.png" width="672" /></p>
 </div>
 <div id="altura-y-peso-de-niños" class="section level4 unnumbered">
@@ -1229,14 +1231,14 @@ que haya cambiado mucho la recta. El código usado es:</p>
 <p>Este modelo también ha sido usado en documentos anteriores: miramos el
 peso de niños en función de su altura. Usamos un modelo lineal. El
 código y la gráfica son las siguientes:</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" data-line-number="1"><span class="kw">library</span>(UsingR)</a>
-<a class="sourceLine" id="cb228-2" data-line-number="2">KW4 =<span class="st"> </span>kid.weights[kid.weights<span class="op">$</span>age <span class="op">&gt;=</span><span class="dv">48</span>,]</a>
-<a class="sourceLine" id="cb228-3" data-line-number="3">peso =<span class="st"> </span>KW4<span class="op">$</span>weight<span class="op">*</span><span class="fl">0.454</span></a>
-<a class="sourceLine" id="cb228-4" data-line-number="4">alt =<span class="st"> </span>KW4<span class="op">$</span>height<span class="op">*</span><span class="fl">2.54</span></a>
-<a class="sourceLine" id="cb228-5" data-line-number="5">PA =<span class="st"> </span><span class="kw">lm</span>(peso<span class="op">~</span>alt)</a>
-<a class="sourceLine" id="cb228-6" data-line-number="6"><span class="kw">plot</span>(alt, peso, <span class="dt">xlab =</span> <span class="st">&quot;Altura (cm)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Peso (Kg)&quot;</span>, </a>
-<a class="sourceLine" id="cb228-7" data-line-number="7">        <span class="dt">main =</span> <span class="st">&quot;Altura y peso de niños&quot;</span>)</a>
-<a class="sourceLine" id="cb228-8" data-line-number="8"><span class="kw">abline</span>(PA, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb281-1" data-line-number="1"><span class="kw">library</span>(UsingR)</a>
+<a class="sourceLine" id="cb281-2" data-line-number="2">KW4 =<span class="st"> </span>kid.weights[kid.weights<span class="op">$</span>age <span class="op">&gt;=</span><span class="dv">48</span>,]</a>
+<a class="sourceLine" id="cb281-3" data-line-number="3">peso =<span class="st"> </span>KW4<span class="op">$</span>weight<span class="op">*</span><span class="fl">0.454</span></a>
+<a class="sourceLine" id="cb281-4" data-line-number="4">alt =<span class="st"> </span>KW4<span class="op">$</span>height<span class="op">*</span><span class="fl">2.54</span></a>
+<a class="sourceLine" id="cb281-5" data-line-number="5">PA =<span class="st"> </span><span class="kw">lm</span>(peso<span class="op">~</span>alt)</a>
+<a class="sourceLine" id="cb281-6" data-line-number="6"><span class="kw">plot</span>(alt, peso, <span class="dt">xlab =</span> <span class="st">&quot;Altura (cm)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Peso (Kg)&quot;</span>, </a>
+<a class="sourceLine" id="cb281-7" data-line-number="7">        <span class="dt">main =</span> <span class="st">&quot;Altura y peso de niños&quot;</span>)</a>
+<a class="sourceLine" id="cb281-8" data-line-number="8"><span class="kw">abline</span>(PA, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-139-1.png" width="672" /></p>
 </div>
 <div id="modelos-de-resistencia-aerodinámica" class="section level4 unnumbered">
@@ -1254,22 +1256,22 @@ que es una función lineal. Por lo tanto vamos a usar dos modelos: uno
 lineal y otro cuadrático. Será interesante ver el diagnóstico del
 caso lineal.</p>
 <p>El código usado es:</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" data-line-number="1">rho =<span class="st"> </span><span class="fl">1.225</span></a>
-<a class="sourceLine" id="cb229-2" data-line-number="2">S =<span class="st"> </span><span class="fl">1.97</span></a>
-<a class="sourceLine" id="cb229-3" data-line-number="3">Vel =<span class="st"> </span><span class="dv">15</span><span class="op">:</span><span class="dv">42</span></a>
-<a class="sourceLine" id="cb229-4" data-line-number="4">Cx =<span class="st"> </span><span class="fl">0.29</span></a>
-<a class="sourceLine" id="cb229-5" data-line-number="5">RA =<span class="st"> </span><span class="fl">0.5</span><span class="op">*</span>S<span class="op">*</span>rho<span class="op">*</span>Cx <span class="op">*</span><span class="st"> </span>Vel<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="kw">length</span>(Vel), <span class="dv">0</span>, <span class="dv">25</span>)</a>
-<a class="sourceLine" id="cb229-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb229-7" data-line-number="7">RALin =<span class="st"> </span><span class="kw">lm</span>(RA<span class="op">~</span>Vel)</a>
-<a class="sourceLine" id="cb229-8" data-line-number="8">RAq =<span class="st"> </span><span class="kw">lm</span>(RA<span class="op">~</span><span class="kw">I</span>(Vel<span class="op">^</span><span class="dv">2</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb282-1" data-line-number="1">rho =<span class="st"> </span><span class="fl">1.225</span></a>
+<a class="sourceLine" id="cb282-2" data-line-number="2">S =<span class="st"> </span><span class="fl">1.97</span></a>
+<a class="sourceLine" id="cb282-3" data-line-number="3">Vel =<span class="st"> </span><span class="dv">15</span><span class="op">:</span><span class="dv">42</span></a>
+<a class="sourceLine" id="cb282-4" data-line-number="4">Cx =<span class="st"> </span><span class="fl">0.29</span></a>
+<a class="sourceLine" id="cb282-5" data-line-number="5">RA =<span class="st"> </span><span class="fl">0.5</span><span class="op">*</span>S<span class="op">*</span>rho<span class="op">*</span>Cx <span class="op">*</span><span class="st"> </span>Vel<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="kw">length</span>(Vel), <span class="dv">0</span>, <span class="dv">25</span>)</a>
+<a class="sourceLine" id="cb282-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb282-7" data-line-number="7">RALin =<span class="st"> </span><span class="kw">lm</span>(RA<span class="op">~</span>Vel)</a>
+<a class="sourceLine" id="cb282-8" data-line-number="8">RAq =<span class="st"> </span><span class="kw">lm</span>(RA<span class="op">~</span><span class="kw">I</span>(Vel<span class="op">^</span><span class="dv">2</span>))</a></code></pre></div>
 <p>Y las gráficas resultantes son</p>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" data-line-number="1"><span class="kw">plot</span>(Vel, RA, <span class="dt">main =</span> <span class="st">&quot;Resistencia aerodinámica (lineal)&quot;</span>, </a>
-<a class="sourceLine" id="cb230-2" data-line-number="2">     <span class="dt">xlab =</span> <span class="st">&quot;Velocidad (m/s)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Res. Aero. (Nw)&quot;</span>)</a>
-<a class="sourceLine" id="cb230-3" data-line-number="3"><span class="kw">abline</span>(RALin, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb283-1" data-line-number="1"><span class="kw">plot</span>(Vel, RA, <span class="dt">main =</span> <span class="st">&quot;Resistencia aerodinámica (lineal)&quot;</span>, </a>
+<a class="sourceLine" id="cb283-2" data-line-number="2">     <span class="dt">xlab =</span> <span class="st">&quot;Velocidad (m/s)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Res. Aero. (Nw)&quot;</span>)</a>
+<a class="sourceLine" id="cb283-3" data-line-number="3"><span class="kw">abline</span>(RALin, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-141-1.png" width="672" /></p>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb231-1" data-line-number="1"><span class="kw">plot</span>(Vel, RA, <span class="dt">main =</span> <span class="st">&quot;Resistencia aerodinámica (cuadrático)&quot;</span>, </a>
-<a class="sourceLine" id="cb231-2" data-line-number="2">     <span class="dt">xlab =</span> <span class="st">&quot;Velocidad (m/s)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Res. Aero. (Nw)&quot;</span>)</a>
-<a class="sourceLine" id="cb231-3" data-line-number="3"><span class="kw">curve</span>(RAq[[<span class="dv">1</span>]][<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>RAq[[<span class="dv">1</span>]][<span class="dv">2</span>]<span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>, <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb284-1" data-line-number="1"><span class="kw">plot</span>(Vel, RA, <span class="dt">main =</span> <span class="st">&quot;Resistencia aerodinámica (cuadrático)&quot;</span>, </a>
+<a class="sourceLine" id="cb284-2" data-line-number="2">     <span class="dt">xlab =</span> <span class="st">&quot;Velocidad (m/s)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Res. Aero. (Nw)&quot;</span>)</a>
+<a class="sourceLine" id="cb284-3" data-line-number="3"><span class="kw">curve</span>(RAq[[<span class="dv">1</span>]][<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>RAq[[<span class="dv">1</span>]][<span class="dv">2</span>]<span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>, <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-141-2.png" width="672" /></p>
 </div>
 <div id="tamaño-y-potencia-de-coches" class="section level4">
@@ -1286,12 +1288,12 @@ Como indicador del tamaño cogemos la longitud del coche: es algo
 mucho mas variable que la anchura y esperamos que sea un buen
 indicador. Suponemos que la relación longitud-potencia sea lineal.</p>
 <p>El código usado y la gráfica resultante son:</p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" data-line-number="1"><span class="kw">library</span>(MASS)</a>
-<a class="sourceLine" id="cb232-2" data-line-number="2">Longitud =<span class="st"> </span>Cars93<span class="op">$</span>Length<span class="op">*</span><span class="fl">2.54</span></a>
-<a class="sourceLine" id="cb232-3" data-line-number="3">C93 =<span class="st"> </span><span class="kw">lm</span>(Cars93<span class="op">$</span>Horsepower <span class="op">~</span><span class="st"> </span>Longitud)</a>
-<a class="sourceLine" id="cb232-4" data-line-number="4"><span class="kw">plot</span>(Cars93<span class="op">$</span>Horsepower <span class="op">~</span><span class="st"> </span>Longitud, <span class="dt">xlab =</span> <span class="st">&quot;Longitud (cm)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Potencia (CV)&quot;</span>,</a>
-<a class="sourceLine" id="cb232-5" data-line-number="5">     <span class="dt">main =</span> <span class="st">&quot;Longitud y potencia de coches&quot;</span>)</a>
-<a class="sourceLine" id="cb232-6" data-line-number="6"><span class="kw">abline</span>(C93, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb285-1" data-line-number="1"><span class="kw">library</span>(MASS)</a>
+<a class="sourceLine" id="cb285-2" data-line-number="2">Longitud =<span class="st"> </span>Cars93<span class="op">$</span>Length<span class="op">*</span><span class="fl">2.54</span></a>
+<a class="sourceLine" id="cb285-3" data-line-number="3">C93 =<span class="st"> </span><span class="kw">lm</span>(Cars93<span class="op">$</span>Horsepower <span class="op">~</span><span class="st"> </span>Longitud)</a>
+<a class="sourceLine" id="cb285-4" data-line-number="4"><span class="kw">plot</span>(Cars93<span class="op">$</span>Horsepower <span class="op">~</span><span class="st"> </span>Longitud, <span class="dt">xlab =</span> <span class="st">&quot;Longitud (cm)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Potencia (CV)&quot;</span>,</a>
+<a class="sourceLine" id="cb285-5" data-line-number="5">     <span class="dt">main =</span> <span class="st">&quot;Longitud y potencia de coches&quot;</span>)</a>
+<a class="sourceLine" id="cb285-6" data-line-number="6"><span class="kw">abline</span>(C93, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-142-1.png" width="672" /></p>
 </div>
 <div id="estima-de-longitudes-" class="section level4">
@@ -1303,16 +1305,16 @@ típica no es constante: en un objeto de 10 cm no te vas a equivocar
 más allá de unos pocos milímetros, mientras que en un objeto de
 varios metros es casi imposible ser tan preciso. El código y la
 gráfica son:</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" data-line-number="1">Lng =<span class="st"> </span><span class="dv">50</span></a>
-<a class="sourceLine" id="cb233-2" data-line-number="2">x =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="st"> </span>Lng</a>
-<a class="sourceLine" id="cb233-3" data-line-number="3">y =<span class="st"> </span>x </a>
-<a class="sourceLine" id="cb233-4" data-line-number="4"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>Lng)</a>
-<a class="sourceLine" id="cb233-5" data-line-number="5">{sg =<span class="st"> </span>y[i]<span class="op">/</span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb233-6" data-line-number="6"> y[i] =<span class="st"> </span>y[i] <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1</span>,<span class="dv">0</span>, sg)}</a>
-<a class="sourceLine" id="cb233-7" data-line-number="7"><span class="kw">plot</span>(x,y, <span class="dt">main =</span> <span class="st">&quot;Longitud real y estimada&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Longitud real&quot;</span>,</a>
-<a class="sourceLine" id="cb233-8" data-line-number="8">     <span class="dt">ylab =</span> <span class="st">&quot;Longitud estimada&quot;</span>)</a>
-<a class="sourceLine" id="cb233-9" data-line-number="9">Inv =<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>x)</a>
-<a class="sourceLine" id="cb233-10" data-line-number="10"><span class="kw">abline</span>(Inv, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb286-1" data-line-number="1">Lng =<span class="st"> </span><span class="dv">50</span></a>
+<a class="sourceLine" id="cb286-2" data-line-number="2">x =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="st"> </span>Lng</a>
+<a class="sourceLine" id="cb286-3" data-line-number="3">y =<span class="st"> </span>x </a>
+<a class="sourceLine" id="cb286-4" data-line-number="4"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>Lng)</a>
+<a class="sourceLine" id="cb286-5" data-line-number="5">{sg =<span class="st"> </span>y[i]<span class="op">/</span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb286-6" data-line-number="6"> y[i] =<span class="st"> </span>y[i] <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1</span>,<span class="dv">0</span>, sg)}</a>
+<a class="sourceLine" id="cb286-7" data-line-number="7"><span class="kw">plot</span>(x,y, <span class="dt">main =</span> <span class="st">&quot;Longitud real y estimada&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Longitud real&quot;</span>,</a>
+<a class="sourceLine" id="cb286-8" data-line-number="8">     <span class="dt">ylab =</span> <span class="st">&quot;Longitud estimada&quot;</span>)</a>
+<a class="sourceLine" id="cb286-9" data-line-number="9">Inv =<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>x)</a>
+<a class="sourceLine" id="cb286-10" data-line-number="10"><span class="kw">abline</span>(Inv, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-143-1.png" width="672" /></p>
 <p>Usaremos las herramientas de diagnóstico sobre estos seis modelos. En
 algunos casos se cumplirán las condiciones y en otras no.
@@ -1376,7 +1378,7 @@ Empecemos por la media 0.</p>
 regresión. Ejecutando <code>summary(RL1)</code> obtenemos esta
 información del modelos de la Ley de Ohm. La información relevante
 está en las primeras líneas:</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" data-line-number="1"><span class="kw">summary</span>(RL1) <span class="co">#Good</span></a></code></pre></div>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb287-1" data-line-number="1"><span class="kw">summary</span>(RL1) <span class="co">#Good</span></a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = I1 ~ V)
@@ -1408,7 +1410,7 @@ los extremos. Por lo tanto consideramos que en este caso los residuos
 están adecuadamente centrados alrededor del 0, como deberían.</p>
 <p>En cambio si hacemos lo mismo con el modelo del tamaño y potencia de
 los coches obtenemos:</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" data-line-number="1"><span class="kw">summary</span>(C93) <span class="co">#Bad</span></a></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb289-1" data-line-number="1"><span class="kw">summary</span>(C93) <span class="co">#Bad</span></a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Cars93$Horsepower ~ Longitud)
@@ -1565,13 +1567,13 @@ de alcohol en sangre. Obtenemos estos datos experimentales:</p>
 <p>Si dibujamos los puntos y hacemos la regresión lineal de la TAS en
 función de las cervezas consumidas, suponiendo una
 recta, obtenemos la siguiente gráfica:</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb239-1" data-line-number="1">Cervezas =<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">9</span>, <span class="dv">8</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb239-2" data-line-number="2">TAS =<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.10</span>, <span class="fl">0.03</span>, <span class="fl">0.19</span>, <span class="fl">0.12</span>, <span class="fl">0.04</span>, <span class="fl">0.095</span>, <span class="fl">0.07</span>, <span class="fl">0.06</span>, <span class="fl">0.02</span>, <span class="fl">0.05</span>)</a>
-<a class="sourceLine" id="cb239-3" data-line-number="3">Alc =<span class="st"> </span><span class="kw">lm</span>(TAS<span class="op">~</span>Cervezas)</a>
-<a class="sourceLine" id="cb239-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb239-5" data-line-number="5"><span class="kw">plot</span>(TAS<span class="op">~</span>Cervezas, <span class="dt">xlab =</span> <span class="st">&quot;Núm. Cervezas&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Tasa Alcohol en Sangre&quot;</span>,</a>
-<a class="sourceLine" id="cb239-6" data-line-number="6">      <span class="dt">main =</span> <span class="st">&quot;Tasa de alcohol en sangre al beber cerveza&quot;</span>)</a>
-<a class="sourceLine" id="cb239-7" data-line-number="7"><span class="kw">abline</span>(Alc, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb292-1" data-line-number="1">Cervezas =<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">9</span>, <span class="dv">8</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb292-2" data-line-number="2">TAS =<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.10</span>, <span class="fl">0.03</span>, <span class="fl">0.19</span>, <span class="fl">0.12</span>, <span class="fl">0.04</span>, <span class="fl">0.095</span>, <span class="fl">0.07</span>, <span class="fl">0.06</span>, <span class="fl">0.02</span>, <span class="fl">0.05</span>)</a>
+<a class="sourceLine" id="cb292-3" data-line-number="3">Alc =<span class="st"> </span><span class="kw">lm</span>(TAS<span class="op">~</span>Cervezas)</a>
+<a class="sourceLine" id="cb292-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb292-5" data-line-number="5"><span class="kw">plot</span>(TAS<span class="op">~</span>Cervezas, <span class="dt">xlab =</span> <span class="st">&quot;Núm. Cervezas&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Tasa Alcohol en Sangre&quot;</span>,</a>
+<a class="sourceLine" id="cb292-6" data-line-number="6">      <span class="dt">main =</span> <span class="st">&quot;Tasa de alcohol en sangre al beber cerveza&quot;</span>)</a>
+<a class="sourceLine" id="cb292-7" data-line-number="7"><span class="kw">abline</span>(Alc, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-154-1.png" width="672" /></p>
 <p>Si hacen el diagnóstico verán que no es maravilloso, pero<br />
 suficiente para este ejemplo.</p>
@@ -1620,23 +1622,23 @@ pequeño (<code>Small</code>) es la misma que la de los deportivos
 pasamos los pesos a Kg,
 dibujamos los puntos en azul para los deportivos y en rojo para los
 pequeños, calculamos las regresiones y añadimos las rectas:</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb241-1" data-line-number="1">PotSpor =<span class="st"> </span>Cars93[Cars93<span class="op">$</span>Type <span class="op">==</span><span class="st"> &quot;Sporty&quot;</span>, <span class="st">&quot;Horsepower&quot;</span>]</a>
-<a class="sourceLine" id="cb241-2" data-line-number="2">PesoSpor =<span class="st"> </span>Cars93[Cars93<span class="op">$</span>Type <span class="op">==</span><span class="st"> &quot;Sporty&quot;</span>, <span class="st">&quot;Weight&quot;</span>]<span class="op">*</span><span class="fl">0.454</span></a>
-<a class="sourceLine" id="cb241-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb241-4" data-line-number="4">PotPeq =<span class="st"> </span>Cars93[Cars93<span class="op">$</span>Type <span class="op">==</span><span class="st"> &quot;Small&quot;</span>, <span class="st">&quot;Horsepower&quot;</span>]</a>
-<a class="sourceLine" id="cb241-5" data-line-number="5">PesoPeq =<span class="st"> </span>Cars93[Cars93<span class="op">$</span>Type <span class="op">==</span><span class="st"> &quot;Small&quot;</span>, <span class="st">&quot;Weight&quot;</span>]<span class="op">*</span><span class="fl">0.454</span></a>
-<a class="sourceLine" id="cb241-6" data-line-number="6">xl =<span class="st"> </span><span class="kw">c</span>(<span class="kw">min</span>(<span class="kw">c</span>(PesoPeq,PesoSpor)), <span class="kw">max</span>(<span class="kw">c</span>(PesoPeq,PesoSpor)))</a>
-<a class="sourceLine" id="cb241-7" data-line-number="7">yl =<span class="st"> </span><span class="kw">c</span>(<span class="kw">min</span>(<span class="kw">c</span>(PotPeq,PotSpor)), <span class="kw">max</span>(<span class="kw">c</span>(PotPeq,PotSpor)))</a>
-<a class="sourceLine" id="cb241-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb241-9" data-line-number="9"><span class="kw">plot</span>(PesoSpor, PotSpor, <span class="dt">xlim =</span> xl, <span class="dt">ylim =</span> yl,  </a>
-<a class="sourceLine" id="cb241-10" data-line-number="10">  <span class="dt">xlab =</span> <span class="st">&quot;Peso (Kg)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Potencia (CV)&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, </a>
-<a class="sourceLine" id="cb241-11" data-line-number="11">  <span class="dt">main =</span> <span class="st">&quot;Cars 93: deportivos y pequeños&quot;</span>)</a>
-<a class="sourceLine" id="cb241-12" data-line-number="12"><span class="kw">points</span>(PesoPeq, PotPeq, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)  </a>
-<a class="sourceLine" id="cb241-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb241-14" data-line-number="14">PPS =<span class="st"> </span><span class="kw">lm</span>(PotSpor<span class="op">~</span>PesoSpor)</a>
-<a class="sourceLine" id="cb241-15" data-line-number="15"><span class="kw">abline</span>(PPS, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a>
-<a class="sourceLine" id="cb241-16" data-line-number="16">PPP =<span class="st"> </span><span class="kw">lm</span>(PotPeq<span class="op">~</span>PesoPeq)</a>
-<a class="sourceLine" id="cb241-17" data-line-number="17"><span class="kw">abline</span>(PPP, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb294-1" data-line-number="1">PotSpor =<span class="st"> </span>Cars93[Cars93<span class="op">$</span>Type <span class="op">==</span><span class="st"> &quot;Sporty&quot;</span>, <span class="st">&quot;Horsepower&quot;</span>]</a>
+<a class="sourceLine" id="cb294-2" data-line-number="2">PesoSpor =<span class="st"> </span>Cars93[Cars93<span class="op">$</span>Type <span class="op">==</span><span class="st"> &quot;Sporty&quot;</span>, <span class="st">&quot;Weight&quot;</span>]<span class="op">*</span><span class="fl">0.454</span></a>
+<a class="sourceLine" id="cb294-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb294-4" data-line-number="4">PotPeq =<span class="st"> </span>Cars93[Cars93<span class="op">$</span>Type <span class="op">==</span><span class="st"> &quot;Small&quot;</span>, <span class="st">&quot;Horsepower&quot;</span>]</a>
+<a class="sourceLine" id="cb294-5" data-line-number="5">PesoPeq =<span class="st"> </span>Cars93[Cars93<span class="op">$</span>Type <span class="op">==</span><span class="st"> &quot;Small&quot;</span>, <span class="st">&quot;Weight&quot;</span>]<span class="op">*</span><span class="fl">0.454</span></a>
+<a class="sourceLine" id="cb294-6" data-line-number="6">xl =<span class="st"> </span><span class="kw">c</span>(<span class="kw">min</span>(<span class="kw">c</span>(PesoPeq,PesoSpor)), <span class="kw">max</span>(<span class="kw">c</span>(PesoPeq,PesoSpor)))</a>
+<a class="sourceLine" id="cb294-7" data-line-number="7">yl =<span class="st"> </span><span class="kw">c</span>(<span class="kw">min</span>(<span class="kw">c</span>(PotPeq,PotSpor)), <span class="kw">max</span>(<span class="kw">c</span>(PotPeq,PotSpor)))</a>
+<a class="sourceLine" id="cb294-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb294-9" data-line-number="9"><span class="kw">plot</span>(PesoSpor, PotSpor, <span class="dt">xlim =</span> xl, <span class="dt">ylim =</span> yl,  </a>
+<a class="sourceLine" id="cb294-10" data-line-number="10">  <span class="dt">xlab =</span> <span class="st">&quot;Peso (Kg)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Potencia (CV)&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, </a>
+<a class="sourceLine" id="cb294-11" data-line-number="11">  <span class="dt">main =</span> <span class="st">&quot;Cars 93: deportivos y pequeños&quot;</span>)</a>
+<a class="sourceLine" id="cb294-12" data-line-number="12"><span class="kw">points</span>(PesoPeq, PotPeq, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)  </a>
+<a class="sourceLine" id="cb294-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb294-14" data-line-number="14">PPS =<span class="st"> </span><span class="kw">lm</span>(PotSpor<span class="op">~</span>PesoSpor)</a>
+<a class="sourceLine" id="cb294-15" data-line-number="15"><span class="kw">abline</span>(PPS, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a>
+<a class="sourceLine" id="cb294-16" data-line-number="16">PPP =<span class="st"> </span><span class="kw">lm</span>(PotPeq<span class="op">~</span>PesoPeq)</a>
+<a class="sourceLine" id="cb294-17" data-line-number="17"><span class="kw">abline</span>(PPP, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-155-1.png" width="672" /></p>
 <p>Vemos que los coches deportivos, como era de esperar, tienen una
 relación peso-potencia menor: añaden más caballos por cada Kg de peso
@@ -1649,18 +1651,18 @@ estándar de la diferencia como la raíz cuadrada de la suma de los
 cuadrados, y a partir de aquí ya es simple. En el código que se
 muestra a continuación se ve cómo conseguir los errores estándar y
 las pendientes directamente y sin tener que copiarlas de la pantalla:</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb242-1" data-line-number="1"><span class="co"># Los errores estándar:</span></a>
-<a class="sourceLine" id="cb242-2" data-line-number="2">sePPS =<span class="st"> </span><span class="kw">summary</span>(PPS)<span class="op">$</span>coefficients[<span class="dv">2</span>, <span class="dv">2</span>]</a>
-<a class="sourceLine" id="cb242-3" data-line-number="3">sePPP =<span class="st"> </span><span class="kw">summary</span>(PPP)<span class="op">$</span>coefficients[<span class="dv">2</span>, <span class="dv">2</span>]</a>
-<a class="sourceLine" id="cb242-4" data-line-number="4"><span class="co"># Las pendientes:</span></a>
-<a class="sourceLine" id="cb242-5" data-line-number="5">pendPPS =<span class="st"> </span>PPS<span class="op">$</span>coefficients[<span class="dv">2</span>]</a>
-<a class="sourceLine" id="cb242-6" data-line-number="6">pendPPP =<span class="st"> </span>PPP<span class="op">$</span>coefficients[<span class="dv">2</span>]</a>
-<a class="sourceLine" id="cb242-7" data-line-number="7"><span class="co"># El error estándar de la diferencia</span></a>
-<a class="sourceLine" id="cb242-8" data-line-number="8">sedif =<span class="st"> </span><span class="kw">sqrt</span>(sePPS<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>sePPP<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb242-9" data-line-number="9"><span class="co"># Y ya el IC:</span></a>
-<a class="sourceLine" id="cb242-10" data-line-number="10">f =<span class="st"> </span><span class="kw">qt</span>(<span class="fl">0.975</span>, <span class="dt">df =</span> <span class="dv">12</span>)</a>
-<a class="sourceLine" id="cb242-11" data-line-number="11">ICdif =<span class="st"> </span>(pendPPS <span class="op">-</span><span class="st"> </span>pendPPP) <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="op">*</span>f<span class="op">*</span>sedif</a>
-<a class="sourceLine" id="cb242-12" data-line-number="12">ICdif</a></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb295-1" data-line-number="1"><span class="co"># Los errores estándar:</span></a>
+<a class="sourceLine" id="cb295-2" data-line-number="2">sePPS =<span class="st"> </span><span class="kw">summary</span>(PPS)<span class="op">$</span>coefficients[<span class="dv">2</span>, <span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb295-3" data-line-number="3">sePPP =<span class="st"> </span><span class="kw">summary</span>(PPP)<span class="op">$</span>coefficients[<span class="dv">2</span>, <span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb295-4" data-line-number="4"><span class="co"># Las pendientes:</span></a>
+<a class="sourceLine" id="cb295-5" data-line-number="5">pendPPS =<span class="st"> </span>PPS<span class="op">$</span>coefficients[<span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb295-6" data-line-number="6">pendPPP =<span class="st"> </span>PPP<span class="op">$</span>coefficients[<span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb295-7" data-line-number="7"><span class="co"># El error estándar de la diferencia</span></a>
+<a class="sourceLine" id="cb295-8" data-line-number="8">sedif =<span class="st"> </span><span class="kw">sqrt</span>(sePPS<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>sePPP<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb295-9" data-line-number="9"><span class="co"># Y ya el IC:</span></a>
+<a class="sourceLine" id="cb295-10" data-line-number="10">f =<span class="st"> </span><span class="kw">qt</span>(<span class="fl">0.975</span>, <span class="dt">df =</span> <span class="dv">12</span>)</a>
+<a class="sourceLine" id="cb295-11" data-line-number="11">ICdif =<span class="st"> </span>(pendPPS <span class="op">-</span><span class="st"> </span>pendPPP) <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="op">*</span>f<span class="op">*</span>sedif</a>
+<a class="sourceLine" id="cb295-12" data-line-number="12">ICdif</a></code></pre></div>
 <pre><code>## [1] 0.02439861 0.33972367</code></pre>
 <p>Obtenemos un ICdif = [0,024; 0,400]. Es decir que un coche deportivo
 tiene entre 0,02 y 0,4 CV adicionales por Kg de peso respecto a los
@@ -1695,10 +1697,10 @@ frenado de coches en los años 20 (por eso las velocidades son tan bajas).
 Lo primero que haremos es pasar las distancias a metros y las
 velocidades a Km/h. Después dibujaremos los puntos y calcularemos y
 dibujaremos la recta de regresión.</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb244-1" data-line-number="1">velocidad =<span class="st"> </span>cars<span class="op">$</span>speed<span class="op">*</span><span class="fl">1.609</span></a>
-<a class="sourceLine" id="cb244-2" data-line-number="2">distancia =<span class="st"> </span>cars<span class="op">$</span>dist<span class="op">*</span><span class="fl">0.305</span></a>
-<a class="sourceLine" id="cb244-3" data-line-number="3">DS =<span class="st"> </span><span class="kw">lm</span>(distancia<span class="op">~</span>velocidad)</a>
-<a class="sourceLine" id="cb244-4" data-line-number="4">DS</a></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb297-1" data-line-number="1">velocidad =<span class="st"> </span>cars<span class="op">$</span>speed<span class="op">*</span><span class="fl">1.609</span></a>
+<a class="sourceLine" id="cb297-2" data-line-number="2">distancia =<span class="st"> </span>cars<span class="op">$</span>dist<span class="op">*</span><span class="fl">0.305</span></a>
+<a class="sourceLine" id="cb297-3" data-line-number="3">DS =<span class="st"> </span><span class="kw">lm</span>(distancia<span class="op">~</span>velocidad)</a>
+<a class="sourceLine" id="cb297-4" data-line-number="4">DS</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = distancia ~ velocidad)
@@ -1710,17 +1712,17 @@ dibujaremos la recta de regresión.</p>
 para la pendiente. Es decir, la recta de regresión es
 <span class="math inline">\(\mbox{distancia} = -5,36 + 0,745 \cdot \mbox{velocidad}\)</span>.</p>
 <p>La gráfica resultante es:</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb246-1" data-line-number="1"><span class="co">#La regresión suponiendo una recta</span></a>
-<a class="sourceLine" id="cb246-2" data-line-number="2"><span class="kw">plot</span>(velocidad, distancia, <span class="dt">xlab =</span> <span class="st">&quot;Velocidad (Km/h)&quot;</span>,</a>
-<a class="sourceLine" id="cb246-3" data-line-number="3">     <span class="dt">ylab =</span> <span class="st">&quot;Distancia (m)&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Distancias de frenado&quot;</span>)</a>
-<a class="sourceLine" id="cb246-4" data-line-number="4"><span class="kw">abline</span>(DS, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb299-1" data-line-number="1"><span class="co">#La regresión suponiendo una recta</span></a>
+<a class="sourceLine" id="cb299-2" data-line-number="2"><span class="kw">plot</span>(velocidad, distancia, <span class="dt">xlab =</span> <span class="st">&quot;Velocidad (Km/h)&quot;</span>,</a>
+<a class="sourceLine" id="cb299-3" data-line-number="3">     <span class="dt">ylab =</span> <span class="st">&quot;Distancia (m)&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Distancias de frenado&quot;</span>)</a>
+<a class="sourceLine" id="cb299-4" data-line-number="4"><span class="kw">abline</span>(DS, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-158-1.png" width="672" /></p>
 <p>Antes de hacer las predicciones, vamos a diagnosticar la bondad de la
 regresión. Juntamos las 4 gráficas en una usando <code>par(mfrow = c(2,2))</code>:</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb247-2" data-line-number="2"><span class="kw">plot</span>(DS)</a></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb300-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb300-2" data-line-number="2"><span class="kw">plot</span>(DS)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-159-1.png" width="672" /></p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb248-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb301-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</a></code></pre></div>
 <p>Vemos en la gráfica resultante que la regresión no es nada
 problemática. Pasemos pues a hacer predicciones.</p>
 <div id="predicción-de-la-curva" class="section level3">
@@ -1744,16 +1746,16 @@ que tenemos es una recta, es una forma un tanto complicada de hacerlo,
 pero si es una curva compleja, puede ser más conveniente. Es el tipo
 de predicción por defecto y por lo tanto no necesitamos el tercer
 parámetro.</p>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" data-line-number="1"><span class="co"># Predicciones: velocidades de 7 a 40 de 3 en 3</span></a>
-<a class="sourceLine" id="cb249-2" data-line-number="2">new =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">velocidad =</span> <span class="kw">seq</span>(<span class="dv">7</span>, <span class="dv">40</span>, <span class="dv">3</span>))</a>
-<a class="sourceLine" id="cb249-3" data-line-number="3"><span class="kw">predict</span>(DS, new)</a></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb302-1" data-line-number="1"><span class="co"># Predicciones: velocidades de 7 a 40 de 3 en 3</span></a>
+<a class="sourceLine" id="cb302-2" data-line-number="2">new =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">velocidad =</span> <span class="kw">seq</span>(<span class="dv">7</span>, <span class="dv">40</span>, <span class="dv">3</span>))</a>
+<a class="sourceLine" id="cb302-3" data-line-number="3"><span class="kw">predict</span>(DS, new)</a></code></pre></div>
 <pre><code>##         1         2         3         4         5         6         7         8 
 ## -0.143667  2.092600  4.328868  6.565135  8.801402 11.037669 13.273937 15.510204 
 ##         9        10        11        12 
 ## 17.746471 19.982738 22.219006 24.455273</code></pre>
 <p>Es fácil comprobar que estos datos son, efectivamente, los
 correspondientes a nuestra recta:</p>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" data-line-number="1">DS<span class="op">$</span>coefficients[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>DS<span class="op">$</span>coefficients[<span class="dv">2</span>]<span class="op">*</span><span class="kw">seq</span>(<span class="dv">7</span>, <span class="dv">40</span>, <span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb304-1" data-line-number="1">DS<span class="op">$</span>coefficients[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>DS<span class="op">$</span>coefficients[<span class="dv">2</span>]<span class="op">*</span><span class="kw">seq</span>(<span class="dv">7</span>, <span class="dv">40</span>, <span class="dv">3</span>)</a></code></pre></div>
 <pre><code>##  [1] -0.143667  2.092600  4.328868  6.565135  8.801402 11.037669 13.273937
 ##  [8] 15.510204 17.746471 19.982738 22.219006 24.455273</code></pre>
 </div>
@@ -1764,9 +1766,9 @@ saber el rango de las distancias de frenado para un coche que vaya a
 una determinada velocidad. Hemos de añadir a la función <code>predict()</code> el
 parámetro <code>interval = &quot;prediction&quot;</code>. Vamos a usar el mismo data frame que
 antes. Los resultados son:</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" data-line-number="1"><span class="co"># Para cada velocidad, rango de posibles distancias de frenado</span></a>
-<a class="sourceLine" id="cb253-2" data-line-number="2">predInt =<span class="st"> </span><span class="kw">predict</span>(DS, new, <span class="dt">interval =</span> <span class="st">&quot;prediction&quot;</span>)</a>
-<a class="sourceLine" id="cb253-3" data-line-number="3"><span class="kw">round</span>(predInt, <span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb306-1" data-line-number="1"><span class="co"># Para cada velocidad, rango de posibles distancias de frenado</span></a>
+<a class="sourceLine" id="cb306-2" data-line-number="2">predInt =<span class="st"> </span><span class="kw">predict</span>(DS, new, <span class="dt">interval =</span> <span class="st">&quot;prediction&quot;</span>)</a>
+<a class="sourceLine" id="cb306-3" data-line-number="3"><span class="kw">round</span>(predInt, <span class="dv">2</span>)</a></code></pre></div>
 <pre><code>##      fit    lwr   upr
 ## 1  -0.14 -10.08  9.79
 ## 2   2.09  -7.72 11.90
@@ -1800,9 +1802,9 @@ ejemplo, en nuestro ejemplo, la distancia media de frenado de coches
 que vayan a las velocidades que hemos indicado. En este caso el valor
 del tercer parámetros es <code>interval = &quot;confidence&quot;</code>. La salida de
 la función es:</p>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" data-line-number="1"><span class="co"># Para cada velocidad, rango de distancias de frenado medias</span></a>
-<a class="sourceLine" id="cb255-2" data-line-number="2">predMed =<span class="st"> </span><span class="kw">predict</span>(DS, new, <span class="dt">interval =</span> <span class="st">&quot;confidence&quot;</span>)</a>
-<a class="sourceLine" id="cb255-3" data-line-number="3"><span class="kw">round</span>(predMed, <span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb308-1" data-line-number="1"><span class="co"># Para cada velocidad, rango de distancias de frenado medias</span></a>
+<a class="sourceLine" id="cb308-2" data-line-number="2">predMed =<span class="st"> </span><span class="kw">predict</span>(DS, new, <span class="dt">interval =</span> <span class="st">&quot;confidence&quot;</span>)</a>
+<a class="sourceLine" id="cb308-3" data-line-number="3"><span class="kw">round</span>(predMed, <span class="dv">2</span>)</a></code></pre></div>
 <pre><code>##      fit   lwr   upr
 ## 1  -0.14 -3.26  2.97
 ## 2   2.09 -0.60  4.79
@@ -1824,13 +1826,13 @@ necesitará entre 21,70 m y 27,21 m para frenar.</p>
 <p>Podemos dibujar estas predicciones en nuestra nube de puntos. De paso
 veremos cómo dibujar lineas a trazos. Usaremos lineas azules para los
 intervalos de las medias y rojas para las del rango. El código es:</p>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" data-line-number="1"><span class="kw">plot</span>(velocidad, distancia, <span class="dt">xlab =</span> <span class="st">&quot;Velocidad (Km/h)&quot;</span>,</a>
-<a class="sourceLine" id="cb257-2" data-line-number="2">     <span class="dt">ylab =</span> <span class="st">&quot;Distancia (m)&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Distancias de frenado&quot;</span>)</a>
-<a class="sourceLine" id="cb257-3" data-line-number="3"><span class="kw">abline</span>(DS)</a>
-<a class="sourceLine" id="cb257-4" data-line-number="4"><span class="kw">lines</span>(new<span class="op">$</span>velocidad, predInt[,<span class="dv">2</span>], <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
-<a class="sourceLine" id="cb257-5" data-line-number="5"><span class="kw">lines</span>(new<span class="op">$</span>velocidad, predInt[,<span class="dv">3</span>], <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
-<a class="sourceLine" id="cb257-6" data-line-number="6"><span class="kw">lines</span>(new<span class="op">$</span>velocidad, predMed[,<span class="dv">2</span>], <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a>
-<a class="sourceLine" id="cb257-7" data-line-number="7"><span class="kw">lines</span>(new<span class="op">$</span>velocidad, predMed[,<span class="dv">3</span>], <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb310-1" data-line-number="1"><span class="kw">plot</span>(velocidad, distancia, <span class="dt">xlab =</span> <span class="st">&quot;Velocidad (Km/h)&quot;</span>,</a>
+<a class="sourceLine" id="cb310-2" data-line-number="2">     <span class="dt">ylab =</span> <span class="st">&quot;Distancia (m)&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Distancias de frenado&quot;</span>)</a>
+<a class="sourceLine" id="cb310-3" data-line-number="3"><span class="kw">abline</span>(DS)</a>
+<a class="sourceLine" id="cb310-4" data-line-number="4"><span class="kw">lines</span>(new<span class="op">$</span>velocidad, predInt[,<span class="dv">2</span>], <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
+<a class="sourceLine" id="cb310-5" data-line-number="5"><span class="kw">lines</span>(new<span class="op">$</span>velocidad, predInt[,<span class="dv">3</span>], <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
+<a class="sourceLine" id="cb310-6" data-line-number="6"><span class="kw">lines</span>(new<span class="op">$</span>velocidad, predMed[,<span class="dv">2</span>], <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a>
+<a class="sourceLine" id="cb310-7" data-line-number="7"><span class="kw">lines</span>(new<span class="op">$</span>velocidad, predMed[,<span class="dv">3</span>], <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-164-1.png" width="672" /></p>
 <p>Vemos que en los extremos los rangos son mayores que en el centro.
 Eso es debido a que cuantos más puntos cercanos haya menos

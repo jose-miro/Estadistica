@@ -304,6 +304,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.8" data-path="problemas.html"><a href="problemas.html#regresión-lineal-1"><i class="fa fa-check"></i><b>15.8</b> Regresión Lineal</a></li>
 <li class="chapter" data-level="15.9" data-path="problemas.html"><a href="problemas.html#problemas-con-todo"><i class="fa fa-check"></i><b>15.9</b> Problemas con todo</a></li>
 <li class="chapter" data-level="15.10" data-path="problemas.html"><a href="problemas.html#campos-elíseos"><i class="fa fa-check"></i><b>15.10</b> Campos Elíseos</a></li>
+<li class="chapter" data-level="15.11" data-path="problemas.html"><a href="problemas.html#tipos-de-datos-1"><i class="fa fa-check"></i><b>15.11</b> Tipos de datos</a></li>
+<li class="chapter" data-level="15.12" data-path="problemas.html"><a href="problemas.html#estadística-descriptiva-1"><i class="fa fa-check"></i><b>15.12</b> Estadística descriptiva</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -340,6 +342,13 @@ fecha de la última reparación, etc.</p>
 carácter, etc) mientras que diferentes columnas son de diferentes tipos.
 Por ejemplo tenemos un data frame llamado Alumnos, con columnas para Sexo,
 Edad, Créditos matriculados y Curso:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">Sexo =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>)</a>
+<a class="sourceLine" id="cb29-2" data-line-number="2">Edad =<span class="st"> </span><span class="kw">c</span>(<span class="dv">19</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">19</span>)</a>
+<a class="sourceLine" id="cb29-3" data-line-number="3">Creditos =<span class="st"> </span><span class="kw">c</span>(<span class="dv">60</span>, <span class="dv">54</span>, <span class="dv">60</span>, <span class="dv">69</span>, <span class="dv">66</span>, <span class="dv">48</span>)</a>
+<a class="sourceLine" id="cb29-4" data-line-number="4">Curso =<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span> )</a>
+<a class="sourceLine" id="cb29-5" data-line-number="5">Alumnos =<span class="st"> </span><span class="kw">data.frame</span>(Sexo,Edad, Creditos, Curso)</a>
+<a class="sourceLine" id="cb29-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb29-7" data-line-number="7">Alumnos</a></code></pre></div>
 <pre><code>##   Sexo Edad Creditos Curso
 ## 1    M   19       60     2
 ## 2    M   19       54     2
@@ -354,6 +363,7 @@ por ejemplo) pero no de una fila, ya que sumar créditos y edad no tiene
 sentido. Podemos por ejemplo hacer un <code>summary()</code> de todo el data
 frame para obtener las información fundamental de los datos y R nos lo hace
 columna a columna:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">summary</span>(Alumnos)</a></code></pre></div>
 <pre><code>##  Sexo       Edad          Creditos        Curso    
 ##  F:2   Min.   :18.00   Min.   :48.0   Min.   :2.0  
 ##  M:4   1st Qu.:19.00   1st Qu.:55.5   1st Qu.:2.0  
@@ -372,6 +382,9 @@ lee un data frame.</p>
 “Salud.csv”, un <em>data frame</em> con datos de 57 personas: la altura, el peso,
 el sexo y si padecen alguna enfermedad. La leemos con la instrucción
 <code>read.table()</code> y miramos las primeras líneas con <code>head()</code></p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">Salud =<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;datos/Salud.csv&quot;</span>,<span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="dt">header =</span> T, <span class="dt">row.names =</span> <span class="dv">1</span>,<span class="dt">dec =</span></a>
+<a class="sourceLine" id="cb33-2" data-line-number="2"><span class="st">&quot;,&quot;</span>)</a>
+<a class="sourceLine" id="cb33-3" data-line-number="3"><span class="kw">head</span>(Salud)</a></code></pre></div>
 <pre><code>##       Talla Peso   Sexo Enfermedades
 ## ID001   175 63.7 Hombre      Ninguna
 ## ID002   160 60.0 Hombre   Colesterol
@@ -379,28 +392,40 @@ el sexo y si padecen alguna enfermedad. La leemos con la instrucción
 ## ID004   167 54.7  Mujer      Alergia
 ## ID005   170 62.2 Hombre   Colesterol
 ## ID006   182 81.4 Hombre   Colesterol</code></pre>
-<p>Los parámetros de <code>read.table()</code> son el nombre del fichero, el carácter que
-se usa en el fichero para separar celdas (en nuestro caso “;”), <a href="problemas.html#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> si la primera fila es una cabecera o no (lo es) si hay
-una columna con el nombre de los individuos (la primera) y cuál es el
-separador decimal (La coma, es decir usamos “5,34” y no “5.34”).</p>
+<p>Los parámetros de <code>read.table()</code> son:
+- el nombre del fichero,
+- el carácter que se usa en el fichero para separar celdas: en nuestro caso “;” (esto depende de cada hoja de cálculo. Hasta que no estés seguro de cuál usa tu hoja de cálculo, inspecciona el fichero antes de leerlo)<br />
+- si la primera fila es una cabecera o no (en este caso lo es)
+- si hay una columna con el nombre de los individuos (en este caso es la primera) y
+- cuál es el separador decimal (en este caso es la coma, es decir usamos “5,34” y no “5.34”).</p>
 <p>Empecemos por estudiar las características del <em>data frame</em>
 <code>Salud</code> y de paso vamos conociendo las instrucciones que R tiene
-para ello. Para acceder a una columna entera del data frame usamos el nombre del data frame, seguido del símbolo “<span class="math inline">\(” seguido del nombre de la columna. En nuestro ejemplo, “Salud\)</span>Enfermedades” es la columna de enfermedades o “Salud$Peso” es la de peso. Veamos el
+para ello. Para acceder a una columna entera del data frame usamos el nombre del data frame, seguido del símbolo <code>$</code> seguido del nombre de la columna. En nuestro ejemplo, <code>Salud$Enfermedades</code> es la columna de enfermedades o <code>Salud$Peso</code> es la de peso. Veamos el
 tipo de datos del <em>data frame</em> y de cada columna:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw">class</span>(Salud)</a></code></pre></div>
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="kw">class</span>(Salud<span class="op">$</span>Talla)</a></code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw">class</span>(Salud<span class="op">$</span>Peso)</a></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw">class</span>(Salud<span class="op">$</span>Sexo)</a></code></pre></div>
 <pre><code>## [1] &quot;factor&quot;</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="kw">class</span>(Salud<span class="op">$</span>Enfermedades)</a></code></pre></div>
 <pre><code>## [1] &quot;factor&quot;</code></pre>
 <p>Veamos los tipos de enfermedad recogidos en la tabla</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="kw">levels</span>(Salud<span class="op">$</span>Enfermedades)</a></code></pre></div>
 <pre><code>## [1] &quot;Alergia&quot;      &quot;Colesterol&quot;   &quot;Espalda&quot;      &quot;Ninguna&quot;      &quot;Respiratorio&quot;</code></pre>
 <p>Extraigamos las columnas <code>Talla</code> y <code>Peso</code> y pongámosla en variables.<br />
 En cuanto tengamos un poco más de dominio de R no haremos esto,
 pero para un principiante es más sencillo. Lo haremos de dos formas
 diferentes para aprender las posibilidades de R:</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1">Talla =<span class="st"> </span>Salud<span class="op">$</span>Talla</a>
+<a class="sourceLine" id="cb47-2" data-line-number="2">Peso =<span class="st"> </span>Salud[,<span class="st">&quot;Peso&quot;</span>]</a>
+<a class="sourceLine" id="cb47-3" data-line-number="3">Talla</a></code></pre></div>
 <pre><code>##  [1] 175 160 160 167 170 182 180 180 172 166 165 173 180 165 176 168 179 175 175
 ## [20] 160 160 182 177 180 174 181 168 160 173 170 160 188 170 177 165 178 164 163
 ## [39] 172 181 164 165 168 161 159 165 162 163 160 170 163 160 157 169 180 180 181</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1">Peso</a></code></pre></div>
 <pre><code>##  [1] 63.7 60.0 45.4 54.7 62.2 81.4 69.6 69.1 62.1 53.6 49.4 57.0 71.7 50.2 66.2
 ## [16] 61.5 74.2 63.5 62.6 48.0 45.4 74.5 77.0 81.4 56.9 81.7 56.4 46.7 54.9 54.7
 ## [31] 45.4 67.3 54.9 64.7 53.9 76.2 52.9 46.7 58.2 76.6 48.7 48.8 51.6 44.9 48.8
@@ -411,22 +436,32 @@ nada, se refiere a todas. Por lo tanto en este caso <code>Salud[,&quot;Peso&quot
 significa “En <em>data frame</em> Salud, todas las filas, columna”Peso&quot;”. Por
 ejemplo, si queremos separar los pesos de los hombres y las mujeres en dos
 vectores debemos hacer:</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">TallaH =<span class="st"> </span>Salud[Salud<span class="op">$</span>Sexo <span class="op">==</span><span class="st"> &quot;Hombre&quot;</span>, <span class="st">&quot;Talla&quot;</span>]</a>
+<a class="sourceLine" id="cb51-2" data-line-number="2">TallaM=<span class="st"> </span>Salud[Salud<span class="op">$</span>Sexo <span class="op">==</span><span class="st"> &quot;Mujer&quot;</span>, <span class="st">&quot;Talla&quot;</span>]</a>
+<a class="sourceLine" id="cb51-3" data-line-number="3">PesoH =<span class="st"> </span>Salud[Salud<span class="op">$</span>Sexo <span class="op">==</span><span class="st"> &quot;Hombre&quot;</span>, <span class="st">&quot;Peso&quot;</span>]</a>
+<a class="sourceLine" id="cb51-4" data-line-number="4">PesoM=<span class="st"> </span>Salud[Salud<span class="op">$</span>Sexo <span class="op">==</span><span class="st"> &quot;Mujer&quot;</span>, <span class="st">&quot;Peso&quot;</span>]</a></code></pre></div>
 <p>En este caso <code>Salud[Salud$Sexo == &quot;Mujer&quot;, &quot;Peso&quot;]</code> significa
-“en <em>data frame</em> Salud, filas en las que Salud$Sexo sea igual a”Mujer“, columna”Peso&quot;”.</p>
+“en <em>data frame</em> Salud, filas en las que <code>Salud$Sexo</code> sea igual a”Mujer“, columna”Peso&quot;”.</p>
 <p>Describamos, es decir, obtengamos una visión global de las variables
 numéricas. Empecemos por la media y la desviación típica:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="kw">mean</span>(Talla)</a></code></pre></div>
 <pre><code>## [1] 170.1404</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="kw">sd</span>(Talla)</a></code></pre></div>
 <pre><code>## [1] 8.003211</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1"><span class="kw">mean</span>(Peso)</a></code></pre></div>
 <pre><code>## [1] 59.62982</code></pre>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1"><span class="kw">sd</span>(Peso)</a></code></pre></div>
 <pre><code>## [1] 11.7349</code></pre>
 <p>R nos permite obtener los datos principales de una variable mediante la
-instrucción
-<code>summary()</code>:</p>
+instrucción <code>summary()</code>:</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="kw">summary</span>(Talla)</a></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   157.0   163.0   170.0   170.1   177.0   188.0</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="kw">summary</span>(Peso)</a></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   42.00   49.40   56.90   59.63   67.30   81.70</code></pre>
 <p>Ahora “veamos” los datos. Empecemos por el diagrama de tallo y hojas:</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="kw">stem</span>(Talla)</a></code></pre></div>
 <pre><code>## 
 ##   The decimal point is 1 digit(s) to the right of the |
 ## 
@@ -437,6 +472,7 @@ instrucción
 ##   17 | 55567789
 ##   18 | 00000011122
 ##   18 | 8</code></pre>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1"><span class="kw">stem</span>(Peso)</a></code></pre></div>
 <pre><code>## 
 ##   The decimal point is 1 digit(s) to the right of the |
 ## 
@@ -453,15 +489,25 @@ instrucción
 Claramente es para hacer a mano, pero sigue siendo útil, sobre todo si se
 tienen pocos datos. Otro diagrama muy usado es el de caja, que obtenemos
 con la instrucción <code>boxplot()</code></p>
-<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-30-1.png" width="672" /><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-30-2.png" width="672" /></p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="kw">boxplot</span>(Talla)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1"><span class="kw">boxplot</span>(Peso)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-30-2.png" width="672" /></p>
 <p>El tercer diagrama que veremos es el de puntos. A menudo se le llama
 <em>dotplot</em> pero en R la instrucción se llama <code>stripchart()</code>:</p>
-<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-31-1.png" width="672" /><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-31-2.png" width="672" /></p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1"><span class="kw">stripchart</span>(Talla)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="kw">stripchart</span>(Peso)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-31-2.png" width="672" /></p>
 <p>Y el último que veremos es el conocido histograma:</p>
-<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-32-1.png" width="672" /><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-32-2.png" width="672" /></p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="kw">hist</span>(Talla)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1"><span class="kw">hist</span>(Peso)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-32-2.png" width="672" /></p>
 <p>En el paquete <em>UsingR</em> se incluye una instrucción que permite dibujar
 simultáneamente el histograma y el diagrama de cajas. Para ello primero
 hemos de cargar el paquete.</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1"><span class="kw">library</span>(UsingR)</a></code></pre></div>
 <pre><code>## Loading required package: HistData</code></pre>
 <pre><code>## Loading required package: Hmisc</code></pre>
 <pre><code>## Loading required package: lattice</code></pre>
@@ -481,7 +527,10 @@ hemos de cargar el paquete.</p>
 <p>Nos indica otros paquetes que también carga y nos da algunos avisos a los
 que no hacemos caso. Y ahora podemos usar la instrucción
 <code>simple.hist.and.boxplot()</code></p>
-<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-34-1.png" width="672" /><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-34-2.png" width="672" /></p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1"><span class="kw">simple.hist.and.boxplot</span>(Talla)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1"><span class="kw">simple.hist.and.boxplot</span>(Peso)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-34-2.png" width="672" /></p>
 <p>Es importante notar que ambos diagramas no están a la misma escala. Con
 esto acabamos con las instrucciones para describir una variable
 cuantitativa.</p>
@@ -492,10 +541,14 @@ cuantitativa.</p>
 cualitativa (o factor). Ya hemos visto que la instrucción
 <code>levels()</code> nos permite inspeccionar los posibles valores de un
 factor. Empecemos por extraer las columnas como antes</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1">Sexo =<span class="st"> </span>Salud<span class="op">$</span>Sexo</a>
+<a class="sourceLine" id="cb87-2" data-line-number="2">Enfermedades =<span class="st"> </span>Salud<span class="op">$</span>Enfermedades</a></code></pre></div>
 <p>Es fácil darse cuenta que no hay medias de nada, por lo tanto no podemos calcular medias ni medianas ni nada de todo eso. Lo único que podemos hacer numéricamente es contar cuantos elementos hay en cada categoría. Para ello R nos proporciona la instrucción <code>table()</code></p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1"><span class="kw">table</span>(Sexo)</a></code></pre></div>
 <pre><code>## Sexo
 ## Hombre  Mujer 
 ##     26     31</code></pre>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1"><span class="kw">table</span>(Enfermedades)</a></code></pre></div>
 <pre><code>## Enfermedades
 ##      Alergia   Colesterol      Espalda      Ninguna Respiratorio 
 ##            8           16           11           10           12</code></pre>
@@ -511,13 +564,17 @@ misterioso con sus mensajes de error. Con el tiempo se van entendiendo.
 Este nos dice que necesita un valor para poder dibujar la barra y no lo
 encuentra. Esto es porque hemos pasado el vector de enfermedades y no el
 conteo de cuántos hay en cada uno. Hagámoslo bien:</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1"><span class="kw">barplot</span>(<span class="kw">table</span>(Enfermedades))</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
 <p>Tenemos nuestro diagrama de barras. Pero los diagramas se ven mejor si los
 datos están ordenados de más frecuente a menos frecuente (o al revés, de
 menos a más). Hagamos esto paso a paso. Primero recojamos la tabla en una
 variable:</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1">TabEnf =<span class="st"> </span><span class="kw">table</span>(Enfermedades)</a></code></pre></div>
 <p>Lo ordenamos de mayor a menor con la instrucción <code>sort()</code></p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1">TabEnf =<span class="st"> </span><span class="kw">sort</span>(TabEnf, <span class="dt">decreasing =</span> T)</a></code></pre></div>
 <p>Y ahora podemos dibujar el diagrama de barras:</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1"><span class="kw">barplot</span>(TabEnf)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
 <p>Y con esto hemos visto cómo describir una estadística de una variable y
 las instrucciones que R nos proporciona par ello.
@@ -530,6 +587,7 @@ por separado usando las técnicas descritas hasta ahora. Después podemos
 estudiarlas en conjunto. Veamos como.</p>
 <p>Si las dos variables son numéricas lo que corresponde es una nube de
 puntos Esto se consigue con la instrucción <code>plot()</code></p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1"><span class="kw">plot</span>(Talla, Peso)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
 <p>La primera variable es la “x” y la segunda la “y”. Vemos que hay una clara
 correlación: a tallas mayores corresponden pesos mayores. Casi podemos
@@ -538,6 +596,8 @@ Para obtener la recta y alguna idea numérica de la correlación usamos la
 instrucción <code>lm()</code>. Esta es una instrucción que hace muchas, muchas
 cosas. Ya la iremos conociendo mejor. No os asuste la gran cantidad de
 información que da. La aplicamos</p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" data-line-number="1">TallaPeso =<span class="st"> </span><span class="kw">lm</span>(Peso<span class="op">~</span>Talla)</a>
+<a class="sourceLine" id="cb98-2" data-line-number="2"><span class="kw">summary</span>(TallaPeso)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Peso ~ Talla)
@@ -566,6 +626,8 @@ pesa 1.3 Kg más y que la Talla explica el 80% de la variabilidad observada
 en el peso: estos datos muestran que se pesa más porque se es más alto
 (80%) y otras cosas (20%). Podemos dibujar la recta sobre nuestros puntos.
 Lo haremos en rojo:</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1"><span class="kw">plot</span>(Talla, Peso)</a>
+<a class="sourceLine" id="cb100-2" data-line-number="2"><span class="kw">abline</span>(TallaPeso, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
 </div>
 <div id="el-caso-de-dos-variables-una-cuantitativa-y-una-cualitativa" class="section level2">
@@ -576,29 +638,37 @@ hay que hacer es separar la variable cuantitativa en conjuntos, uno por
 categoría de la variable cualitativa y comparar los resultados y gráficas.</p>
 <p>Se puede hacer “a mano”. Hemos separado antes las tallas de hombres y
 mujeres y ahora podemos comparar los resultados numéricos.</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1"><span class="kw">summary</span>(TallaH)</a></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   160.0   172.8   177.5   175.8   180.0   182.0</code></pre>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" data-line-number="1"><span class="kw">summary</span>(TallaM)</a></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   157.0   160.0   165.0   165.4   168.5   188.0</code></pre>
 <p>Vemos que la talla media y mediana es superior en los hombres.
 Curiosamente la mujer más alta es más alta que el hombre más alto. Podemos
 también crear gráficas, por ejemplo los histogramas:</p>
-<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-45-1.png" width="672" /><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-45-2.png" width="672" /></p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1"><span class="kw">hist</span>(TallaH)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" data-line-number="1"><span class="kw">hist</span>(TallaM)</a></code></pre></div>
+<p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-45-2.png" width="672" /></p>
 <p>No es lo mejor, puesto que es difícil comparar los histogramas. Es más
 simple si podemos tener ambas gráficas una al lado de otra. Aunque se
 puede hacer “a mano“, lo más fácil es dejar que R se encargue. Para eso
-tenemos el operador <code>~</code> (que recordemos se lee”en función de“). Los
+tenemos el operador <code>~</code> (que recordemos se lee “en función de”). Los
 diagramas de caja de la talla en función del sexo las podemos dibujar con
 este operador:</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" data-line-number="1"><span class="kw">boxplot</span>(Talla<span class="op">~</span>Sexo)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
 <p>Intentemos entender qué hace R: mira en ”Sexo“ los diferentes sexos
 posibles, separa las tallas y dibuja. Vemos en la gráfica que los hombres
 son más altos, con la excepción del ”outlier“ de 188 cm visto antes en las
 mujeres.</p>
 <p>Podemos hacer lo mismo para ver el peso en funcion de las enfermedades:</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1"><span class="kw">boxplot</span>(Peso<span class="op">~</span>Enfermedades)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
 <p>Por algún motivo parece que los que padecen alergia pesan algo menos que
 los demás. Podemos también dibujar stripcharts con el mismo método:</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" data-line-number="1"><span class="kw">stripchart</span>(Talla<span class="op">~</span>Enfermedades)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
 <p>Y con esto acabamos la descripción del caso de una variable cuantitativa y
 una cualitativa. Finalmente nos queda analizar el caso de dos variables
@@ -610,6 +680,8 @@ cualitativas.</p>
 dibujábamos diagramas de barras. En el caso de dos variables creamos
 tablas bidimensionales. llamadas tablas de contingencia. Para ahorrarnos
 escribir código, meteremos la tabla en una variable</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1">tse =<span class="st"> </span><span class="kw">table</span>(Sexo, Enfermedades)</a>
+<a class="sourceLine" id="cb110-2" data-line-number="2">tse</a></code></pre></div>
 <pre><code>##         Enfermedades
 ## Sexo     Alergia Colesterol Espalda Ninguna Respiratorio
 ##   Hombre       1         11       4       7            3
@@ -622,6 +694,7 @@ Nos podría interesar más tener los porcentajes. Aunque es fácil hacerlo a
 mano, R tiene la función <code>prop.table()</code> para esto.</p>
 <p>La primera cuestión es qué tipo de porcentajes queremos (o tres posibles
 ”cienes“). El primero es quizá el que primero se nos podría ocurrir:”cien“ es el número total de individuos en Salud</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1"><span class="kw">prop.table</span>(tse)</a></code></pre></div>
 <pre><code>##         Enfermedades
 ## Sexo        Alergia Colesterol    Espalda    Ninguna Respiratorio
 ##   Hombre 0.01754386 0.19298246 0.07017544 0.12280702   0.05263158
@@ -632,6 +705,7 @@ Los hombres sin ninguna enfermedad representan el 12.3% del total. A veces
 nos interesa calcular procentajes dentro de cada variable. Por ejemplo si
 queremos que ”cien“ sea el número total de hombres o de mujeres, segun
 tenga sentido la instrucción es:</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1"><span class="kw">prop.table</span>(tse,<span class="dv">1</span>)</a></code></pre></div>
 <pre><code>##         Enfermedades
 ## Sexo        Alergia Colesterol    Espalda    Ninguna Respiratorio
 ##   Hombre 0.03846154 0.42307692 0.15384615 0.26923077   0.11538462
@@ -644,6 +718,7 @@ las filas suman siempre 1.</p>
 <p>Si queremos calcular porcentajes según la otra variable, es decir,
 siqueremos que ”cien“ sea el número de individuos en cad a categoría de
 enfermedad la instrucción es:</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1"><span class="kw">prop.table</span>(tse,<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>##         Enfermedades
 ## Sexo       Alergia Colesterol   Espalda   Ninguna Respiratorio
 ##   Hombre 0.1250000  0.6875000 0.3636364 0.7000000    0.2500000
@@ -652,10 +727,13 @@ enfermedad la instrucción es:</p>
 hombres y el 87.5% son mujeres. Ambas columnas suman 1.</p>
 <p>Pasemos a la gráfica. Podemos aplicar la función <code>barplot()</code> directamente
 sobre el resultado de <code>prop.table()</code>:</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" data-line-number="1"><span class="kw">barplot</span>(<span class="kw">prop.table</span>(tse,<span class="dv">2</span>))</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
 <p>En este diagrama el gris claro representa a las mujeres y el gris oscuro a
 los hombres. Veamos otra manera de ver gráficamente la diferencia de
 enfermedades entre mujeres y hombres:</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" data-line-number="1">tes =<span class="st"> </span><span class="kw">table</span>(Enfermedades, Sexo)</a>
+<a class="sourceLine" id="cb119-2" data-line-number="2">tes</a></code></pre></div>
 <pre><code>##               Sexo
 ## Enfermedades   Hombre Mujer
 ##   Alergia           1     7
@@ -663,6 +741,7 @@ enfermedades entre mujeres y hombres:</p>
 ##   Espalda           4     7
 ##   Ninguna           7     3
 ##   Respiratorio      3     9</code></pre>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" data-line-number="1"><span class="kw">barplot</span>(<span class="kw">prop.table</span>(tes,<span class="dv">2</span>), <span class="dt">beside =</span> T)</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
 <p>El parámetro <code>beside = T</code> nos permite agrupar las barras una al lado de
 otra. Hemos creado una nueva variable por un detalle técnico: R siempre

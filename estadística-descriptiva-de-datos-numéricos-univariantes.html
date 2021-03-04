@@ -304,6 +304,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.8" data-path="problemas.html"><a href="problemas.html#regresión-lineal-1"><i class="fa fa-check"></i><b>15.8</b> Regresión Lineal</a></li>
 <li class="chapter" data-level="15.9" data-path="problemas.html"><a href="problemas.html#problemas-con-todo"><i class="fa fa-check"></i><b>15.9</b> Problemas con todo</a></li>
 <li class="chapter" data-level="15.10" data-path="problemas.html"><a href="problemas.html#campos-elíseos"><i class="fa fa-check"></i><b>15.10</b> Campos Elíseos</a></li>
+<li class="chapter" data-level="15.11" data-path="problemas.html"><a href="problemas.html#tipos-de-datos-1"><i class="fa fa-check"></i><b>15.11</b> Tipos de datos</a></li>
+<li class="chapter" data-level="15.12" data-path="problemas.html"><a href="problemas.html#estadística-descriptiva-1"><i class="fa fa-check"></i><b>15.12</b> Estadística descriptiva</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -343,7 +345,7 @@ ejemplo el número de hermanos es discreto, pues puede ser 0, 1, 2… pero no pu
 <p>La temperatura o el peso son continuas, pues pueden tomar cualquier valor. Uno puede medir 173 cm o 174 cm o cualquier valor entre medias. Es cierto que normalmente no usamos estos valores intermedios, no decimos que una persona mide 173,2 cm, pero eso no es una característica de la variable, sino de la <em>precisión</em> que hemos elegido para nuestra variable. Es una decisión que podemos cambiar cuando queramos.</p>
 <p><br></p>
 <p>Como hemos dicho, una variable cualitativa o factor representa conceptos o términos. Los diferentes valores que puede tomar un factor se llaman los <em>niveles</em> del factor. Por ejemplo la variable color de ojos puede tomar los niveles “azul”, “verde”, “marrón” y “negro”. A veces es una decisión subjetiva cuáles son los niveles que puede tomar un factor: alguno puede opinar que existen los ojos grises, y otros pueden opinar que no.</p>
-<p>A veces una variable cualitativa puede representarse mediante un número, pero no <em>es</em> un número, pues no se puede operar con él. Por ejemplo tenemos los meses o años: 2 (febrero) + 3 (marzo) no es 5 (mayo). El año 1914 más el 1930 no es el año 3844. Por lo tnato el mes o el año, aunqeu lo representemos mediante nñumeros, no son variables cuantitativas, sino cualitativas.</p>
+<p>A veces una variable cualitativa puede representarse mediante un número, pero no <em>es</em> un número, pues no se puede operar con él. Por ejemplo tenemos los meses o años: 2 (febrero) + 3 (marzo) no es 5 (mayo). El año 1914 más el 1930 no es el año 3844. Por lo tnato el mes o el año, aunque lo representemos mediante nñumeros, no son variables cuantitativas, sino cualitativas.</p>
 <p>A veces nos conviene pasar una varaible cuantitativa a cualitativa. Esto lo hacemos agrupando los valores numéricos en intervalos. Por ejemplo si agrupamos los niveles de renta en “Menos de 15 000”, “Entre 15 000 y 30 000”,
 “Entre 30 000 y 60 000” y “Más de 60 000” hemos convertido de forma objetiva los números de la variable numérica, en términos que podríamos llamar “Muy bajo”, “Bajo”, “Medio” y “Alto”.</p>
 <p>En lo que resta de este capítulo vamos a trabajar con variables numéricas. En un capítulo posterior miraremos la estadística descriptiva de las
@@ -475,11 +477,7 @@ cada intervalo. En la figura siguiente vemos un histograma, con los mismos datos
 <p><img src="imagenes/histED.jpg" /><!-- --></p>
 <p>Vemos que para crear el histograma se divide los posibles valores de
 la variable en intervalos. En este caso son intervalos de 5 kg: de
-40&amp;npsp;Kg a 45&amp;npsp;Kg, de 45&amp;npsp;Kg a 50&amp;npsp;Kg, etc. Podemos leer
-del histograma que entre 40&amp;npsp;Kg y 45&amp;npsp;Kg hay dos personas,
-mientras que entre 65&amp;npsp;Kg y 70&amp;npsp;Kg
-hay 5. Se confirma que hay un montículo alrededor del 50. R crea
-histogramas con la función <code>hist()</code>.</p>
+40 Kg a 45 Kg, de 45 Kg a 50 Kg, etc. Podemos leer del histograma que entre 40 Kg y 45 Kg hay dos personas, mientras que entre 65 Kg y 70 Kg hay 5. Se confirma que hay un montículo alrededor del 50. R crea histogramas con la función <code>hist()</code>.</p>
 <p>Un histograma es muy útil y se usa mucho. Lo malo es que necesita
 muchos datos. Fijaos que hay varios intervalos con 5 o menos
 personas. Una sola persona que pese unos cientos de gramos más o
@@ -540,7 +538,7 @@ representa 4,2 o 0,00042 o 4200. Esta frase nos indica que es “42”</p>
 <p><strong>Diagrama de cajas.</strong> El diagrama de cajas (o de caja y
 bigotes) parte de los cuartiles y la mediana. Para construirlo
 debemos primero calcular la mediana, Q1 y Q3. Después calculamos el
-<em>rango intercuartílico</em> que es Q3 &amp;emdash; Q1. La <em>caja</em> la
+<em>rango intercuartílico</em> que es la resta Q3 – Q1. La <em>caja</em> la
 delimitan Q1 y Q3, con una raya que indica Q2. A veces se
 añade un punto o un diamante que representa la media. Los <em>bigotes</em> llegan
 hasta el dato más alejado a la caja pero que esté a menos que 1,5 veces el
@@ -565,7 +563,7 @@ tenemos. Por ejemplo la figura siguiente nos muestra dos poblaciones
 unimodales.</p>
 <p><img src="imagenes/NormalPicudayPlana.jpg" /><!-- --></p>
 <p>Es cierto que vemos fluctutaciones pequeñas, pero eso son artefactos
-típicos de los histogramas y realmente, an mabos casos, sólo hay un
+típicos de los histogramas y realmente, en ambos casos, sólo hay un
 pico, es decir, un modo.</p>
 <p>En cambio en la figura siguiente vemos un histograma claramente bimodal.</p>
 <p><img src="imagenes/BimodalAnts.jpg" /><!-- -->
@@ -579,8 +577,7 @@ esta característica. Hay que ir con cuidado de no confundir pequeñas
 fluctuaciones, como los de las gráficas unimodales de arriba, con los modos.</p>
 <p>Que una variable sea unimodal significa que tenemos una población
 homogénea, con más o menos dispersión. Si además es
-simétrica, es muy
-fácil describir los datos: basta dar la media y la desviación típica.</p>
+simétrica, es muy fácil describir los datos: basta dar la media y la desviación típica.</p>
 <p>Si la variable es bimodal, como la figura anterior, suele querer
 decir que tenemos dos poblaciones. No tiene mucho sentido dar un sólo
 conjunto de datos para ambas: supongamos que tenemos dos especies de
@@ -599,21 +596,16 @@ y tendremos que considerar la población en conjunto.</p>
 <p>Ninguna variable real es exactamente simétrica, por lo tanto una leve
 asimetría es de esperar. Lo que da características propias a una
 variable es que sea moderada o fuertemente asimétrica, como es el
-caso de la figura&amp;npsp;. En este caso la media es
-poco representativa de la población: sólo una fracción pequeña está
-cerca del valor medio. Normalmente la mediana (y los cuartiles) dan
-una información más reveladora. Otra cosa a tener en cuenta es que la
-desviación típica nos da poca información en una variable muy
-asimétrica ya que el “montículo” con más pobación quizá no
-esté dentro del rango <em>media ± desviación</em>.</p>
+caso de la figura siguiente.</p>
 <p><img src="imagenes/AsimPosNeg.png" /><!-- --></p>
+<p>En este caso la media es poco representativa de la población: sólo una fracción pequeña está cerca del valor medio. Normalmente la mediana (y los cuartiles) dan una información más reveladora. Otra cosa a tener en cuenta es que la desviación típica nos da poca información en una variable muy
+asimétrica ya que el “montículo” con más población quizá noesté dentro del rango <em>media ± desviación</em>.</p>
 <p>Todas las gráficas nos permiten ver la asimetría: el histograma, el
 diagrama de puntos, el de tronco y hojas, pero el que lo muestra más
 claramente es el de cajas, en donde se ve si hay asimetría tanto en
-donde se encuantra la parte <code>central</code> de la población (dentro de la
+donde se encuentra la parte “central” de la población (dentro de la
 caja) como la más periférica (los bigotes). La figura siguiente nos
-muestra un diagrama de cajas de una variable
-claramente asimétrica y con valores atípicos</p>
+muestra un diagrama de cajas de una variable claramente asimétrica y con valores atípicos</p>
 <p><img src="imagenes/boxplotAsim.jpg" /><!-- --></p>
 </div>
 <div id="valores-atípicos" class="section level3">
@@ -639,7 +631,7 @@ y diagramas de tallo y hojas.</p>
 </div>
 <div id="problematicidad" class="section level3">
 <h3><span class="header-section-number">3.4.4</span> Problematicidad</h3>
-<p>El objetivo de la estadística es sacar pronósticos e inferencias a partir de los datos que nuestra muestra. Si los datos son muy “regulares” podemos tener una buena confianza en nuestros pronósticos e inferencias, pero si son muy irreguares, dudamos mucho más de nuestras deducciones. A veces se dice qeu tenemos “buenos datos” o “malos datos”, pero esto es erróneo: los datos son los que son, no son ni buenos ni malos. Aquí vamos a utilizar el término “problemático” para describir los datos. Si los datos son poco problemáticos, podemos tener bastante confianza en nuestras deducciones. Si son muy problemáticos, muy poca.</p>
+<p>El objetivo de la estadística es sacar pronósticos e inferencias a partir de los datos que nuestra muestra. Si los datos son muy “regulares” podemos tener una buena confianza en nuestros pronósticos e inferencias, pero si son muy irreguares, dudamos mucho más de nuestras deducciones. A veces se dice que tenemos “buenos datos” o “malos datos”, pero esto es erróneo: los datos son los que son, no son ni buenos ni malos. Aquí vamos a utilizar el término “problemático” para describir los datos. Si los datos son poco problemáticos, podemos tener bastante confianza en nuestras deducciones. Si son muy problemáticos, muy poca.</p>
 <p>Otra manera de verlo es que si tenemos datos poco problemáticos y tomamos otra muestra, seguramente haremos las mismas deducciones con la segunda muestra que con la primera. Si son algo problemáticos, la segunda muestra puede ser diferente a la primera. Si son muy problemáticos, una segunda muestra puede parecerse muy poco a la primera, y sacaríamos conclusiones muy diferentes.</p>
 <p>Aqui es donde entra enormemente la experiencia del estadístico, pero para empezar, con el estudio de la modalidad, asimetría y la presencia o no de
 valores atípicos, podemos sopesar si nuestros datos son o no

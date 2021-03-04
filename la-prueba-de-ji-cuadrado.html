@@ -304,6 +304,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.8" data-path="problemas.html"><a href="problemas.html#regresión-lineal-1"><i class="fa fa-check"></i><b>15.8</b> Regresión Lineal</a></li>
 <li class="chapter" data-level="15.9" data-path="problemas.html"><a href="problemas.html#problemas-con-todo"><i class="fa fa-check"></i><b>15.9</b> Problemas con todo</a></li>
 <li class="chapter" data-level="15.10" data-path="problemas.html"><a href="problemas.html#campos-elíseos"><i class="fa fa-check"></i><b>15.10</b> Campos Elíseos</a></li>
+<li class="chapter" data-level="15.11" data-path="problemas.html"><a href="problemas.html#tipos-de-datos-1"><i class="fa fa-check"></i><b>15.11</b> Tipos de datos</a></li>
+<li class="chapter" data-level="15.12" data-path="problemas.html"><a href="problemas.html#estadística-descriptiva-1"><i class="fa fa-check"></i><b>15.12</b> Estadística descriptiva</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -527,7 +529,7 @@ alternativa es que no la sigue. La función nos calcula el estadístico
 hemos obtenido lanzando el dado y como nuestra distribución de
 probabilidades es que todas sean iguales y este es el valor por
 defecto, no hay que escribirlo. Entonces queda:</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" data-line-number="1"><span class="kw">chisq.test</span>(<span class="kw">c</span>(<span class="dv">33</span>, <span class="dv">38</span>, <span class="dv">25</span>,  <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">33</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" data-line-number="1"><span class="kw">chisq.test</span>(<span class="kw">c</span>(<span class="dv">33</span>, <span class="dv">38</span>, <span class="dv">25</span>,  <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">33</span>))</a></code></pre></div>
 <pre><code>## 
 ##  Chi-squared test for given probabilities
 ## 
@@ -539,14 +541,14 @@ de 0.4078.
 <p><strong>La encuesta.</strong> Este caso es un poco más complejo y tiene
 más posibilidades que vamos a explorar. Empezamos por crear las
 variables:</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" data-line-number="1">encuesta =<span class="st"> </span><span class="kw">c</span>(<span class="dv">809</span>, <span class="dv">655</span>, <span class="dv">382</span>, <span class="dv">226</span>, <span class="dv">180</span>)</a>
-<a class="sourceLine" id="cb171-2" data-line-number="2">elecciones =<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.3543</span>, <span class="fl">0.2676</span>, <span class="fl">0.1484</span>, <span class="fl">0.0928</span>, <span class="fl">0.0689</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" data-line-number="1">encuesta =<span class="st"> </span><span class="kw">c</span>(<span class="dv">809</span>, <span class="dv">655</span>, <span class="dv">382</span>, <span class="dv">226</span>, <span class="dv">180</span>)</a>
+<a class="sourceLine" id="cb224-2" data-line-number="2">elecciones =<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.3543</span>, <span class="fl">0.2676</span>, <span class="fl">0.1484</span>, <span class="fl">0.0928</span>, <span class="fl">0.0689</span>)</a></code></pre></div>
 <p>Pero si hacemos la prueba, <code>chisq.test(encuesta, p = elecciones)</code>
 obtenemos un mensaje de error:</p>
 <pre><code>Error in chisq.test(encuesta, p = elecciones) : 
    probabilities must sum to 1.</code></pre>
 <p>R nos ha pillado que las probabilidades no suman 1. Si reescalamos se arregla todo:</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" data-line-number="1"><span class="kw">chisq.test</span>(encuesta, <span class="dt">p =</span> elecciones, <span class="dt">rescale.p =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" data-line-number="1"><span class="kw">chisq.test</span>(encuesta, <span class="dt">p =</span> elecciones, <span class="dt">rescale.p =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## 
 ##  Chi-squared test for given probabilities
 ## 
@@ -556,9 +558,9 @@ obtenemos un mensaje de error:</p>
 <p>¿Y si hubiéramos añadido el apartado de “otros” qué hbiera salido?
 Es fácil hacerlo. Creamos dos nuevas variables añadiendo lo que nos
 falta y hacemos la prueba:</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" data-line-number="1">encuestaCom =<span class="st"> </span><span class="kw">c</span>(encuesta,<span class="dv">148</span>)</a>
-<a class="sourceLine" id="cb175-2" data-line-number="2">eleccionesCom =<span class="st"> </span><span class="kw">c</span>(elecciones,<span class="fl">0.068</span>)</a>
-<a class="sourceLine" id="cb175-3" data-line-number="3"><span class="kw">chisq.test</span>(encuestaCom,<span class="dt">p =</span> eleccionesCom)</a></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" data-line-number="1">encuestaCom =<span class="st"> </span><span class="kw">c</span>(encuesta,<span class="dv">148</span>)</a>
+<a class="sourceLine" id="cb228-2" data-line-number="2">eleccionesCom =<span class="st"> </span><span class="kw">c</span>(elecciones,<span class="fl">0.068</span>)</a>
+<a class="sourceLine" id="cb228-3" data-line-number="3"><span class="kw">chisq.test</span>(encuestaCom,<span class="dt">p =</span> eleccionesCom)</a></code></pre></div>
 <pre><code>## 
 ##  Chi-squared test for given probabilities
 ## 
@@ -574,9 +576,9 @@ de un curso con 70 matriculados obtenemos 12 sobresalientes, 18
 notables, 26 aprobados, 10 suspensos y 4 no presentados. Queremos
 saber si podemos considerar que hemos cumplido los objetivos. Hacemos
 un <span class="math inline">\(\chi^2\)</span> de bondad de ajuste con R:</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb177-1" data-line-number="1">obj =<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.15</span>,<span class="fl">0.30</span>,<span class="fl">0.40</span>,<span class="fl">0.10</span>,<span class="fl">0.05</span>)</a>
-<a class="sourceLine" id="cb177-2" data-line-number="2">resAc =<span class="st"> </span><span class="kw">c</span>(<span class="dv">12</span>,<span class="dv">18</span>,<span class="dv">26</span>,<span class="dv">10</span>,<span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb177-3" data-line-number="3"><span class="kw">chisq.test</span>(resAc, <span class="dt">p =</span> obj)</a></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" data-line-number="1">obj =<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.15</span>,<span class="fl">0.30</span>,<span class="fl">0.40</span>,<span class="fl">0.10</span>,<span class="fl">0.05</span>)</a>
+<a class="sourceLine" id="cb230-2" data-line-number="2">resAc =<span class="st"> </span><span class="kw">c</span>(<span class="dv">12</span>,<span class="dv">18</span>,<span class="dv">26</span>,<span class="dv">10</span>,<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb230-3" data-line-number="3"><span class="kw">chisq.test</span>(resAc, <span class="dt">p =</span> obj)</a></code></pre></div>
 <pre><code>## Warning in chisq.test(resAc, p = obj): Chi-squared approximation may be
 ## incorrect</code></pre>
 <pre><code>## 
@@ -605,9 +607,9 @@ manera que la muestra sea de tamaño suficiente. Pero a veces calculamos mal y t
 <p>Ya vimos las soluciones posibles: eliminar los no presentados y
 reescalar las probabilidades o unir niveles. En este caso tiene
 sentido unir los no presentados con los suspensos. Lo hacemos así:</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" data-line-number="1">obj2 =<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.15</span>,<span class="fl">0.30</span>,<span class="fl">0.40</span>,<span class="fl">0.15</span>)</a>
-<a class="sourceLine" id="cb180-2" data-line-number="2">resAc2 =<span class="st"> </span><span class="kw">c</span>(<span class="dv">12</span>,<span class="dv">18</span>,<span class="dv">26</span>,<span class="dv">14</span>)</a>
-<a class="sourceLine" id="cb180-3" data-line-number="3"><span class="kw">chisq.test</span>(resAc2, <span class="dt">p =</span> obj2)</a></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" data-line-number="1">obj2 =<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.15</span>,<span class="fl">0.30</span>,<span class="fl">0.40</span>,<span class="fl">0.15</span>)</a>
+<a class="sourceLine" id="cb233-2" data-line-number="2">resAc2 =<span class="st"> </span><span class="kw">c</span>(<span class="dv">12</span>,<span class="dv">18</span>,<span class="dv">26</span>,<span class="dv">14</span>)</a>
+<a class="sourceLine" id="cb233-3" data-line-number="3"><span class="kw">chisq.test</span>(resAc2, <span class="dt">p =</span> obj2)</a></code></pre></div>
 <pre><code>## 
 ##  Chi-squared test for given probabilities
 ## 
@@ -819,13 +821,13 @@ probabilidades, que ni siquiera existen. Creamos los vectores <code>con</code>
 (con cinturón) y <code>sin</code> (sin cinturón) la matriz y añadimos
 nombres para que sea más legible. A partir de estos dos vectores
 creamos la matriz con la instrucción <code>rbind()</code>:</p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" data-line-number="1">con =<span class="st"> </span><span class="kw">c</span>(<span class="dv">12813</span>, <span class="dv">647</span>,<span class="dv">359</span>,<span class="dv">42</span>)</a>
-<a class="sourceLine" id="cb182-2" data-line-number="2"><span class="kw">names</span>(con) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;nada&quot;</span>, <span class="st">&quot;leve&quot;</span>, <span class="st">&quot;medio&quot;</span>, <span class="st">&quot;grave&quot;</span>)</a>
-<a class="sourceLine" id="cb182-3" data-line-number="3">sin =<span class="st"> </span><span class="kw">c</span>(<span class="dv">65963</span>,<span class="dv">4000</span>,<span class="dv">2642</span>,<span class="dv">303</span>)</a>
-<a class="sourceLine" id="cb182-4" data-line-number="4"><span class="kw">names</span>(sin) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;nada&quot;</span>, <span class="st">&quot;leve&quot;</span>, <span class="st">&quot;medio&quot;</span>, <span class="st">&quot;grave&quot;</span>)</a>
-<a class="sourceLine" id="cb182-5" data-line-number="5">cint =<span class="st"> </span><span class="kw">rbind</span>(con,sin)</a></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb235-1" data-line-number="1">con =<span class="st"> </span><span class="kw">c</span>(<span class="dv">12813</span>, <span class="dv">647</span>,<span class="dv">359</span>,<span class="dv">42</span>)</a>
+<a class="sourceLine" id="cb235-2" data-line-number="2"><span class="kw">names</span>(con) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;nada&quot;</span>, <span class="st">&quot;leve&quot;</span>, <span class="st">&quot;medio&quot;</span>, <span class="st">&quot;grave&quot;</span>)</a>
+<a class="sourceLine" id="cb235-3" data-line-number="3">sin =<span class="st"> </span><span class="kw">c</span>(<span class="dv">65963</span>,<span class="dv">4000</span>,<span class="dv">2642</span>,<span class="dv">303</span>)</a>
+<a class="sourceLine" id="cb235-4" data-line-number="4"><span class="kw">names</span>(sin) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;nada&quot;</span>, <span class="st">&quot;leve&quot;</span>, <span class="st">&quot;medio&quot;</span>, <span class="st">&quot;grave&quot;</span>)</a>
+<a class="sourceLine" id="cb235-5" data-line-number="5">cint =<span class="st"> </span><span class="kw">rbind</span>(con,sin)</a></code></pre></div>
 <p>Teniendo la matriz, la instrucción <code>chisq.test(cint)</code> nos da lo que queremos:</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" data-line-number="1"><span class="kw">chisq.test</span>(cint)</a></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" data-line-number="1"><span class="kw">chisq.test</span>(cint)</a></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 
@@ -964,10 +966,10 @@ con el sexo. La codificación de las variables es la siguiente:</p>
 con las dos variables que nos interesan y quitando los NS/NC. Después
 crearemos la tabla de contingencias de frecuencias absolutas.
 Llamaremos esta tabla TabSex:</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" data-line-number="1"><span class="kw">library</span>(UsingR)</a>
-<a class="sourceLine" id="cb185-2" data-line-number="2">Aux =<span class="st"> </span><span class="kw">subset</span>(samhda, amt.smoke <span class="op">&lt;</span><span class="st"> </span><span class="dv">98</span> <span class="op">&amp;</span><span class="st"> </span>gender <span class="op">&lt;</span><span class="st"> </span><span class="dv">7</span>, </a>
-<a class="sourceLine" id="cb185-3" data-line-number="3">                             <span class="dt">select =</span> <span class="kw">c</span>( <span class="st">&quot;gender&quot;</span>, <span class="st">&quot;amt.smoke&quot;</span>))</a>
-<a class="sourceLine" id="cb185-4" data-line-number="4">TabSex =<span class="st"> </span><span class="kw">table</span>(Aux)</a></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb238-1" data-line-number="1"><span class="kw">library</span>(UsingR)</a>
+<a class="sourceLine" id="cb238-2" data-line-number="2">Aux =<span class="st"> </span><span class="kw">subset</span>(samhda, amt.smoke <span class="op">&lt;</span><span class="st"> </span><span class="dv">98</span> <span class="op">&amp;</span><span class="st"> </span>gender <span class="op">&lt;</span><span class="st"> </span><span class="dv">7</span>, </a>
+<a class="sourceLine" id="cb238-3" data-line-number="3">                             <span class="dt">select =</span> <span class="kw">c</span>( <span class="st">&quot;gender&quot;</span>, <span class="st">&quot;amt.smoke&quot;</span>))</a>
+<a class="sourceLine" id="cb238-4" data-line-number="4">TabSex =<span class="st"> </span><span class="kw">table</span>(Aux)</a></code></pre></div>
 <p>La tabla resultante es la siguiente:</p>
 <pre><code>                amt.smoke
  gender   1   2   3   4   5   6   7 
@@ -976,7 +978,7 @@ Llamaremos esta tabla TabSex:</p>
 <p>Vemos que dados algunos valores bajos, sospechamos que al hacer el
 <span class="math inline">\(\chi^2\)</span> tendremos el aviso de la función. Antes de seguir, lo
 comprobamos. Y efectivamente es así:</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" data-line-number="1"><span class="kw">chisq.test</span>(TabSex)</a></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" data-line-number="1"><span class="kw">chisq.test</span>(TabSex)</a></code></pre></div>
 <pre><code>## Warning in chisq.test(TabSex): Chi-squared approximation may be incorrect</code></pre>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
@@ -985,22 +987,22 @@ comprobamos. Y efectivamente es así:</p>
 ## X-squared = 4.1468, df = 6, p-value = 0.6568</code></pre>
 <p>Podemos juntar las columnas con valores 2 y 3 por un lado y con
 valores 4 y 5 por otro. Así tendríamos los niveles “Siempre”, “A menudo”, “Ocasionalmente”, “Casi nunca” y “Nunca”, lo que parece bastante razonable.</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" data-line-number="1">TabSex2 =<span class="st"> </span><span class="kw">cbind</span>(TabSex[,<span class="dv">1</span>], TabSex[,<span class="dv">2</span>] <span class="op">+</span><span class="st"> </span>TabSex[,<span class="dv">3</span>], </a>
-<a class="sourceLine" id="cb190-2" data-line-number="2">                TabSex[,<span class="dv">4</span>] <span class="op">+</span><span class="st"> </span>TabSex[,<span class="dv">5</span>], TabSex[,<span class="dv">6</span>], TabSex[,<span class="dv">7</span>])</a>
-<a class="sourceLine" id="cb190-3" data-line-number="3"><span class="kw">colnames</span>(TabSex2) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Siempre&quot;</span>, <span class="st">&quot;A menudo&quot;</span>, <span class="st">&quot;Ocasionalmente&quot;</span>, </a>
-<a class="sourceLine" id="cb190-4" data-line-number="4">                           <span class="st">&quot;Casi nunca&quot;</span>, <span class="st">&quot;Nunca&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" data-line-number="1">TabSex2 =<span class="st"> </span><span class="kw">cbind</span>(TabSex[,<span class="dv">1</span>], TabSex[,<span class="dv">2</span>] <span class="op">+</span><span class="st"> </span>TabSex[,<span class="dv">3</span>], </a>
+<a class="sourceLine" id="cb243-2" data-line-number="2">                TabSex[,<span class="dv">4</span>] <span class="op">+</span><span class="st"> </span>TabSex[,<span class="dv">5</span>], TabSex[,<span class="dv">6</span>], TabSex[,<span class="dv">7</span>])</a>
+<a class="sourceLine" id="cb243-3" data-line-number="3"><span class="kw">colnames</span>(TabSex2) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Siempre&quot;</span>, <span class="st">&quot;A menudo&quot;</span>, <span class="st">&quot;Ocasionalmente&quot;</span>, </a>
+<a class="sourceLine" id="cb243-4" data-line-number="4">                           <span class="st">&quot;Casi nunca&quot;</span>, <span class="st">&quot;Nunca&quot;</span>)</a></code></pre></div>
 <p>Hacemos la gráfica:</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" data-line-number="1"><span class="kw">barplot</span>(<span class="kw">prop.table</span>(TabSex2, <span class="dv">1</span>), <span class="dt">beside =</span> T, </a>
-<a class="sourceLine" id="cb191-2" data-line-number="2">             <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;lightblue&quot;</span>, <span class="st">&quot;forestgreen&quot;</span>))</a>
-<a class="sourceLine" id="cb191-3" data-line-number="3"><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Hombres&quot;</span>, <span class="st">&quot;Mujeres&quot;</span>), </a>
-<a class="sourceLine" id="cb191-4" data-line-number="4">           <span class="dt">fill =</span> <span class="kw">c</span>(<span class="st">&quot;lightblue&quot;</span>, <span class="st">&quot;forestgreen&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb244-1" data-line-number="1"><span class="kw">barplot</span>(<span class="kw">prop.table</span>(TabSex2, <span class="dv">1</span>), <span class="dt">beside =</span> T, </a>
+<a class="sourceLine" id="cb244-2" data-line-number="2">             <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;lightblue&quot;</span>, <span class="st">&quot;forestgreen&quot;</span>))</a>
+<a class="sourceLine" id="cb244-3" data-line-number="3"><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Hombres&quot;</span>, <span class="st">&quot;Mujeres&quot;</span>), </a>
+<a class="sourceLine" id="cb244-4" data-line-number="4">           <span class="dt">fill =</span> <span class="kw">c</span>(<span class="st">&quot;lightblue&quot;</span>, <span class="st">&quot;forestgreen&quot;</span>))</a></code></pre></div>
 <p><img src="Estad%C3%ADstica_files/figure-html/unnamed-chunk-109-1.png" width="672" /></p>
 <p>Vemos que hay algunas diferencias, las mayores en los niveles “A
 menudo” y “Nunca”’. Veremos si esto es suficiente para romper la
 independencia.</p>
 <p>Hacemos la prueba de <span class="math inline">\(\chi^2\)</span> . La hipótesis nula es que el consumo de
 tabaco es independiente del sexo y la alternativa es que sí depende.</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" data-line-number="1"><span class="kw">chisq.test</span>(TabSex2)</a></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" data-line-number="1"><span class="kw">chisq.test</span>(TabSex2)</a></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 

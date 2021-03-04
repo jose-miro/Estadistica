@@ -304,6 +304,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.8" data-path="problemas.html"><a href="problemas.html#regresión-lineal-1"><i class="fa fa-check"></i><b>15.8</b> Regresión Lineal</a></li>
 <li class="chapter" data-level="15.9" data-path="problemas.html"><a href="problemas.html#problemas-con-todo"><i class="fa fa-check"></i><b>15.9</b> Problemas con todo</a></li>
 <li class="chapter" data-level="15.10" data-path="problemas.html"><a href="problemas.html#campos-elíseos"><i class="fa fa-check"></i><b>15.10</b> Campos Elíseos</a></li>
+<li class="chapter" data-level="15.11" data-path="problemas.html"><a href="problemas.html#tipos-de-datos-1"><i class="fa fa-check"></i><b>15.11</b> Tipos de datos</a></li>
+<li class="chapter" data-level="15.12" data-path="problemas.html"><a href="problemas.html#estadística-descriptiva-1"><i class="fa fa-check"></i><b>15.12</b> Estadística descriptiva</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -395,6 +397,30 @@ media en los dos países”. Explique la “mala leche” de este comentario.</p
 <hr />
 <p><strong>Prob I.13</strong> Usted coge el transporte hasta la universidad en la Plaza de España y se está preguntando si es más rápido coger el autobús o el metro. Diseñe un experimento para determinar si uno es más rápido que el otro.</p>
 <p>Debe establecer cuál es la población, cuál es la muestra de su experimento y cómo va a tomar los datos.</p>
+<hr />
+<p><strong>Prob I.14</strong>
+Indique la población y la muestra en los siguientes casos:</p>
+<ul>
+<li><p>Para saber la incidencia de una enfermedad en España se escoge el hospitales públicos “de referencia” de cada provincia y se cuentan cuántos de los que han ido a urgencias en una semana determinada tienen la enfermedad.</p></li>
+<li><p>Para determinar el peso de las naranjas de un huerto se escogen al azar un día determinado el 100 naranjas de las recogidas ese día.</p></li>
+<li><p>Para saber cuánta basura se genera en Mallorca, se pesa cuánta basura llega al vertedero de Son Reus en 17 días escogidos al azar de los del año.</p></li>
+<li><p>Para establecer el voltaje que entregan las fuentes de alimentación fabricadas, se escogen al azar 5 de cada remesa y se miden.</p></li>
+<li><p>Para determinar la nota de los alumnos de una asignatura, se miran todas las notas obtenidas por los alumnos matriculados un determinado año.</p></li>
+</ul>
+<hr />
+<p><strong>Prob I.15</strong> En la recordada serie cómica Yes, minister sobre el funcionamiento de un ministerio británico, se explica cómo conseguir el resultado deseado en una encuesta a base de escribir “astutamente” las preguntas. Miren el clip del video (en inglés: <a href="https://www.youtube.com/watch?v=G0ZZJXw4MTA" class="uri">https://www.youtube.com/watch?v=G0ZZJXw4MTA</a>, en catalán <a href="https://www.youtube.com/watch?v=6WfGOaxkFBs" class="uri">https://www.youtube.com/watch?v=6WfGOaxkFBs</a>).</p>
+<p>Digamos que les encarga una encuesta de opinión sobre si los libros de texto en los colegios e institutos deberían ser gratuitos o no. Escriban dos listas de preguntas, una empujando hacia el sí, y otra empujando hacia el no.</p>
+<hr />
+<p><strong>Prob I.16</strong> Queremos estudiar la influencia de la dieta en una determinada enfermedad. Para ellos hacemos dos estudios. Para no complicar la explicación supondremos que los estudios son pequeñitos, pero se pueden hacer de tamaño adecuado.</p>
+<p>Para un estudio se escogen al azar dos pueblos: Vila del mar de abajo y Tira pal monte de arriba. Ambos pueblos tiene el mismo numero de habitantes. En Vila del mar se consumen 10.000 Kg de pescado al año, en Tira pal monte se consumen 3000 Kg de pescado al año. Mirando los historiales de los hospitales locales, en Vila del mar han contraído la enfermedad 450 personas durante el año y en Tira pa arriba lo han contraído 912 personas.</p>
+<p>Para el otro estudio escogemos al azar 100 personas de cada uno de los pueblos y se divide el consumo de pescado de estas 200 personas entre alto, medio y bajo. Entre los de consumo alto han contraído la enfermedad 21 personas, entre los de consumo medio lo han contraído 17, y entre los de consumo bajo lo han contraído 13.</p>
+<p>Los dos estudios parece que llegan a resultados que se contradicen. Con una muestra pequeña esto puede pasar, pero repito que simplemente estoy explicando el experimento usando una muestra pequeña: con una muestra suficientemente grande vemos el mismo efecto.</p>
+<p>Para intentar entender lo que pasa establezcan cuál es la población y la muestra en cada estudio. Aventuren alguna explicación de por qué los resultados son sólo aparentemente contradictorios.</p>
+<hr />
+<p><strong>Prob I.17</strong> Coja una moneda y tome 3 muestras de 16 lanzamientos. Dibújelos como diagramas de barras (puede usar R, pero no es obligatorio). Repita con 3 muestras de 32 lanzamientos.</p>
+<p>Coja un dado y tome 3 muestras de 36 lanzamientos. Dibújelos como diagramas de barras. Repita con 3 muestras de 72 lanzamientos.</p>
+<p>Es importante que no tome muestras de más. No repita porque una “sale mal”.</p>
+<p>A partir de los diagramas que ha obtenido, ¿cree que es factible determinar la forma del diagrama de una población a partir del de una muestra? Explique bien sus conclusiones (es lo más importante de este ejercicio).</p>
 </div>
 <div id="manejo-de-r-y-simulaciones" class="section level2">
 <h2><span class="header-section-number">15.2</span> Manejo de R y simulaciones</h2>
@@ -581,6 +607,14 @@ instrucciones de R y el diagrama.</p>
 <p>Indique si le parece que su simulación da lugar a una distribución de Poisson o no.</p>
 <p>Debe entregar el guión de R adecuadamente comentado, la tabla, las gráficas y su opinión.</p>
 <hr />
+<p><strong>Prob R.22</strong> La calificación de la parte de entregas depende del número de ergios realizado, de la nota media de las entregas, de la mediana de las entregas y de la nota del proyecto:</p>
+<p>Calificación = Ergios <span class="math inline">\(\times\)</span> (0,75<span class="math inline">\(\times\)</span> Nota media de entregas +
+0,25<span class="math inline">\(\times\)</span> Nota del proyecto) <span class="math inline">\(\times\)</span> Factor</p>
+<p>Donde el factor depende de la mediana: su valor es 0.010 si la mediana es 4 o inferior, 0,026 si la mediana es de 8 o superior y varía linealmente entre 4 y 8: Factor = 0,004 <span class="math inline">\(\times\)</span> Mediana - 0,006.</p>
+<p>Vamos a suponer que la nota media, mediana y la nota del proyecto son iguales, todas valen N. Supongamos que ha entregado un total de 21 ergios. Dibuje en R la curva resultante de la calificación en la parte de entregas en función de N, con N variando de 0 a 10.</p>
+<p>Añada las curvas para 30 y 40 ergios. Para añadir curvas a una dada se usa la función points(). Es decir, para la primera curva usa plot() y para las otras dos usa points().</p>
+<p>Debe entregar las instrucciones usadas y la gráfica resultante.</p>
+<hr />
 <p><strong>Prob R.23</strong> Podemos crear distribuciones a mano con R creando un vector muy grande con los valores que queramos con las frecuencias que queramos.
 Por ejemplo la instrucción</p>
 <pre><code> distr = rep(1:20, times = c(1000, 900, 800, 700, 600, 500, 
@@ -602,7 +636,7 @@ varias veces.</p>
 <p>Entregue el código de R, los histogramas de las medias y su
 explicación.</p>
 <hr />
-<p><strong>Prob RE.24</strong> Partimos de la simulación explicada en el video Introducción empírica a los Intervalos de Confianza (tienen el guión de R en ICProp202.R). Allí el “90%” significaba que el 90% de las muestras obtenidas estaban dentro del intervalo. Vamos a comprobar otra cosa. Vamos a comprobar otra cosa.</p>
+<p><strong>Prob R.24</strong> Partimos de la simulación explicada en el video Introducción empírica a los Intervalos de Confianza (tienen el guión de R en ICProp202.R). Allí el “90%” significaba que el 90% de las muestras obtenidas estaban dentro del intervalo. Vamos a comprobar otra cosa. Vamos a comprobar otra cosa.</p>
 <p>Creen una población con una proporción de unos desconocida, igual que en el video. Obtengan 1000 muestras de tamaño 100 y calculen la horquilla igual que en el video (aunque no tienen por qué obtener el mismo valor que en el video). Ahora cojan las 1000 proporciones que han obtenido en sus muestras y obtengan los 1000 intervalos de confianza, centrando la horquilla en la proporción de la muestra. Por ejemplo, si han obtenido una horquilla de 16% y sus tres primeras muestras son 0,45;0,53; y0,48, los tres intervalos son [0,37; 0,53], [0,45; 0,61] y [0,40; 0,56]. Cojan ahora el valor real de la proporción desconocida y calculen en qué porcentaje de los 1000 intervalos cae dentro. Es decir, qué porcentaje de los intervalos “ha acertado”. ¿Es cercano al 90%?</p>
 <p>Repita con n = 500 y n = 1000.</p>
 <p>Muestre su guión y sus resultados.</p>
@@ -637,6 +671,23 @@ sea menor que 0.05 o 0.01 en los tres casos.</p>
 <p>Después, con lm(y~x) obtenemos la recta de regresión que debe ser parecida a y = 2x+3.</p>
 <p>Haga al menos 100 simulaciones y pinte un conjunto de puntos (el primero será el más fácil de dibujar) y las 100 rectas de regresión calculadas. Pinte también la recta “buena” (si pinta las rectas de las regresiones en negro y la final pinta la recta buena en blanco, se verá bien).</p>
 <p>Debe entregar la gráfica resultante y su descripción del resultado.</p>
+<hr />
+<p><strong>Prob R.28</strong> Partimos del conjunto de datos Cars93 que está en el paquete MASS. Contiene datos de 93 coches. Ejecute Library(MASS) y ya lo tendrá disponible. La columna “Length” nos da la longitud del coche en pulgadas.</p>
+<p>Una pulgada son 2,54 cm. Pase la longitud a cm.
+Calcule con R la media, mediana, cuartiles y desviación típica de la longitud de los 93 coches.
+Dibuje con R los cuatro diagramas (histograma, cajas, tallo y hojas y stripchart) de la variable longitud.
+La columna “type” nos da el tipo del coche (compacto, deportivo, furgoneta…). Calcule con R la tabla de contingencia del tipo de los 93 coches.
+Dibuje con R el diagrama de barras correspondiente.
+Debe entregar las instrucciones de R, los resultados y los diagramas.</p>
+<hr />
+<p><strong>Prob R.29</strong> En el fichero mp3.csv (pestaña de recursos) tiene datos de más de 500 pistas de canciones codificadas en mp3. La columna <code>Tamanyo</code> es el tamaño (en bytes) de la pista. Es una variable numérica, pero la queremos pasar a factor con cuatro niveles: muy corta, corta, media y larga. Usando R determine cuál es la pista más corta (de menor tamaño) y la más larga (de mayor tamaño). Dividiremos los niveles en rangos iguales. Por ejemplo si la más corta es de 1000 bytes y la más larga es de 5000 bytes, los niveles quedarían definidos por muy corta: de 1000 a 1999; corta: de 2000 a 2999; media: de 3000 a 3999, y larga: de 4000 a 5000.</p>
+<p>Defina la variable cualitativa “longitud” con los cuatro niveles. Calcule los rangos de tamaño para cada nivel</p>
+<ul>
+<li><p>Cree un vector para cada pista asignándole el nivel que le corresponda</p></li>
+<li><p>Calcule la tabla de contingencia de la variable</p></li>
+<li><p>Cree el diagrama de barras correspondiente</p></li>
+</ul>
+<p>Todo esto debe hacerse con R. No puede hacer nada “a mano”. Le puede ser útil la función cut().</p>
 
 </div>
 <div id="estadística-descriptiva" class="section level2">
@@ -4308,15 +4359,184 @@ Conjunto A:
 <p><strong>Prob CE.41</strong> Tenemos un evento que suponemos sigue una distribución de Poisson. La media de ocurrencias del evento es de 5,3. Para
 asegurarse que es una distribución de Poisson estudia las ocurrencias del evento en 1400 periodos de tiempo. En 458 de estos 1400 periodos el evento ha sucedido 4 ó 5 veces. Esto nos da una proporción <span class="math inline">\(p = 0.327\)</span>. ¿Cuál es el error estándar? ¿Considera que es razonable pensar que el proceso realmente es de Poisson?</p>
 
+<p>#Preguntas conceptuales</p>
 </div>
-</div>
-<div class="footnotes">
-<hr />
-<ol>
-<li id="fn1"><p>Hasta que
-no estés seguro de cuál usa tu hoja de cálculo, inspecciona el fichero
-antes de leerlo.<a href="uso-de-r-para-estadística-descriptiva-tutorial.html#fnref1" class="footnote-back">↩</a></p></li>
+<div id="tipos-de-datos-1" class="section level2">
+<h2><span class="header-section-number">15.11</span> Tipos de datos</h2>
+<p><strong>TD 1</strong> ¿De qué tipo de datos es la presión arterial sistólica?</p>
+<p>(a)Cualitativo</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>Ordinal</p></li>
+<li><p>Cuantitativo discreto</p></li>
+<li><p>Cuantitativo continuo</p></li>
 </ol>
+<hr />
+<p><strong>TD 2</strong> ¿De qué tipo de datos es el mes del año?</p>
+<p>(a)Cualitativo</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>Ordinal</p></li>
+<li><p>Cuantitativo discreto</p></li>
+<li><p>Cuantitativo continuo</p></li>
+</ol>
+<hr />
+<p><strong>TD 3</strong> ¿De qué tipo de datos es el número de hijos?</p>
+<p>(a)Cualitativo</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>Ordinal</p></li>
+<li><p>Cuantitativo discreto</p></li>
+<li><p>Cuantitativo continuo</p></li>
+</ol>
+<hr />
+<p><strong>TD 4</strong> ¿De qué tipo de datos es el número medio de hijos por madre de un país?</p>
+<p>(a)Cualitativo</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>Ordinal</p></li>
+<li><p>Cuantitativo discreto</p></li>
+<li><p>Cuantitativo continuo</p></li>
+</ol>
+<hr />
+<p><strong>TD 5</strong> ¿De qué tipo de datos es el grupo sanguíneo (A, B, AB, 0)?</p>
+<p>(a)Cualitativo</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>Ordinal</p></li>
+<li><p>Cuantitativo discreto</p></li>
+<li><p>Cuantitativo continuo</p></li>
+</ol>
+<hr />
+<p><strong>TD 6</strong> ¿De qué tipo de datos son las notas que se pueden tocar en una guitarra?</p>
+<p>(a)Cualitativo</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>Ordinal</p></li>
+<li><p>Cuantitativo discreto</p></li>
+<li><p>Cuantitativo continuo</p></li>
+</ol>
+<hr />
+<p><strong>TD 7</strong> ¿De qué tipo de datos son las notas que se pueden tocar en un violín?</p>
+<p>(a)Cualitativo</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>Ordinal</p></li>
+<li><p>Cuantitativo discreto</p></li>
+<li><p>Cuantitativo continuo</p></li>
+</ol>
+<hr />
+<p><strong>TD 8</strong> ¿De qué tipo de datos es libros vendidos en una librería?</p>
+<p>(a)Cualitativo</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>Ordinal</p></li>
+<li><p>Cuantitativo discreto</p></li>
+<li><p>Cuantitativo continuo</p></li>
+</ol>
+</div>
+<div id="estadística-descriptiva-1" class="section level2">
+<h2><span class="header-section-number">15.12</span> Estadística descriptiva</h2>
+<p><strong>ED 1</strong> Con un summary() de R obtenemos la siguiente salida</p>
+<pre><code> Min   Q1   Median  Mean   Q3    Max
+ 0.2   3.3     6.2   6.6   9.1   14.6     </code></pre>
+<p>La distribución parece ser</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Simétrica</p></li>
+<li><p>Asimétrica a la derecha</p></li>
+<li><p>Asimétrica a la izquierda</p></li>
+<li><p>Con los datos numéricos no se puede saber</p></li>
+</ol>
+<hr />
+<p><strong>ED 2</strong> Conviene usar la mediana como medida de centralidad</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Cuando hay valores atípicos</p></li>
+<li><p>Cuando es fuertemente asimétrica</p></li>
+<li><p>Cuando es fuertemente asimétrica o hay valores atípicos</p></li>
+<li><p>Cuando es fuertemente asimétrica y hay valores atípicos</p></li>
+</ol>
+<hr />
+<p><strong>ED 3</strong> Tenemos una muestra de más de 400 elementos. La media es 6.9 y la desviación típica es 1.5. El valor máximo es 13.5. Este valor máximo</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Parece un valor atípico: está a más de 3 desviaciones típicas de la media</p></li>
+<li><p>Con sólo estos datos no podemos saber si es un valor atípico o no.</p></li>
+<li><p>No parece un valor atípico. No llega ni al doble de la media.</p></li>
+<li><p>No parece un valor atípico. Está a más de 3 desviaciones típicas, pero son más de 400 datos.</p></li>
+</ol>
+<hr />
+<p><strong>ED 4</strong> La modalidad de una muestra se ve en</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Todos los diagramas</p></li>
+<li><p>Todos los diagramas menos el de caja</p></li>
+<li><p>Sólo en el histograma y el de tallo y hojas</p></li>
+<li><p>Depende de la distribución.</p></li>
+</ol>
+<hr />
+<p><strong>ED 5</strong> Tengo una muestra de 120 datos con las siguientes características:</p>
+<pre><code> Min    Q1     Median    Mean    Q3    Max
+ 15,3   21,0    28,3     27,4   36,5   44,4     </code></pre>
+<p>Una estima razonable de la desviación típica es</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>13,7: la mitad de la media</p></li>
+<li><p>9: algo más de la mitad de Q3 - Q1</p></li>
+<li><p>3,5: la cuarta parte de Q3 - Q1</p></li>
+<li><p>5: la sexta parte de Max - Min</p></li>
+</ol>
+<hr />
+<p><strong>ED 6</strong> En la distribución de la figura</p>
+<p><img src="imagenes/ED3_1.jpg" /><!-- --></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>La media es claramente mayor que la mediana</p></li>
+<li><p>La media es claramente menor que la mediana</p></li>
+<li><p>La media es aproximadamente igual a la mediana</p></li>
+<li><p>No se puede saber a partir de la gráfica</p></li>
+</ol>
+<hr />
+<p><strong>ED 7</strong> Los datos represetados en la figura son</p>
+<p><img src="imagenes/hbp1.jpg" /><!-- --></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Nada problemáticos</p></li>
+<li><p>Algo problemáticos</p></li>
+<li><p>Bastante problemáticos</p></li>
+<li><p>Muy problemáticos</p></li>
+</ol>
+<hr />
+<p><strong>ED 8</strong> Los datos represetados en la figura son</p>
+<p><img src="imagenes/ProbF2a.jpg" /><!-- --></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Nada problemáticos</p></li>
+<li><p>Algo problemáticos</p></li>
+<li><p>Bastante problemáticos</p></li>
+<li><p>Muy problemáticos</p></li>
+</ol>
+<hr />
+<p><strong>ED 9</strong> Los datos representados en este diagrama de tallo y hojas</p>
+<pre><code>-0 | 744
+ 0 | 22344668999
+ 1 | 122233344444677789
+ 2 | 00122233455677
+ 3 | 00001111223445667778
+ 4 | 12223455567889
+ 5 | 0001334899
+ 6 | 233345666788999
+ 7 | 000111223333445667888
+ 8 | 0000011134556667778
+ 9 | 01112244456777789
+10 | 001245566778889
+11 | 0033467
+12 | 0125689
+13 | 9
+14 | 03</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li><p>Son unimodales</p></li>
+<li><p>Son bimodales</p></li>
+<li><p>Son trimodales</p></li>
+<li><p>Son tetramodales</p></li>
+</ol>
+<hr />
+<p><strong>ED 10</strong> A partir de esta diagrama de barras vemos que la variable es</p>
+<p><img src="imagenes/EDQ1.jpg" /><!-- --></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Unimodal</p></li>
+<li><p>Bimodal</p></li>
+<li><p>Trimodal</p></li>
+<li><p>No tiene sentido hablar de modalidad de esta variable</p></li>
+</ol>
+<hr />
+
+</div>
 </div>
             </section>
 

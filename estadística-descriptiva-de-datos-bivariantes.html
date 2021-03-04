@@ -304,6 +304,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.8" data-path="problemas.html"><a href="problemas.html#regresión-lineal-1"><i class="fa fa-check"></i><b>15.8</b> Regresión Lineal</a></li>
 <li class="chapter" data-level="15.9" data-path="problemas.html"><a href="problemas.html#problemas-con-todo"><i class="fa fa-check"></i><b>15.9</b> Problemas con todo</a></li>
 <li class="chapter" data-level="15.10" data-path="problemas.html"><a href="problemas.html#campos-elíseos"><i class="fa fa-check"></i><b>15.10</b> Campos Elíseos</a></li>
+<li class="chapter" data-level="15.11" data-path="problemas.html"><a href="problemas.html#tipos-de-datos-1"><i class="fa fa-check"></i><b>15.11</b> Tipos de datos</a></li>
+<li class="chapter" data-level="15.12" data-path="problemas.html"><a href="problemas.html#estadística-descriptiva-1"><i class="fa fa-check"></i><b>15.12</b> Estadística descriptiva</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -330,8 +332,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Una vez visto cómo escribir datos de una variable, veamos cómo
 describir datos de dos variables. Cómo tenemos dos tipos de
 variables, numéricos y cualitativos, tenemos tres casos: dos
-variables numéricas, una numérica y una cualitativa, y dos variables
-cualitativas. Cada una tiene sus métodos y sus gráficas.</p>
+variables numéricas, una numérica y una cualitativa, y dos variables cualitativas. Cada una tiene sus métodos y sus gráficas.</p>
 <div id="dos-variables-numéricas" class="section level2">
 <h2><span class="header-section-number">5.1</span> Dos variables numéricas</h2>
 <p>En este caso, y en todos, primero hay que estudiar cada variable por
@@ -363,8 +364,7 @@ curva, en este caso una recta. Decimos que las dos variables están
 fuertemente correlacionadas. La figura siguiente muestra un gráfico en
 donde no se ajustan tan bien y están débilmente correlacionadas.
 <img src="imagenes/plotcars.jpg" /><!-- --></p>
-<p>Y ahora mostramos una nube de puntso en el que no vemos curva alguna.
-Las variables probablemente no estén correlacionadas.
+<p>Y ahora mostramos una nube de puntos en el que no vemos curva alguna. Las variables probablemente no estén correlacionadas.
 <img src="imagenes/plotaleat.jpg" /><!-- --></p>
 </div>
 <div id="rectas-de-regresión" class="section level3">
@@ -452,15 +452,13 @@ de ojos. Siempre ha de ser la variable numérica en función de la
 variable cualitativa. Podemos ver el resultado en la figura siguiente.</p>
 <p><img src="imagenes/plotstr.jpg" /><!-- --></p>
 <p>El de cajas se crea de forma muy similar, con la instrucción
-<code>boxplot(OA$Altura~ OA$ColorOjos)</code>:
-variable cualitativa. Podemos ver el resultado en la figura siguiente.
+<code>boxplot(OA$Altura~ OA$ColorOjos)</code>: variable numérica en función de la variable cualitativa. Podemos ver el resultado en la figura siguiente.
 <img src="imagenes/plotcaj.jpg" /><!-- --></p>
 <p>En el diagrama de puntos vemos gráficamente ya lo sabíamos por la
 tabla de contingencia del color de ojos que habíamos hecho: que hay pocos datos de gente con ojos verdes y ojos negros y por lo
 tanto el que el diagrama de cajas salga algo distinto, no significa
 mucho. Y el “valor atípico” de los ojos verdes, tampoco. Y entre
-los ojos azules y marrones, no parece que haya mucha diferencia. Las
-inferencias estadísticas nos darán más información, pero si hay una
+los ojos azules y marrones, no parece que haya mucha diferencia. Las inferencias estadísticas nos darán más información, pero si hay una
 diferencia, parece que es pequeña.</p>
 </div>
 <div id="dos-variables-cualitativas" class="section level2">
@@ -581,6 +579,7 @@ segunda serán las columnas. Por lo tanto, si escribimos
 </tr>
 </tbody>
 </table>
+<p>Si hubiéramos ejecutado <code>table(Ojos, Pelo)</code> nos daría la tabla traspuesta: con el color de pelo en las columnas y el de ojos en las filas.</p>
 <p>Esta tabla de contingencia nos da cuántos individuos hay en cada
 intersección de niveles: cuántos rubios con ojos azules, pelirrojos
 con ojos verdes, etc. Pero nos puede interesar tener las
@@ -645,10 +644,8 @@ una leyenda para conocer los niveles en cada agrupación.</p>
 grupo suman 1, como vemos:
 <img src="imagenes/barApil2.jpg" /><!-- --></p>
 <p>R agrupa por columnas, por lo tanto si queremos agrupar por color de
-pelo, que son las filas en nuestro ejemplo, tenemos que recrear las
-tablas de contingencia cambiando el orden de las dos variables en la
-función <code>table()</code> o trasponer la tabla de contingencia. En R
-conseguimos la trasposición con la función <code>t()</code>. Vemos el
+pelo, que son las filas en nuestro ejemplo, como ya hemos dicho, tenemos que recrear las tablas de contingencia cambiando el orden de las dos variables en la
+función <code>table()</code>. Otra posibilidad es trasponer la tabla de contingencia con la función <code>t()</code>. Vemos el
 resultado en la figura siguiente. Aunque no se vea directamente,
 las frecuencias de cada agrupación suman 1.
 <img src="imagenes/barplot3.jpg" /><!-- --></p>
